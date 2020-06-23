@@ -31,10 +31,10 @@ class _ContainerPageState extends State<TabsPage> {
   final defaultItemColor = Color.fromARGB(255, 125, 125, 125);
 
   final itemNames = [
-    _Item('首页', 'images/tab_wallet_active.png','images/tab_wallet.png'),
-    _Item('Token兑换', 'images/tab_exchange_active.png','images/tab_exchange.png'),
-    _Item('收款', 'images/tab_receive_active.png','images/tab_receive.png'),
-    _Item('转账', 'images/tab_transfer_active.png','images/tab_transfer.png'),
+    _Item('首页', 'assets/images/home-active.png','assets/images/home.png'),
+    _Item('兑换', 'assets/images/home-active.png','assets/images/home.png'),
+    _Item('我的', 'assets/images/home-active.png','assets/images/home.png'),
+ 
   ];
 
   List<BottomNavigationBarItem> itemList;
@@ -51,7 +51,6 @@ class _ContainerPageState extends State<TabsPage> {
         new TabWallet(),
         new TabWallet(),
         new TabWallet(),
-        // new TabWallet()
       ];
     }
     if(itemList == null){
