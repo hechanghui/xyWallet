@@ -27,7 +27,7 @@ dependencies:
   dio: 3.0.9  #网络请求
   progress_dialog: ^1.2.4  #加载框
   json_serializable: ^3.3.0  #json转model、
-  camera: ^0.5.8+2
+  # camera: ^0.5.8+2
 
   
   # The following adds the Cupertino Icons font to your application.
