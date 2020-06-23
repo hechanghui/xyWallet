@@ -51,7 +51,7 @@ class _ContainerPageState extends State<TabsPage> {
         new TabWallet(),
         new TabWallet(),
         new TabWallet(),
-        new TabWallet()
+        // new TabWallet()
       ];
     }
     if(itemList == null){

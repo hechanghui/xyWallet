@@ -3,6 +3,8 @@
 *.log
 *.pyc
 *.swp
+*.lock
+pubspec.lock
 .DS_Store
 .atom/
 .buildlog/
@@ -38,6 +40,5 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
-
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
