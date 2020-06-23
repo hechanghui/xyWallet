@@ -23,6 +23,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "actionCancel" : MessageLookupByLibrary.simpleMessage("取消"),
     "actionConfirm" : MessageLookupByLibrary.simpleMessage("确认"),
-    "appName" : MessageLookupByLibrary.simpleMessage("X钱包")
+    "appName" : MessageLookupByLibrary.simpleMessage("X钱包"),
+    "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
+    "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
+    "retry" : MessageLookupByLibrary.simpleMessage("重试"),
+    "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),
+    "viewStateButtonRefresh" : MessageLookupByLibrary.simpleMessage("刷新一下"),
+    "viewStateButtonRetry" : MessageLookupByLibrary.simpleMessage("重试"),
+    "viewStateMessageEmpty" : MessageLookupByLibrary.simpleMessage("空空如也"),
+    "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("加载失败"),
+    "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
+    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录")
   };
 }
