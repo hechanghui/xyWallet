@@ -137,7 +137,7 @@ class AnimatedTextLogo extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
-    print("animation ${animation.value}");
+    // print("animation ${animation.value}");
     return Opacity(
       opacity: animation.value,
       child: Text(

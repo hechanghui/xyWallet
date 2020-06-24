@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/service/bus.dart';
-import 'package:xy_wallet/pages/tabbar/tab_wallet.dart';
+import 'package:xy_wallet/ui/pages/tabbar/tab_wallet.dart';
 class _Item {
   String name, activeIcon, normalIcon;
   _Item(this.name, this.activeIcon, this.normalIcon);
