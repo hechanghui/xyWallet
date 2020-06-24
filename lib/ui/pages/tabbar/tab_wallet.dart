@@ -2,26 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 
+import 'package:xy_wallet/ui/widgets/common_button.dart';
+
 class TabWallet extends StatefulWidget {
-
-
   @override
   State<StatefulWidget> createState() => new Page();
 }
 
 class Page extends State<TabWallet> {
-
-  
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-
   @override // override是重写父类中的函数
-  void initState()  {
+  void initState() {
     super.initState();
-
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -34,43 +28,41 @@ class Page extends State<TabWallet> {
     return new Scaffold(
       appBar: buildAppBar(context),
       body: Center(
-          child: new RaisedButton(
-            
-            onPressed: (){
-              print('11111');
-              httpTest test= new httpTest();
-              test.Request();
-            }
-            
-          ),
-          
-        ),
-      );
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new RaisedButton(onPressed: () {
+            print('11111');
+            httpTest test = new httpTest();
+            test.Request();
+          }),
+          CommonButton(child: Text("233333"))
+        ],
+      )),
+    );
   }
 
   // 构建AppBar
   // 如何自定义icon来打开draw
   Widget buildAppBar(BuildContext context) {
     return new AppBar(
-
-         title: Text(
-            'home',
-            style: new TextStyle(color: Colors.white),
-         ),
-         
-         backgroundColor: Colors.lightBlue,
-         elevation: 0.0,
+      title: Text(
+        'home',
+        style: new TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.lightBlue,
+      elevation: 0.0,
     );
   }
 }
 
-
-class httpTest{
-  void Request() async{
+class httpTest {
+  void Request() async {
     var params = Map<String, dynamic>();
     params["otype"] = "json";
 
     ResultData res = await HttpManager.getInstance().get('checktime', params);
-    print(res.data);   
+    print(res.data);
   }
 }

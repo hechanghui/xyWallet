@@ -76,17 +76,21 @@ class ThemeModel with ChangeNotifier {
     var themeColor = _themeColor;
     // var accentColor = isDark ? themeColor[700] : _themeColor;
     var accentColor = Color(0xFF00F2FF); //次级色，决定大多数Widget的颜色，如进度条、开关等。
+    var colorBodyText = Color(0xFF00F2FF);
     var themeData = ThemeData(
-        brightness: brightness,
-        // 主题颜色属于亮色系还是属于暗色系(eg:dark时,AppBarTitle文字及状态栏文字的颜色为白色,反之为黑色)
-        // 这里设置为dark目的是,不管App是明or暗,都将appBar的字体颜色的默认值设为白色.
-        // 再AnnotatedRegion<SystemUiOverlayStyle>的方式,调整响应的状态栏颜色
-        primaryColorBrightness: Brightness.dark,
-        accentColorBrightness: Brightness.dark,
-        primarySwatch: themeColor,
-        primaryColor: Color(0xFF122C50), //主色，决定导航栏颜色
-        accentColor: accentColor,
-        fontFamily: fontValueList[fontIndex]);
+      brightness: brightness,
+      // 主题颜色属于亮色系还是属于暗色系(eg:dark时,AppBarTitle文字及状态栏文字的颜色为白色,反之为黑色)
+      // 这里设置为dark目的是,不管App是明or暗,都将appBar的字体颜色的默认值设为白色.
+      // 再AnnotatedRegion<SystemUiOverlayStyle>的方式,调整响应的状态栏颜色
+      primaryColorBrightness: Brightness.dark,
+      accentColorBrightness: Brightness.dark,
+      primarySwatch: themeColor,
+      primaryColor: Color(0xFF122C50), //主色，决定导航栏颜色
+      accentColor: accentColor,
+      fontFamily: fontValueList[fontIndex],
+
+      buttonColor: Color(0xFF003D53),
+    );
 
     themeData = themeData.copyWith(
       brightness: brightness,
@@ -108,7 +112,11 @@ class ThemeModel with ChangeNotifier {
 
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
           subtitle1: themeData.textTheme.subtitle1
-              .copyWith(textBaseline: TextBaseline.alphabetic)),
+              .copyWith(textBaseline: TextBaseline.alphabetic),
+          button: themeData.textTheme.button
+              .copyWith(fontSize: 17, color: colorBodyText,
+              fontWeight: FontWeight.bold,)
+              ),
 
       textSelectionColor: accentColor.withAlpha(60),
       textSelectionHandleColor: accentColor.withAlpha(60),
@@ -119,6 +127,9 @@ class ThemeModel with ChangeNotifier {
         labelStyle: themeData.textTheme.caption,
         backgroundColor: themeData.chipTheme.backgroundColor.withOpacity(0.1),
       ),
+
+      buttonTheme: themeData.buttonTheme
+          .copyWith(height: 44, textTheme: ButtonTextTheme.accent),
 //          textTheme: CupertinoTextThemeData(brightness: Brightness.light)
       inputDecorationTheme: ThemeHelper.inputDecorationTheme(themeData),
     );

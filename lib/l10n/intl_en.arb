@@ -11,5 +11,6 @@
     "viewStateButtonRetry": "Retry",
     "refreshTwoLevel": "release to enter second floor",
     "retry": "Retry",
-    "splashSkip": "Skip"
+    "splashSkip": "Skip",
+    "viewStateButtonLogin": "Sign In"
 }
