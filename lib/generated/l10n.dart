@@ -72,6 +72,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Load Failed`
+  String get viewStateMessageError {
+    return Intl.message(
+      'Load Failed',
+      name: 'viewStateMessageError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Load Failed,Check network `
+  String get viewStateMessageNetworkError {
+    return Intl.message(
+      'Load Failed,Check network ',
+      name: 'viewStateMessageNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing Found`
+  String get viewStateMessageEmpty {
+    return Intl.message(
+      'Nothing Found',
+      name: 'viewStateMessageEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not sign in yet`
+  String get viewStateMessageUnAuth {
+    return Intl.message(
+      'Not sign in yet',
+      name: 'viewStateMessageUnAuth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refresh`
+  String get viewStateButtonRefresh {
+    return Intl.message(
+      'Refresh',
+      name: 'viewStateButtonRefresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get viewStateButtonRetry {
+    return Intl.message(
+      'Retry',
+      name: 'viewStateButtonRetry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `release to enter second floor`
+  String get refreshTwoLevel {
+    return Intl.message(
+      'release to enter second floor',
+      name: 'refreshTwoLevel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get splashSkip {
+    return Intl.message(
+      'Skip',
+      name: 'splashSkip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

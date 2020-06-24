@@ -24,6 +24,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "actionCancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "actionConfirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
     "appName" : MessageLookupByLibrary.simpleMessage("X Wallet"),
-    "autoBySystem" : MessageLookupByLibrary.simpleMessage("Auto")
+    "autoBySystem" : MessageLookupByLibrary.simpleMessage("Auto"),
+    "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("release to enter second floor"),
+    "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
+    "splashSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
+    "viewStateButtonRefresh" : MessageLookupByLibrary.simpleMessage("Refresh"),
+    "viewStateButtonRetry" : MessageLookupByLibrary.simpleMessage("Retry"),
+    "viewStateMessageEmpty" : MessageLookupByLibrary.simpleMessage("Nothing Found"),
+    "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("Load Failed"),
+    "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("Load Failed,Check network "),
+    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("Not sign in yet")
   };
 }
