@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 import 'page_route_anim.dart';
 
-import 'package:xy_wallet/pages/tabbars.dart';
-import 'package:xy_wallet/pages/splash/splash.dart';
+import 'package:xy_wallet/ui/pages/tabbars.dart';
+import 'package:xy_wallet/ui/pages/splash/splash.dart';
 
 class RouteName {
   static const String splash = 'splash';
