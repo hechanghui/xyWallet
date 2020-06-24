@@ -74,7 +74,8 @@ class ThemeModel with ChangeNotifier {
     Brightness brightness = isDark ? Brightness.dark : Brightness.light;
 
     var themeColor = _themeColor;
-    var accentColor = isDark ? themeColor[700] : _themeColor;
+    // var accentColor = isDark ? themeColor[700] : _themeColor;
+    var accentColor = Color(0xFF00F2FF); //次级色，决定大多数Widget的颜色，如进度条、开关等。
     var themeData = ThemeData(
         brightness: brightness,
         // 主题颜色属于亮色系还是属于暗色系(eg:dark时,AppBarTitle文字及状态栏文字的颜色为白色,反之为黑色)
@@ -83,6 +84,7 @@ class ThemeModel with ChangeNotifier {
         primaryColorBrightness: Brightness.dark,
         accentColorBrightness: Brightness.dark,
         primarySwatch: themeColor,
+        primaryColor: Color(0xFF122C50), //主色，决定导航栏颜色
         accentColor: accentColor,
         fontFamily: fontValueList[fontIndex]);
 
@@ -90,7 +92,7 @@ class ThemeModel with ChangeNotifier {
       brightness: brightness,
       accentColor: accentColor,
       cupertinoOverrideTheme: CupertinoThemeData(
-        primaryColor: themeColor,
+        // primaryColor: themeColor,
         brightness: brightness,
       ),
 
@@ -99,11 +101,15 @@ class ThemeModel with ChangeNotifier {
       hintColor: themeData.hintColor.withAlpha(90),
       errorColor: Colors.red,
       cursorColor: accentColor,
+
       textTheme: themeData.textTheme.copyWith(
+          headline3: themeData.textTheme.headline3
+              .copyWith(fontSize: 20, color: accentColor),
 
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
-          subhead: themeData.textTheme.subhead
+          subtitle1: themeData.textTheme.subtitle1
               .copyWith(textBaseline: TextBaseline.alphabetic)),
+
       textSelectionColor: accentColor.withAlpha(60),
       textSelectionHandleColor: accentColor.withAlpha(60),
       toggleableActiveColor: accentColor,
