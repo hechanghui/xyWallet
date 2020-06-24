@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
+import 'package:bmprogresshud/bmprogresshud.dart';
+import 'dart:async';
+import 'package:xy_wallet/manager/progressManager/progresshudManager.dart';
+
+
 
 class TabWallet extends StatefulWidget {
 
@@ -10,9 +15,6 @@ class TabWallet extends StatefulWidget {
 }
 
 class Page extends State<TabWallet> {
-
-  
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 
   @override // override是重写父类中的函数
@@ -31,21 +33,30 @@ class Page extends State<TabWallet> {
   /// 通过Consumer的方式引用共享的token列表
   /// 当token列表中有余额变动后，首页自动更新
   Widget layout(BuildContext context) {
+
     return new Scaffold(
       appBar: buildAppBar(context),
-      body: Center(
-          child: new RaisedButton(
-            
-            onPressed: (){
-              print('11111');
-              httpTest test= new httpTest();
-              test.Request();
-            }
-            
-          ),
+      body: ProgressHud(
+        child:Center(
+          child: Builder(builder: (context){
+            return new RaisedButton(
+
+                onPressed: (){
+                print('11111');
+                //网络请求例子
+              // httpTest test= new httpTest();
+              // test.Request();
+
+                example ex = new example();
+                ex.showSuccessHud(context);
+
+                }
+            );
           
-        ),
-      );
+          }),
+        ) 
+      ),
+    );
   }
 
   // 构建AppBar
@@ -65,6 +76,8 @@ class Page extends State<TabWallet> {
 }
 
 
+
+//事例实现
 class httpTest{
   void Request() async{
     var params = Map<String, dynamic>();
@@ -72,5 +85,38 @@ class httpTest{
 
     ResultData res = await HttpManager.getInstance().get('checktime', params);
     print(res.data);   
+  }
+}
+
+class example{
+  showLoadingHud(BuildContext context) async {
+    ProgressHud.of(context).show(ProgressHudType.loading, "loading...");
+    await Future.delayed(const Duration(seconds: 1));
+    ProgressHud.of(context).dismiss();
+  }
+
+  showSuccessHud(BuildContext context) {
+    print(context);
+    ProgressHud.of(context).showAndDismiss(ProgressHudType.success, "load success");
+  }
+
+  _showErrorHud(BuildContext context) {
+    ProgressHud.of(context).showAndDismiss(ProgressHudType.error, "load fail");
+  } 
+
+  showProgressHud(BuildContext context) {
+    var hud = ProgressHud.of(context);
+    hud.show(ProgressHudType.progress, "loading");
+
+    double current = 0;
+    Timer.periodic(Duration(milliseconds: 1000.0 ~/ 60), (timer) {
+      current += 1;
+      var progress = current / 100;
+      hud.updateProgress(progress, "loading $current%");
+      if (progress == 1) {
+        hud.showAndDismiss(ProgressHudType.success, "load success");
+        timer.cancel();
+      }
+    });
   }
 }
