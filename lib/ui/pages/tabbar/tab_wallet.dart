@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
+import 'package:bmprogresshud/bmprogresshud.dart';
+import 'package:xy_wallet/manager/progressManager/toast.dart';
+
+
 
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
@@ -25,6 +30,7 @@ class Page extends State<TabWallet> {
   /// 通过Consumer的方式引用共享的token列表
   /// 当token列表中有余额变动后，首页自动更新
   Widget layout(BuildContext context) {
+
     return new Scaffold(
       appBar: buildAppBar(context),
       body: Center(
@@ -33,9 +39,15 @@ class Page extends State<TabWallet> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           new RaisedButton(onPressed: () {
-            print('11111');
-            httpTest test = new httpTest();
-            test.Request();
+                print('11111');
+                //网络请求例子
+              // httpTest test= new httpTest();
+              // test.Request();
+
+                // example ex = new example();
+                // ex.showSuccessHud(context);
+                  ToastUtils toast = ToastUtils();
+                  toast.showToastCenter('212123');
           }),
           CommonButton(child: Text("233333"))
         ],
@@ -57,8 +69,9 @@ class Page extends State<TabWallet> {
   }
 }
 
-class httpTest {
-  void Request() async {
+//事例实现
+class httpTest{
+  void Request() async{
     var params = Map<String, dynamic>();
     params["otype"] = "json";
 

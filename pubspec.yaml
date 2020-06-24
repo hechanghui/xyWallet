@@ -28,9 +28,9 @@ dependencies:
     sdk: flutter
     
   dio: 3.0.9  #网络请求
-  progress_dialog: ^1.2.4  #加载框
+  bmprogresshud : ^0.0.7  #加载框
   json_serializable: ^3.3.0  #json转model、
-
+  fluttertoast: ^4.0.1
   event_bus: ^1.1.1
 
   # camera: ^0.5.8+2
@@ -52,7 +52,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 flutter:
 
   uses-material-design: true
