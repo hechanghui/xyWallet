@@ -576,15 +576,6 @@ abstract class BaseFuntion {
       return "";
     }
 
-    if (BuildConfig.isDebug) {
-      try {
-        className = className.substring(0, className.indexOf("("));
-      } catch (err) {
-        className = "";
-      }
-      return className;
-    }
-
     return className;
   }
 
@@ -621,7 +612,7 @@ abstract class BaseFuntion {
   }
 
   //可以复写
-  List<SingleChildCloneableWidget> getProvider() {
+  List getProvider() {
     return null;
   }
 }

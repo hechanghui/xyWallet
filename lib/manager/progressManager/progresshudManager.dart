@@ -3,56 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:bmprogresshud/bmprogresshud.dart';
 
 
-class Progresshud extends StatelessWidget {
+class Progresshud {
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("hud demo"),
-        ),
-        body: ProgressHud(
-          // maximumDismissDuration: Duration(seconds: 2),
-          child: Center(
-            child: Builder(builder: (context) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    onPressed: () {
-                      showLoadingHud(context);
-                    },
-                    child: Text("show loading"),
-                  ),
-                  RaisedButton(
-                    onPressed: () {
-                      showSuccessHud(context);
-                    },
-                    child: Text("show success"),
-                  ),
-                  RaisedButton(
-                    onPressed: () {
-                      showErrorHud(context);
-                    },
-                    child: Text("show error"),
-                  ),
-                  RaisedButton(
-                    onPressed: () {
-                      showProgressHud(context);
-                    },
-                    child: Text("show progress"),
-                  ),
-                ],
-              );
-            }),
-          ),
-        ),
-      ),
-    );
-  }
-  
   showLoadingHud(BuildContext context) async {
     ProgressHud.of(context).show(ProgressHudType.loading, "loading...");
     await Future.delayed(const Duration(seconds: 1));
