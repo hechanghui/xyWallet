@@ -162,6 +162,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Sign In`
+  String get viewStateButtonLogin {
+    return Intl.message(
+      'Sign In',
+      name: 'viewStateButtonLogin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

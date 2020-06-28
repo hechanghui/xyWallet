@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("release to enter second floor"),
     "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
+    "viewStateButtonLogin" : MessageLookupByLibrary.simpleMessage("Sign In"),
     "viewStateButtonRefresh" : MessageLookupByLibrary.simpleMessage("Refresh"),
     "viewStateButtonRetry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "viewStateMessageEmpty" : MessageLookupByLibrary.simpleMessage("Nothing Found"),

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:xy_wallet/common/helper/resourse_helper.dart';
+import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 
@@ -33,7 +33,6 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     //     _logoController.forward();
     //   }
     // });
-    print("animation11111: ${_animation.value}");
     // _logoController.reverse();
     _logoController.forward();
 
@@ -137,7 +136,7 @@ class AnimatedTextLogo extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
-    print("animation ${animation.value}");
+    // print("animation ${animation.value}");
     return Opacity(
       opacity: animation.value,
       child: Text(

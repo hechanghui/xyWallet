@@ -5,27 +5,23 @@ import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:bmprogresshud/bmprogresshud.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 
+import 'package:xy_wallet/ui/widgets/common_button.dart';
 
+class TabWallet extends StatefulWidget {
 
-class TabWallet extends BaseWidget {
-
-
-
-  BaseWidgetState<BaseWidget> getState() => new Page();
   @override
-  // State<StatefulWidget> createState() => new Page();
+  State<StatefulWidget> createState() => new Page();
 }
 
-class Page extends BaseWidgetState<TabWallet> {
+
+class Page extends State<TabWallet> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 
   @override // override是重写父类中的函数
-  void initState()  {
+  void initState() {
     super.initState();
-
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +34,12 @@ class Page extends BaseWidgetState<TabWallet> {
 
     return new Scaffold(
       appBar: buildAppBar(context),
-      body: ProgressHud(
-        child:Center(
-          child: Builder(builder: (context){
-            return new RaisedButton(
-
-                onPressed: (){
+      body: Center(
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new RaisedButton(onPressed: () {
                 print('11111');
                 //网络请求例子
               // httpTest test= new httpTest();
@@ -53,12 +49,10 @@ class Page extends BaseWidgetState<TabWallet> {
                 // ex.showSuccessHud(context);
                   ToastUtils toast = ToastUtils();
                   toast.showToastCenter('212123');
-                }
-            );
-          
           }),
-        ) 
-      ),
+          CommonButton(child: Text("233333"))
+        ],
+      )),
     );
   }
 
@@ -66,19 +60,15 @@ class Page extends BaseWidgetState<TabWallet> {
   // 如何自定义icon来打开draw
   Widget buildAppBar(BuildContext context) {
     return new AppBar(
-
-         title: Text(
-            'home',
-            style: new TextStyle(color: Colors.white),
-         ),
-         
-         backgroundColor: Colors.lightBlue,
-         elevation: 0.0,
+      title: Text(
+        'home',
+        style: new TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.lightBlue,
+      elevation: 0.0,
     );
   }
 }
-
-
 
 //事例实现
 class httpTest{
@@ -87,6 +77,6 @@ class httpTest{
     params["otype"] = "json";
 
     ResultData res = await HttpManager.getInstance().get('checktime', params);
-    print(res.data);   
+    print(res.data);
   }
 }
