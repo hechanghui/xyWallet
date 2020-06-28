@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "actionConfirm" : MessageLookupByLibrary.simpleMessage("确认"),
     "appName" : MessageLookupByLibrary.simpleMessage("X钱包"),
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
+    "keystore" : MessageLookupByLibrary.simpleMessage("Keystore"),
+    "mnemonic" : MessageLookupByLibrary.simpleMessage("助记词"),
+    "privateKey" : MessageLookupByLibrary.simpleMessage("私钥"),
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
     "retry" : MessageLookupByLibrary.simpleMessage("重试"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),
@@ -35,7 +38,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("加载失败"),
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
     "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录"),
-    "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
     "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户")
   };
 }
