@@ -28,11 +28,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
     "retry" : MessageLookupByLibrary.simpleMessage("重试"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),
+    "viewStateButtonLogin" : MessageLookupByLibrary.simpleMessage("Sign In"),
     "viewStateButtonRefresh" : MessageLookupByLibrary.simpleMessage("刷新一下"),
     "viewStateButtonRetry" : MessageLookupByLibrary.simpleMessage("重试"),
     "viewStateMessageEmpty" : MessageLookupByLibrary.simpleMessage("空空如也"),
     "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("加载失败"),
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
-    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录")
+    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录"),
+    "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
+    "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户")
   };
 }

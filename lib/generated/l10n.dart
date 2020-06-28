@@ -172,6 +172,26 @@ class S {
       args: [],
     );
   }
+
+  /// `导入账户`
+  String get walletRestore {
+    return Intl.message(
+      '导入账户',
+      name: 'walletRestore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `创建新账户`
+  String get walletCreate {
+    return Intl.message(
+      '创建新账户',
+      name: 'walletCreate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

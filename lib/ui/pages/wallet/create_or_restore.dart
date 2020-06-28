@@ -21,14 +21,35 @@ class CreateOrRestorePage extends StatelessWidget {
                   ImageHelper.wrapAssets('wallet_crate_or_restore_bg.png'),
                   fit: BoxFit.fill),
               Align(
-                alignment: Alignment(0.0, 0.6),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    CommonButton(child: Text("233333")),
-                    CommonButton(child: Text("233333")),
-                  ],
-                ),
+                alignment: Alignment(0.0, 0.92),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CommonButton(
+                          child: Text(S.of(context).walletRestore),
+                          onPressed: () {
+                            Navigator.pushNamed(context, RouteName.tab);
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 3),
+                          child: Text(
+                            "OR",
+                            style: Theme.of(context)
+                                .textTheme
+                                .button
+                                .copyWith(color: Color(0xFF3F7591)),
+                          ),
+                        ),
+                        CommonButton(
+                          child: Text(S.of(context).walletCreate),
+                          onPressed: () {},
+                        ),
+                      ],
+                    )),
               )
             ])));
   }

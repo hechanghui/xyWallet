@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CommonButton extends MaterialButton {
+class CommonButton extends StatelessWidget {
   CommonButton({
     this.colors,
     this.width,
@@ -46,10 +46,10 @@ class CommonButton extends MaterialButton {
       ),
       child: Material(
         type: MaterialType.transparency,
-        child: InkWell(
-          splashColor: _colors.last,
-          highlightColor: Colors.transparent,
+        child: InkWell( //点击效果
           onTap: onPressed,
+          customBorder: BeveledRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(_height / 2))),
           child: ConstrainedBox(
             constraints: BoxConstraints.tightFor(height: _height, width: width),
             child: Center(

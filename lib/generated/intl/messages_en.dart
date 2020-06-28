@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewStateMessageEmpty" : MessageLookupByLibrary.simpleMessage("Nothing Found"),
     "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("Load Failed"),
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("Load Failed,Check network "),
-    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("Not sign in yet")
+    "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("Not sign in yet"),
+    "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
+    "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户")
   };
 }
