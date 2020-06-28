@@ -12,5 +12,7 @@
     "refreshTwoLevel": "release to enter second floor",
     "retry": "Retry",
     "splashSkip": "Skip",
-    "viewStateButtonLogin": "Sign In"
+    "viewStateButtonLogin": "Sign In",
+    "walletRestore":"导入账户",
+    "walletCreate":"创建新账户"
 }

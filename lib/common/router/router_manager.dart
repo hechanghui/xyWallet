@@ -19,9 +19,9 @@ class Router {
       case RouteName.splash:
         return NoAnimRouteBuilder(SplashPage());
       case RouteName.tab:
-        return NoAnimRouteBuilder(TabsPage());
+        return CupertinoPageRoute(builder: (_) =>TabsPage());
       case RouteName.WALLET_CREATE_RESTORE:
-        return NoAnimRouteBuilder(CreateOrRestorePage());
+        return CupertinoPageRoute(fullscreenDialog: true, builder: (_) => CreateOrRestorePage());
 
       default:
         return CupertinoPageRoute(

@@ -113,10 +113,11 @@ class ThemeModel with ChangeNotifier {
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
           subtitle1: themeData.textTheme.subtitle1
               .copyWith(textBaseline: TextBaseline.alphabetic),
-          button: themeData.textTheme.button
-              .copyWith(fontSize: 17, color: colorBodyText,
-              fontWeight: FontWeight.bold,)
-              ),
+          button: themeData.textTheme.button.copyWith(
+            fontSize: 17,
+            color: colorBodyText,
+            fontWeight: FontWeight.bold,
+          )),
 
       textSelectionColor: accentColor.withAlpha(60),
       textSelectionHandleColor: accentColor.withAlpha(60),
