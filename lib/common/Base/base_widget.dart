@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_widget/network/api.dart';
+import 'common_function.dart';
 
 import 'NavigatorManger.dart';
-import 'common_function.dart';
+// import 'common_function.dart';
 
 abstract class BaseWidget extends StatefulWidget {
   BaseWidgetState baseWidgetState;
@@ -87,8 +87,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
     //把改页面 从 页面列表中 去除
     NavigatorManger().removeWidget(this);
-    //取消网络请求
-    HttpManager.cancelHttp(getWidgetName());
+    // //取消网络请求
+    // HttpManager.cancelHttp(getWidgetName());
     super.dispose();
   }
 
@@ -111,4 +111,26 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     }
     super.didChangeAppLifecycleState(state);
   }
+
+    @override
+  void onCreate() {
+    // TODO: implement onCreate
+    String classname = getClassName();
+    print('${classname}创建');
+  }
+
+  @override
+  void onPause() {
+    // TODO: implement onPause
+    String classname = getClassName();
+    print('${classname}onPause');
+  }
+
+  @override
+  void onResume() {
+    // TODO: implement onResume
+        String classname = getClassName();
+    print('${classname}onResume');
+  }
+
 }
