@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
-// import 'common_function.dart';
 
 abstract class BaseWidget extends StatefulWidget {
   BaseWidgetState baseWidgetState;
@@ -30,11 +29,13 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void initState() {
+    log('initState');
     initBaseCommon(this);
     NavigatorManger().addWidget(this);
     WidgetsBinding.instance.addObserver(this);
     onCreate();
     if(mounted){}
+    
     super.initState();
   }
 
@@ -44,7 +45,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void deactivate() {
-//    log("----buildbuild---deactivate");
+  //  log("----buildbuild---deactivate");
     //说明是被覆盖了
     if (NavigatorManger().isSecondTop(this)) {
       if (!_onPause) {
@@ -64,7 +65,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
-//    log("------buildbuild---build");
     if (!_onResumed) {
       //说明是 初次加载
       if (NavigatorManger().isTopPage(this)) {
@@ -73,9 +73,21 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
       }
     }
     return Scaffold(
+      appBar: buildAppBar(context),
       body: getBaseView(context),
     );
   }
+
+    Widget buildAppBar(BuildContext context) {
+      return new AppBar(
+        title: Text(
+         getClassName(),
+          style: new TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.lightBlue,
+        elevation: 0.0,
+      );
+    }
 
   @override
   void dispose() {
@@ -110,27 +122,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
       }
     }
     super.didChangeAppLifecycleState(state);
-  }
-
-    @override
-  void onCreate() {
-    // TODO: implement onCreate
-    String classname = getClassName();
-    print('${classname}创建');
-  }
-
-  @override
-  void onPause() {
-    // TODO: implement onPause
-    String classname = getClassName();
-    print('${classname}onPause');
-  }
-
-  @override
-  void onResume() {
-    // TODO: implement onResume
-        String classname = getClassName();
-    print('${classname}onResume');
   }
 
 }
