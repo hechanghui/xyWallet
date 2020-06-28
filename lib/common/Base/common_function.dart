@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:xy_wallet/tool/message_dialog.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,8 +13,8 @@ abstract class BaseFuntion {
   State _stateBaseFunction;
   BuildContext _contextBaseFunction;
 
-  bool _isTopBarShow = true; //状态栏是否显示
-  bool _isAppBarShow = true; //导航栏是否显示
+  bool _isTopBarShow = false; //状态栏是否显示
+  bool _isAppBarShow = false; //导航栏是否显示
 
   bool _isErrorWidgetShow = false; //错误信息是否显示
 
@@ -54,16 +55,19 @@ abstract class BaseFuntion {
   }
 
   Widget getBaseView(BuildContext context) {
+    
     return Column(
       children: <Widget>[
-        _isTopBarShow ? _getBaseTopBar() : _getHolderLWidget(),
-        _isAppBarShow?_getBaseAppBar():_getHolderLWidget(),
+        // _isTopBarShow ? _getBaseTopBar() : _getHolderLWidget(),
+        // _isAppBarShow?_getBaseAppBar():_getHolderLWidget(),
+        
         Container(
-          width: getScreenWidth(),
-          height: getMainWidgetHeight(),
+          // width: getScreenWidth(),
+          // height: getMainWidgetHeight(),
           color: Colors.white, //背景颜色，可自己变更
           child: Stack(
             children: <Widget>[
+              
               _buildProviderWidget(context),
               _isErrorWidgetShow?_getBaseErrorWidget():_getHolderLWidget(),
               _isEmptyWidgetVisible?_getBaseEmptyWidget():_getHolderLWidget(),
@@ -511,16 +515,16 @@ abstract class BaseFuntion {
   }
 
   ///初始化一些变量 相当于 onCreate ， 放一下 初始化数据操作
-  void onCreate();
+  void onCreate(){}
 
   ///相当于onResume, 只要页面来到栈顶， 都会调用此方法，网络请求可以放在这个方法
-  void onResume();
+  void onResume(){}
 
   ///页面被覆盖,暂停
-  void onPause();
+  void onPause(){}
 
   ///返回UI控件 相当于setContentView()
-  Widget buildWidget(BuildContext context);
+  Widget buildBaseWidget(BuildContext context);
 
   ///app切回到后台
   void onBackground() {
@@ -594,9 +598,13 @@ abstract class BaseFuntion {
 
   ///返回 状态管理组件
   _buildProviderWidget(BuildContext context) {
-    return MultiProvider(
-        providers: getProvider() == null ? [] : getProvider(),
-        child: buildWidget(context));
+    return buildBaseWidget(context);
+
+    
+    // return MultiProvider(
+    //     providers: getProvider() == null ? [] : getProvider(),
+    //     child: buildBaseWidget(context),
+    // );
   }
 
   String getClassName() {
@@ -612,7 +620,7 @@ abstract class BaseFuntion {
   }
 
   //可以复写
-  List getProvider() {
+  List<SingleChildWidget> getProvider() {
     return null;
   }
 }
