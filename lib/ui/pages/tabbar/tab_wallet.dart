@@ -8,12 +8,12 @@ import 'package:xy_wallet/manager/progressManager/toast.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/base/base_page.dart';
 
-class TabWallet extends BasePageStateful {
+class TabWallet extends BasePage {
   @override
-  BasePageStatefulState buildBasePageStatefulState() => Page();
+  BasePageState buildState() => Page();
 }
 
-class Page extends BasePageStatefulState {
+class Page extends BasePageState {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   void initState() {

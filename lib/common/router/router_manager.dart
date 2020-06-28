@@ -6,11 +6,14 @@ import 'page_route_anim.dart';
 import 'package:xy_wallet/ui/pages/tabbars.dart';
 import 'package:xy_wallet/ui/pages/splash/splash.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_or_restore.dart';
+import 'package:xy_wallet/ui/pages/wallet/restore_container.dart';
 
 class RouteName {
   static const String splash = 'splash';
   static const String tab = '/';
   static const String WALLET_CREATE_RESTORE = 'wallet/createOrRestore';
+  static const String WALLET_CREATE = 'wallet/create';
+  static const String WALLET_RESTORE = 'wallet/restore';
 }
 
 class Router {
@@ -19,9 +22,11 @@ class Router {
       case RouteName.splash:
         return NoAnimRouteBuilder(SplashPage());
       case RouteName.tab:
-        return CupertinoPageRoute(builder: (_) =>TabsPage());
+        return CupertinoPageRoute(builder: (_) => TabsPage());
       case RouteName.WALLET_CREATE_RESTORE:
-        return CupertinoPageRoute(fullscreenDialog: true, builder: (_) => CreateOrRestorePage());
+        return CupertinoPageRoute(builder: (_) => CreateOrRestorePage());
+      case RouteName.WALLET_RESTORE:
+        return CupertinoPageRoute(builder: (_) => RestoreContainerPage());
 
       default:
         return CupertinoPageRoute(
