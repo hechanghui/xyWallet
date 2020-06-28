@@ -47,7 +47,7 @@ class CreateOrRestorePage extends StatelessWidget {
                         ),
                         CommonButton(
                           child: Text(S.of(context).walletCreate),
-                          onPressed: () {},
+                          onPressed: ()=>Navigator.pushReplacementNamed(context, RouteName.tab),
                         ),
                       ],
                     )),
