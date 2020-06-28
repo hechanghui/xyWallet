@@ -1,15 +1,16 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:xy_wallet/ui/pages/tabbar/tab_community.dart';
-
-class TabMe extends BaseWidget {
+import 'tab_me.dart';
+class TabCommunity extends BaseWidget {
   @override
   getState() {
     return new Pages();
   }
 }
 
-class Pages extends BaseWidgetState<TabMe> {
+
+class Pages extends BaseWidgetState<TabCommunity> {
+
 
   @override
   Widget getBaseView(BuildContext context) {
@@ -22,7 +23,7 @@ class Pages extends BaseWidgetState<TabMe> {
       children: <Widget>[
         RaisedButton(onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => TabCommunity()));
+              .push(MaterialPageRoute(builder: (context) => TabMe()));
         })
       ],
     );

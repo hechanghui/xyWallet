@@ -8,6 +8,7 @@ import 'package:xy_wallet/common/router/router_manager.dart';
 
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
+
 class CreateOrRestorePage extends StatelessWidget {
   const CreateOrRestorePage({Key key}) : super(key: key);
 
