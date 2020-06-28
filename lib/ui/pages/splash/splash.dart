@@ -150,5 +150,5 @@ class AnimatedTextLogo extends AnimatedWidget {
 }
 
 void nextPage(context) {
-  Navigator.of(context).pushReplacementNamed(RouteName.tab);
+  Navigator.of(context).pushReplacementNamed(RouteName.WALLET_CREATE_RESTORE);
 }

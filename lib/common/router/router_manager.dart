@@ -5,10 +5,12 @@ import 'page_route_anim.dart';
 
 import 'package:xy_wallet/ui/pages/tabbars.dart';
 import 'package:xy_wallet/ui/pages/splash/splash.dart';
+import 'package:xy_wallet/ui/pages/wallet/create_or_restore.dart';
 
 class RouteName {
   static const String splash = 'splash';
   static const String tab = '/';
+  static const String WALLET_CREATE_RESTORE = 'wallet/createOrRestore';
 }
 
 class Router {
@@ -18,7 +20,9 @@ class Router {
         return NoAnimRouteBuilder(SplashPage());
       case RouteName.tab:
         return NoAnimRouteBuilder(TabsPage());
-      
+      case RouteName.WALLET_CREATE_RESTORE:
+        return NoAnimRouteBuilder(CreateOrRestorePage());
+
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
@@ -56,13 +60,11 @@ class PopRoute extends PopupRoute {
   Duration get transitionDuration => _duration;
 }
 
-
 // final routes = {
 //   '/': (BuildContext context) => TabsPage(),
 
 // //  "tabs": (context) => new ContainerPage()
 // };
-
 
 // var onGenerateRoute = (RouteSettings settings) { // 统一处理
 //   final String name = settings.name;
