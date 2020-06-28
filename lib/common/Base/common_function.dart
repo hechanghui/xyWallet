@@ -576,14 +576,14 @@ abstract class BaseFuntion {
       return "";
     }
 
-    // if (BuildConfig.isDebug) {
-    //   try {
-    //     className = className.substring(0, className.indexOf("("));
-    //   } catch (err) {
-    //     className = "";
-    //   }
-    //   return className;
-    // }
+    if (BuildConfig.isDebug) {
+      try {
+        className = className.substring(0, className.indexOf("("));
+      } catch (err) {
+        className = "";
+      }
+      return className;
+    }
 
     return className;
   }
