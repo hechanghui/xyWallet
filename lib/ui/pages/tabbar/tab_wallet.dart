@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:bmprogresshud/bmprogresshud.dart';
@@ -7,14 +7,16 @@ import 'package:xy_wallet/manager/progressManager/toast.dart';
 
 
 
-class TabWallet extends StatefulWidget {
+class TabWallet extends BaseWidget {
 
 
+
+  BaseWidgetState<BaseWidget> getState() => new Page();
   @override
-  State<StatefulWidget> createState() => new Page();
+  // State<StatefulWidget> createState() => new Page();
 }
 
-class Page extends State<TabWallet> {
+class Page extends BaseWidgetState<TabWallet> {
 
 
   @override // override是重写父类中的函数
