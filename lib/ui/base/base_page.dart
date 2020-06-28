@@ -6,9 +6,11 @@ abstract class BasePageMixin {
   @protected
   final bool hasAppBar = true;
   @protected
-  final Widget title = null;
+  Widget title(BuildContext context) => null;
   @protected
-  final String titleLabel = "";
+  String titleLabel(BuildContext context) => "";
+  @protected
+  void initWithContext(BuildContext context) => "";
 
   @protected
   Widget buildAppBar(BuildContext context) {
@@ -22,9 +24,9 @@ abstract class BasePageMixin {
             //         onPressed: () => Navigator.of(context).pop())
             //     : null,
             // iconTheme: ThemeData(context).appBarTheme.iconTheme,
-            title: title ??
+            title: title(context) ??
                 Text(
-                  titleLabel,
+                  titleLabel(context),
                   style: new TextStyle(color: Colors.white),
                 ),
             // backgroundColor: Colors.lightBlue,
@@ -39,6 +41,7 @@ abstract class BasePageMixin {
 
   @OverlayVisibilityMode.never
   Widget buildPageContainer(BuildContext context) {
+    initWithContext(context);
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
