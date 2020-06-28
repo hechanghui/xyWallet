@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void initState() {
-    log('initState');
+    
     initBaseCommon(this);
     NavigatorManger().addWidget(this);
     WidgetsBinding.instance.addObserver(this);
@@ -37,15 +38,31 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     if(mounted){}
     
     super.initState();
+    print('initState1');
+    
   }
 
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    String classname = getClassName();
+    print('${classname} 加载完成');
+    
+  }
+
+  
+  @override
+  void didUpdateWidget (BaseWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    String classname = getClassName();
+    print('${classname} didUpdateWidget');
   }
 
   @override
   void deactivate() {
-  //  log("----buildbuild---deactivate");
+    String classname = getClassName();
+    print('${classname} deactivate');
+   
     //说明是被覆盖了
     if (NavigatorManger().isSecondTop(this)) {
       if (!_onPause) {
@@ -91,6 +108,9 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void dispose() {
+    String classname = getClassName();
+    print('${classname} 销毁');
+    
     // TODO: implement dispose
     onDestory();
     WidgetsBinding.instance.removeObserver(this);
@@ -106,6 +126,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+
+    print('didChangeAppLifecycleState');
     // TODO: implement didChangeAppLifecycleState
     //此处可以拓展 是不是从前台回到后台
     if (state == AppLifecycleState.resumed) {
@@ -122,6 +144,28 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
       }
     }
     super.didChangeAppLifecycleState(state);
+    print('didChangeAppLifecycleState');
   }
 
+
+  @override
+  void onCreate() {
+    // TODO: implement onCreate
+    String classname = getClassName();
+    print('${classname}创建');
+  }
+
+  @override
+  void onPause() {
+    // TODO: implement onPause
+    String classname = getClassName();
+    print('${classname}onPause');
+  }
+
+  @override
+  void onResume() {
+    // TODO: implement onResume
+    String classname = getClassName();
+    print('${classname}onResume');
+  }
 }
