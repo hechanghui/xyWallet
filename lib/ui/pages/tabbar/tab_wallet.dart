@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
-import 'package:bmprogresshud/bmprogresshud.dart';
+import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/ui/widgets/tabWallet_button.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 
 import 'package:xy_wallet/ui/widgets/common_button.dart';
@@ -15,32 +16,146 @@ class TabWallet extends BaseWidget {
 
 class Page extends BaseWidgetState<TabWallet> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  @override
-  void initState() {
-    print("2333333");
-  }
-
+  
   @override
   Widget buildBodyWidget(BuildContext context) {
-    return Center(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        new RaisedButton(onPressed: () {
-          print('11111');
-          //网络请求例子
-          // httpTest test= new httpTest();
-          // test.Request();
+    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    return SingleChildScrollView(
+      //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
+      scrollDirection: Axis.vertical,
+      //true 滑动到底部
+      // reverse: false,
+      padding: EdgeInsets.all(0.0),
+      ////滑动到底部回弹效果
+      physics: BouncingScrollPhysics(),
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              // color: Colors.blue,
+              width: width,
+              height: 204,
+              child: Stack(
+                children: <Widget>[
+                  Image.asset(
+                    ImageHelper.wrapAssets('assetBG.png'),
+                    fit: BoxFit.fill,
+                    width: width,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      '10000',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                          color: Color(0xFF00FFAA),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 40),
+                    child: Text(
+                      '可用余额',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style:
+                          new TextStyle(color: Color(0xFF00FFAA), fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+                // color: Colors.green,
+                margin: EdgeInsets.only(top: 5),
+                height: 60,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        print('12131231231');
+                      },
+                      child: TabWalletBt(
+                        title: '转账',
+                        imageName: 'tabWalletBt1.png',                      ),
+                    ),
+                  
+                    InkWell(
+                      onTap: () {
+                        print('12131231231');
+                      },
+                      child: TabWalletBt(
+                        title: '收款',
+                        imageName: 'tabWalletBt2.png',  
+                      ),
+                    ),
 
-          // example ex = new example();
-          // ex.showSuccessHud(context);
-          ToastUtils toast = ToastUtils();
-          toast.showToastCenter('2121223');
-        }),
-        CommonButton(child: Text("233"))
-      ],
-    ));
+                    InkWell(
+                      onTap: () {
+                        print('12131231231');
+                      },
+                      child: TabWalletBt(
+                        title: '交易记录',
+                        imageName: 'tabWalletBt3.png',  
+                      ),
+                    ),
+
+                    InkWell(
+                      onTap: () {
+                        print('12131231231');
+                      },
+                      child: TabWalletBt(
+                        title: 'X-1码',
+                        imageName: 'tabWalletBt4.png',  
+                      ),
+                    ),
+
+                    InkWell(
+                      onTap: () {
+                        print('12131231231');
+                      },
+                      child: TabWalletBt(
+                        title: 'X-2码',
+                        imageName: 'tabWalletBt5.png',  
+                      ),
+                    ),
+                    
+                  ],
+                )),
+          
+            Container(
+              margin: EdgeInsets.only(top: 30),
+              padding: EdgeInsets.all(15),
+              height: 100,
+            
+              child: InkWell(
+                onTap: () {
+                  print('banner');
+                },
+                
+                child: Image.asset(
+                    ImageHelper.wrapAssets('banner.png'),
+                    fit: BoxFit.fill,
+                    width: width,
+                ),
+              
+              ),
+            )
+          
+          
+          ],
+        ),
+      ),
+    );
   }
 }
 
