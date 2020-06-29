@@ -11,13 +11,9 @@ class TabMe extends BaseWidget {
 
 class Pages extends BaseWidgetState<TabMe> {
 
-  @override
-  Widget getBaseView(BuildContext context) {
-    return super.getBaseView(context);
-  }
 
   @override
-  Widget buildBaseWidget(BuildContext context) {
+  Widget buildBodyWidget(BuildContext context) {
     return Row(
       children: <Widget>[
         RaisedButton(onPressed: () {

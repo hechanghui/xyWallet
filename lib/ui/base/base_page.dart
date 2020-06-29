@@ -17,19 +17,11 @@ abstract class BasePageMixin {
     return hasAppBar
         ? new AppBar(
             backgroundColor: Colors.transparent,
-            // leading: ModalRoute.of(context)?.canPop ?? false
-            //     ? IconButton(
-            //         icon: Icon(Icons.keyboard_arrow_left),
-            //         color: Colors.red,
-            //         onPressed: () => Navigator.of(context).pop())
-            //     : null,
-            // iconTheme: ThemeData(context).appBarTheme.iconTheme,
             title: title(context) ??
                 Text(
                   titleLabel(context),
                   style: new TextStyle(color: Colors.white),
                 ),
-            // backgroundColor: Colors.lightBlue,
             elevation: 0.0,
             centerTitle: true,
           )
@@ -57,7 +49,6 @@ abstract class BasePageMixin {
                 )),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          // backgroundColor: Colors.green,
           appBar: buildAppBar(context),
           body: buildBody(context),
         ));

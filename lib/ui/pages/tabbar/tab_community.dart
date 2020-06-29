@@ -11,14 +11,8 @@ class TabCommunity extends BaseWidget {
 
 class Pages extends BaseWidgetState<TabCommunity> {
 
-
   @override
-  Widget getBaseView(BuildContext context) {
-    return super.getBaseView(context);
-  }
-
-  @override
-  Widget buildBaseWidget(BuildContext context) {
+  Widget buildBodyWidget(BuildContext context) {
     return Row(
       children: <Widget>[
         RaisedButton(onPressed: () {

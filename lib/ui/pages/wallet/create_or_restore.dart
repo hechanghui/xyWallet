@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 
@@ -42,7 +43,7 @@ class CreateOrRestorePage extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .button
-                                .copyWith(color: Color(0xFF3F7591)),
+                                .copyWith(color: ThemeColors.labelLightColor),
                           ),
                         ),
                         CommonButton(

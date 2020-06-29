@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/ui/base/base_page.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
 import 'package:xy_wallet/ui/pages/wallet/create_or_restore.dart';
 
-class RestoreContainerPage extends BasePage {
+class RestoreContainerPage extends BaseWidget {
   @override
-  BasePageState buildState() => RestoreContainerState();
+  BaseWidgetState getState() => RestoreContainerState();
 }
 
-class RestoreContainerState extends BasePageState
+class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
     with SingleTickerProviderStateMixin {
   @override
   String titleLabel(BuildContext context) => S.of(context).walletRestore;
@@ -25,7 +26,7 @@ class RestoreContainerState extends BasePageState
   }
 
   @override
-  Widget buildBody(BuildContext context) {
+  Widget buildBodyWidget(BuildContext context) {
     var tabLabels = List.of([
       S.of(context).mnemonic,
       S.of(context).keystore,
@@ -33,13 +34,14 @@ class RestoreContainerState extends BasePageState
     ]);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         TabBar(
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
             controller: _tabController,
             tabs: tabLabels.map((e) => Tab(text: e)).toList()),
         Expanded(
-          // color: Color.fromRGBO(26, 172, 255, 1),
           child: TabBarView(
             controller: _tabController,
             physics: ScrollPhysics(),
@@ -54,7 +56,6 @@ class RestoreContainerState extends BasePageState
             ],
           ),
         ),
-        Text("233333"),
       ],
     );
   }
