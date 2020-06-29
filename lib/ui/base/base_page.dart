@@ -44,7 +44,7 @@ abstract class BasePageMixin {
             ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                tileMode: TileMode.mirror
+                // tileMode: TileMode.clamp
                 // stops: [0.3, 0.5, 0.7, 0.9],
                 )),
         child: Scaffold(

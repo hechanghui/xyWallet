@@ -6,3 +6,12 @@ class ThemeColors {
   static const Color buttonColor = Color(0xFF003D53);
   static const Color labelLightColor = Color(0xFF3F7591);
 }
+
+class ThemeDimens {
+  //页面左右边距
+  static const double pageLRMargin = 15;
+  //页面竖直方向间距
+  static const double pageVerticalMargin = 6;
+  //底部操作区距离底部边距
+  static const double pageBottomMargin = 35;
+}

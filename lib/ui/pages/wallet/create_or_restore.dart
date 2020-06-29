@@ -25,7 +25,7 @@ class CreateOrRestorePage extends StatelessWidget {
               Align(
                 alignment: Alignment(0.0, 0.92),
                 child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    padding: EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       mainAxisSize: MainAxisSize.min,
