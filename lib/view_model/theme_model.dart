@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/common/helper/theme_helper.dart';
 import 'package:xy_wallet/common/storage_manager.dart';
@@ -75,8 +76,8 @@ class ThemeModel with ChangeNotifier {
 
     var themeColor = _themeColor;
     // var accentColor = isDark ? themeColor[700] : _themeColor;
-    var accentColor = Color(0xFF00F2FF); //次级色，决定大多数Widget的颜色，如进度条、开关等。
-    var colorBodyText = Color(0xFF00F2FF);
+    var accentColor = ThemeColors.accentColor; //次级色，决定大多数Widget的颜色，如进度条、开关等。
+    var colorBodyText = ThemeColors.accentColor;
     var themeData = ThemeData(
       brightness: brightness,
       // 主题颜色属于亮色系还是属于暗色系(eg:dark时,AppBarTitle文字及状态栏文字的颜色为白色,反之为黑色)
@@ -85,11 +86,10 @@ class ThemeModel with ChangeNotifier {
       primaryColorBrightness: Brightness.dark,
       accentColorBrightness: Brightness.dark,
       primarySwatch: themeColor,
-      primaryColor: Color(0xFF122C50), //主色，决定导航栏颜色
+      primaryColor: ThemeColors.primaryColor, //主色，决定导航栏颜色
       accentColor: accentColor,
       fontFamily: fontValueList[fontIndex],
-
-      buttonColor: Color(0xFF003D53),
+      buttonColor: ThemeColors.buttonColor,
     );
 
     themeData = themeData.copyWith(
@@ -107,12 +107,23 @@ class ThemeModel with ChangeNotifier {
       cursorColor: accentColor,
 
       textTheme: themeData.textTheme.copyWith(
+          headline1: themeData.textTheme.headline1.copyWith(color: accentColor),
+          headline2: themeData.textTheme.headline2.copyWith(color: accentColor),
           headline3: themeData.textTheme.headline3
               .copyWith(fontSize: 20, color: accentColor),
+          headline4: themeData.textTheme.headline4.copyWith(color: accentColor),
+          headline5: themeData.textTheme.headline5.copyWith(color: accentColor),
+          headline6: themeData.textTheme.headline6
+              .copyWith(fontSize: 14, color: accentColor),
 
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
           subtitle1: themeData.textTheme.subtitle1
               .copyWith(textBaseline: TextBaseline.alphabetic),
+          subtitle2: themeData.textTheme.subtitle2.copyWith(color: accentColor),
+          bodyText1: themeData.textTheme.bodyText1.copyWith(color: accentColor),
+          bodyText2: themeData.textTheme.bodyText2.copyWith(color: accentColor),
+          caption: themeData.textTheme.caption.copyWith(color: accentColor),
+          overline: themeData.textTheme.overline.copyWith(color: accentColor),
           button: themeData.textTheme.button.copyWith(
             fontSize: 17,
             color: colorBodyText,

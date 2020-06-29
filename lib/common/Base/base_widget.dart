@@ -6,22 +6,24 @@ import 'common_function.dart';
 
 import 'NavigatorManger.dart';
 
+import 'package:xy_wallet/ui/base/base_page.dart';
+
 abstract class BaseWidget extends StatefulWidget {
-  BaseWidgetState baseWidgetState;
+  // BaseWidgetState baseWidgetState;
   @override
   BaseWidgetState createState() {
-    baseWidgetState = getState();
-    return baseWidgetState;
+    // baseWidgetState = getState();
+    return getState();
   }
 
   BaseWidgetState getState();
-  String getStateName() {
-    return baseWidgetState.getWidgetName();
-  }
+  // String getStateName() {
+  //   return baseWidgetState.getWidgetName();
+  // }
 }
 
 abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
-    with WidgetsBindingObserver, BaseFuntion {
+    with WidgetsBindingObserver, BaseFuntion, BasePageMixin {
   //平台信息
 //  bool isAndroid = Platform.isAndroid;
 
@@ -30,16 +32,14 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void initState() {
-    
     initBaseCommon(this);
     NavigatorManger().addWidget(this);
     WidgetsBinding.instance.addObserver(this);
     onCreate();
-    if(mounted){}
-    
+    if (mounted) {}
+
     super.initState();
     print('initState1');
-    
   }
 
   @override
@@ -47,12 +47,10 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     super.didChangeDependencies();
     String classname = getClassName();
     print('${classname} 加载完成');
-    
   }
 
-  
   @override
-  void didUpdateWidget (BaseWidget oldWidget) {
+  void didUpdateWidget(BaseWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     String classname = getClassName();
     print('${classname} didUpdateWidget');
@@ -62,7 +60,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   void deactivate() {
     String classname = getClassName();
     print('${classname} deactivate');
-   
+
     //说明是被覆盖了
     if (NavigatorManger().isSecondTop(this)) {
       if (!_onPause) {
@@ -89,28 +87,19 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
         onResume();
       }
     }
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: getBaseView(context),
-    );
+    return buildPageContainer(context);
   }
 
-    Widget buildAppBar(BuildContext context) {
-      return new AppBar(
-        title: Text(
-         getClassName(),
-          style: new TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.lightBlue,
-        elevation: 0.0,
-      );
-    }
+  @override
+  Widget buildBody(BuildContext context) {
+    return buildBodyWithStatus(context);
+  }
 
   @override
   void dispose() {
     String classname = getClassName();
     print('${classname} 销毁');
-    
+
     // TODO: implement dispose
     onDestory();
     WidgetsBinding.instance.removeObserver(this);
@@ -126,7 +115,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-
     print('didChangeAppLifecycleState');
     // TODO: implement didChangeAppLifecycleState
     //此处可以拓展 是不是从前台回到后台
@@ -146,7 +134,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     super.didChangeAppLifecycleState(state);
     print('didChangeAppLifecycleState');
   }
-
 
   @override
   void onCreate() {

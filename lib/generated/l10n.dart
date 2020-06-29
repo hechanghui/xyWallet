@@ -192,6 +192,36 @@ class S {
       args: [],
     );
   }
+
+  /// `助记词`
+  String get mnemonic {
+    return Intl.message(
+      '助记词',
+      name: 'mnemonic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keystore`
+  String get keystore {
+    return Intl.message(
+      'Keystore',
+      name: 'keystore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `私钥`
+  String get privateKey {
+    return Intl.message(
+      '私钥',
+      name: 'privateKey',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

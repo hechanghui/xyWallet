@@ -13,6 +13,9 @@
     "retry": "Retry",
     "splashSkip": "Skip",
     "viewStateButtonLogin": "Sign In",
-    "walletRestore":"导入账户",
-    "walletCreate":"创建新账户"
+    "walletRestore": "导入账户",
+    "walletCreate": "创建新账户",
+    "mnemonic": "助记词",
+    "keystore": "Keystore",
+    "privateKey": "私钥"
 }

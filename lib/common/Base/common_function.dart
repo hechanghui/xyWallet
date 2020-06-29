@@ -51,30 +51,16 @@ abstract class BaseFuntion {
     _stateBaseFunction = state;
     _contextBaseFunction = state.context;
     _appBarTitle = getWidgetName();
-
   }
 
-  Widget getBaseView(BuildContext context) {
-    
-    return Column(
+  Widget buildBodyWithStatus(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
       children: <Widget>[
-        // _isTopBarShow ? _getBaseTopBar() : _getHolderLWidget(),
-        // _isAppBarShow?_getBaseAppBar():_getHolderLWidget(),
-        
-        Container(
-          // width: getScreenWidth(),
-          // height: getMainWidgetHeight(),
-          color: Colors.white, //背景颜色，可自己变更
-          child: Stack(
-            children: <Widget>[
-              
-              _buildProviderWidget(context),
-              _isErrorWidgetShow?_getBaseErrorWidget():_getHolderLWidget(),
-              _isEmptyWidgetVisible?_getBaseEmptyWidget():_getHolderLWidget(),
-              _isLoadingWidgetShow?_getBassLoadingWidget():_getHolderLWidget(),
-            ],
-          ),
-        ),
+        _buildProviderWidget(context),
+        _isErrorWidgetShow ? _getBaseErrorWidget() : _getHolderLWidget(),
+        _isEmptyWidgetVisible ? _getBaseEmptyWidget() : _getHolderLWidget(),
+        _isLoadingWidgetShow ? _getBassLoadingWidget() : _getHolderLWidget(),
       ],
     );
   }
@@ -266,11 +252,11 @@ abstract class BaseFuntion {
   }
 
   Widget _getBassLoadingWidget() {
-    return  getLoadingWidget();
+    return getLoadingWidget();
   }
 
   Widget _getBaseEmptyWidget() {
-    return  getEmptyWidget();
+    return getEmptyWidget();
   }
 
   Widget getEmptyWidget() {
@@ -515,16 +501,16 @@ abstract class BaseFuntion {
   }
 
   ///初始化一些变量 相当于 onCreate ， 放一下 初始化数据操作
-  void onCreate(){}
+  void onCreate() {}
 
   ///相当于onResume, 只要页面来到栈顶， 都会调用此方法，网络请求可以放在这个方法
-  void onResume(){}
+  void onResume() {}
 
   ///页面被覆盖,暂停
-  void onPause(){}
+  void onPause() {}
 
   ///返回UI控件 相当于setContentView()
-  Widget buildBaseWidget(BuildContext context);
+  Widget buildBodyWidget(BuildContext context);
 
   ///app切回到后台
   void onBackground() {
@@ -598,9 +584,8 @@ abstract class BaseFuntion {
 
   ///返回 状态管理组件
   _buildProviderWidget(BuildContext context) {
-    return buildBaseWidget(context);
+    return buildBodyWidget(context);
 
-    
     // return MultiProvider(
     //     providers: getProvider() == null ? [] : getProvider(),
     //     child: buildBaseWidget(context),

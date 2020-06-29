@@ -8,12 +8,12 @@ import 'package:xy_wallet/manager/progressManager/toast.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/base/base_page.dart';
 
-class TabWallet extends BasePageStateful {
+class TabWallet extends BaseWidget {
   @override
-  BasePageStatefulState buildBasePageStatefulState() => Page();
+  BaseWidgetState getState() => Page();
 }
 
-class Page extends BasePageStatefulState {
+class Page extends BaseWidgetState<TabWallet> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   void initState() {
@@ -21,7 +21,7 @@ class Page extends BasePageStatefulState {
   }
 
   @override
-  Widget buildBody(BuildContext context) {
+  Widget buildBodyWidget(BuildContext context) {
     return Center(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
