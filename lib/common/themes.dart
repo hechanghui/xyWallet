@@ -9,8 +9,11 @@ class ThemeColors {
   static const Color buttonColor = Color(0xFF003D53);
   //label高亮
   static const Color labelLightColor = Color(0xFF3F7591);
- 
-  
+  //次级标题背景
+  static const Color accentDartColor = Color(0xFF082E41);
+    //次级标题前景
+  static const Color accentDartFgColor = Color(0xFF3FA0B3);
+
 }
 
 class ThemeDimens {
@@ -22,10 +25,17 @@ class ThemeDimens {
   static const double pageBottomMargin = 35;
 }
 
-class ThemeStyles{
-  static TextStyle getSubtitle1lLight(BuildContext context)
-  {
-    return Theme.of(context).textTheme.subtitle1.copyWith(color:ThemeColors.labelLightColor);
+class ThemeStyles {
+  static TextStyle getSubtitle1lLight(BuildContext context) {
+    return Theme.of(context)
+        .textTheme
+        .subtitle1
+        .copyWith(color: ThemeColors.labelLightColor);
   }
-
+  static TextStyle getSubtitle2lLight(BuildContext context) {
+    return Theme.of(context)
+        .textTheme
+        .subtitle1
+        .copyWith(color: ThemeColors.accentDartFgColor);
+  }
 }
