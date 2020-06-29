@@ -17,9 +17,10 @@ class Pages extends BaseWidgetState<TabMe> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    return Row(
+    return Column(
 
       children: <Widget>[
+        // Text('12312'),
         // RaisedButton(onPressed: () {
         //   Navigator.of(context)
         //       .push(MaterialPageRoute(builder: (context) => TabCommunity()));

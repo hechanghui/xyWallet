@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ThemeColors {
+  //前景色
   static const Color accentColor = Color(0xFF00F2FF);
+  //
   static const Color primaryColor = Color(0xFF122C50);
+  //按钮颜色
   static const Color buttonColor = Color(0xFF003D53);
+  //label高亮
   static const Color labelLightColor = Color(0xFF3F7591);
+ 
+  
 }
 
 class ThemeDimens {

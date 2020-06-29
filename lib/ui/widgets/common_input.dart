@@ -59,7 +59,7 @@ class CommonInputState extends State<CommonInput> {
                 padding: const EdgeInsets.fromLTRB(25, 10, 25, 70),
                 child: Text(
                   widget.title,
-                  
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
               ),
               Padding(
