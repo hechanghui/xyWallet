@@ -40,6 +40,8 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
       mainAxisSize: MainAxisSize.max,
       children: [
         TabBar(
+            labelColor: Theme.of(context).textTheme.subtitle1.color,
+            unselectedLabelColor: ThemeStyles.getSubtitle1lLight(context).color,
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
             controller: _tabController,

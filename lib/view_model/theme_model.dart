@@ -107,19 +107,26 @@ class ThemeModel with ChangeNotifier {
       cursorColor: accentColor,
 
       textTheme: themeData.textTheme.copyWith(
-          headline1: themeData.textTheme.headline1.copyWith(color: accentColor),
-          headline2: themeData.textTheme.headline2.copyWith(color: accentColor),
-          headline3: themeData.textTheme.headline3
+          headline1: themeData.textTheme.headline1
+              .copyWith(fontSize: 22, color: accentColor),
+          headline2: themeData.textTheme.headline2
               .copyWith(fontSize: 20, color: accentColor),
-          headline4: themeData.textTheme.headline4.copyWith(color: accentColor),
-          headline5: themeData.textTheme.headline5.copyWith(color: accentColor),
+          headline3: themeData.textTheme.headline3
+              .copyWith(fontSize: 18, color: accentColor),
+          headline4: themeData.textTheme.headline4
+              .copyWith(fontSize: 16, color: accentColor),
+          headline5: themeData.textTheme.headline5
+              .copyWith(fontSize: 10, color: accentColor),
           headline6: themeData.textTheme.headline6
-              .copyWith(fontSize: 14, color: accentColor),
+              .copyWith(fontSize: 8, color: accentColor),
 
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
-          subtitle1: themeData.textTheme.subtitle1
-              .copyWith(textBaseline: TextBaseline.alphabetic),
-          subtitle2: themeData.textTheme.subtitle2.copyWith(color: accentColor),
+          subtitle1: themeData.textTheme.subtitle1.copyWith(
+              fontSize: 14,
+              textBaseline: TextBaseline.alphabetic,
+              color: accentColor),
+          subtitle2: themeData.textTheme.subtitle2
+              .copyWith(fontSize: 12, color: accentColor),
           bodyText1: themeData.textTheme.bodyText1.copyWith(color: accentColor),
           bodyText2: themeData.textTheme.bodyText2.copyWith(color: accentColor),
           caption: themeData.textTheme.caption.copyWith(color: accentColor),

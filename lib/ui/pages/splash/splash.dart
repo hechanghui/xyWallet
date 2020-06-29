@@ -142,7 +142,7 @@ class AnimatedTextLogo extends AnimatedWidget {
       child: Text(
         "Plan x\r\nPosters",
         style:
-            Theme.of(context).textTheme.headline3,
+            Theme.of(context).textTheme.headline2,
         textAlign: TextAlign.center,
       ),
     );
