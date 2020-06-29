@@ -27,4 +27,5 @@ class ThemeStyles{
   {
     return Theme.of(context).textTheme.subtitle1.copyWith(color:ThemeColors.labelLightColor);
   }
+
 }

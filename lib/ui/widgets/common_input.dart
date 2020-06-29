@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
 
 
 class CommonInput extends StatefulWidget{
@@ -63,16 +64,16 @@ class CommonInputState extends State<CommonInput> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(25, 45, 50, 0),
+                padding: const EdgeInsets.fromLTRB(30, 47, 50, 0),
                 child: TextField(
                   onChanged: widget.onChanged,
                   
                   controller: widget.controller,
                   keyboardType: widget.keyboardType,
-                  style: TextStyle(color: Colors.black, fontSize: 17.0),
+                  style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
                   decoration: InputDecoration(
                     hintText: widget.placeholder,
-                    hintStyle: TextStyle(color: Colors.lightBlue, fontSize: 17.0),
+                    hintStyle: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold,color: ThemeColors.labelLightColor),
                     border: InputBorder.none,
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Color.fromARGB(0, 0, 0, 0),),  
