@@ -30,6 +30,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   bool _onResumed = false; //页面展示标记
   bool _onPause = false; //页面暂停标记
 
+  @mustCallSuper
   @override
   void initState() {
     initBaseCommon(this);
