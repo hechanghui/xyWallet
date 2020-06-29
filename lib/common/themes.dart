@@ -21,3 +21,10 @@ class ThemeDimens {
   //底部操作区距离底部边距
   static const double pageBottomMargin = 35;
 }
+
+class ThemeStyles{
+  static TextStyle getSubtitle1lLight(BuildContext context)
+  {
+    return Theme.of(context).textTheme.subtitle1.copyWith(color:ThemeColors.labelLightColor);
+  }
+}
