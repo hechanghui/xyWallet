@@ -7,7 +7,7 @@ class CommonButton extends StatelessWidget {
     this.height,
     this.onPressed,
     this.borderColor,
-    @required this.child,
+    @required this.child,z
   });
 
   // 渐变色数组
