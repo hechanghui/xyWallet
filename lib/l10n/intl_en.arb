@@ -23,5 +23,41 @@
     "hintInputAccountName": "请输入账户名称",
     "setPwd": "设置密码",
     "hintInputPwd": "请输入密码",
-    "confirmPwd": "确认密码"
+    "confirmPwd": "确认密码",
+    "transfer":"转帐",
+    "receipt":"收款",
+    "transferRecord":"交易记录",
+    "codeX1":"X-1码",
+    "codeX2":"X-2码",
+    "PowByPower":"动力挖矿",
+    "PowByAttraction":"引力挖矿",
+    "PowBySplit":"裂变挖矿",
+    
+    "tabComTitle1":"跨链资产管理",
+    "tabComTitle2":"粒子分裂",
+    "tabComTitle3":"KOL社区",
+    "tabComTitle4":"去中心化交易所",
+    "tabComTitle5":"全链商平台",
+    "tabComTitle6":"去中心化游戏平台",
+    "tabComTitle7":"去中心化金融银行",
+    "tabComTitle8":"人工智能及衍生服务",
+    "tabComTitle9":"物联网与用户数据价值",
+    
+    "tabComSubTitle1":"基于智能合约得跨链资产管理",
+    "tabComSubTitle2":"投票参与社区自治",
+    "tabComSubTitle3":"基于智能合约得币币兑换交易所",
+    "tabComSubTitle4":"区块链是价值传递的最佳归宿",
+    "tabComSubTitle5":"无国界、无限制，最关键的，游戏必须公平",
+    "tabComSubTitle6":"每个商业个体都有权进入全球金融体系",
+    "tabComSubTitle7":"以AI之名，探索未来世界的科技魔力",
+    "tabComSubTitle8":"万物互联，处处皆价值",
+    "tabComSubTitle9":"万物互联，处处皆价值",
+
+    "Address":"地址薄",
+    "AccountManager":"账户管理",
+    "Setting":"设置",
+    "ShareApp":"分享应用",
+    "AboutUs":"关于我们"
+
+    
 }
