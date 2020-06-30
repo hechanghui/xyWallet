@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 
-class TabWalletCell extends StatelessWidget {
+class TabMeCell extends StatelessWidget {
   final String imageName;
   final String title;
 
-  TabWalletCell({
+  TabMeCell({
     Key key,
     this.imageName,
     this.title,
@@ -23,21 +23,21 @@ class TabWalletCell extends StatelessWidget {
           alignment: Alignment.center,
           margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
           child: Image.asset(
-            ImageHelper.wrapAssets('tabWalletCellBg.png'),
+            ImageHelper.wrapAssets('tabMeCellBg.png'),
             fit: BoxFit.fill,
             width: width-30,
           ),
         ),
        Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 25),
+          padding: EdgeInsets.only(left: 32),
           // width: 46,
           
           child: Image.asset(
             ImageHelper.wrapAssets(imageName),
             fit: BoxFit.fill,
-            width: 46,
-            height: 46,
+            width: 30,
+            height: 30,
           ),
         ), 
 

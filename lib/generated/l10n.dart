@@ -342,6 +342,316 @@ class S {
       args: [],
     );
   }
+
+  /// `转帐`
+  String get transfer {
+    return Intl.message(
+      '转帐',
+      name: 'transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `收款`
+  String get receipt {
+    return Intl.message(
+      '收款',
+      name: 'receipt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `交易记录`
+  String get transferRecord {
+    return Intl.message(
+      '交易记录',
+      name: 'transferRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `X-1码`
+  String get codeX1 {
+    return Intl.message(
+      'X-1码',
+      name: 'codeX1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `X-2码`
+  String get codeX2 {
+    return Intl.message(
+      'X-2码',
+      name: 'codeX2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `动力挖矿`
+  String get PowByPower {
+    return Intl.message(
+      '动力挖矿',
+      name: 'PowByPower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `引力挖矿`
+  String get PowByAttraction {
+    return Intl.message(
+      '引力挖矿',
+      name: 'PowByAttraction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `裂变挖矿`
+  String get PowBySplit {
+    return Intl.message(
+      '裂变挖矿',
+      name: 'PowBySplit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `跨链资产管理`
+  String get tabComTitle1 {
+    return Intl.message(
+      '跨链资产管理',
+      name: 'tabComTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `粒子分裂`
+  String get tabComTitle2 {
+    return Intl.message(
+      '粒子分裂',
+      name: 'tabComTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `KOL社区`
+  String get tabComTitle3 {
+    return Intl.message(
+      'KOL社区',
+      name: 'tabComTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `去中心化交易所`
+  String get tabComTitle4 {
+    return Intl.message(
+      '去中心化交易所',
+      name: 'tabComTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `全链商平台`
+  String get tabComTitle5 {
+    return Intl.message(
+      '全链商平台',
+      name: 'tabComTitle5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `去中心化游戏平台`
+  String get tabComTitle6 {
+    return Intl.message(
+      '去中心化游戏平台',
+      name: 'tabComTitle6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `去中心化金融银行`
+  String get tabComTitle7 {
+    return Intl.message(
+      '去中心化金融银行',
+      name: 'tabComTitle7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `人工智能及衍生服务`
+  String get tabComTitle8 {
+    return Intl.message(
+      '人工智能及衍生服务',
+      name: 'tabComTitle8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `物联网与用户数据价值`
+  String get tabComTitle9 {
+    return Intl.message(
+      '物联网与用户数据价值',
+      name: 'tabComTitle9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `基于智能合约得跨链资产管理`
+  String get tabComSubTitle1 {
+    return Intl.message(
+      '基于智能合约得跨链资产管理',
+      name: 'tabComSubTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `投票参与社区自治`
+  String get tabComSubTitle2 {
+    return Intl.message(
+      '投票参与社区自治',
+      name: 'tabComSubTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `基于智能合约得币币兑换交易所`
+  String get tabComSubTitle3 {
+    return Intl.message(
+      '基于智能合约得币币兑换交易所',
+      name: 'tabComSubTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `区块链是价值传递的最佳归宿`
+  String get tabComSubTitle4 {
+    return Intl.message(
+      '区块链是价值传递的最佳归宿',
+      name: 'tabComSubTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `无国界、无限制，最关键的，游戏必须公平`
+  String get tabComSubTitle5 {
+    return Intl.message(
+      '无国界、无限制，最关键的，游戏必须公平',
+      name: 'tabComSubTitle5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `每个商业个体都有权进入全球金融体系`
+  String get tabComSubTitle6 {
+    return Intl.message(
+      '每个商业个体都有权进入全球金融体系',
+      name: 'tabComSubTitle6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `以AI之名，探索未来世界的科技魔力`
+  String get tabComSubTitle7 {
+    return Intl.message(
+      '以AI之名，探索未来世界的科技魔力',
+      name: 'tabComSubTitle7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `万物互联，处处皆价值`
+  String get tabComSubTitle8 {
+    return Intl.message(
+      '万物互联，处处皆价值',
+      name: 'tabComSubTitle8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `万物互联，处处皆价值`
+  String get tabComSubTitle9 {
+    return Intl.message(
+      '万物互联，处处皆价值',
+      name: 'tabComSubTitle9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址薄`
+  String get Address {
+    return Intl.message(
+      '地址薄',
+      name: 'Address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `账户管理`
+  String get AccountManager {
+    return Intl.message(
+      '账户管理',
+      name: 'AccountManager',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `设置`
+  String get Setting {
+    return Intl.message(
+      '设置',
+      name: 'Setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `分享应用`
+  String get ShareApp {
+    return Intl.message(
+      '分享应用',
+      name: 'ShareApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `关于我们`
+  String get AboutUs {
+    return Intl.message(
+      '关于我们',
+      name: 'AboutUs',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
+import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
@@ -8,6 +9,7 @@ import 'package:xy_wallet/manager/progressManager/toast.dart';
 
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/base/base_page.dart';
+import 'package:xy_wallet/ui/widgets/tabWallet_cell.dart';
 
 class TabWallet extends BaseWidget {
   @override
@@ -16,22 +18,14 @@ class TabWallet extends BaseWidget {
 
 class Page extends BaseWidgetState<TabWallet> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget buildBodyWidget(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     // double height = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
-      //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
-      scrollDirection: Axis.vertical,
-      //true 滑动到底部
-      // reverse: false,
-      padding: EdgeInsets.all(0.0),
-      ////滑动到底部回弹效果
-      physics: BouncingScrollPhysics(),
-      child: Center(
-        child: Column(
-          children: <Widget>[
+    return Container(
+      child:ListView(
+        children: <Widget>[
             Container(
               // color: Colors.blue,
               width: width,
@@ -85,76 +79,103 @@ class Page extends BaseWidgetState<TabWallet> {
                         print('12131231231');
                       },
                       child: TabWalletBt(
-                        title: '转账',
-                        imageName: 'tabWalletBt1.png',                      ),
+                        title: (S.of(context).transfer),
+                        imageName: 'tabWalletBt1.png',
+                      ),
                     ),
-                  
                     InkWell(
                       onTap: () {
                         print('12131231231');
                       },
                       child: TabWalletBt(
-                        title: '收款',
-                        imageName: 'tabWalletBt2.png',  
+                        title: (S.of(context).receipt),
+                        imageName: 'tabWalletBt2.png',
                       ),
                     ),
-
                     InkWell(
                       onTap: () {
                         print('12131231231');
                       },
                       child: TabWalletBt(
-                        title: '交易记录',
-                        imageName: 'tabWalletBt3.png',  
+                        title: (S.of(context).transferRecord),
+                        imageName: 'tabWalletBt3.png',
                       ),
                     ),
-
                     InkWell(
                       onTap: () {
                         print('12131231231');
                       },
                       child: TabWalletBt(
-                        title: 'X-1码',
-                        imageName: 'tabWalletBt4.png',  
+                        title: (S.of(context).codeX1),
+                        imageName: 'tabWalletBt4.png',
                       ),
                     ),
-
                     InkWell(
                       onTap: () {
                         print('12131231231');
                       },
                       child: TabWalletBt(
-                        title: 'X-2码',
-                        imageName: 'tabWalletBt5.png',  
+                        title: (S.of(context).codeX2),
+                        imageName: 'tabWalletBt5.png',
                       ),
                     ),
-                    
                   ],
                 )),
-          
             Container(
               margin: EdgeInsets.only(top: 30),
               padding: EdgeInsets.all(15),
               height: 100,
-            
               child: InkWell(
                 onTap: () {
                   print('banner');
                 },
-                
                 child: Image.asset(
-                    ImageHelper.wrapAssets('banner.png'),
-                    fit: BoxFit.fill,
-                    width: width,
+                  ImageHelper.wrapAssets('banner.png'),
+                  fit: BoxFit.fill,
+                  width: width,
                 ),
-              
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 30),
+              height: 280,
+              child: Column(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      print('引力');
+                    },
+                    child: TabWalletCell(
+                      title: (S.of(context).PowByAttraction),
+                      imageName: 'tabWalletCell1.png',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      print('动力');
+                    },
+                    child: TabWalletCell(
+                      title: (S.of(context).PowByAttraction),
+                      imageName: 'tabWalletCell2.png',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      print('动力');
+                    },
+                    child: TabWalletCell(
+                      title: (S.of(context).PowBySplit),
+                      imageName: 'tabWalletCell3.png',
+                    ),
+                  ),
+                ],
               ),
             )
-          
-          
           ],
-        ),
       ),
+      //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
+
+      
     );
   }
 }
