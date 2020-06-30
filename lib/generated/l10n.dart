@@ -233,6 +233,26 @@ class S {
     );
   }
 
+  /// `复制粘贴官方钱包的Keystore文件内容至输入框`
+  String get hintInputKeystore {
+    return Intl.message(
+      '复制粘贴官方钱包的Keystore文件内容至输入框',
+      name: 'hintInputKeystore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `粘贴私钥(Private Key)内容至输入框`
+  String get hintInputPrivateKey {
+    return Intl.message(
+      '粘贴私钥(Private Key)内容至输入框',
+      name: 'hintInputPrivateKey',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `账户名称`
   String get accountName {
     return Intl.message(
@@ -263,6 +283,16 @@ class S {
     );
   }
 
+  /// `Keystore密码`
+  String get keystorePwd {
+    return Intl.message(
+      'Keystore密码',
+      name: 'keystorePwd',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `请输入密码`
   String get hintInputPwd {
     return Intl.message(
@@ -278,6 +308,36 @@ class S {
     return Intl.message(
       '确认密码',
       name: 'confirmPwd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `什么是助记词`
+  String get whatIsMnemonic {
+    return Intl.message(
+      '什么是助记词',
+      name: 'whatIsMnemonic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `什么是Keystore`
+  String get whatIsKeystore {
+    return Intl.message(
+      '什么是Keystore',
+      name: 'whatIsKeystore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `什么是私钥`
+  String get whatIsPrivateKey {
+    return Intl.message(
+      '什么是私钥',
+      name: 'whatIsPrivateKey',
       desc: '',
       args: [],
     );

@@ -29,8 +29,14 @@ abstract class BasePageMixin {
         : null;
   }
 
+
   List<Widget> buildAppBarAction(BuildContext context) {
     return null;
+  }
+  hideInputKeyboard(BuildContext context)
+  {
+    FocusScope.of(context).requestFocus(FocusNode());
+
   }
 
   @protected
@@ -48,10 +54,16 @@ abstract class BasePageMixin {
           // tileMode: TileMode.clamp
         )),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context),
-          body: buildBody(context),
-        ));
+            backgroundColor: Colors.transparent,
+            appBar: buildAppBar(context),
+            body: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                // 触摸收起键盘
+                hideInputKeyboard(context);
+              },
+              child: buildBody(context),
+            )));
   }
 }
 

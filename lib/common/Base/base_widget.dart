@@ -52,6 +52,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   @override
   void didUpdateWidget(BaseWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
+    hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} didUpdateWidget');
   }
@@ -97,6 +98,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void dispose() {
+    hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} 销毁');
 
