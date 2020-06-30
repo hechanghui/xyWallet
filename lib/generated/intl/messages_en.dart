@@ -28,9 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "confirmPwd" : MessageLookupByLibrary.simpleMessage("确认密码"),
     "hintInputAccountName" : MessageLookupByLibrary.simpleMessage("请输入账户名称"),
+    "hintInputKeystore" : MessageLookupByLibrary.simpleMessage("复制粘贴官方钱包的Keystore文件内容至输入框"),
     "hintInputMnemonic" : MessageLookupByLibrary.simpleMessage("请输入账户助记词（12个英文单词），按空格分离"),
+    "hintInputPrivateKey" : MessageLookupByLibrary.simpleMessage("粘贴私钥(Private Key)内容至输入框"),
     "hintInputPwd" : MessageLookupByLibrary.simpleMessage("请输入密码"),
     "keystore" : MessageLookupByLibrary.simpleMessage("Keystore"),
+    "keystorePwd" : MessageLookupByLibrary.simpleMessage("Keystore密码"),
     "mnemonic" : MessageLookupByLibrary.simpleMessage("助记词"),
     "privateKey" : MessageLookupByLibrary.simpleMessage("私钥"),
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
@@ -45,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
     "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录"),
     "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
-    "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户")
+    "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户"),
+    "whatIsKeystore" : MessageLookupByLibrary.simpleMessage("什么是Keystore"),
+    "whatIsMnemonic" : MessageLookupByLibrary.simpleMessage("什么是助记词"),
+    "whatIsPrivateKey" : MessageLookupByLibrary.simpleMessage("什么是私钥")
   };
 }

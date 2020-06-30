@@ -61,7 +61,7 @@ class CommonInputState extends State<CommonInputLarge> {
                 padding: const EdgeInsets.only(top: 10, bottom: 8),
                 child: Text(
                   widget.title,
-                  style: ThemeStyles.getSubtitle2lLight(context),
+                  style: ThemeStyles.getSubtitle1lLight(context),
                 ),
               ),
               ConstrainedBox(

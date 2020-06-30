@@ -28,6 +28,11 @@ abstract class BasePageMixin {
         : null;
   }
 
+  hideInputKeyboard(BuildContext context)
+  {
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+
   @protected
   Widget buildBody(BuildContext context);
 
@@ -37,20 +42,22 @@ abstract class BasePageMixin {
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-                colors: [
-              Color(0xFF122C50),
-              Color(0xFF1B445A),
-              Color(0xFF071834)
-            ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                // tileMode: TileMode.clamp
-                )),
+          colors: [Color(0xFF122C50), Color(0xFF1B445A), Color(0xFF071834)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          // tileMode: TileMode.clamp
+        )),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context),
-          body: buildBody(context),
-        ));
+            backgroundColor: Colors.transparent,
+            appBar: buildAppBar(context),
+            body: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                // 触摸收起键盘
+                hideInputKeyboard(context);
+              },
+              child: buildBody(context),
+            )));
   }
 }
 

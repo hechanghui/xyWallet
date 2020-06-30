@@ -19,9 +19,15 @@
     "keystore": "Keystore",
     "privateKey": "私钥",
     "hintInputMnemonic": "请输入账户助记词（12个英文单词），按空格分离",
+    "hintInputKeystore": "复制粘贴官方钱包的Keystore文件内容至输入框",
+    "hintInputPrivateKey": "粘贴私钥(Private Key)内容至输入框",
     "accountName": "账户名称",
     "hintInputAccountName": "请输入账户名称",
     "setPwd": "设置密码",
+    "keystorePwd": "Keystore密码",
     "hintInputPwd": "请输入密码",
-    "confirmPwd": "确认密码"
+    "confirmPwd": "确认密码",
+    "whatIsMnemonic": "什么是助记词",
+    "whatIsKeystore": "什么是Keystore",
+    "whatIsPrivateKey": "什么是私钥"
 }

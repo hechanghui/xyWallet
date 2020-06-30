@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/ui/pages/wallet/vm/restore_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 
 class RestoreByMnemonic extends BaseWidget {
+  final RestoreViewModel viewModel;
+
+  RestoreByMnemonic(this.viewModel);
+
   @override
   _RestoreByMnemonicState getState() => _RestoreByMnemonicState();
 }
@@ -36,25 +41,46 @@ class _RestoreByMnemonicState extends BaseWidgetState<RestoreByMnemonic> {
                   ),
                   child: CommonInputLarge(
                     title: S.of(context).hintInputMnemonic,
+                    controller: widget.viewModel.mnemonicController,
                   )),
               CommonInput(
                 title: S.of(context).accountName,
                 placeholder: S.of(context).hintInputAccountName,
+                controller: widget.viewModel.mnemonicAccountController,
               ),
               CommonInput(
                 title: S.of(context).setPwd,
                 placeholder: S.of(context).hintInputPwd,
+                controller: widget.viewModel.mnemonicSetPwdController,
               ),
               CommonInput(
                 title: S.of(context).confirmPwd,
                 placeholder: S.of(context).hintInputPwd,
+                controller: widget.viewModel.mnemonicConfirmPwdController,
               ),
-              IconButton(
-                  icon: Icon(
-                    Icons.help,
-                    color: Colors.green[300],
-                  ),
-                  onPressed: null)
+              Container(
+                  alignment: Alignment.topRight,
+                  margin:
+                      EdgeInsets.only(right: ThemeDimens.pageLRMargin * 1.6),
+                  child: InkWell(
+                    child: Wrap(
+                      verticalDirection: VerticalDirection.up,
+                      spacing: 7,
+                      // mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          S.of(context).whatIsMnemonic,
+                          style: ThemeStyles.getSubtitle2lLight(context),
+                        ),
+                        Icon(
+                          Icons.help,
+                          color: Colors.green[300],
+                          size: 16,
+                        )
+                      ],
+                    ),
+                    onTap: () {},
+                  )),
             ],
           ),
         ));
