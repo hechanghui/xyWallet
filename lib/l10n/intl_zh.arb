@@ -13,8 +13,14 @@
     "retry": "重试",
     "splashSkip": "跳过",
     "viewStateButtonLogin": "Sign In",
-    "walletRestore":"导入账户",
-    "mnemonic":"助记词",
-    "keystore":"Keystore",
-    "privateKey":"私钥"
+    "walletRestore": "导入账户",
+    "mnemonic": "助记词",
+    "keystore": "Keystore",
+    "privateKey": "私钥",
+    "hintInputMnemonic": "请输入账户助记词（12个英文单词），按空格分离",
+    "accountName": "账户名称",
+    "hintInputAccountName": "请输入账户名称",
+    "setPwd": "设置密码",
+    "hintInputPwd": "请输入密码",
+    "confirmPwd": "确认密码"
 }

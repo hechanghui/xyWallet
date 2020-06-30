@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/themes.dart';
+import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 
@@ -34,20 +35,26 @@ class _RestoreByMnemonicState extends BaseWidgetState<RestoreByMnemonic> {
                     horizontal: ThemeDimens.pageLRMargin,
                   ),
                   child: CommonInputLarge(
-                    title: '请输入账户助记词（12个英文单词），按空格分离',
+                    title: S.of(context).hintInputMnemonic,
                   )),
               CommonInput(
-                title: '账户名称',
-                placeholder: '请输入账户名称',
+                title: S.of(context).accountName,
+                placeholder: S.of(context).hintInputAccountName,
               ),
               CommonInput(
-                title: '设置密码',
-                placeholder: '请输入密码',
+                title: S.of(context).setPwd,
+                placeholder: S.of(context).hintInputPwd,
               ),
               CommonInput(
-                title: '确认密码',
-                placeholder: '请输入密码',
+                title: S.of(context).confirmPwd,
+                placeholder: S.of(context).hintInputPwd,
               ),
+              IconButton(
+                  icon: Icon(
+                    Icons.help,
+                    color: Colors.green[300],
+                  ),
+                  onPressed: null)
             ],
           ),
         ));

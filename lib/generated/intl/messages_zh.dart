@@ -21,15 +21,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "accountName" : MessageLookupByLibrary.simpleMessage("账户名称"),
     "actionCancel" : MessageLookupByLibrary.simpleMessage("取消"),
     "actionConfirm" : MessageLookupByLibrary.simpleMessage("确认"),
     "appName" : MessageLookupByLibrary.simpleMessage("X钱包"),
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
+    "confirmPwd" : MessageLookupByLibrary.simpleMessage("确认密码"),
+    "hintInputAccountName" : MessageLookupByLibrary.simpleMessage("请输入账户名称"),
+    "hintInputMnemonic" : MessageLookupByLibrary.simpleMessage("请输入账户助记词（12个英文单词），按空格分离"),
+    "hintInputPwd" : MessageLookupByLibrary.simpleMessage("请输入密码"),
     "keystore" : MessageLookupByLibrary.simpleMessage("Keystore"),
     "mnemonic" : MessageLookupByLibrary.simpleMessage("助记词"),
     "privateKey" : MessageLookupByLibrary.simpleMessage("私钥"),
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
     "retry" : MessageLookupByLibrary.simpleMessage("重试"),
+    "setPwd" : MessageLookupByLibrary.simpleMessage("设置密码"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),
     "viewStateButtonLogin" : MessageLookupByLibrary.simpleMessage("Sign In"),
     "viewStateButtonRefresh" : MessageLookupByLibrary.simpleMessage("刷新一下"),

@@ -33,130 +33,130 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `X Wallet`
+  /// `X钱包`
   String get appName {
     return Intl.message(
-      'X Wallet',
+      'X钱包',
       name: 'appName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Cancel`
+  /// `取消`
   String get actionCancel {
     return Intl.message(
-      'Cancel',
+      '取消',
       name: 'actionCancel',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confirm`
+  /// `确认`
   String get actionConfirm {
     return Intl.message(
-      'Confirm',
+      '确认',
       name: 'actionConfirm',
       desc: '',
       args: [],
     );
   }
 
-  /// `Auto`
+  /// `跟随系统`
   String get autoBySystem {
     return Intl.message(
-      'Auto',
+      '跟随系统',
       name: 'autoBySystem',
       desc: '',
       args: [],
     );
   }
 
-  /// `Load Failed`
+  /// `加载失败`
   String get viewStateMessageError {
     return Intl.message(
-      'Load Failed',
+      '加载失败',
       name: 'viewStateMessageError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Load Failed,Check network `
+  /// `网络连接异常,请检查网络或稍后重试`
   String get viewStateMessageNetworkError {
     return Intl.message(
-      'Load Failed,Check network ',
+      '网络连接异常,请检查网络或稍后重试',
       name: 'viewStateMessageNetworkError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Nothing Found`
+  /// `空空如也`
   String get viewStateMessageEmpty {
     return Intl.message(
-      'Nothing Found',
+      '空空如也',
       name: 'viewStateMessageEmpty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Not sign in yet`
+  /// `未登录`
   String get viewStateMessageUnAuth {
     return Intl.message(
-      'Not sign in yet',
+      '未登录',
       name: 'viewStateMessageUnAuth',
       desc: '',
       args: [],
     );
   }
 
-  /// `Refresh`
+  /// `刷新一下`
   String get viewStateButtonRefresh {
     return Intl.message(
-      'Refresh',
+      '刷新一下',
       name: 'viewStateButtonRefresh',
       desc: '',
       args: [],
     );
   }
 
-  /// `Retry`
+  /// `重试`
   String get viewStateButtonRetry {
     return Intl.message(
-      'Retry',
+      '重试',
       name: 'viewStateButtonRetry',
       desc: '',
       args: [],
     );
   }
 
-  /// `release to enter second floor`
+  /// `欢迎光临,我的空中楼阁`
   String get refreshTwoLevel {
     return Intl.message(
-      'release to enter second floor',
+      '欢迎光临,我的空中楼阁',
       name: 'refreshTwoLevel',
       desc: '',
       args: [],
     );
   }
 
-  /// `Retry`
+  /// `重试`
   String get retry {
     return Intl.message(
-      'Retry',
+      '重试',
       name: 'retry',
       desc: '',
       args: [],
     );
   }
 
-  /// `Skip`
+  /// `跳过`
   String get splashSkip {
     return Intl.message(
-      'Skip',
+      '跳过',
       name: 'splashSkip',
       desc: '',
       args: [],
@@ -178,16 +178,6 @@ class S {
     return Intl.message(
       '导入账户',
       name: 'walletRestore',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `创建新账户`
-  String get walletCreate {
-    return Intl.message(
-      '创建新账户',
-      name: 'walletCreate',
       desc: '',
       args: [],
     );
@@ -218,6 +208,66 @@ class S {
     return Intl.message(
       '私钥',
       name: 'privateKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入账户助记词（12个英文单词），按空格分离`
+  String get hintInputMnemonic {
+    return Intl.message(
+      '请输入账户助记词（12个英文单词），按空格分离',
+      name: 'hintInputMnemonic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `账户名称`
+  String get accountName {
+    return Intl.message(
+      '账户名称',
+      name: 'accountName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入账户名称`
+  String get hintInputAccountName {
+    return Intl.message(
+      '请输入账户名称',
+      name: 'hintInputAccountName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `设置密码`
+  String get setPwd {
+    return Intl.message(
+      '设置密码',
+      name: 'setPwd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入密码`
+  String get hintInputPwd {
+    return Intl.message(
+      '请输入密码',
+      name: 'hintInputPwd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认密码`
+  String get confirmPwd {
+    return Intl.message(
+      '确认密码',
+      name: 'confirmPwd',
       desc: '',
       args: [],
     );
