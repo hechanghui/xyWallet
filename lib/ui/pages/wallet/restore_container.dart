@@ -8,7 +8,11 @@ import 'package:xy_wallet/ui/base/base_page.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
 import 'package:xy_wallet/ui/pages/wallet/create_or_restore.dart';
+import 'package:xy_wallet/ui/pages/wallet/restore_by_keystore.dart';
+import 'package:xy_wallet/ui/pages/wallet/restore_by_privateKey.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
+
+import 'restore_by_mnemonic.dart';
 
 class RestoreContainerPage extends BaseWidget {
   @override
@@ -35,6 +39,8 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
       S.of(context).keystore,
       S.of(context).privateKey
     ]);
+    var subPages = List.of(
+        [RestoreByMnemonic(), RestoreByKeyStore(), RestoreByPriveKey()]);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
@@ -50,15 +56,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
           child: TabBarView(
             controller: _tabController,
             physics: ScrollPhysics(),
-            // drawerDragStartBehavior: DragStartBehavior.start, //?
-            children: [
-              Text("233333"),
-              Text("233333"),
-              Text("233333"),
-              // CreateOrRestorePage(),
-              // CreateOrRestorePage(),
-              // CreateOrRestorePage(),
-            ],
+            children: subPages,
           ),
         ),
         Padding(
