@@ -183,6 +183,16 @@ class S {
     );
   }
 
+  /// `创建新账户`
+  String get walletCreate {
+    return Intl.message(
+      '创建新账户',
+      name: 'walletCreate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `助记词`
   String get mnemonic {
     return Intl.message(

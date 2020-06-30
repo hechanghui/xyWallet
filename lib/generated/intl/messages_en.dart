@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewStateMessageError" : MessageLookupByLibrary.simpleMessage("加载失败"),
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
     "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录"),
+    "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
     "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户")
   };
 }
