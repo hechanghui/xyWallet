@@ -18,6 +18,10 @@ class TabWallet extends BaseWidget {
 
 class Page extends BaseWidgetState<TabWallet> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  
+  @override
+  String titleLabel(BuildContext context) => S.of(context).walletRestore;
+
 
   @override
   Widget buildBodyWidget(BuildContext context) {

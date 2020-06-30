@@ -1,50 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
 
-class TabWalletCell extends StatelessWidget {
+class TabComCell extends StatelessWidget {
   final String imageName;
   final String title;
-
-  TabWalletCell({
-    Key key,
-    this.imageName,
-    this.title,
-  }) : super(key: key);
+  final String subTitle;
+  final GestureTapCallback onPressed;
+  TabComCell({Key key, this.imageName, this.title, this.subTitle,this.onPressed})
+      : super(key: key);
 
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      
       alignment: Alignment.center,
-      height: 60,
-      child: Stack(children: <Widget>[
+      height: 70,
+      child:InkWell(
+        onTap: onPressed,
+        child: Stack(children: <Widget>[
         Container(
-          
           alignment: Alignment.center,
           margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
           child: Image.asset(
-            ImageHelper.wrapAssets('tabWalletCellBg.png'),
+            ImageHelper.wrapAssets('tabCommunityCellBG.png'),
             fit: BoxFit.fill,
-            width: width-30,
+            width: width - 30,
           ),
         ),
-       Container(
+        Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 25),
+          padding: EdgeInsets.only(left: 30),
           // width: 46,
-          
-          child: Image.asset(
-            ImageHelper.wrapAssets(imageName),
-            fit: BoxFit.fill,
-            width: 30,
-            height: 30,
-          ),
-        ), 
 
-               Container(
+          child: Image.asset(
+            ImageHelper.wrapAssets('tabCommunityIcon.png'),
+            fit: BoxFit.fill,
+            width: 38,
+            height: 38,
+          ),
+        ),
+                
+        Container(
           alignment: Alignment.centerRight,
           padding: EdgeInsets.only(right: 40),
-          // width: 46,
           
           child: Image.asset(
             ImageHelper.wrapAssets('Icon_next.png'),
@@ -54,18 +52,19 @@ class TabWalletCell extends StatelessWidget {
           ),
         ), 
 
-         Container(
+        Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 71),
-          
-          
+          padding: EdgeInsets.only(left: 80),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold,fontSize: 15),
+            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 15,fontWeight: FontWeight.bold),
           ),
-        ), 
-
+        ),
+        
       ]),
+      ),
+
+      
     );
   }
 }

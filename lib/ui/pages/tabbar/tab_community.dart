@@ -1,8 +1,9 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/widgets/tabComCell.dart';
-import 'tab_me.dart';
+
 
 class TabCommunity extends BaseWidget {
   @override
@@ -20,7 +21,8 @@ class Pages extends BaseWidgetState<TabCommunity> {
         children: <Widget>[
           InkWell(
             onTap: () {
-              print(S.of(context).tabComTitle1);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManger()));
+
             },
             child: TabComCell(
               title: (S.of(context).tabComTitle1),

@@ -24,8 +24,13 @@ abstract class BasePageMixin {
                 ),
             elevation: 0.0,
             centerTitle: true,
+            actions:buildAppBarAction(context),
           )
         : null;
+  }
+
+  List<Widget> buildAppBarAction(BuildContext context) {
+    return null;
   }
 
   @protected
@@ -37,15 +42,11 @@ abstract class BasePageMixin {
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-                colors: [
-              Color(0xFF122C50),
-              Color(0xFF1B445A),
-              Color(0xFF071834)
-            ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                // tileMode: TileMode.clamp
-                )),
+          colors: [Color(0xFF122C50), Color(0xFF1B445A), Color(0xFF071834)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          // tileMode: TileMode.clamp
+        )),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(context),
