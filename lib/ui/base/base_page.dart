@@ -24,13 +24,19 @@ abstract class BasePageMixin {
                 ),
             elevation: 0.0,
             centerTitle: true,
+            actions:buildAppBarAction(context),
           )
         : null;
   }
 
+
+  List<Widget> buildAppBarAction(BuildContext context) {
+    return null;
+  }
   hideInputKeyboard(BuildContext context)
   {
     FocusScope.of(context).requestFocus(FocusNode());
+
   }
 
   @protected

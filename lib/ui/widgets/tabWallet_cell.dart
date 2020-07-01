@@ -36,8 +36,8 @@ class TabWalletCell extends StatelessWidget {
           child: Image.asset(
             ImageHelper.wrapAssets(imageName),
             fit: BoxFit.fill,
-            width: 46,
-            height: 46,
+            width: 30,
+            height: 30,
           ),
         ), 
 

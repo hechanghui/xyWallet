@@ -63,6 +63,23 @@
     "AccountManager":"账户管理",
     "Setting":"设置",
     "ShareApp":"分享应用",
-    "AboutUs":"关于我们"
+    "AboutUs":"关于我们",
+
+    "Charge":"充币",
+    "WithDraw":"提币",
+    "assetManagerTitle":"跨链资产管理",
+
+    "ChooseCoin":"选择币种",
+    "AddressManagerTitle":"地址薄",
+
+    "AddressTitle":"名称",
+    "AddressTitleInput":"请输入账户名称",
+
+    "AddAddress":"地址",
+    "AddAddressInput":"请输入地址",
+
+    "AddressNote":"备注",
+    "AddressNoteInput":"请输入备注"
+    
 
 }

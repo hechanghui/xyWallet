@@ -652,6 +652,116 @@ class S {
       args: [],
     );
   }
+
+  /// `充币`
+  String get Charge {
+    return Intl.message(
+      '充币',
+      name: 'Charge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提币`
+  String get WithDraw {
+    return Intl.message(
+      '提币',
+      name: 'WithDraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `跨链资产管理`
+  String get assetManagerTitle {
+    return Intl.message(
+      '跨链资产管理',
+      name: 'assetManagerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `选择币种`
+  String get ChooseCoin {
+    return Intl.message(
+      '选择币种',
+      name: 'ChooseCoin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址薄`
+  String get AddressManagerTitle {
+    return Intl.message(
+      '地址薄',
+      name: 'AddressManagerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `名称`
+  String get AddressTitle {
+    return Intl.message(
+      '名称',
+      name: 'AddressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入账户名称`
+  String get AddressTitleInput {
+    return Intl.message(
+      '请输入账户名称',
+      name: 'AddressTitleInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址`
+  String get AddAddress {
+    return Intl.message(
+      '地址',
+      name: 'AddAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入地址`
+  String get AddAddressInput {
+    return Intl.message(
+      '请输入地址',
+      name: 'AddAddressInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `备注`
+  String get AddressNote {
+    return Intl.message(
+      '备注',
+      name: 'AddressNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入备注`
+  String get AddressNoteInput {
+    return Intl.message(
+      '请输入备注',
+      name: 'AddressNoteInput',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

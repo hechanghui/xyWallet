@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
-import 'package:xy_wallet/ui/pages/tabbar/tab_community.dart';
-import 'package:xy_wallet/ui/widgets/common_button.dart';
-import 'package:xy_wallet/ui/widgets/common_input.dart';
+import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
+import 'package:xy_wallet/ui/pages/me/adressManger.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
-import 'package:xy_wallet/ui/widgets/tabWallet_cell.dart';
+
 
 class TabMe extends BaseWidget {
   @override
@@ -56,7 +55,7 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            print(S.of(context).Address);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
           },
           child: TabMeCell(
             title: (S.of(context).Address),
