@@ -114,7 +114,7 @@ class ThemeModel with ChangeNotifier {
           headline3: themeData.textTheme.headline3
               .copyWith(fontSize: 18, color: accentColor),
           headline4: themeData.textTheme.headline4
-              .copyWith(fontSize: 16, color: accentColor),
+              .copyWith(fontSize: ThemeDimens.headline4, color: accentColor),
           headline5: themeData.textTheme.headline5
               .copyWith(fontSize: 10, color: accentColor),
           headline6: themeData.textTheme.headline6

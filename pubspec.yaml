@@ -26,6 +26,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  tuple: ^1.0.3
+
   dio: 3.0.9 #网络请求
   bmprogresshud: ^0.0.7 #加载框
   json_serializable: ^3.3.0 #json转model、
@@ -62,7 +64,6 @@ flutter:
 
   assets:
     - assets/images/
-
 
 flutter_intl:
   enabled: true
