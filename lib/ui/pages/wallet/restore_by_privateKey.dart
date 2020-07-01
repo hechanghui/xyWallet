@@ -82,10 +82,10 @@ class _PageState extends BaseWidgetState<RestoreByPriveKey> {
                       ],
                     ),
                     onTap: () {
-                      DialogHelper.showCommonDialog(context: context,content: "什么鬼提示哦哦哦哦哦",actions: [
-                        Tuple3("确定", null, null),
-                        Tuple3("取消", null, null),
-                      ]);
+                      DialogHelper.showCommonDialog(
+                          context: context,
+                          title: S.of(context).whatIsPrivateKey,
+                          content: S.of(context).privateKeyInfo);
                     },
                   )),
             ],

@@ -45,7 +45,7 @@ class DialogHelper {
       if (context != null && actions == null) {
         actions = [
           Tuple3(
-              S.of(context).actionConfirm,
+              S.of(context).actionIKnow,
               null,
               Theme.of(context)
                   .textTheme
@@ -53,7 +53,7 @@ class DialogHelper {
                   .copyWith(color: ThemeColors.primaryFgColor))
         ];
       }
-      if (actions?.firstWhere((e) => e.item3 == null) != null) {
+      if (actions?.firstWhere((e) => e.item3 == null, orElse: ()  => null) != null) {
         var actionsTmp = List<Tuple3<String, GestureTapCallback, TextStyle>>();
         actions.forEach((element) {
           var textStyle = element.item3;
