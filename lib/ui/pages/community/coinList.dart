@@ -8,10 +8,11 @@ import 'package:xy_wallet/ui/pages/community/widget/coinListCell.dart';
 enum CoinType {
   Charge,
   WithDraw,
+  ChooseCoin,
 }
 
-class coinList extends BaseWidget {
-  coinList({Key key, this.coinType});
+class CoinList extends BaseWidget {
+  CoinList({Key key, this.coinType});
   final CoinType coinType;
 
   @override
@@ -20,7 +21,7 @@ class coinList extends BaseWidget {
   }
 }
 
-class Pages extends BaseWidgetState<coinList> {
+class Pages extends BaseWidgetState<CoinList> {
   @override
   String titleLabel(BuildContext context) => S.of(context).ChooseCoin;
 

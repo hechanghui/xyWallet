@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/ui/pages/me/addAddress.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 
@@ -21,7 +22,7 @@ class Pages extends BaseWidgetState<AdressManger> {
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
           IconButton(icon: Icon(Icons.add), onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddAdress()));
           }),
         ];
   }

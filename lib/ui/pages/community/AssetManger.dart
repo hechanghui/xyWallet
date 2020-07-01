@@ -46,7 +46,7 @@ class Pages extends BaseWidgetState<AssetManger> {
       imageName: 'AssetCharge.png',
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => coinList(coinType: CoinType.Charge)));
+            builder: (context) => CoinList(coinType: CoinType.Charge)));
       },
     );
     return Container(
@@ -65,7 +65,7 @@ class Pages extends BaseWidgetState<AssetManger> {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            coinList(coinType: CoinType.WithDraw)));
+                            CoinList(coinType: CoinType.WithDraw)));
                   },
                 ),
               ]),
