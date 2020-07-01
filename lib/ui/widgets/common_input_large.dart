@@ -14,6 +14,8 @@ class CommonInputLarge extends StatefulWidget {
   final int maxLength;
   final int maxLines;
   final int minLines;
+  final double minHeight;
+  final bool enabled;
 
   CommonInputLarge({
     Key key,
@@ -28,6 +30,8 @@ class CommonInputLarge extends StatefulWidget {
     this.maxLength,
     this.maxLines,
     this.minLines,
+    this.minHeight: 110,
+    this.enabled,
   }) : super(key: key);
 
   @override
@@ -54,24 +58,28 @@ class CommonInputState extends State<CommonInputLarge> {
           )),
           child: Column(
             children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                color: ThemeColors.accentDartColor,
-                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 3),
-                padding: const EdgeInsets.only(top: 10, bottom: 8),
-                child: Text(
-                  widget.title,
-                  style: ThemeStyles.getSubtitle1lLight(context),
-                ),
-              ),
+              widget.title == null
+                  ? Container()
+                  : Container(
+                      alignment: Alignment.center,
+                      color: ThemeColors.accentDartColor,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 3),
+                      padding: const EdgeInsets.only(top: 10, bottom: 8),
+                      child: Text(
+                        widget.title,
+                        style: ThemeStyles.getSubtitle1lLight(context),
+                      ),
+                    ),
               ConstrainedBox(
                 constraints: new BoxConstraints(
-                  minHeight: 110,
+                  minHeight: widget.minHeight,
                 ),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   child: TextField(
+                      enabled: widget.enabled,
                       focusNode: _commentFocus,
                       onChanged: widget.onChanged,
                       controller: widget.controller,

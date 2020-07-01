@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
-
+import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
+import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
+import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
 
 import 'page_route_anim.dart';
 
@@ -15,6 +17,10 @@ class RouteName {
   static const String tab = '/';
   static const String WALLET_CREATE_RESTORE = 'wallet/createOrRestore';
   static const String WALLET_CREATE = 'wallet/create';
+  static const String WALLET_CREATE_WITH_MNEMONIC_GENERATE =
+      'wallet/createWithMnemonicGenerate';
+  static const String WALLET_CREATE_WITH_MNEMONIC_INPUT =
+      'wallet/createWithMnemonicInput';
   static const String WALLET_RESTORE = 'wallet/restore';
   static const String COMMUNITY_ASSETMANAGER = 'community/assetManager';
 }
@@ -30,6 +36,15 @@ class Router {
         return CupertinoPageRoute(builder: (_) => CreateOrRestorePage());
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => RestoreContainerPage());
+      case RouteName.WALLET_CREATE:
+        return CupertinoPageRoute(builder: (_) => CreateWithAccountPage());
+      case RouteName.WALLET_CREATE_WITH_MNEMONIC_GENERATE:
+        return CupertinoPageRoute(
+            builder: (_) => CreateWithMnemonicGeneratePage(settings.arguments));
+      case RouteName.WALLET_CREATE_WITH_MNEMONIC_INPUT:
+        return CupertinoPageRoute(
+            builder: (_) => CreateWithMnemonicInputPage(settings.arguments));
+
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());
       default:

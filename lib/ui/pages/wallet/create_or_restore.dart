@@ -9,7 +9,6 @@ import 'package:xy_wallet/common/router/router_manager.dart';
 
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
-
 class CreateOrRestorePage extends StatelessWidget {
   const CreateOrRestorePage({Key key}) : super(key: key);
 
@@ -25,7 +24,8 @@ class CreateOrRestorePage extends StatelessWidget {
               Align(
                 alignment: Alignment(0.0, 0.92),
                 child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ThemeDimens.pageLRMargin),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       mainAxisSize: MainAxisSize.min,
@@ -33,7 +33,8 @@ class CreateOrRestorePage extends StatelessWidget {
                         CommonButton(
                           child: Text(S.of(context).walletRestore),
                           onPressed: () {
-                            Navigator.pushNamed(context, RouteName.WALLET_RESTORE);
+                            Navigator.pushNamed(
+                                context, RouteName.WALLET_RESTORE);
                           },
                         ),
                         Padding(
@@ -48,7 +49,8 @@ class CreateOrRestorePage extends StatelessWidget {
                         ),
                         CommonButton(
                           child: Text(S.of(context).walletCreate),
-                          onPressed: ()=>Navigator.pushReplacementNamed(context, RouteName.tab),
+                          onPressed: () => Navigator.pushNamed(
+                              context, RouteName.WALLET_CREATE),
                         ),
                       ],
                     )),

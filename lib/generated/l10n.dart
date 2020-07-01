@@ -83,6 +83,16 @@ class S {
     );
   }
 
+  /// `下一步`
+  String get nextStep {
+    return Intl.message(
+      '下一步',
+      name: 'nextStep',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `加载失败`
   String get viewStateMessageError {
     return Intl.message(
@@ -378,6 +388,96 @@ class S {
     return Intl.message(
       '私钥是在区块链交易中用于生成交易签名，以证明账户身份。所以私钥必须安全保管，一旦私钥倍被任何人拿到，就可以拿走您的数字资产。',
       name: 'privateKeyInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `密码将作为该账户的登录密码和交易密码，为了你的账户安全，我们建议你设置一个高强度的密码。`
+  String get walletCreateAccountTip {
+    return Intl.message(
+      '密码将作为该账户的登录密码和交易密码，为了你的账户安全，我们建议你设置一个高强度的密码。',
+      name: 'walletCreateAccountTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `开始创建`
+  String get startCreate {
+    return Intl.message(
+      '开始创建',
+      name: 'startCreate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `创建钱包`
+  String get createWallet {
+    return Intl.message(
+      '创建钱包',
+      name: 'createWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `你的钱包助记词`
+  String get yourWalletMnemonic {
+    return Intl.message(
+      '你的钱包助记词',
+      name: 'yourWalletMnemonic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `助记词用于恢复你的钱包，丢失他们你将永远失去钱包。`
+  String get yourWalletMnemonicTip {
+    return Intl.message(
+      '助记词用于恢复你的钱包，丢失他们你将永远失去钱包。',
+      name: 'yourWalletMnemonicTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `长按助记词可以复制`
+  String get longPressedMnemonicCopy {
+    return Intl.message(
+      '长按助记词可以复制',
+      name: 'longPressedMnemonicCopy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `强烈建议你将助记词抄写在纸上并保存在安全地方，任何人得到助记词都可以拿走你的数字资产`
+  String get walletMnemonicTip {
+    return Intl.message(
+      '强烈建议你将助记词抄写在纸上并保存在安全地方，任何人得到助记词都可以拿走你的数字资产',
+      name: 'walletMnemonicTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认你的钱包助记词`
+  String get walletConfirmMnemonic {
+    return Intl.message(
+      '确认你的钱包助记词',
+      name: 'walletConfirmMnemonic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请按顺序点击助记词，验证您备份得助记词是否正确`
+  String get walletMnemonicInputTip {
+    return Intl.message(
+      '请按顺序点击助记词，验证您备份得助记词是否正确',
+      name: 'walletMnemonicInputTip',
       desc: '',
       args: [],
     );
