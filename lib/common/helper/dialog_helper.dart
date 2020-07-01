@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
@@ -36,9 +37,68 @@ class DialogHelper {
     String title,
     String content,
     Widget contentWidget,
-    List<String> actions,
+    List<Tuple3<String, GestureTapCallback, TextStyle>> actions,
+    bool autoDisimiss = true,
     Widget action,
   }) {
+    if (action == null) {
+      if (context != null && actions == null) {
+        actions = [
+          Tuple3(
+              S.of(context).actionIKnow,
+              null,
+              Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: ThemeColors.primaryFgColor))
+        ];
+      }
+      if (actions?.firstWhere((e) => e.item3 == null, orElse: () => null) !=
+          null) {
+        var actionsTmp = List<Tuple3<String, GestureTapCallback, TextStyle>>();
+        actions.forEach((element) {
+          var textStyle = element.item3;
+          if (textStyle == null) {
+            textStyle = (context == null
+                    ? TextStyle(
+                        fontSize: ThemeDimens.headline4,
+                      )
+                    : Theme.of(context).textTheme.headline4)
+                .copyWith(
+                    color: actions.length == 1 ||
+                            (actions.length == 2 &&
+                                actions.indexOf(element) == 1) ||
+                            (actions.length > 2 &&
+                                actions.indexOf(element) == 0)
+                        ? ThemeColors.primaryFgColor
+                        : ThemeColors.labelLightColor);
+          }
+          actionsTmp.add(Tuple3(element.item1, element.item2, textStyle));
+        });
+        actions = actionsTmp;
+      }
+    }
+
+    var actionButtons = actions
+        ?.map((e) => FlatButton(
+              shape: CircleBorder(
+                side: BorderSide(
+                  color: Colors.transparent,
+                ),
+              ),
+              child: Text(
+                e.item1,
+                style: e.item3,
+              ),
+              onPressed: () {
+                if (context != null) {
+                  Navigator.of(context).pop(actions.indexOf(e));
+                }
+                e.item2?.call();
+              },
+              materialTapTargetSize: MaterialTapTargetSize.padded,
+            ))
+        .toList();
     var dialog = SimpleDialog(
       backgroundColor: Colors.transparent,
       title: title == null ? null : Text(title),
@@ -60,30 +120,38 @@ class DialogHelper {
                 child: Column(children: [
                   Container(
                     alignment: Alignment.topLeft,
-                    child: Text(
-                      "这样子的吗",
-                      style: TextStyle(
-                          fontSize: ThemeDimens.txtLarge,
-                          fontWeight: FontWeight.bold,
-                          color: ThemeColors.accentDartFgColor),
+                    child: title?.isEmpty == true
+                        ? null
+                        : Text(
+                            title,
+                            style: TextStyle(
+                                fontSize: ThemeDimens.txtLarge,
+                                fontWeight: FontWeight.bold,
+                                color: ThemeColors.accentDartFgColor),
+                          ),
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    margin: EdgeInsets.only(top: 22, bottom: 22),
+                    child: contentWidget ?? Text(content ?? ""),
+                  ),
+                  Image(
+                    image: AssetImage(
+                      ImageHelper.wrapAssets('dialog_divider.png'),
                     ),
+                    fit: BoxFit.fill,
                   ),
-                  Text("我是内容内容内容"),
-                  Divider(
-                    height: 1,
-                  ),
-                  FlatButton(
-                    child: Text('取消'),
-                    onPressed: () {
-                      // Navigator.of(context).pop('cancel');
-                    },
-                  ),
-                  FlatButton(
-                    child: Text('确认'),
-                    onPressed: () {
-                      // Navigator.of(context).pop('ok');
-                    },
-                  ),
+                  action == null
+                      ? actions.length > 2
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: actionButtons,
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: actionButtons,
+                            )
+                      : action,
                 ]))),
       ],
     );

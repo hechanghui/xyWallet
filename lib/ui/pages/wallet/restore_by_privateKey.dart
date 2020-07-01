@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/dialog_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
@@ -81,7 +82,10 @@ class _PageState extends BaseWidgetState<RestoreByPriveKey> {
                       ],
                     ),
                     onTap: () {
-                      DialogHelper.showCommonDialog(context: context);
+                      DialogHelper.showCommonDialog(
+                          context: context,
+                          title: S.of(context).whatIsPrivateKey,
+                          content: S.of(context).privateKeyInfo);
                     },
                   )),
             ],

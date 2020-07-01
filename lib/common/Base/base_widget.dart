@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
@@ -139,21 +140,18 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void onCreate() {
-    // TODO: implement onCreate
     String classname = getClassName();
     print('${classname}创建');
   }
 
   @override
   void onPause() {
-    // TODO: implement onPause
     String classname = getClassName();
     print('${classname}onPause');
   }
 
   @override
   void onResume() {
-    // TODO: implement onResume
     String classname = getClassName();
     print('${classname}onResume');
   }

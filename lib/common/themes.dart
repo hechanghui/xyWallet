@@ -13,6 +13,9 @@ class ThemeColors {
   static const Color accentDartColor = Color(0xFF082E41);
   //次级标题前景
   static const Color accentDartFgColor = Color(0xFF3FA0B3);
+
+//推荐前景色（着重色
+  static const Color primaryFgColor = Color(0xFF00FF99);
 }
 
 class ThemeDimens {
@@ -24,6 +27,8 @@ class ThemeDimens {
   static const double pageBottomMargin = 35;
 //文本 大字号
   static const double txtLarge = 17;
+
+  static const double headline4 = 16;
 }
 
 class ThemeStyles {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/dialog_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/wallet/vm/restore_vm.dart';
@@ -79,7 +81,12 @@ class _RestoreByMnemonicState extends BaseWidgetState<RestoreByMnemonic> {
                         )
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      DialogHelper.showCommonDialog(
+                          context: context,
+                          title: S.of(context).whatIsMnemonic,
+                          content: S.of(context).mnemonicInfo);
+                    },
                   )),
             ],
           ),
