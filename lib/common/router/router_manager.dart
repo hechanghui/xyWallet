@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
+import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
@@ -22,6 +23,7 @@ class RouteName {
   static const String WALLET_CREATE_WITH_MNEMONIC_INPUT =
       'wallet/createWithMnemonicInput';
   static const String WALLET_RESTORE = 'wallet/restore';
+  static const String TRANSFER = 'wallet/transfer';
   static const String COMMUNITY_ASSETMANAGER = 'community/assetManager';
 }
 
@@ -44,6 +46,9 @@ class Router {
       case RouteName.WALLET_CREATE_WITH_MNEMONIC_INPUT:
         return CupertinoPageRoute(
             builder: (_) => CreateWithMnemonicInputPage(settings.arguments));
+      case RouteName.TRANSFER:
+        return CupertinoPageRoute(
+            builder: (_) => TransferPage());
 
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());

@@ -123,8 +123,8 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                     bottom: ThemeDimens.pageBottomMargin),
                 child: CommonButton(
                   child: Text(S.of(context).createWallet),
-                  onPressed: () =>
-                      Navigator.pushReplacementNamed(context, RouteName.tab),
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                      context, RouteName.tab, (Route route) => false),
                 ))
           ],
         );
