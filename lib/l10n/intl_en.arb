@@ -56,8 +56,8 @@
     "tabComSubTitle5":"无国界、无限制，最关键的，游戏必须公平",
     "tabComSubTitle6":"每个商业个体都有权进入全球金融体系",
     "tabComSubTitle7":"以AI之名，探索未来世界的科技魔力",
-    "tabComSubTitle8":"万物互联，处处皆价值",
-    "tabComSubTitle9":"万物互联，处处皆价值",
+    "tabComSubTitle8":"万物互联，处处皆价值  ",
+    "tabComSubTitle9":"万物互联，处处皆价值  ",
 
     "Address":"地址薄",
     "AccountManager":"账户管理",
@@ -79,7 +79,13 @@
     "AddAddressInput":"请输入地址",
 
     "AddressNote":"备注",
-    "AddressNoteInput":"请输入备注"
-    
+    "AddressNoteInput":"请输入备注",
 
+    "WalletListTitle":"账户管理",
+    "SwitchWalletTitle":"点击账户进行切换",
+    "ChargeAddress":"充币地址",
+    "Copy":"复制",
+    "Save":"保存",
+    "SaveSuccsee":"保存成功",
+    "CopySuccsee":"复制成功"
 }

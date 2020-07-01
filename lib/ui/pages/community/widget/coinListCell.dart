@@ -7,6 +7,7 @@ class TabComCell extends StatelessWidget {
   final String title;
   final String subTitle;
   final GestureTapCallback onPressed;
+  
   TabComCell({Key key, this.imageName, this.title, this.subTitle,this.onPressed})
       : super(key: key);
 
@@ -33,10 +34,10 @@ class TabComCell extends StatelessWidget {
           // width: 46,
 
           child: Image.asset(
-            ImageHelper.wrapAssets('tabCommunityIcon.png'),
+            ImageHelper.wrapAssets(imageName),
             fit: BoxFit.fill,
-            width: 38,
-            height: 38,
+            width: 35,
+            height: 35,
           ),
         ),
                 

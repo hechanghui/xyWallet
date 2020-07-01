@@ -46,13 +46,16 @@ class TabComCell extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.bottomLeft,
-          padding: EdgeInsets.only(left: 80, bottom: 16),
+          padding: EdgeInsets.only(left: 80, bottom: 16,right: 40),
+          
           child: Text(
             subTitle,
+                                  maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2
-                .copyWith(color: ThemeColors.labelLightColor),
+                .headline4
+                .copyWith(color: ThemeColors.labelLightColor,fontSize: 12),
           ),
         ),
       ]),

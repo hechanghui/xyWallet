@@ -6,8 +6,6 @@ import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 
-import 'addAddress.dart';
-
 class AdressManger extends BaseWidget {
   @override
   getState() {
@@ -23,10 +21,9 @@ class Pages extends BaseWidgetState<AdressManger> {
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
           IconButton(icon: Icon(Icons.add), onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddAdress()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
           }),
         ];
-
   }
   @override
   final List datas = [
@@ -36,7 +33,7 @@ class Pages extends BaseWidgetState<AdressManger> {
   ];
 
   Widget buildBodyWidget(BuildContext context) {
-    
+
 
     return Container(
       child: ListView.builder(

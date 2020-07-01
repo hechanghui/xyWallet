@@ -17,12 +17,21 @@ class TabWallet extends BaseWidget {
 }
 
 class Page extends BaseWidgetState<TabWallet> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  
+
   @override
-  String titleLabel(BuildContext context) => S.of(context).walletRestore;
-
-
+  List<Widget> buildAppBarAction(BuildContext context) {
+    return <Widget>[
+          IconButton(icon: Image.asset(ImageHelper.wrapAssets('icon_QR.png')),
+           onPressed: () {
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
+          }),
+                    IconButton(icon: Image.asset(ImageHelper.wrapAssets('icon_tip.png')),
+           onPressed: () {
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
+          }),
+        ];
+  }
+  
   @override
   Widget buildBodyWidget(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

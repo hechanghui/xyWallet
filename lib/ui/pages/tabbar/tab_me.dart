@@ -5,6 +5,7 @@ import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/me/adressManger.dart';
+import 'package:xy_wallet/ui/pages/me/walletList.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 
 
@@ -64,7 +65,7 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            print(S.of(context).AccountManager);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletList()));
           },
           child: TabMeCell(
             title: (S.of(context).AccountManager),

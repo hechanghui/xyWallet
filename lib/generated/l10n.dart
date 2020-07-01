@@ -583,20 +583,20 @@ class S {
     );
   }
 
-  /// `万物互联，处处皆价值`
+  /// `万物互联，处处皆价值  `
   String get tabComSubTitle8 {
     return Intl.message(
-      '万物互联，处处皆价值',
+      '万物互联，处处皆价值  ',
       name: 'tabComSubTitle8',
       desc: '',
       args: [],
     );
   }
 
-  /// `万物互联，处处皆价值`
+  /// `万物互联，处处皆价值  `
   String get tabComSubTitle9 {
     return Intl.message(
-      '万物互联，处处皆价值',
+      '万物互联，处处皆价值  ',
       name: 'tabComSubTitle9',
       desc: '',
       args: [],
@@ -758,6 +758,76 @@ class S {
     return Intl.message(
       '请输入备注',
       name: 'AddressNoteInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `账户管理`
+  String get WalletListTitle {
+    return Intl.message(
+      '账户管理',
+      name: 'WalletListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `点击账户进行切换`
+  String get SwitchWalletTitle {
+    return Intl.message(
+      '点击账户进行切换',
+      name: 'SwitchWalletTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `充币地址`
+  String get ChargeAddress {
+    return Intl.message(
+      '充币地址',
+      name: 'ChargeAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `复制`
+  String get Copy {
+    return Intl.message(
+      '复制',
+      name: 'Copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `保存`
+  String get Save {
+    return Intl.message(
+      '保存',
+      name: 'Save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `保存成功`
+  String get SaveSuccsee {
+    return Intl.message(
+      '保存成功',
+      name: 'SaveSuccsee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `复制成功`
+  String get CopySuccsee {
+    return Intl.message(
+      '复制成功',
+      name: 'CopySuccsee',
       desc: '',
       args: [],
     );
