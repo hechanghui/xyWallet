@@ -124,7 +124,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                 child: CommonButton(
                   child: Text(S.of(context).createWallet),
                   onPressed: () =>
-                      Navigator.pushReplacementNamed(context, RouteName.tab),
+                      Navigator.pushNamedAndRemoveUntil(context, RouteName.tab,(Route route) =>false),
                 ))
           ],
         );
