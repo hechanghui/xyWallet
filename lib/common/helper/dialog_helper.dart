@@ -53,7 +53,8 @@ class DialogHelper {
                   .copyWith(color: ThemeColors.primaryFgColor))
         ];
       }
-      if (actions?.firstWhere((e) => e.item3 == null, orElse: ()  => null) != null) {
+      if (actions?.firstWhere((e) => e.item3 == null, orElse: () => null) !=
+          null) {
         var actionsTmp = List<Tuple3<String, GestureTapCallback, TextStyle>>();
         actions.forEach((element) {
           var textStyle = element.item3;
@@ -120,14 +121,14 @@ class DialogHelper {
                   Container(
                     alignment: Alignment.topLeft,
                     child: title?.isEmpty == true
-                        ? Text(
+                        ? null
+                        : Text(
                             title,
                             style: TextStyle(
                                 fontSize: ThemeDimens.txtLarge,
                                 fontWeight: FontWeight.bold,
                                 color: ThemeColors.accentDartFgColor),
-                          )
-                        : null,
+                          ),
                   ),
                   Container(
                     alignment: Alignment.topLeft,
