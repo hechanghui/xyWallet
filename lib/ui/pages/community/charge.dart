@@ -142,7 +142,7 @@ class Pages extends BaseWidgetState<Charge> {
                 title: S.of(context).Copy,
                 onPressed: () {
                   Clipboard.setData(ClipboardData(text: address ?? ""));
-                  showToast(S.of(context).CopySuccsee);
+                  showToast(S.of(context).CopySuccess);
                 },
               ),
             ),

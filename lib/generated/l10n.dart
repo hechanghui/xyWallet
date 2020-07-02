@@ -974,20 +974,20 @@ class S {
   }
 
   /// `保存成功`
-  String get SaveSuccsee {
+  String get SaveSuccess {
     return Intl.message(
       '保存成功',
-      name: 'SaveSuccsee',
+      name: 'SaveSuccess',
       desc: '',
       args: [],
     );
   }
 
   /// `复制成功`
-  String get CopySuccsee {
+  String get CopySuccess {
     return Intl.message(
       '复制成功',
-      name: 'CopySuccsee',
+      name: 'CopySuccess',
       desc: '',
       args: [],
     );
@@ -1158,6 +1158,26 @@ class S {
     return Intl.message(
       '请再次输入确认',
       name: 'comfirmPWdInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认`
+  String get comfirm {
+    return Intl.message(
+      '确认',
+      name: 'comfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `取消`
+  String get cannel {
+    return Intl.message(
+      '取消',
+      name: 'cannel',
       desc: '',
       args: [],
     );
