@@ -212,29 +212,29 @@ class RectSliderTrackShape extends SliderTrackShape with BaseSliderTrackShape {
       context.canvas.drawRect(rightTrackSegment, rightTrackPaint);
   }
 
-  Rect getPreferredRect({
-    @required RenderBox parentBox,
-    Offset offset = Offset.zero,
-    @required SliderThemeData sliderTheme,
-    bool isEnabled = false,
-    bool isDiscrete = false,
-  }) {
-    assert(isEnabled != null);
-    assert(isDiscrete != null);
-    assert(parentBox != null);
-    assert(sliderTheme != null);
-    // final double thumbWidth = sliderTheme.thumbShape.getPreferredSize(isEnabled, isDiscrete).width;
-    // final double overlayWidth = sliderTheme.overlayShape.getPreferredSize(isEnabled, isDiscrete).width;
-    final double trackHeight = sliderTheme.trackHeight;
-    // assert(overlayWidth >= 0);
-    // assert(trackHeight >= 0);
-    // assert(parentBox.size.width >= overlayWidth);
-    assert(parentBox.size.height >= trackHeight);
+  // Rect getPreferredRect({
+  //   @required RenderBox parentBox,
+  //   Offset offset = Offset.zero,
+  //   @required SliderThemeData sliderTheme,
+  //   bool isEnabled = false,
+  //   bool isDiscrete = false,
+  // }) {
+  //   assert(isEnabled != null);
+  //   assert(isDiscrete != null);
+  //   assert(parentBox != null);
+  //   assert(sliderTheme != null);
+  //   // final double thumbWidth = sliderTheme.thumbShape.getPreferredSize(isEnabled, isDiscrete).width;
+  //   // final double overlayWidth = sliderTheme.overlayShape.getPreferredSize(isEnabled, isDiscrete).width;
+  //   final double trackHeight = sliderTheme.trackHeight;
+  //   // assert(overlayWidth >= 0);
+  //   // assert(trackHeight >= 0);
+  //   // assert(parentBox.size.width >= overlayWidth);
+  //   assert(parentBox.size.height >= trackHeight);
 
-    final double trackLeft = offset.dx;
-    final double trackTop =
-        offset.dy + (parentBox.size.height - trackHeight) / 2;
-    final double trackWidth = parentBox.size.width;
-    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
-  }
+  //   final double trackLeft = offset.dx;
+  //   final double trackTop =
+  //       offset.dy + (parentBox.size.height - trackHeight) / 2;
+  //   final double trackWidth = parentBox.size.width;
+  //   return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
+  // }
 }
