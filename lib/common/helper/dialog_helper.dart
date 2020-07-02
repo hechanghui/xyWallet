@@ -101,7 +101,7 @@ class DialogHelper {
         .toList();
     var dialog = SimpleDialog(
       backgroundColor: Colors.transparent,
-      title: title == null ? null : Text(title),
+      title: null,
       children: <Widget>[
         BackdropFilter(
             //背景滤镜器
@@ -120,15 +120,15 @@ class DialogHelper {
                 child: Column(children: [
                   Container(
                     alignment: Alignment.topLeft,
-                    child: title?.isEmpty == true
-                        ? null
-                        : Text(
+                    child: title?.isNotEmpty == true
+                        ? Text(
                             title,
                             style: TextStyle(
                                 fontSize: ThemeDimens.txtLarge,
                                 fontWeight: FontWeight.bold,
                                 color: ThemeColors.accentDartFgColor),
-                          ),
+                          )
+                        : null,
                   ),
                   Container(
                     alignment: Alignment.topLeft,

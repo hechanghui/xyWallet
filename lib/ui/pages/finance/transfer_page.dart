@@ -72,11 +72,14 @@ class _PageState extends BaseWidgetState<TransferPage> {
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
-              Divider(height: ThemeDimens.pageVerticalMargin * 1.5),
+              Divider(height: ThemeDimens.pageVerticalMargin * 2),
               CommonInputMinor(
                 placeholder: "请输入转账数量（最小单位为小数点后6位）",
               ),
               Divider(height: ThemeDimens.pageLRMargin),
+              CommonInputMinor(
+                placeholder: "请输入地址",
+              ),
               CommonInputLarge(
                 enabled: false,
                 title: S.of(context).longPressedMnemonicCopy,

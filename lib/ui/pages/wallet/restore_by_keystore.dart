@@ -78,7 +78,7 @@ class _PageState extends BaseWidgetState<RestoreByKeyStore> {
                     onTap: () {
                       DialogHelper.showCommonDialog(
                           context: context,
-                          title: S.of(context).whatIsKeystore,
+                          // title: S.of(context).whatIsKeystore,
                           content: S.of(context).keystoreInfo);
                     },
                   )),
