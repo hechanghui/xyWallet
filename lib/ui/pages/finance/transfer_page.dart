@@ -7,6 +7,8 @@ import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 
+import 'package:xy_wallet/common/extension/widget_ex.dart';
+
 class TransferPage extends BaseWidget {
   @override
   _PageState getState() => _PageState();
@@ -35,6 +37,16 @@ class _PageState extends BaseWidgetState<TransferPage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image.asset(
+                    ImageHelper.wrapAssets('usdt.png'),
+                    width: 26,
+                    // fit: BoxFit.contain,
+                  ),
+                  Text("USDT").padding(EdgeInsets.only(left: 4)),
+                ],
+              ),
               Text(
                 S.of(context).yourWalletMnemonic,
                 style: Theme.of(context).textTheme.headline1,

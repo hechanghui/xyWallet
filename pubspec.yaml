@@ -67,3 +67,7 @@ flutter:
 
 flutter_intl:
   enabled: true
+
+analyzer:
+    enable-experiment:
+        - extension-methods 
