@@ -5,6 +5,7 @@
 *.swp
 *.lock
 pubspec.lock
+*.lock
 .DS_Store
 .atom/
 .buildlog/
