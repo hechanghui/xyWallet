@@ -66,6 +66,7 @@ class _ContainerPageState extends State<TabsPage> {
     }
 
     eventBus.on<TabChangeEvent>().listen((event) {
+      
       setState(() {
         _selectIndex = event.index;
       });

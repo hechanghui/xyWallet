@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/ui/pages/community/charge.dart';
+import 'package:xy_wallet/ui/pages/community/coinList.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_button.dart';
-import 'package:xy_wallet/manager/progressManager/toast.dart';
-
-import 'package:xy_wallet/ui/widgets/common_button.dart';
-import 'package:xy_wallet/ui/base/base_page.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_cell.dart';
+import 'package:xy_wallet/common/extension/widget_ex.dart';
 
 class TabWallet extends BaseWidget {
   @override
@@ -20,6 +19,20 @@ class TabWallet extends BaseWidget {
 }
 
 class Page extends BaseWidgetState<TabWallet> {
+var coinName = 'USDT';
+@override
+  void initState() {
+    
+  super.initState();
+   eventBus.on<CoinChangeEvent>().listen((event) {
+      setState(() {
+        coinName = event.coinName;
+
+      });
+    });
+
+  }
+
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
@@ -35,6 +48,28 @@ class Page extends BaseWidgetState<TabWallet> {
           }),
     ];
   }
+
+
+
+// Image.asset(ImageHelper.wrapAssets('usdt.png')),
+@override
+Widget buildAppBarTitle(BuildContext context){
+
+var coin = Image.asset(ImageHelper.wrapAssets('usdt.png'));
+var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
+
+  return Container(
+    alignment: Alignment.centerLeft,
+    child: Row(children: <Widget>[
+      coin,
+      Text(coinName,style: Theme.of(context).textTheme.headline4,).padding(EdgeInsets.only(left:5)),
+      iconDown.padding(EdgeInsets.only(left:5))
+    ])
+  ).click(onTap: (){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CoinList(coinType: CoinType.ChooseCoin,)));
+  });
+}
+
 
   @override
   Widget buildBodyWidget(BuildContext context) {

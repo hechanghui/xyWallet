@@ -17,3 +17,9 @@ class TabChangeEvent{
   TabChangeEvent(this.index);
 }
 
+/// tab页面切换通知
+class CoinChangeEvent{
+  var coinName;
+  CoinChangeEvent(this.coinName);
+}
+
