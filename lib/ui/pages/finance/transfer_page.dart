@@ -23,7 +23,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
   Widget buildBodyWidget(BuildContext context) {
     var iconImg = Image.asset(
       ImageHelper.wrapAssets('usdt.png'),
-      width: 26,
+      width: 22,
       // fit: BoxFit.contain,
     );
     return Column(
@@ -81,7 +81,11 @@ class _PageState extends BaseWidgetState<TransferPage> {
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputMinor(
                 placeholder: "请输入地址",
-                right: iconImg,
+                right: Image.asset(
+                  ImageHelper.wrapAssets('icon_QR.png'),
+                  width: 22,
+                  // fit: BoxFit.contain,
+                ),
               ),
               CommonInputLarge(
                 enabled: false,
