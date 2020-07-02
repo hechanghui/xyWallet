@@ -9,6 +9,7 @@ import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 
 import 'package:xy_wallet/common/extension/widget_ex.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
+import 'package:xy_wallet/ui/widgets/common_slider.dart';
 
 class TransferPage extends BaseWidget {
   @override
@@ -16,6 +17,7 @@ class TransferPage extends BaseWidget {
 }
 
 class _PageState extends BaseWidgetState<TransferPage> {
+  double _value = 0;
   @override
   String titleLabel(BuildContext context) => S.current.transfer;
 
@@ -81,12 +83,43 @@ class _PageState extends BaseWidgetState<TransferPage> {
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputMinor(
                 placeholder: "请输入地址",
-                right: Image.asset(
-                  ImageHelper.wrapAssets('icon_QR.png'),
-                  width: 22,
-                  // fit: BoxFit.contain,
-                ),
+                right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'),
+                        width: 22, color: ThemeColors.primaryFgColor
+                        // fit: BoxFit.contain,
+                        )
+                    .click(onTap: () {
+                  print("扫码.....");
+                }),
               ),
+              Divider(height: ThemeDimens.pageLRMargin),
+              Text(
+                "发送地址",
+                style: ThemeStyles.getSubtitle2lLight(context),
+              ),
+              Text("0xdac17f958d2ee523a2206206994597c1")
+                  .padding(EdgeInsets.only(top: 4, bottom: 18))
+                  .border(Border(
+                      bottom: BorderSide(
+                          color: ThemeColors.labelLightColor,
+                          width: 1,
+                          style: BorderStyle.solid))),
+              Divider(height: ThemeDimens.pageLRMargin * 1.5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "手续费",
+                    style: ThemeStyles.getSubtitle2lLight(context),
+                  ),
+                  Text("0.001",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4
+                          .copyWith(fontWeight: FontWeight.bold)),
+                ],
+              ),
+              CommonSlider(),
+              Divider(height: ThemeDimens.pageLRMargin),
               CommonInputLarge(
                 enabled: false,
                 title: S.of(context).longPressedMnemonicCopy,
