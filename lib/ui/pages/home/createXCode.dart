@@ -33,10 +33,6 @@ class Pages extends BaseWidgetState<CreateXcode> {
             onChanged: (text) {xcode = text;},
           ).padding(EdgeInsets.only(top:20)),
 
-
-          
-
-
           Text('需要支付：5 XCode').padding(EdgeInsets.only(left:30,top:20)),
 
           Padding(
@@ -51,7 +47,6 @@ class Pages extends BaseWidgetState<CreateXcode> {
                       },
                 ),
                 ),
-
         ],
       ),
     );

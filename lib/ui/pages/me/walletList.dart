@@ -8,6 +8,8 @@ import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/walletListCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
+import 'meWalletManager.dart';
+
 class WalletList extends BaseWidget {
   @override
   getState() {
@@ -56,7 +58,7 @@ class Pages extends BaseWidgetState<WalletList> {
                       address: datas[index]['address'],
                       note: datas[index]['note'],
                       onPressedSet: () {
-                        print('Set');
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletManager()));
                       },
                     ));
                   })),
