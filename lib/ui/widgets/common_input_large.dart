@@ -5,6 +5,7 @@ import 'package:xy_wallet/common/themes.dart';
 class CommonInputLarge extends StatefulWidget {
   final String placeholder;
   final String title;
+  final Alignment titleAlignment;
   final bool autofocus;
   final TextEditingController controller;
   final TextInputAction textInputAction;
@@ -21,6 +22,7 @@ class CommonInputLarge extends StatefulWidget {
     Key key,
     this.placeholder,
     this.title,
+    this.titleAlignment: Alignment.center,
     this.autofocus,
     this.keyboardType,
     this.controller,
@@ -61,7 +63,7 @@ class CommonInputState extends State<CommonInputLarge> {
               widget.title == null
                   ? Container()
                   : Container(
-                      alignment: Alignment.center,
+                      alignment: widget.titleAlignment,
                       color: ThemeColors.accentDartColor,
                       margin: const EdgeInsets.symmetric(
                           vertical: 4, horizontal: 3),

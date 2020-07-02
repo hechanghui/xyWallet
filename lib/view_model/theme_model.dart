@@ -107,8 +107,8 @@ class ThemeModel with ChangeNotifier {
       cursorColor: accentColor,
 
       textTheme: themeData.textTheme.copyWith(
-          headline1: themeData.textTheme.headline1
-              .copyWith(fontSize: 22, color: accentColor),
+          headline1: themeData.textTheme.headline1.copyWith(
+              fontSize: 22, color: accentColor, fontWeight: FontWeight.bold),
           headline2: themeData.textTheme.headline2
               .copyWith(fontSize: 20, color: accentColor),
           headline3: themeData.textTheme.headline3

@@ -8,6 +8,7 @@ import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 
 import 'package:xy_wallet/common/extension/widget_ex.dart';
+import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
 
 class TransferPage extends BaseWidget {
   @override
@@ -38,40 +39,42 @@ class _PageState extends BaseWidgetState<TransferPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Image.asset(
                     ImageHelper.wrapAssets('usdt.png'),
                     width: 26,
                     // fit: BoxFit.contain,
                   ),
-                  Text("USDT",style: Theme.of(context).textTheme.headline4,).padding(EdgeInsets.only(left: 4)),
+                  Text(
+                    "USDT",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ).padding(EdgeInsets.only(left: 6, right: 8)),
+                  Text(
+                    "可用余额",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        .copyWith(color: ThemeColors.labelLightColor),
+                  )
                 ],
               ),
-              Text(
-                S.of(context).yourWalletMnemonic,
-                style: Theme.of(context).textTheme.headline1,
+              Container(
+                alignment: Alignment.topRight,
+                padding: EdgeInsets.only(
+                  top: 6,
+                ),
+                child: Text(
+                  "12333.0",
+                  style: Theme.of(context).textTheme.headline1,
+                ),
               ),
               Divider(height: ThemeDimens.pageVerticalMargin * 1.5),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(top: 3, end: 3),
-                    child: Image.asset(
-                      ImageHelper.wrapAssets('icon_tip.png'),
-                      width: 15,
-                      // fit: BoxFit.contain,
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      S.of(context).yourWalletMnemonicTip,
-                      style: ThemeStyles.getSubtitle1lLight(context),
-                    ),
-                  ),
-                ],
+              CommonInputMinor(
+                placeholder: "请输入转账数量（最小单位为小数点后6位）",
               ),
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputLarge(
