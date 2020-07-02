@@ -44,7 +44,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
                     width: 26,
                     // fit: BoxFit.contain,
                   ),
-                  Text("USDT").padding(EdgeInsets.only(left: 4)),
+                  Text("USDT",style: Theme.of(context).textTheme.headline4,).padding(EdgeInsets.only(left: 4)),
                 ],
               ),
               Text(
