@@ -21,6 +21,11 @@ class _PageState extends BaseWidgetState<TransferPage> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
+    var iconImg = Image.asset(
+      ImageHelper.wrapAssets('usdt.png'),
+      width: 26,
+      // fit: BoxFit.contain,
+    );
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
@@ -41,11 +46,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Image.asset(
-                    ImageHelper.wrapAssets('usdt.png'),
-                    width: 26,
-                    // fit: BoxFit.contain,
-                  ),
+                  iconImg,
                   Text(
                     "USDT",
                     style: Theme.of(context)
@@ -75,10 +76,12 @@ class _PageState extends BaseWidgetState<TransferPage> {
               Divider(height: ThemeDimens.pageVerticalMargin * 2),
               CommonInputMinor(
                 placeholder: "请输入转账数量（最小单位为小数点后6位）",
+                right: iconImg,
               ),
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputMinor(
                 placeholder: "请输入地址",
+                right: iconImg,
               ),
               CommonInputLarge(
                 enabled: false,

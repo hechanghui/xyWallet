@@ -36,7 +36,9 @@ class DialogHelper {
     BuildContext context,
     String title,
     String content,
+    double contentFontSize = ThemeDimens.txtLarge,
     Widget contentWidget,
+    Alignment alignment = Alignment.topLeft,
     List<Tuple3<String, GestureTapCallback, TextStyle>> actions,
     bool autoDisimiss = true,
     Widget action,
@@ -119,12 +121,12 @@ class DialogHelper {
                     EdgeInsets.only(left: 29, top: 43, right: 29, bottom: 30),
                 child: Column(children: [
                   Container(
-                    alignment: Alignment.topLeft,
+                    alignment: alignment,
                     child: title?.isNotEmpty == true
                         ? Text(
                             title,
                             style: TextStyle(
-                                fontSize: ThemeDimens.txtLarge,
+                                fontSize: contentFontSize,
                                 fontWeight: FontWeight.bold,
                                 color: ThemeColors.accentDartFgColor),
                           )
