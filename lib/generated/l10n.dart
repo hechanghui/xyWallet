@@ -1042,6 +1042,126 @@ class S {
       args: [],
     );
   }
+
+  /// `复制公钥`
+  String get CopyPublicKey {
+    return Intl.message(
+      '复制公钥',
+      name: 'CopyPublicKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `导出keystore`
+  String get ExportKeyStore {
+    return Intl.message(
+      '导出keystore',
+      name: 'ExportKeyStore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `导出私钥`
+  String get ExportPrivateKey {
+    return Intl.message(
+      '导出私钥',
+      name: 'ExportPrivateKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `修改密码`
+  String get ChangePWD {
+    return Intl.message(
+      '修改密码',
+      name: 'ChangePWD',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `删除账户`
+  String get DelAccount {
+    return Intl.message(
+      '删除账户',
+      name: 'DelAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `管理`
+  String get Manager {
+    return Intl.message(
+      '管理',
+      name: 'Manager',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `原密码`
+  String get oldPWd {
+    return Intl.message(
+      '原密码',
+      name: 'oldPWd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入原密码`
+  String get oldPWdInput {
+    return Intl.message(
+      '请输入原密码',
+      name: 'oldPWdInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `新密码`
+  String get newPWd {
+    return Intl.message(
+      '新密码',
+      name: 'newPWd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入新密码`
+  String get newPWdInput {
+    return Intl.message(
+      '请输入新密码',
+      name: 'newPWdInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认新密码`
+  String get comfirmPWd {
+    return Intl.message(
+      '确认新密码',
+      name: 'comfirmPWd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请再次输入确认`
+  String get comfirmPWdInput {
+    return Intl.message(
+      '请再次输入确认',
+      name: 'comfirmPWdInput',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

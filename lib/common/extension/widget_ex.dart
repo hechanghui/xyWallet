@@ -7,8 +7,9 @@ extension WidgetEx on Widget {
     return Padding(padding: padding, child: this);
   }
 
-  InkWell click([Alignment alignment = Alignment.center]) {
+  InkWell click({Alignment alignment = Alignment.center,GestureTapCallback onTap}) {
     return InkWell(
+      onTap: onTap,
       child: Align(
         alignment: alignment,
         widthFactor: 1.1,

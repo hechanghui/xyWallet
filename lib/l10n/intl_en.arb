@@ -115,5 +115,21 @@
 
     "CreateXcode":"创建X-Code",
     "CreateXcodeInput":"输入X-1码/X-2码-Code",
-    "Create":"创建"
+    "Create":"创建",
+
+    "CopyPublicKey":"复制公钥",
+    "ExportKeyStore":"导出keystore",
+    "ExportPrivateKey":"导出私钥",
+    "ChangePWD":"修改密码",
+    "DelAccount":"删除账户",
+    "Manager":"管理",
+
+    "oldPWd":"原密码",
+    "oldPWdInput":"请输入原密码",
+    "newPWd":"新密码",
+    "newPWdInput":"请输入新密码",
+    "comfirmPWd":"确认新密码",
+    "comfirmPWdInput":"请再次输入确认"
+
+    
 }
