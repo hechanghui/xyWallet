@@ -38,7 +38,7 @@ class Pages extends BaseWidgetState<CoinList> {
           title: 'ERC20-USDT',
           imageName: 'usdt.png',
           onPressed: () {
-             Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Charge()));
+             Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Charge(chargeType: ChargeType.Community,)));
           },
         ));
       },

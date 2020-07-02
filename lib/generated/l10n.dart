@@ -803,6 +803,16 @@ class S {
     );
   }
 
+  /// `收款`
+  String get Charge1 {
+    return Intl.message(
+      '收款',
+      name: 'Charge1',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `提币`
   String get WithDraw {
     return Intl.message(
@@ -933,6 +943,16 @@ class S {
     );
   }
 
+  /// `收款地址`
+  String get ChargeAddressLocal {
+    return Intl.message(
+      '收款地址',
+      name: 'ChargeAddressLocal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `复制`
   String get Copy {
     return Intl.message(
@@ -978,6 +998,46 @@ class S {
     return Intl.message(
       '请勿向上述地址充值任何非ERC20_USDT资产，否则资产将不可找回。\n您充值至上述地址后，需要整个网络节点得确认，12次网络确认后到账。\n最小充值金额：1USDT，小于最小金额得充值将不会上涨且无法退回。\n您的充值地址不会经常改变，可以重复充提；如有更改，我们会尽量通过网站公告或邮寄通知您。\n请务必确认设备或浏览器安全，防止信息被篡改或泄露。',
       name: 'ChargeTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。`
+  String get ChargeTip1 {
+    return Intl.message(
+      '如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。',
+      name: 'ChargeTip1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `创建X-Code`
+  String get CreateXcode {
+    return Intl.message(
+      '创建X-Code',
+      name: 'CreateXcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `输入X-1码/X-2码-Code`
+  String get CreateXcodeInput {
+    return Intl.message(
+      '输入X-1码/X-2码-Code',
+      name: 'CreateXcodeInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `创建`
+  String get Create {
+    return Intl.message(
+      '创建',
+      name: 'Create',
       desc: '',
       args: [],
     );

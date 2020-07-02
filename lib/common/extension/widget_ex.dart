@@ -11,8 +11,8 @@ extension WidgetEx on Widget {
     return InkWell(
       child: Align(
         alignment: alignment,
-        widthFactor: 1.4,
-        heightFactor: 1.4,
+        widthFactor: 1.1,
+        heightFactor: 1.1,
         child: this,
       ),
     );

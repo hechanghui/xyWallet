@@ -27,26 +27,27 @@ class Charge extends BaseWidget {
 }
 
 class Pages extends BaseWidgetState<Charge> {
+
+  
   @override
-  String titleLabel(BuildContext context) => S.of(context).Charge;
+  String titleLabel(BuildContext context) => widget.chargeType==ChargeType.Local?S.of(context).Charge1:S.of(context).Charge;
   
   @override
   Widget buildBodyWidget(BuildContext context) {
+
     var address = 'asdwqdhisuahdgiuqwgocbgq9dsadwqdw';
-    // var dad = widget.chargeType.index;
-    // switch (widget.chargeType) {
-    //   case ChargeType:
-        
-    //     break;
-    //   default:
-    // }
+    var tips = '';
+    var headTitle = '';
+    if(widget.chargeType == ChargeType.Local){
+      tips = S.of(context).ChargeTip1;
+      headTitle = S.of(context).ChargeAddressLocal;
+    }else if(widget.chargeType == ChargeType.Community){
+      tips = S.of(context).ChargeTip;
+      
+      headTitle = S.of(context).ChargeAddress;
+    }
 
-  // var sdqw=widget.addres;
-
-  //  Widget 
-
-
-
+    
 
     return Container(
       child: ListView(children: <Widget>[
@@ -97,7 +98,8 @@ class Pages extends BaseWidgetState<Charge> {
               alignment: Alignment.topCenter,
               padding: EdgeInsets.only(top: 30),
               child: Text(
-                S.of(context).ChargeAddress,
+                headTitle,
+                
                 style: Theme.of(context)
                     .textTheme
                     .headline4
@@ -173,19 +175,19 @@ class Pages extends BaseWidgetState<Charge> {
                       ])),
                 ])),
 
-            Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(
-                top: 30,
-              ),
-              child: Text(
-                S.of(context).ChargeAddress,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-            ),
+            // Container(
+            //   alignment: Alignment.topCenter,
+            //   padding: EdgeInsets.only(
+            //     top: 30,
+            //   ),
+            //   child: Text(
+            //     S.of(context).ChargeAddress,
+            //     style: Theme.of(context)
+            //         .textTheme
+            //         .headline4
+            //         .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
           ]),
           
         ),
@@ -205,7 +207,7 @@ class Pages extends BaseWidgetState<Charge> {
             Container(
               padding: EdgeInsets.only(left:34,right: 34),
                          child: Text(
-            S.of(context).ChargeTip,
+            tips,
             style: Theme.of(context)
                         .textTheme
                         .headline4

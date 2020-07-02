@@ -5,6 +5,8 @@ import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/ui/pages/community/charge.dart';
+import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_button.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 
@@ -100,7 +102,7 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      print('12131231231');
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Charge(chargeType: ChargeType.Local,)));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).receipt),
@@ -118,7 +120,7 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      print('12131231231');
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CreateXcode()));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX1),
@@ -127,7 +129,7 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      print('12131231231');
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CreateXcode()));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX2),
@@ -192,6 +194,8 @@ class Page extends BaseWidgetState<TabWallet> {
     );
   }
 }
+
+
 
 // class Page extends State<TabWallet> {
 //   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
