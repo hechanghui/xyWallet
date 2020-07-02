@@ -47,7 +47,7 @@ class Pages extends BaseWidgetState<WalletManager> {
           iconName: 'icon_copy.png',
           onPressed: () {
             Clipboard.setData(ClipboardData(text: address ?? ""));
-            showToast(S.of(context).CopySuccsee);
+            showToast(S.of(context).CopySuccess);
           },
         ),
         TabMeCell(

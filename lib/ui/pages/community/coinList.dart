@@ -1,6 +1,7 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/ui/pages/community/charge.dart';
 import 'package:xy_wallet/ui/pages/community/widget/AssetManagerHeadBt.dart';
 import 'package:xy_wallet/ui/pages/community/widget/coinListCell.dart';
@@ -28,8 +29,6 @@ class Pages extends BaseWidgetState<CoinList> {
   @override
   Widget buildBodyWidget(BuildContext context) {
     return Container(
-        // color: Colors.black12,
-        // height: (MediaQuery.of(context).size.height),
         child: ListView.builder(
       itemCount: 3,
       itemBuilder: (BuildContext context, int index) {
@@ -38,10 +37,31 @@ class Pages extends BaseWidgetState<CoinList> {
           title: 'ERC20-USDT',
           imageName: 'usdt.png',
           onPressed: () {
-             Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Charge(chargeType: ChargeType.Community,)));
+
+            switch (widget.coinType) {
+              case CoinType.Charge : 
+                            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => Charge(
+                      chargeType: ChargeType.Community,
+                    )));
+
+                    
+                break;
+                            
+              case CoinType.ChooseCoin : 
+                            Navigator.of(context).pop();
+                    eventBus.fire(CoinChangeEvent('ETH'));
+                    
+                break;
+                
+              default:
+            }
+
+
           },
         ));
       },
     ));
   }
 }
+

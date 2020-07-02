@@ -17,26 +17,39 @@ abstract class BasePageMixin {
     return hasAppBar
         ? new AppBar(
             backgroundColor: Colors.transparent,
-            title: title(context) ??
-                Text(
-                  titleLabel(context),
-                  style: new TextStyle(color: Colors.white),
-                ),
+            title: buildAppBarTitle(context),
             elevation: 0.0,
-            centerTitle: true,
+            centerTitle: centerTitle(context),
             actions:buildAppBarAction(context),
+            leading: buildAppBarLeading(context),
           )
         : null;
   }
 
+  bool centerTitle(BuildContext context) {
+    return true;
+  }
+
+  Widget buildAppBarTitle(BuildContext context) {
+    return title(context) ??
+                Text(
+                  titleLabel(context),
+                  style: new TextStyle(color: Colors.white),
+                );
+  }
 
   List<Widget> buildAppBarAction(BuildContext context) {
     return null;
   }
+
+  Widget buildAppBarLeading(BuildContext context) {
+    return null;
+  }
+
+
   hideInputKeyboard(BuildContext context)
   {
     FocusScope.of(context).requestFocus(FocusNode());
-
   }
 
   @protected

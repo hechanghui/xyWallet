@@ -42,6 +42,7 @@ class DialogHelper {
     List<Tuple3<String, GestureTapCallback, TextStyle>> actions,
     bool autoDisimiss = true,
     Widget action,
+    GestureTapCallback onPressed,
   }) {
     if (action == null) {
       if (context != null && actions == null) {
@@ -81,6 +82,8 @@ class DialogHelper {
       }
     }
 
+
+    
     var actionButtons = actions
         ?.map((e) => FlatButton(
               shape: CircleBorder(
