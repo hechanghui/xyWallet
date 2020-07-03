@@ -14,6 +14,8 @@ class CommonInputMinor extends StatefulWidget {
   final int minLines;
   final bool enabled;
   final Widget right;
+  final ValueChanged<String> onSubmitted;
+  final VoidCallback onEditingComplete;
 
   CommonInputMinor({
     Key key,
@@ -23,6 +25,8 @@ class CommonInputMinor extends StatefulWidget {
     this.textInputAction,
     this.focusNode,
     this.onChanged,
+    this.onSubmitted,
+    this.onEditingComplete,
     this.maxLength,
     this.maxLines,
     this.minLines: 1,
@@ -61,6 +65,9 @@ class CommonInputState extends State<CommonInputMinor> {
                 maxLength: widget.maxLength,
                 maxLines: widget.maxLines,
                 minLines: widget.minLines,
+                textInputAction: widget.textInputAction,
+                onSubmitted: widget.onSubmitted,
+                onEditingComplete: widget.onEditingComplete,
                 style: Theme.of(context)
                     .textTheme
                     .headline4

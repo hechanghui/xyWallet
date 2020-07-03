@@ -47,6 +47,8 @@
     "walletConfirmMnemonic":"确认你的钱包助记词",
     "walletMnemonicInputTip":"请按顺序点击助记词，验证您备份得助记词是否正确",
 
+    "all":"全部",
+
     "transfer":"转帐",
     "receipt":"收款",
     "transferRecord":"交易记录",
@@ -56,6 +58,8 @@
     "PowByAttraction":"引力挖矿",
     "PowBySplit":"裂变挖矿",
     "hintPleaseInput":"请输入",
+
+    "addrOrTxId":"地址/交易号",
 
     "transferConfirm":"确认转出",
     "transferLabelTitle":"公开信息（可选填）",

@@ -54,7 +54,7 @@ abstract class BaseFuntion {
   }
 
   Widget buildBodyWithStatus(BuildContext context) {
-    return Stack(
+    return  Stack(
       fit: StackFit.expand,
       children: <Widget>[
         _buildProviderWidget(context),

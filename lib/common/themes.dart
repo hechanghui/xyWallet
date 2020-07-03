@@ -16,6 +16,9 @@ class ThemeColors {
 
 //推荐前景色（着重色
   static const Color primaryFgColor = Color(0xFF00FF99);
+
+  static const Color red = Color(0xFFFF0077);
+  static const Color green = primaryFgColor;
 }
 
 class ThemeDimens {
@@ -42,7 +45,7 @@ class ThemeStyles {
   static TextStyle getSubtitle2lLight(BuildContext context) {
     return Theme.of(context)
         .textTheme
-        .subtitle1
+        .subtitle2
         .copyWith(color: ThemeColors.accentDartFgColor);
   }
 }

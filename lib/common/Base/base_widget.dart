@@ -44,6 +44,18 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   }
 
   @override
+  Widget build(BuildContext context) {
+    if (!_onResumed) {
+      //说明是 初次加载
+      if (NavigatorManger().isTopPage(this)) {
+        _onResumed = true;
+        onResume();
+      }
+    }
+    return buildPageContainer(context);
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     String classname = getClassName();
@@ -78,18 +90,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
       }
     }
     super.deactivate();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (!_onResumed) {
-      //说明是 初次加载
-      if (NavigatorManger().isTopPage(this)) {
-        _onResumed = true;
-        onResume();
-      }
-    }
-    return buildPageContainer(context);
   }
 
   @override

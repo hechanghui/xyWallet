@@ -493,6 +493,16 @@ class S {
     );
   }
 
+  /// `全部`
+  String get all {
+    return Intl.message(
+      '全部',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `转帐`
   String get transfer {
     return Intl.message(
@@ -578,6 +588,16 @@ class S {
     return Intl.message(
       '请输入',
       name: 'hintPleaseInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址/交易号`
+  String get addrOrTxId {
+    return Intl.message(
+      '地址/交易号',
+      name: 'addrOrTxId',
       desc: '',
       args: [],
     );

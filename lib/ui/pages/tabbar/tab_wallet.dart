@@ -19,18 +19,15 @@ class TabWallet extends BaseWidget {
 }
 
 class Page extends BaseWidgetState<TabWallet> {
-var coinName = 'USDT';
-@override
+  var coinName = 'USDT';
+  @override
   void initState() {
-    
-  super.initState();
-   eventBus.on<CoinChangeEvent>().listen((event) {
+    super.initState();
+    eventBus.on<CoinChangeEvent>().listen((event) {
       setState(() {
         coinName = event.coinName;
-
       });
     });
-
   }
 
   @override
@@ -49,27 +46,29 @@ var coinName = 'USDT';
     ];
   }
 
-
-
 // Image.asset(ImageHelper.wrapAssets('usdt.png')),
-@override
-Widget buildAppBarTitle(BuildContext context){
+  @override
+  Widget buildAppBarTitle(BuildContext context) {
+    var coin = Image.asset(ImageHelper.wrapAssets('usdt.png'));
+    var iconDown =
+        Image.asset(ImageHelper.wrapAssets('icon_down.png'), width: 15);
 
-var coin = Image.asset(ImageHelper.wrapAssets('usdt.png'));
-var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
-
-  return Container(
-    alignment: Alignment.centerLeft,
-    child: Row(children: <Widget>[
-      coin,
-      Text(coinName,style: Theme.of(context).textTheme.headline4,).padding(EdgeInsets.only(left:5)),
-      iconDown.padding(EdgeInsets.only(left:5))
-    ])
-  ).click(onTap: (){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CoinList(coinType: CoinType.ChooseCoin,)));
-  });
-}
-
+    return Container(
+        alignment: Alignment.centerLeft,
+        child: Row(children: <Widget>[
+          coin,
+          Text(
+            coinName,
+            style: Theme.of(context).textTheme.headline4,
+          ).padding(EdgeInsets.only(left: 5)),
+          iconDown.padding(EdgeInsets.only(left: 5))
+        ])).click(onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CoinList(
+                coinType: CoinType.ChooseCoin,
+              )));
+    });
+  }
 
   @override
   Widget buildBodyWidget(BuildContext context) {
@@ -137,7 +136,10 @@ var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
                   ),
                   InkWell(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Charge(chargeType: ChargeType.Local,)));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Charge(
+                                chargeType: ChargeType.Local,
+                              )));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).receipt),
@@ -146,7 +148,7 @@ var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
                   ),
                   InkWell(
                     onTap: () {
-                      print('12131231231');
+                      Navigator.pushNamed(context, RouteName.TRANSACTION_RECOR);
                     },
                     child: TabWalletBt(
                       title: (S.of(context).transferRecord),
@@ -155,7 +157,8 @@ var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CreateXcode()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CreateXcode()));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX1),
@@ -164,7 +167,8 @@ var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CreateXcode()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CreateXcode()));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX2),
@@ -229,8 +233,6 @@ var iconDown = Image.asset(ImageHelper.wrapAssets('icon_down.png'),width:15);
     );
   }
 }
-
-
 
 // class Page extends State<TabWallet> {
 //   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
