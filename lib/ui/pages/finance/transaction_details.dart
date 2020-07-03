@@ -8,23 +8,14 @@ import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_list.dart';
 import 'package:xy_wallet/ui/pages/finance/vm/transaction_record_vm.dart';
 
-class TransactionRecordPage extends BaseWidget {
+class TransactionDetailsPage extends BaseWidget {
   @override
   _PageState getState() => _PageState();
 }
 
-class _PageState extends BaseWidgetState<TransactionRecordPage>
-    with SingleTickerProviderStateMixin {
+class _PageState extends BaseWidgetState<TransactionDetailsPage> {
   @override
   String titleLabel(BuildContext context) => S.current.transferRecord;
-
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(vsync: this, length: 3);
-  }
 
   @override
   Widget buildBodyWidget(BuildContext context) {
@@ -36,25 +27,35 @@ class _PageState extends BaseWidgetState<TransactionRecordPage>
       TransactionListPage(TransactionType.TRANSFER, viewModel),
       TransactionListPage(TransactionType.RECEIPT, viewModel),
     ]);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        TabBar(
-            labelColor: Theme.of(context).textTheme.subtitle1.color,
-            unselectedLabelColor: ThemeStyles.getSubtitle1lLight(context).color,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
-            controller: _tabController,
-            tabs: tabLabels.map((e) => Tab(text: e)).toList()),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            physics: ScrollPhysics(),
-            children: subPages,
+    return ProviderWidget<TransactionRecordViewModel>(
+      model: viewModel,
+      builder: (conntext, model, child) {
+        return Form(
+          onWillPop: () async {
+            return !model.isBusy;
+          },
+          child: child,
+        );
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          TabBar(
+              labelColor: Theme.of(context).textTheme.subtitle1.color,
+              unselectedLabelColor:
+                  ThemeStyles.getSubtitle1lLight(context).color,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
+              tabs: tabLabels.map((e) => Tab(text: e)).toList()),
+          Expanded(
+            child: TabBarView(
+              physics: ScrollPhysics(),
+              children: subPages,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

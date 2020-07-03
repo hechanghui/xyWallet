@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
+import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
@@ -32,7 +33,6 @@ class RouteName {
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-   
     switch (settings.name) {
       case RouteName.splash:
         return NoAnimRouteBuilder(SplashPage());
@@ -54,6 +54,8 @@ class Router {
         return CupertinoPageRoute(builder: (_) => TransferPage());
       case RouteName.TRANSACTION_RECOR:
         return CupertinoPageRoute(builder: (_) => TransactionRecordPage());
+      case RouteName.TRANSACTION_DETAILS:
+        return CupertinoPageRoute(builder: (_) => TransactionDetailsPage());
 
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());
