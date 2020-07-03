@@ -82,8 +82,6 @@ class DialogHelper {
       }
     }
 
-
-    
     var actionButtons = actions
         ?.map((e) => FlatButton(
               shape: CircleBorder(
@@ -122,47 +120,55 @@ class DialogHelper {
                 alignment: Alignment.center,
                 padding:
                     EdgeInsets.only(left: 29, top: 43, right: 29, bottom: 30),
-                child: Column(children: [
-                  Container(
-                    alignment: alignment,
-                    child: title?.isNotEmpty == true
-                        ? Text(
-                            title,
-                            style: TextStyle(
-                                fontSize: ThemeDimens.txtLarge,
-                                fontWeight: FontWeight.bold,
-                                color: ThemeColors.accentDartFgColor),
-                          )
-                        : null,
-                  ),
-                  Container(
-                    alignment: alignment,
-                    margin: EdgeInsets.only(
-                        top: title?.isNotEmpty == true ? 22 : 0, bottom: 22),
-                    child: contentWidget ??
-                        Text(
-                          content ?? "",
-                          style: contentTextStyle,
+                child: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                    child: Column(children: [
+                      Container(
+                        alignment: alignment,
+                        child: title?.isNotEmpty == true
+                            ? Text(
+                                title,
+                                style: TextStyle(
+                                    fontSize: ThemeDimens.txtLarge,
+                                    fontWeight: FontWeight.bold,
+                                    color: ThemeColors.accentDartFgColor),
+                              )
+                            : null,
+                      ),
+                      Container(
+                        alignment: alignment,
+                        margin: EdgeInsets.only(
+                            top: title?.isNotEmpty == true ? 22 : 0,
+                            bottom: 22),
+                        child: contentWidget ??
+                            Text(
+                              content ?? "",
+                              style: contentTextStyle,
+                            ),
+                      ),
+                      Image(
+                        image: AssetImage(
+                          ImageHelper.wrapAssets('dialog_divider.png'),
                         ),
-                  ),
-                  Image(
-                    image: AssetImage(
-                      ImageHelper.wrapAssets('dialog_divider.png'),
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                  action == null
-                      ? actions.length > 2
-                          ? Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: actionButtons,
-                            )
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: actionButtons,
-                            )
-                      : action,
-                ]))),
+                        fit: BoxFit.fill,
+                      ),
+                      action == null
+                          ? actions.length > 2
+                              ? Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: actionButtons,
+                                )
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: actionButtons,
+                                )
+                          : action,
+                    ])))),
       ],
     );
 

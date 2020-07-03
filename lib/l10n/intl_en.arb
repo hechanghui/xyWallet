@@ -29,6 +29,7 @@
     "setPwd": "设置密码",
     "keystorePwd": "Keystore密码",
     "hintInputPwd": "请输入密码",
+    "inputPwd": "输入密码",
     "confirmPwd": "确认密码",
     "whatIsMnemonic": "什么是助记词",
     "whatIsKeystore": "什么是Keystore",
@@ -54,6 +55,14 @@
     "PowByPower":"动力挖矿",
     "PowByAttraction":"引力挖矿",
     "PowBySplit":"裂变挖矿",
+    "hintPleaseInput":"请输入",
+
+    "transferConfirm":"确认转出",
+    "transferLabelTitle":"公开信息（可选填）",
+    "transferLabelTip":"限500字符内，此信息会显示在交易中。\\r\\n请不要输入私密信息。",
+    "fee":"手续费",
+    "addrSend":"发送地址",
+    "transferCountTip":"请输入转账数量（最小单位为小数点后6位）",
     
     "tabComTitle1":"跨链资产管理",
     "tabComTitle2":"粒子分裂",

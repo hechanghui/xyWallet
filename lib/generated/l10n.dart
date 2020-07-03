@@ -323,6 +323,16 @@ class S {
     );
   }
 
+  /// `输入密码`
+  String get inputPwd {
+    return Intl.message(
+      '输入密码',
+      name: 'inputPwd',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `确认密码`
   String get confirmPwd {
     return Intl.message(
@@ -558,6 +568,76 @@ class S {
     return Intl.message(
       '裂变挖矿',
       name: 'PowBySplit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入`
+  String get hintPleaseInput {
+    return Intl.message(
+      '请输入',
+      name: 'hintPleaseInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认转出`
+  String get transferConfirm {
+    return Intl.message(
+      '确认转出',
+      name: 'transferConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `公开信息（可选填）`
+  String get transferLabelTitle {
+    return Intl.message(
+      '公开信息（可选填）',
+      name: 'transferLabelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `限500字符内，此信息会显示在交易中。\r\n请不要输入私密信息。`
+  String get transferLabelTip {
+    return Intl.message(
+      '限500字符内，此信息会显示在交易中。\r\n请不要输入私密信息。',
+      name: 'transferLabelTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `手续费`
+  String get fee {
+    return Intl.message(
+      '手续费',
+      name: 'fee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `发送地址`
+  String get addrSend {
+    return Intl.message(
+      '发送地址',
+      name: 'addrSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入转账数量（最小单位为小数点后6位）`
+  String get transferCountTip {
+    return Intl.message(
+      '请输入转账数量（最小单位为小数点后6位）',
+      name: 'transferCountTip',
       desc: '',
       args: [],
     );

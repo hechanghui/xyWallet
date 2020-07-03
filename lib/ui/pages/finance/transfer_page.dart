@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/dialog_helper.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
@@ -17,7 +19,7 @@ class TransferPage extends BaseWidget {
 }
 
 class _PageState extends BaseWidgetState<TransferPage> {
-  double _value = 0;
+  double _valueFee = 10;
   @override
   String titleLabel(BuildContext context) => S.current.transfer;
 
@@ -77,12 +79,12 @@ class _PageState extends BaseWidgetState<TransferPage> {
               ),
               Divider(height: ThemeDimens.pageVerticalMargin * 2),
               CommonInputMinor(
-                placeholder: "请输入转账数量（最小单位为小数点后6位）",
+                placeholder: S.current.transferCountTip,
                 right: iconImg,
               ),
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputMinor(
-                placeholder: "请输入地址",
+                placeholder: S.current.AddAddressInput,
                 right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'),
                         width: 22, color: ThemeColors.primaryFgColor
                         // fit: BoxFit.contain,
@@ -93,7 +95,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
               ),
               Divider(height: ThemeDimens.pageLRMargin),
               Text(
-                "发送地址",
+                S.current.addrSend,
                 style: ThemeStyles.getSubtitle2lLight(context),
               ),
               Text("0xdac17f958d2ee523a2206206994597c1")
@@ -108,47 +110,32 @@ class _PageState extends BaseWidgetState<TransferPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "手续费",
+                    S.current.fee,
                     style: ThemeStyles.getSubtitle2lLight(context),
                   ),
-                  Text("0.001",
+                  Text("${_valueFee}",
                       style: Theme.of(context)
                           .textTheme
                           .headline4
                           .copyWith(fontWeight: FontWeight.bold)),
                 ],
               ),
-              CommonSlider(),
+              CommonSlider(
+                value: _valueFee,
+                onChanged: (double) {
+                  setState(() {
+                    _valueFee = double.floorToDouble(); //转化成double
+                  });
+                },
+              ),
               Divider(height: ThemeDimens.pageLRMargin),
               CommonInputLarge(
                 enabled: false,
-                title: S.of(context).longPressedMnemonicCopy,
-                controller: TextEditingController(
-                    text:
-                        "hello  pay   sonw  mom  prpper limb   bleak  merit  step  believe industry  artwork"),
+                title: S.current.transferLabelTitle,
+                controller:
+                    TextEditingController(text: S.current.transferLabelTip),
               ),
               Divider(height: ThemeDimens.pageLRMargin * 1.5),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(top: 3, end: 3),
-                    child: Image.asset(
-                      ImageHelper.wrapAssets('icon_tip.png'),
-                      width: 15,
-                      // fit: BoxFit.contain,
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      S.of(context).walletMnemonicTip,
-                      style: ThemeStyles.getSubtitle1lLight(context),
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
@@ -158,11 +145,26 @@ class _PageState extends BaseWidgetState<TransferPage> {
                 right: ThemeDimens.pageLRMargin,
                 bottom: ThemeDimens.pageBottomMargin),
             child: CommonButton(
-              child: Text(S.of(context).nextStep),
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, RouteName.tab),
+              child: Text(S.of(context).transferConfirm),
+              onPressed: () => showPwdDialog(),
             ))
       ],
     );
+  }
+
+  showPwdDialog() {
+    DialogHelper.showCommonDialog(
+        context: context,
+        alignment: Alignment.center,
+        title: S.current.inputPwd,
+        contentWidget: CommonInputMinor(
+          placeholder: S.current.hintPleaseInput,
+        ),
+        actions: [
+          Tuple3(S.current.cannel, null, null),
+          Tuple3(S.current.comfirm, () {
+            Navigator.of(context).pop();
+          }, null)
+        ]);
   }
 }
