@@ -18,23 +18,25 @@ class _PageState extends BaseWidgetState<TransactionRecordPage>
   @override
   String titleLabel(BuildContext context) => S.current.transferRecord;
 
+  TransactionRecordViewModel _viewModel;
+
   TabController _tabController;
 
   @override
   void initState() {
     super.initState();
     _tabController = new TabController(vsync: this, length: 3);
+    _viewModel = TransactionRecordViewModel();
   }
 
   @override
   Widget buildBodyWidget(BuildContext context) {
     var tabLabels = List.of(
         [S.of(context).all, S.of(context).transfer, S.of(context).receipt]);
-    final viewModel = TransactionRecordViewModel();
     var subPages = List.of([
-      TransactionListPage(TransactionType.ALL, viewModel),
-      TransactionListPage(TransactionType.TRANSFER, viewModel),
-      TransactionListPage(TransactionType.RECEIPT, viewModel),
+      TransactionListPage(TransactionType.ALL, _viewModel),
+      TransactionListPage(TransactionType.TRANSFER, _viewModel),
+      TransactionListPage(TransactionType.RECEIPT, _viewModel),
     ]);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

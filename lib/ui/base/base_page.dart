@@ -20,7 +20,7 @@ abstract class BasePageMixin {
             title: buildAppBarTitle(context),
             elevation: 0.0,
             centerTitle: centerTitle(context),
-            actions:buildAppBarAction(context),
+            actions: buildAppBarAction(context),
             leading: buildAppBarLeading(context),
           )
         : null;
@@ -32,10 +32,10 @@ abstract class BasePageMixin {
 
   Widget buildAppBarTitle(BuildContext context) {
     return title(context) ??
-                Text(
-                  titleLabel(context),
-                  style: new TextStyle(color: Colors.white),
-                );
+        Text(
+          titleLabel(context),
+          style: new TextStyle(color: Colors.white),
+        );
   }
 
   List<Widget> buildAppBarAction(BuildContext context) {
@@ -46,9 +46,7 @@ abstract class BasePageMixin {
     return null;
   }
 
-
-  hideInputKeyboard(BuildContext context)
-  {
+  hideInputKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 

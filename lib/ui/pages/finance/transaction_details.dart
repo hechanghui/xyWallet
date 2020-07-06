@@ -7,6 +7,7 @@ import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_list.dart';
 import 'package:xy_wallet/ui/pages/finance/vm/transaction_record_vm.dart';
+import 'package:xy_wallet/common/extension/widget_ex.dart';
 
 class TransactionDetailsPage extends BaseWidget {
   @override
@@ -19,43 +20,14 @@ class _PageState extends BaseWidgetState<TransactionDetailsPage> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    var tabLabels = List.of(
-        [S.of(context).all, S.of(context).transfer, S.of(context).receipt]);
-    final viewModel = TransactionRecordViewModel();
-    var subPages = List.of([
-      TransactionListPage(TransactionType.ALL, viewModel),
-      TransactionListPage(TransactionType.TRANSFER, viewModel),
-      TransactionListPage(TransactionType.RECEIPT, viewModel),
-    ]);
-    return ProviderWidget<TransactionRecordViewModel>(
-      model: viewModel,
-      builder: (conntext, model, child) {
-        return Form(
-          onWillPop: () async {
-            return !model.isBusy;
-          },
-          child: child,
-        );
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          TabBar(
-              labelColor: Theme.of(context).textTheme.subtitle1.color,
-              unselectedLabelColor:
-                  ThemeStyles.getSubtitle1lLight(context).color,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
-              tabs: tabLabels.map((e) => Tab(text: e)).toList()),
-          Expanded(
-            child: TabBarView(
-              physics: ScrollPhysics(),
-              children: subPages,
-            ),
-          ),
-        ],
-      ),
-    );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [],
+    ).padding(EdgeInsets.only(
+        left: ThemeDimens.pageLRMargin,
+        right: ThemeDimens.pageLRMargin,
+        top: ThemeDimens.pageVerticalMargin * 1.5,
+        bottom: ThemeDimens.pageBottomMargin));
   }
 }

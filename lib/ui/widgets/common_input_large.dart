@@ -94,6 +94,7 @@ class CommonInputState extends State<CommonInputLarge> {
                           .headline4
                           .copyWith(fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
+                          hintMaxLines: widget.maxLines,
                           hintText: widget.placeholder,
                           hintStyle: Theme.of(context)
                               .textTheme

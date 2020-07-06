@@ -34,109 +34,111 @@ class _PageState extends BaseWidgetState<TransferPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          reverse: false,
-          padding: EdgeInsets.only(
-            top: ThemeDimens.pageVerticalMargin * 2,
-            left: ThemeDimens.pageLRMargin,
-            right: ThemeDimens.pageLRMargin,
-          ),
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  iconImg,
-                  Text(
-                    "USDT",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ).padding(EdgeInsets.only(left: 6, right: 8)),
-                  Text(
-                    "可用余额",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4
-                        .copyWith(color: ThemeColors.labelLightColor),
-                  )
-                ],
-              ),
-              Container(
-                alignment: Alignment.topRight,
-                padding: EdgeInsets.only(
-                  top: 6,
-                ),
-                child: Text(
-                  "12333.0",
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              Divider(height: ThemeDimens.pageVerticalMargin * 2),
-              CommonInputMinor(
-                placeholder: S.current.transferCountTip,
-                right: iconImg,
-              ),
-              Divider(height: ThemeDimens.pageLRMargin),
-              CommonInputMinor(
-                placeholder: S.current.AddAddressInput,
-                right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'),
-                        width: 22, color: ThemeColors.primaryFgColor
-                        // fit: BoxFit.contain,
-                        )
-                    .click(onTap: () {
-                  print("扫码.....");
-                }),
-              ),
-              Divider(height: ThemeDimens.pageLRMargin),
-              Text(
-                S.current.addrSend,
-                style: ThemeStyles.getSubtitle2lLight(context),
-              ),
-              Text("0xdac17f958d2ee523a2206206994597c1")
-                  .padding(EdgeInsets.only(top: 4, bottom: 18))
-                  .border(Border(
-                      bottom: BorderSide(
-                          color: ThemeColors.labelLightColor,
-                          width: 1,
-                          style: BorderStyle.solid))),
-              Divider(height: ThemeDimens.pageLRMargin * 1.5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    S.current.fee,
-                    style: ThemeStyles.getSubtitle2lLight(context),
-                  ),
-                  Text("${_valueFee}",
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            reverse: false,
+            padding: EdgeInsets.only(
+              top: ThemeDimens.pageVerticalMargin * 2,
+              left: ThemeDimens.pageLRMargin,
+              right: ThemeDimens.pageLRMargin,
+            ),
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    iconImg,
+                    Text(
+                      "USDT",
                       style: Theme.of(context)
                           .textTheme
                           .headline4
-                          .copyWith(fontWeight: FontWeight.bold)),
-                ],
-              ),
-              CommonSlider(
-                value: _valueFee,
-                onChanged: (double) {
-                  setState(() {
-                    _valueFee = double.floorToDouble(); //转化成double
-                  });
-                },
-              ),
-              Divider(height: ThemeDimens.pageLRMargin),
-              CommonInputLarge(
-                enabled: false,
-                title: S.current.transferLabelTitle,
-                controller:
-                    TextEditingController(text: S.current.transferLabelTip),
-              ),
-              Divider(height: ThemeDimens.pageLRMargin * 1.5),
-            ],
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ).padding(EdgeInsets.only(left: 6, right: 8)),
+                    Text(
+                      "可用余额",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4
+                          .copyWith(color: ThemeColors.labelLightColor),
+                    )
+                  ],
+                ),
+                Container(
+                  alignment: Alignment.topRight,
+                  padding: EdgeInsets.only(
+                    top: 6,
+                  ),
+                  child: Text(
+                    "12333.0",
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                ),
+                Divider(height: ThemeDimens.pageVerticalMargin * 2),
+                CommonInputMinor(
+                  placeholder: S.current.transferCountTip,
+                  right: iconImg,
+                ),
+                Divider(height: ThemeDimens.pageLRMargin),
+                CommonInputMinor(
+                  placeholder: S.current.AddAddressInput,
+                  right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'),
+                          width: 22, color: ThemeColors.primaryFgColor
+                          // fit: BoxFit.contain,
+                          )
+                      .click(onTap: () {
+                    print("扫码.....");
+                  }),
+                ),
+                Divider(height: ThemeDimens.pageLRMargin),
+                Text(
+                  S.current.addrSend,
+                  style: ThemeStyles.getSubtitle2lLight(context),
+                ),
+                Text("0xdac17f958d2ee523a2206206994597c1")
+                    .padding(EdgeInsets.only(top: 4, bottom: 18))
+                    .border(Border(
+                        bottom: BorderSide(
+                            color: ThemeColors.labelLightColor,
+                            width: 1,
+                            style: BorderStyle.solid))),
+                Divider(height: ThemeDimens.pageLRMargin * 1.5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      S.current.fee,
+                      style: ThemeStyles.getSubtitle2lLight(context),
+                    ),
+                    Text("${_valueFee}",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4
+                            .copyWith(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                CommonSlider(
+                  value: _valueFee,
+                  onChanged: (double) {
+                    setState(() {
+                      _valueFee = double.floorToDouble(); //转化成double
+                    });
+                  },
+                ),
+                Divider(height: ThemeDimens.pageLRMargin),
+                CommonInputLarge(
+                  title: S.current.transferLabelTitle,
+                  placeholder: S.current.transferLabelTip,
+                  // controller:
+                  //     TextEditingController(text: S.current.transferLabelTip),
+                ),
+                Divider(height: ThemeDimens.pageLRMargin * 1.5),
+              ],
+            ),
           ),
         ),
         Padding(
@@ -144,10 +146,11 @@ class _PageState extends BaseWidgetState<TransferPage> {
                 left: ThemeDimens.pageLRMargin,
                 right: ThemeDimens.pageLRMargin,
                 bottom: ThemeDimens.pageBottomMargin),
-            child: CommonButton(
+            child:  
+            CommonButton(
               child: Text(S.of(context).transferConfirm),
               onPressed: () => showPwdDialog(),
-            ))
+            )),
       ],
     );
   }

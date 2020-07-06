@@ -65,13 +65,14 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   @override
   void didUpdateWidget(BaseWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    hideInputKeyboard(context);
+    // hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} didUpdateWidget');
   }
 
   @override
   void deactivate() {
+    hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} deactivate');
 
