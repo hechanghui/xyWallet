@@ -85,7 +85,12 @@ class _ContainerPageState extends BaseWidgetState<TabsPage> {
       },
       // iconSize: 26, //图标大小
       currentIndex: _selectIndex,
-      selectedLabelStyle: Theme.of(context).textTheme.headline5,
+      selectedItemColor: ThemeColors.accentColor,
+      selectedLabelStyle: Theme.of(context)
+          .textTheme
+          .headline5
+          .copyWith(color: ThemeColors.accentColor),
+      unselectedItemColor: ThemeColors.labelLightColor,
       unselectedLabelStyle: Theme.of(context)
           .textTheme
           .headline5
