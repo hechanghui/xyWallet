@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+    
+  flutter_spinkit: ^4.1.2+1
 
   package_info: ^0.4.1
 
