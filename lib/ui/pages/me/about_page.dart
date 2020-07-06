@@ -22,7 +22,18 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
     return Column(
       children: <Widget>[
         Text(model.packageInfo.appName),
-        Text(model.packageInfo.version),
+        InkWell(
+          onTap: () {
+            //           VoidCallback showWeuiToast({
+            // @required BuildContext context,
+            // Widget message,
+            // stopEvent = true,
+            // bool backButtonClose,
+            // Alignment alignment
+            // })
+          },
+          child: Text(model.packageInfo.version),
+        )
       ],
     );
   }

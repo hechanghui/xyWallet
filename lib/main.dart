@@ -43,6 +43,7 @@ class App extends StatelessWidget {
             headerBuilder: () =>
                 MaterialClassicHeader(), // 配置默认头部指示器,假如你每个页面的头部指示器都一样的话,你需要设置这个
             footerBuilder: () => ClassicFooter(), // 配置默认底部指示器
+            // footerBuilder: ()=>BallPulseFooter(),
             headerTriggerDistance: 80.0, // 头部触发刷新的越界距离
             springDescription: SpringDescription(
                 stiffness: 170,
