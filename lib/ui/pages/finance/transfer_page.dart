@@ -146,8 +146,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
                 left: ThemeDimens.pageLRMargin,
                 right: ThemeDimens.pageLRMargin,
                 bottom: ThemeDimens.pageBottomMargin),
-            child:  
-            CommonButton(
+            child: CommonButton(
               child: Text(S.of(context).transferConfirm),
               onPressed: () => showPwdDialog(),
             )),
