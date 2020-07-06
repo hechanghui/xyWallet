@@ -55,7 +55,8 @@ class Router {
       case RouteName.TRANSACTION_RECOR:
         return CupertinoPageRoute(builder: (_) => TransactionRecordPage());
       case RouteName.TRANSACTION_DETAILS:
-        return CupertinoPageRoute(builder: (_) => TransactionDetailsPage());
+        return CupertinoPageRoute(
+            builder: (_) => TransactionDetailsPage(settings.arguments));
 
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());

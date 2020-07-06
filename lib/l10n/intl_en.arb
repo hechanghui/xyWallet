@@ -16,6 +16,16 @@
     "splashSkip": "跳过",
     "viewStateButtonLogin": "Sign In",
 
+    "confirmDate":"确认时间",
+    "txId":"交易号",
+    "includedInBlock":"交易区块",
+    "confirmations":"确认数",
+    "fees":"手续费",
+    "addrFrom":"我的地址",
+    "addrTo":"对方地址",
+    "goBlockExplorer":"去区块浏览器查看详情",
+
+
     "walletRestore": "导入账户",
     "walletCreate": "创建新账户",
     "mnemonic": "助记词",
