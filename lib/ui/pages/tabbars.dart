@@ -1,39 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
+import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
+import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/ui/pages/tabbar/tab_wallet.dart';
 import 'package:xy_wallet/ui/pages/tabbar/tab_me.dart';
 import 'package:xy_wallet/ui/pages/tabbar/tab_community.dart';
 
-class _Item {
-  String name, activeIcon, normalIcon;
-  _Item(this.name, this.activeIcon, this.normalIcon);
-}
-
 ///这个页面是作为四个tab页的容器，以Tab为基础控制每个item的显示与隐藏
-class TabsPage extends StatefulWidget {
-  // 实例化
-  TabsPage({Key key}) : super(key: key);
-
+class TabsPage extends BaseWidget {
   @override
-  State<StatefulWidget> createState() {
+  BaseWidgetState getState() {
     return _ContainerPageState();
   }
 }
 
-class _ContainerPageState extends State<TabsPage> {
+class _ContainerPageState extends BaseWidgetState<TabsPage> {
+  @override
+  bool get hasAppBar => false;
+
   List<Widget> pages; // 存放tab页面的数组
 
   int myIndex;
 
   int _selectIndex = 0; // 当前tab的索引
-
-  final defaultItemColor = Color.fromARGB(255, 125, 125, 125);
-
-  final itemNames = [
-    _Item('首页', 'assets/images/home-active.png', 'assets/images/home.png'),
-    _Item('兑换', 'assets/images/home-active.png', 'assets/images/home.png'),
-    _Item('我的', 'assets/images/home-active.png', 'assets/images/home.png'),
-  ];
 
   List<BottomNavigationBarItem> itemList;
 
@@ -48,25 +40,8 @@ class _ContainerPageState extends State<TabsPage> {
         new TabMe(),
       ];
     }
-    if (itemList == null) {
-      this.itemList = itemNames
-          .map((item) => BottomNavigationBarItem(
-              icon: Image.asset(
-                item.normalIcon,
-                width: 30.0,
-                height: 30.0,
-              ),
-              title: Text(
-                item.name,
-                style: TextStyle(fontSize: 12.0),
-              ),
-              activeIcon:
-                  Image.asset(item.activeIcon, width: 26.0, height: 26.0)))
-          .toList();
-    }
 
     eventBus.on<TabChangeEvent>().listen((event) {
-      
       setState(() {
         _selectIndex = event.index;
       });
@@ -86,43 +61,62 @@ class _ContainerPageState extends State<TabsPage> {
   }
 
   @override
-  void didUpdateWidget(TabsPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
+  Widget buildBodyWidget(BuildContext context) {
+    return Stack(
+      children: [
+        _getPagesWidget(0),
+        _getPagesWidget(1),
+        _getPagesWidget(2),
+      ],
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
-//    List wallets = Provider.of<Wallet>(context).items;
-//    if (wallets.length == 0) {
-//      Navigator.pushNamed(context, "wallet_guide");
-//    }
-    return Scaffold(
-      // backgroundColor: Colors.green,
-      body: new Stack(
-        children: [
-          _getPagesWidget(0),
-          _getPagesWidget(1),
-          _getPagesWidget(2),
-          // _getPagesWidget(3),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: itemList,
-        onTap: (int index) {
-          print('当前tab索引=> ${index}');
-          eventBus.fire(TabChangeEvent(index));
-          setState(() {
-            _selectIndex = index;
-          });
-        },
-        iconSize: 26, //图标大小
-        currentIndex: _selectIndex,
-        selectedItemColor: Colors.lightBlue,
-        unselectedItemColor: Colors.black54,
-        //选中后，底部BottomNavigationBar内容的颜色(选中时，默认为主题色)（仅当type: BottomNavigationBarType.fixed,时生效）
-        // fixedColor: Colors.lightBlue,
-        type: BottomNavigationBarType.fixed,
-      ),
+  Widget buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+      backgroundColor: Colors.transparent,
+      items: getNavTitles(),
+      onTap: (int index) {
+        print('当前tab索引=> ${index}');
+        eventBus.fire(TabChangeEvent(index));
+        setState(() {
+          _selectIndex = index;
+        });
+      },
+      // iconSize: 26, //图标大小
+      currentIndex: _selectIndex,
+      selectedLabelStyle: Theme.of(context).textTheme.headline5,
+      unselectedLabelStyle: Theme.of(context)
+          .textTheme
+          .headline5
+          .copyWith(color: ThemeColors.labelLightColor),
+
+      type: BottomNavigationBarType.fixed,
     );
+  }
+
+  getNavTitles() {
+    if (itemList == null) {
+      var itemNames = [
+        Tuple2<String, String>(S.current.wallet, "icon_wallet.png"),
+        Tuple2<String, String>(S.current.community, "icon_community.png"),
+        Tuple2<String, String>(S.current.mine, "icon_mine.png"),
+      ];
+      this.itemList = itemNames
+          .map((item) => BottomNavigationBarItem(
+                backgroundColor: Colors.transparent,
+                icon: Image.asset(
+                  ImageHelper.wrapAssets(item.item2),
+                  color: ThemeColors.labelLightColor,
+                  width: 32.0,
+                  height: 32.0,
+                ),
+                activeIcon: Image.asset(ImageHelper.wrapAssets(item.item2),
+                    color: ThemeColors.accentColor, width: 35.0, height: 35.0),
+                title: Text(item.item1),
+              ))
+          .toList();
+    }
+    return itemList;
   }
 }

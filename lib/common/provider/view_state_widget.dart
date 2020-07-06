@@ -202,7 +202,7 @@ class ViewStateUnAuthImage extends StatelessWidget {
     return Hero(
       tag: 'loginLogo',
       child: Image.asset(
-        ImageHelper.wrapAssets('home.png'),
+        ImageHelper.wrapAssets('headIcon.png'),
         width: 130,
         height: 100,
         fit: BoxFit.fitWidth,

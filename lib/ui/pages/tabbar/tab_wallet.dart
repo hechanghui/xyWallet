@@ -19,6 +19,8 @@ class TabWallet extends BaseWidget {
 }
 
 class Page extends BaseWidgetState<TabWallet> {
+  @override
+  bool get hasBackground => false;
   var coinName = 'USDT';
   @override
   void initState() {

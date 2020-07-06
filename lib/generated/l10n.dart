@@ -193,6 +193,36 @@ class S {
     );
   }
 
+  /// `钱包`
+  String get wallet {
+    return Intl.message(
+      '钱包',
+      name: 'wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `生态`
+  String get community {
+    return Intl.message(
+      '生态',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `我的`
+  String get mine {
+    return Intl.message(
+      '我的',
+      name: 'mine',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `确认时间`
   String get confirmDate {
     return Intl.message(

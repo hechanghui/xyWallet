@@ -1,5 +1,5 @@
 name: xy_wallet
-description: A new Flutter project.
+description: wallet for X project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -25,7 +25,9 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-    
+
+  package_info: ^0.4.1
+
   url_launcher: ^5.4.11
 
   tuple: ^1.0.3

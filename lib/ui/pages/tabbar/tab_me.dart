@@ -1,13 +1,13 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/me/adressManger.dart';
 import 'package:xy_wallet/ui/pages/me/walletList.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
-
 
 class TabMe extends BaseWidget {
   @override
@@ -17,6 +17,8 @@ class TabMe extends BaseWidget {
 }
 
 class Pages extends BaseWidgetState<TabMe> {
+    @override
+  bool get hasBackground => false;
   @override
   Widget buildBodyWidget(BuildContext context) {
     return Container(
@@ -29,7 +31,7 @@ class Pages extends BaseWidgetState<TabMe> {
           child: Stack(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(left: 30,top: 20),
+                padding: EdgeInsets.only(left: 30, top: 20),
                 child: Image.asset(
                   ImageHelper.wrapAssets('headIcon.png'),
                   fit: BoxFit.fill,
@@ -38,16 +40,23 @@ class Pages extends BaseWidgetState<TabMe> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left: 105,top: 25),
-                child: Text('X_钱包',style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold,fontSize: 17),),
+                padding: EdgeInsets.only(left: 105, top: 25),
+                child: Text(
+                  'X_钱包',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: 17),
+                ),
               ),
-
-                            Container(
-                padding: EdgeInsets.only(left: 105,top: 50),
-                child: Text('0xiuqwiuqwiugwqiug',style: Theme.of(context).textTheme.headline4.copyWith(color: ThemeColors.labelLightColor,fontSize: 12),),
+              Container(
+                padding: EdgeInsets.only(left: 105, top: 50),
+                child: Text(
+                  '0xiuqwiuqwiugwqiug',
+                  style: Theme.of(context).textTheme.headline4.copyWith(
+                      color: ThemeColors.labelLightColor, fontSize: 12),
+                ),
               ),
-
-
             ],
           ),
         ),
@@ -56,7 +65,8 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AdressManger()));
           },
           child: TabMeCell(
             title: (S.of(context).Address),
@@ -65,15 +75,15 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletList()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => WalletList()));
           },
           child: TabMeCell(
             title: (S.of(context).AccountManager),
             imageName: 'me_account.png',
           ),
         ),
-
-                Container(
+        Container(
           height: 23,
         ),
         InkWell(
@@ -85,7 +95,6 @@ class Pages extends BaseWidgetState<TabMe> {
             imageName: 'me_setting.png',
           ),
         ),
-
         InkWell(
           onTap: () {
             print(S.of(context).ShareApp);
@@ -97,7 +106,7 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            print(S.of(context).AboutUs);
+            Navigator.of(context).pushNamed(RouteName.ABOUT);
           },
           child: TabMeCell(
             title: (S.of(context).AboutUs),

@@ -13,6 +13,8 @@ class TabCommunity extends BaseWidget {
 }
 
 class Pages extends BaseWidgetState<TabCommunity> {
+    @override
+  bool get hasBackground => false;
   @override
   Widget buildBodyWidget(BuildContext context) {
     return Container(

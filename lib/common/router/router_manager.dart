@@ -4,6 +4,7 @@ import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
+import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
@@ -29,6 +30,7 @@ class RouteName {
   static const String TRANSACTION_RECOR = 'wallet/transactionRecor';
   static const String TRANSACTION_DETAILS = "wallet/transactionDetails";
   static const String COMMUNITY_ASSETMANAGER = 'community/assetManager';
+  static const String ABOUT = 'me/about';
 }
 
 class Router {
@@ -57,6 +59,8 @@ class Router {
       case RouteName.TRANSACTION_DETAILS:
         return CupertinoPageRoute(
             builder: (_) => TransactionDetailsPage(settings.arguments));
+      case RouteName.ABOUT:
+        return CupertinoPageRoute(builder: (_) => AboutPage());
 
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());

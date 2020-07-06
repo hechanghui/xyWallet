@@ -2,6 +2,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xy_wallet/common/provider/provider_widget.dart';
+import 'package:xy_wallet/common/provider/view_state_model.dart';
+import 'package:xy_wallet/common/provider/view_state_widget.dart';
+import 'package:xy_wallet/view_model/base_load_data_vm.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
@@ -155,5 +159,39 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   void onResume() {
     String classname = getClassName();
     print('${classname}onResume');
+  }
+}
+
+abstract class BaseLoadDataWidgetState<T extends BaseWidget,
+    VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
+  VM onCreateViewModel();
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return ProviderWidget<VM>(
+      model: onCreateViewModel(),
+      builder: (context, model, child) {
+        switch (model.viewState) {
+          case ViewState.busy:
+            model.loadData();
+            return ViewStateBusyWidget();
+          case ViewState.empty:
+            return ViewStateEmptyWidget(
+              onPressed: () {
+                model.loadData();
+              },
+            );
+          case ViewState.error:
+            return ViewStateErrorWidget(
+              error: model.viewStateError,
+              onPressed: () {
+                model.loadData();
+              },
+            );
+          default:
+            return buildBodyWidget(context);
+        }
+      },
+    );
   }
 }

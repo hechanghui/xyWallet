@@ -1,5 +1,6 @@
 {
     "appName": "X钱包",
+
     "actionCancel": "取消",
     "actionConfirm": "确认",
     "actionIKnow": "我知道了",
@@ -15,6 +16,10 @@
     "retry": "重试",
     "splashSkip": "跳过",
     "viewStateButtonLogin": "Sign In",
+
+    "wallet":"钱包",
+    "community":"生态",
+    "mine":"我的",
 
     "confirmDate":"确认时间",
     "txId":"交易号",
