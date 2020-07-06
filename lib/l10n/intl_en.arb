@@ -24,6 +24,7 @@
     "addrFrom":"我的地址",
     "addrTo":"对方地址",
     "goBlockExplorer":"去区块浏览器查看详情",
+    "transactionDetails":"交易详情",
 
 
     "walletRestore": "导入账户",

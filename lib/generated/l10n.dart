@@ -273,6 +273,16 @@ class S {
     );
   }
 
+  /// `交易详情`
+  String get transactionDetails {
+    return Intl.message(
+      '交易详情',
+      name: 'transactionDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `导入账户`
   String get walletRestore {
     return Intl.message(

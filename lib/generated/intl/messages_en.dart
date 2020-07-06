@@ -129,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabComTitle7" : MessageLookupByLibrary.simpleMessage("去中心化金融银行"),
     "tabComTitle8" : MessageLookupByLibrary.simpleMessage("人工智能及衍生服务"),
     "tabComTitle9" : MessageLookupByLibrary.simpleMessage("物联网与用户数据价值"),
+    "transactionDetails" : MessageLookupByLibrary.simpleMessage("交易详情"),
     "transfer" : MessageLookupByLibrary.simpleMessage("转帐"),
     "transferConfirm" : MessageLookupByLibrary.simpleMessage("确认转出"),
     "transferCountTip" : MessageLookupByLibrary.simpleMessage("请输入转账数量（最小单位为小数点后6位）"),

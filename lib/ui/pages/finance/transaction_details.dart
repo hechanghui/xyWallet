@@ -23,7 +23,7 @@ class TransactionDetailsPage extends BaseWidget {
 
 class _PageState extends BaseWidgetState<TransactionDetailsPage> {
   @override
-  String titleLabel(BuildContext context) => S.current.transferRecord;
+  String titleLabel(BuildContext context) => S.current.transactionDetails;
 
   @override
   Widget buildBodyWidget(BuildContext context) {
