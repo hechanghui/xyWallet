@@ -6,13 +6,12 @@ import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 import 'package:xy_wallet/ui/pages/wallet/vm/create_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
 // import 'package:bitcoin_flutter/bitcoin_flutter.dart';
-
-
 
 class CreateWithAccountPage extends BaseWidget {
   @override
@@ -26,6 +25,9 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
   @override
   Widget buildBodyWidget(BuildContext context) {
     final viewModel = CreateViewModel();
+    var acountName = "";
+    var passWord = "";
+    var comfirmPW = "";
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
@@ -70,17 +72,26 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
               CommonInput(
                 title: S.of(context).accountName,
                 placeholder: S.of(context).hintInputAccountName,
-                // controller: widget.viewModel.mnemonicAccountController,
+                onChanged: (text) {
+                  acountName = text;
+                },
+                controller: viewModel.mnemonicAccountController,
               ),
               CommonInput(
                 title: S.of(context).setPwd,
                 placeholder: S.of(context).hintInputPwd,
-                // controller: widget.viewModel.mnemonicSetPwdController,
+                onChanged: (text) {
+                  passWord = text;
+                },
+                controller: viewModel.mnemonicSetPwdController,
               ),
               CommonInput(
                 title: S.of(context).confirmPwd,
                 placeholder: S.of(context).hintInputPwd,
-                // controller: widget.viewModel.mnemonicConfirmPwdController,
+                onChanged: (text) {
+                  comfirmPW = text;
+                },
+                controller: viewModel.mnemonicConfirmPwdController,
               ),
             ],
           ),
@@ -91,11 +102,26 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
                 right: ThemeDimens.pageLRMargin,
                 bottom: ThemeDimens.pageBottomMargin),
             child: CommonButton(
-              child: Text(S.of(context).startCreate),
-              onPressed: () => Navigator.pushReplacementNamed(
-                  context, RouteName.WALLET_CREATE_WITH_MNEMONIC_GENERATE,
-                  arguments: viewModel),
-            ))
+                child: Text(S.of(context).startCreate),
+                onPressed: () async {
+                  if (acountName == null || acountName.isEmpty) {
+                    showToast(S.of(context).NoNameInputTip);
+                    return;
+                  } else if (passWord == null || passWord.isEmpty) {
+                    showToast(S.of(context).NoPWDInputTip);
+                    return;
+                  } else if (comfirmPW == null || comfirmPW.isEmpty) {
+                    showToast(S.of(context).NoComfirmPWDInputTip);
+                    return;
+                  } else if (passWord != comfirmPW) {
+                    showToast(S.of(context).PWDDiffentInputTip);
+                    return;
+                  }
+
+                  Navigator.pushReplacementNamed(
+                      context, RouteName.WALLET_CREATE_WITH_MNEMONIC_GENERATE,
+                      arguments: viewModel);
+                }))
       ],
     );
   }

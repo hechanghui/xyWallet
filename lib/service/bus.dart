@@ -23,3 +23,8 @@ class CoinChangeEvent{
   CoinChangeEvent(this.coinName);
 }
 
+class MnemonicCreate{
+  var mnemonic;
+  MnemonicCreate(this.mnemonic);
+}
+

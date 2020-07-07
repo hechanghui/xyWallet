@@ -1402,6 +1402,56 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入账户名称`
+  String get NoNameInputTip {
+    return Intl.message(
+      '请输入账户名称',
+      name: 'NoNameInputTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入密码`
+  String get NoPWDInputTip {
+    return Intl.message(
+      '请输入密码',
+      name: 'NoPWDInputTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请再次输入密码`
+  String get NoComfirmPWDInputTip {
+    return Intl.message(
+      '请再次输入密码',
+      name: 'NoComfirmPWDInputTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `两次密码输入不一致`
+  String get PWDDiffentInputTip {
+    return Intl.message(
+      '两次密码输入不一致',
+      name: 'PWDDiffentInputTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `助记词错误`
+  String get mnemonicWrong {
+    return Intl.message(
+      '助记词错误',
+      name: 'mnemonicWrong',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

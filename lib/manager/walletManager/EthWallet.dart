@@ -2,21 +2,28 @@ import 'package:http/http.dart';
 import 'dart:math';
 
 import 'package:web3dart/web3dart.dart';
-import 'package:bip39/bip39.dart' as bip39;
-import 'package:bip32/bip32.dart' as bip32;
+import 'package:xy_wallet/model/walletModel.dart';
 
 
 
-createETH(String privateKey, String passWord) async{
+
+createETH(String privateKey, String passWord) async {
 
   Random random = new Random.secure();
   EthPrivateKey credentials = EthPrivateKey.fromHex(privateKey);
-  Wallet wallet = Wallet.createNew(credentials, "password", random);
+  Wallet wallet = Wallet.createNew(credentials, passWord, random);
   
   String keystore = wallet.toJson();
-  var address = await credentials.extractAddress();
-  print(keystore);
-  print(address);
+  // var address = 
+  // print(keystore);
+  // print(address.toString());
+
+  var walletModel = WalletModel();
+  walletModel.keystore = keystore;
+  walletModel.password = passWord;
+  walletModel.privateKey = privateKey;
+  walletModel.address = await credentials.extractAddress().toString();
+  return walletModel;
 }
 
 

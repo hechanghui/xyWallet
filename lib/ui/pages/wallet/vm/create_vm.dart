@@ -6,4 +6,5 @@ class CreateViewModel extends ViewStateModel {
   final mnemonicAccountController = TextEditingController();
   final mnemonicSetPwdController = TextEditingController();
   final mnemonicConfirmPwdController = TextEditingController();
+  
 }

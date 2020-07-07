@@ -10,7 +10,10 @@ import 'package:xy_wallet/ui/pages/wallet/vm/create_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
-import 'package:xy_wallet/manager/walletManager/walletManager.dart' as wallet;
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
+
+import 'package:xy_wallet/common/extension/string.ex.dart';
+
 class CreateWithMnemonicInputPage extends BaseWidget {
   final CreateViewModel viewModel;
 
@@ -22,49 +25,27 @@ class CreateWithMnemonicInputPage extends BaseWidget {
 class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
   @override
   String titleLabel(BuildContext context) => S.of(context).walletCreate;
-
+  String _mnemonicInput;
   List<String> _mnemonic;
   @override
   void initState() {
     super.initState();
-    
-    _mnemonic = [
-      "hello",
-      "pay",
-      "sonw",
-      "mom",
-      "prpper",
-      "limb",
-      "bleak",
-      "merit",
-      "step",
-      "believe",
-      "industry",
-      "artwork"
-    ];
+
+    _mnemonic = widget.viewModel.mnemonicController.text.split(' ');
+    _mnemonic.shuffle();
   }
 
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
+    // "".hideLoading();
     return [
       IconButton(
           icon: Icon(Icons.undo),
           onPressed: () {
             setState(() {
-              _mnemonic = [
-                "hello",
-                "pay",
-                "sonw",
-                "mom",
-                "prpper",
-                "limb",
-                "bleak",
-                "merit",
-                "step",
-                "believe",
-                "industry",
-                "artwork"
-              ];
+              _mnemonicInput = '';
+              _mnemonic = widget.viewModel.mnemonicController.text.split(' ');
+              _mnemonic.shuffle();
             });
           })
     ];
@@ -72,7 +53,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    wallet.generateMnemonic('32112','2312');
+    "".hideLoading();
     return ProviderWidget<CreateViewModel>(
       model: widget.viewModel,
       builder: (conntext, model, child) {
@@ -109,9 +90,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                   CommonInputLarge(
                     minHeight: 148,
                     enabled: false,
-                    controller: TextEditingController(
-                        text:
-                            "hello  pay   sonw  mom  prpper limb   bleak  merit  step  believe industry  artwork"),
+                    controller: TextEditingController(text: _mnemonicInput),
                   ),
                   Divider(height: ThemeDimens.pageLRMargin * 1.5),
                   _getMnemonicWrapWidget(),
@@ -124,10 +103,38 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                     right: ThemeDimens.pageLRMargin,
                     bottom: ThemeDimens.pageBottomMargin),
                 child: CommonButton(
-                  child: Text(S.of(context).createWallet),
-                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                      context, RouteName.tab, (Route route) => false),
-                ))
+                    child: Text(S.of(context).createWallet),
+                    onPressed: () async{
+                      if (_mnemonic.length != 0) {
+                        return;
+                      }
+                      if (_mnemonicInput !=
+                          widget.viewModel.mnemonicController.text) {
+                        showToast(S.of(context).mnemonicWrong);
+                        print(_mnemonicInput);
+                        print(widget.viewModel.mnemonicController.text);
+                        setState(() {
+                          _mnemonicInput = '';
+                          _mnemonic = widget.viewModel.mnemonicController.text
+                              .split(' ');
+                          _mnemonic.shuffle();
+                          
+                        });
+                        return;
+                      }
+
+
+                      "".showLoading();
+                    
+                     print("0000----------000000");
+                       var wallet111 = await createWalletMnemonic(_mnemonicInput, widget.viewModel.mnemonicAccountController.text, widget.viewModel.mnemonicSetPwdController.text);
+                      //  "".hideLoading();
+                   print("1111111----------1111111");
+                    //  "".hideLoading();
+                    
+                      // Navigator.pushNamedAndRemoveUntil(
+                      //     context, RouteName.tab, (Route route) => false);
+                    }))
           ],
         );
       },
@@ -143,6 +150,13 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
             (index) => InkWell(
                   onTap: () {
                     setState(() {
+                      if (_mnemonicInput == null || _mnemonicInput.isEmpty) {
+                        _mnemonicInput = _mnemonic[index];
+                      } else {
+                        _mnemonicInput =
+                            _mnemonicInput + ' ' + _mnemonic[index];
+                      }
+
                       _mnemonic.removeAt(index);
                     });
                   },

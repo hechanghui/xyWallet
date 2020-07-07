@@ -6,10 +6,15 @@ import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
+import 'package:xy_wallet/model/walletModel.dart';
+import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/ui/pages/wallet/vm/create_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
+import 'package:xy_wallet/model/walletModel.dart';
 
 class CreateWithMnemonicGeneratePage extends BaseWidget {
   final CreateViewModel viewModel;
@@ -22,9 +27,12 @@ class CreateWithMnemonicGeneratePage extends BaseWidget {
 class _PageState extends BaseWidgetState<CreateWithMnemonicGeneratePage> {
   @override
   String titleLabel(BuildContext context) => S.of(context).walletCreate;
+  var mnemonic = generateMnemonic();
 
   @override
-  Widget buildBodyWidget(BuildContext context) {
+   Widget buildBodyWidget(BuildContext context){
+      widget.viewModel.mnemonicController.text = mnemonic;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
@@ -76,8 +84,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicGeneratePage> {
                 enabled: false,
                 title: S.of(context).longPressedMnemonicCopy,
                 controller: TextEditingController(
-                    text:
-                        "hello  pay   sonw  mom  prpper limb   bleak  merit  step  believe industry  artwork"),
+                    text:mnemonic),
               ),
               Divider(height: ThemeDimens.pageLRMargin * 1.5),
               Row(

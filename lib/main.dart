@@ -6,6 +6,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:xy_wallet/common/router/router_manager.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
 
 import 'common/storage_manager.dart';
 import 'common/provider_manager.dart';
@@ -17,6 +18,8 @@ void main() async {
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   await StorageManager.init();
+
+  SpUtils().init();
   runApp(App());
 
   // Android状态栏透明 splash为白色,所以调整状态栏文字为黑色
@@ -27,12 +30,9 @@ void main() async {
 
 class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    // return MaterialApp(
-    //   title: 'Demo',
 
-    //   routes: routes,
-    // );
+  
+  Widget build(BuildContext context) {
 
     return MultiProvider(
         providers: providers,
