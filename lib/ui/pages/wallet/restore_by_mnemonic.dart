@@ -81,7 +81,7 @@ class _RestoreByMnemonicState extends BaseWidgetState<RestoreByMnemonic> {
                         )
                       ],
                     ),
-                    onTap: () {
+                    onTap: () async {
                       DialogHelper.showCommonDialog(
                           context: context,
                           title: S.of(context).whatIsMnemonic,

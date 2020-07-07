@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
 import 'view_state.dart';
@@ -9,7 +11,14 @@ import 'view_state.dart';
 class ViewStateBusyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: CircularProgressIndicator());
+    return Center(
+      child: const SpinKitWave(
+        type: SpinKitWaveType.start,
+        size: 42,
+        color: ThemeColors.accentColor,
+        duration: const Duration(milliseconds: 1000),
+      ),
+    );
   }
 }
 
@@ -138,7 +147,6 @@ class ViewStateErrorWidget extends StatelessWidget {
   }
 }
 
-
 /// 页面无数据
 class ViewStateEmptyWidget extends StatelessWidget {
   final String message;
@@ -167,7 +175,6 @@ class ViewStateEmptyWidget extends StatelessWidget {
   }
 }
 
-
 /// 页面未授权
 class ViewStateUnAuthWidget extends StatelessWidget {
   final String message;
@@ -177,10 +184,10 @@ class ViewStateUnAuthWidget extends StatelessWidget {
 
   const ViewStateUnAuthWidget(
       {Key key,
-        this.image,
-        this.message,
-        this.buttonText,
-        @required this.onPressed})
+      this.image,
+      this.message,
+      this.buttonText,
+      @required this.onPressed})
       : super(key: key);
 
   @override
@@ -202,7 +209,7 @@ class ViewStateUnAuthImage extends StatelessWidget {
     return Hero(
       tag: 'loginLogo',
       child: Image.asset(
-        ImageHelper.wrapAssets('home.png'),
+        ImageHelper.wrapAssets('headIcon.png'),
         width: 130,
         height: 100,
         fit: BoxFit.fitWidth,

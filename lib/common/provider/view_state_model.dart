@@ -38,17 +38,6 @@ class ViewStateModel with ChangeNotifier {
 
   ViewStateError get viewStateError => _viewStateError;
 
-  /// 以下变量是为了代码书写方便,加入的get方法.严格意义上讲,并不严谨
-  ///
-  /// get
-  bool get isBusy => viewState == ViewState.busy;
-
-  bool get isIdle => viewState == ViewState.idle;
-
-  bool get isEmpty => viewState == ViewState.empty;
-
-  bool get isError => viewState == ViewState.error;
-
   /// set
   void setIdle() {
     viewState = ViewState.idle;

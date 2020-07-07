@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
+import 'package:xy_wallet/common/provider/view_state.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
@@ -50,7 +51,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
       builder: (conntext, model, child) {
         return Form(
           onWillPop: () async {
-            return !model.isBusy;
+            return model.viewState != ViewState.busy;
           },
           child: child,
         );

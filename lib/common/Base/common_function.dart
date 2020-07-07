@@ -54,31 +54,32 @@ abstract class BaseFuntion {
   }
 
   Widget buildBodyWithStatus(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        _buildProviderWidget(context),
-        _isErrorWidgetShow ? _getBaseErrorWidget() : _getHolderLWidget(),
-        _isEmptyWidgetVisible ? _getBaseEmptyWidget() : _getHolderLWidget(),
-        _isLoadingWidgetShow ? _getBassLoadingWidget() : _getHolderLWidget(),
-      ],
-    );
+    return _buildProviderWidget(context);
+    // return  Stack(
+    //   fit: StackFit.expand,
+    //   children: <Widget>[
+    //     _buildProviderWidget(context),
+    //     _isErrorWidgetShow ? _getBaseErrorWidget() : _getHolderLWidget(),
+    //     _isEmptyWidgetVisible ? _getBaseEmptyWidget() : _getHolderLWidget(),
+    //     _isLoadingWidgetShow ? _getBassLoadingWidget() : _getHolderLWidget(),
+    //   ],
+    // );
   }
 
-  Widget _getHolderLWidget() {
-    return Container(
-      width: 0,
-      height: 0,
-    );
-  }
+  // Widget _getHolderLWidget() {
+  //   return Container(
+  //     width: 0,
+  //     height: 0,
+  //   );
+  // }
 
-  Widget _getBaseTopBar() {
-    return getTopBar();
-  }
+  // Widget _getBaseTopBar() {
+  //   return getTopBar();
+  // }
 
-  Widget _getBaseAppBar() {
-    return getAppBar();
-  }
+  // Widget _getBaseAppBar() {
+  //   return getAppBar();
+  // }
 
   ///设置状态栏，可以自行重写拓展成其他的任何形式
   Widget getTopBar() {
@@ -90,37 +91,37 @@ abstract class BaseFuntion {
   }
 
   ///暴露的错误页面方法，可以自己重写定制
-  Widget getErrorWidget() {
-    return Container(
-      //错误页面中心可以自己调整
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 200),
-      color: Colors.white,
-      width: double.infinity,
-      height: double.infinity,
-      child: Center(
-        child: InkWell(
-          onTap: onClickErrorWidget,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image(
-                image: AssetImage(_errImgPath),
-                width: 150,
-                height: 150,
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Text(_errorContentMesage,
-                    style: TextStyle(
-                      fontWeight: _fontWidget,
-                    )),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget getErrorWidget() {
+  //   return Container(
+  //     //错误页面中心可以自己调整
+  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 200),
+  //     color: Colors.white,
+  //     width: double.infinity,
+  //     height: double.infinity,
+  //     child: Center(
+  //       child: InkWell(
+  //         onTap: onClickErrorWidget,
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           children: <Widget>[
+  //             Image(
+  //               image: AssetImage(_errImgPath),
+  //               width: 150,
+  //               height: 150,
+  //             ),
+  //             Container(
+  //               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+  //               child: Text(_errorContentMesage,
+  //                   style: TextStyle(
+  //                     fontWeight: _fontWidget,
+  //                   )),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   ///点击错误页面后展示内容
   void onClickErrorWidget() {
@@ -247,17 +248,17 @@ abstract class BaseFuntion {
     return MediaQuery.of(_contextBaseFunction).size.width;
   }
 
-  Widget _getBaseErrorWidget() {
-    return getErrorWidget();
-  }
+  // Widget _getBaseErrorWidget() {
+  //   return getErrorWidget();
+  // }
 
-  Widget _getBassLoadingWidget() {
-    return getLoadingWidget();
-  }
+  // Widget _getBassLoadingWidget() {
+  //   return getLoadingWidget();
+  // }
 
-  Widget _getBaseEmptyWidget() {
-    return getEmptyWidget();
-  }
+  // Widget _getBaseEmptyWidget() {
+  //   return getEmptyWidget();
+  // }
 
   Widget getEmptyWidget() {
     return Container(

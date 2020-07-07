@@ -2,6 +2,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xy_wallet/common/provider/provider_widget.dart';
+import 'package:xy_wallet/common/provider/view_state_model.dart';
+import 'package:xy_wallet/common/provider/view_state_widget.dart';
+import 'package:xy_wallet/view_model/base_load_data_vm.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
@@ -44,6 +48,18 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   }
 
   @override
+  Widget build(BuildContext context) {
+    if (!_onResumed) {
+      //说明是 初次加载
+      if (NavigatorManger().isTopPage(this)) {
+        _onResumed = true;
+        onResume();
+      }
+    }
+    return buildPageContainer(context);
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     String classname = getClassName();
@@ -53,13 +69,14 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   @override
   void didUpdateWidget(BaseWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    hideInputKeyboard(context);
+    // hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} didUpdateWidget');
   }
 
   @override
   void deactivate() {
+    hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} deactivate');
 
@@ -78,18 +95,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
       }
     }
     super.deactivate();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (!_onResumed) {
-      //说明是 初次加载
-      if (NavigatorManger().isTopPage(this)) {
-        _onResumed = true;
-        onResume();
-      }
-    }
-    return buildPageContainer(context);
   }
 
   @override
@@ -154,5 +159,39 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   void onResume() {
     String classname = getClassName();
     print('${classname}onResume');
+  }
+}
+
+abstract class BaseLoadDataWidgetState<T extends BaseWidget,
+    VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
+  VM onCreateViewModel();
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return ProviderWidget<VM>(
+      model: onCreateViewModel(),
+      builder: (context, model, child) {
+        switch (model.viewState) {
+          case ViewState.busy:
+            model.loadData();
+            return ViewStateBusyWidget();
+          case ViewState.empty:
+            return ViewStateEmptyWidget(
+              onPressed: () {
+                model.loadData();
+              },
+            );
+          case ViewState.error:
+            return ViewStateErrorWidget(
+              error: model.viewStateError,
+              onPressed: () {
+                model.loadData();
+              },
+            );
+          default:
+            return buildBodyWidget(context);
+        }
+      },
+    );
   }
 }

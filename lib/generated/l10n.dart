@@ -193,6 +193,126 @@ class S {
     );
   }
 
+  /// `钱包`
+  String get wallet {
+    return Intl.message(
+      '钱包',
+      name: 'wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `生态`
+  String get community {
+    return Intl.message(
+      '生态',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `我的`
+  String get mine {
+    return Intl.message(
+      '我的',
+      name: 'mine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认时间`
+  String get confirmDate {
+    return Intl.message(
+      '确认时间',
+      name: 'confirmDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `交易号`
+  String get txId {
+    return Intl.message(
+      '交易号',
+      name: 'txId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `交易区块`
+  String get includedInBlock {
+    return Intl.message(
+      '交易区块',
+      name: 'includedInBlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认数`
+  String get confirmations {
+    return Intl.message(
+      '确认数',
+      name: 'confirmations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `手续费`
+  String get fees {
+    return Intl.message(
+      '手续费',
+      name: 'fees',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `我的地址`
+  String get addrFrom {
+    return Intl.message(
+      '我的地址',
+      name: 'addrFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `对方地址`
+  String get addrTo {
+    return Intl.message(
+      '对方地址',
+      name: 'addrTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `去区块浏览器查看详情`
+  String get goBlockExplorer {
+    return Intl.message(
+      '去区块浏览器查看详情',
+      name: 'goBlockExplorer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `交易详情`
+  String get transactionDetails {
+    return Intl.message(
+      '交易详情',
+      name: 'transactionDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `导入账户`
   String get walletRestore {
     return Intl.message(
@@ -318,6 +438,16 @@ class S {
     return Intl.message(
       '请输入密码',
       name: 'hintInputPwd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `输入密码`
+  String get inputPwd {
+    return Intl.message(
+      '输入密码',
+      name: 'inputPwd',
       desc: '',
       args: [],
     );
@@ -483,6 +613,16 @@ class S {
     );
   }
 
+  /// `全部`
+  String get all {
+    return Intl.message(
+      '全部',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `转帐`
   String get transfer {
     return Intl.message(
@@ -558,6 +698,86 @@ class S {
     return Intl.message(
       '裂变挖矿',
       name: 'PowBySplit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入`
+  String get hintPleaseInput {
+    return Intl.message(
+      '请输入',
+      name: 'hintPleaseInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址/交易号`
+  String get addrOrTxId {
+    return Intl.message(
+      '地址/交易号',
+      name: 'addrOrTxId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认转出`
+  String get transferConfirm {
+    return Intl.message(
+      '确认转出',
+      name: 'transferConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `公开信息（可选填）`
+  String get transferLabelTitle {
+    return Intl.message(
+      '公开信息（可选填）',
+      name: 'transferLabelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `限500字符内，此信息会显示在交易中。\r\n请不要输入私密信息。`
+  String get transferLabelTip {
+    return Intl.message(
+      '限500字符内，此信息会显示在交易中。\r\n请不要输入私密信息。',
+      name: 'transferLabelTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `手续费`
+  String get fee {
+    return Intl.message(
+      '手续费',
+      name: 'fee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `发送地址`
+  String get addrSend {
+    return Intl.message(
+      '发送地址',
+      name: 'addrSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入转账数量（最小单位为小数点后6位）`
+  String get transferCountTip {
+    return Intl.message(
+      '请输入转账数量（最小单位为小数点后6位）',
+      name: 'transferCountTip',
       desc: '',
       args: [],
     );
