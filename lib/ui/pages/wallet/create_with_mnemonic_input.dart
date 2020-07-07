@@ -10,7 +10,7 @@ import 'package:xy_wallet/ui/pages/wallet/vm/create_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/common_input_large.dart';
-
+import 'package:xy_wallet/manager/walletManager/walletManager.dart' as wallet;
 class CreateWithMnemonicInputPage extends BaseWidget {
   final CreateViewModel viewModel;
 
@@ -27,6 +27,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
   @override
   void initState() {
     super.initState();
+    
     _mnemonic = [
       "hello",
       "pay",
@@ -71,6 +72,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
+    wallet.generateMnemonic('32112','2312');
     return ProviderWidget<CreateViewModel>(
       model: widget.viewModel,
       builder: (conntext, model, child) {
