@@ -161,6 +161,12 @@
     "comfirmPWdInput":"请再次输入确认",
 
     "comfirm":"确认",
-    "cannel":"取消"
+    "cannel":"取消",
+    
+    "NoNameInputTip":"请输入账户名称",
+    "NoPWDInputTip":"请输入密码",
+    "NoComfirmPWDInputTip":"请再次输入密码",
+    "PWDDiffentInputTip":"两次密码输入不一致",
+    "mnemonicWrong":"助记词错误"
     
 }
