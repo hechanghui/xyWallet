@@ -126,7 +126,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     // HttpManager.cancelHttp(getWidgetName());
     hideInputKeyboard(_context);
     _eventBusSubscription?.cancel();
-    _context = null
+    _context = null;
     super.dispose();
   }
 
