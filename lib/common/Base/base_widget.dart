@@ -1,10 +1,13 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xy_wallet/common/helper/popup_helper.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
+import 'package:xy_wallet/model/event/message_event.dart';
 import 'package:xy_wallet/view_model/base_load_data_vm.dart';
 import 'common_function.dart';
 
@@ -33,6 +36,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   bool _onResumed = false; //页面展示标记
   bool _onPause = false; //页面暂停标记
+  StreamSubscription _eventBusSubscription;
+  BuildContext _context;
 
   @mustCallSuper
   @override
@@ -45,16 +50,17 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
     super.initState();
     print('initState1');
+
+    _regEventBus();
   }
 
   @override
   Widget build(BuildContext context) {
     if (!_onResumed) {
       //说明是 初次加载
-      if (NavigatorManger().isTopPage(this)) {
-        _onResumed = true;
-        onResume();
-      }
+      if (NavigatorManger().isTopPage(this)) {}
+      _onResumed = true;
+      onResume();
     }
     return buildPageContainer(context);
   }
@@ -64,6 +70,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     super.didChangeDependencies();
     String classname = getClassName();
     print('${classname} 加载完成');
+    _context = context;
   }
 
   @override
@@ -104,11 +111,9 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   void dispose() {
-    hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} 销毁');
 
-    // TODO: implement dispose
     onDestory();
     WidgetsBinding.instance.removeObserver(this);
     _onResumed = false;
@@ -116,15 +121,18 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
     //把改页面 从 页面列表中 去除
     NavigatorManger().removeWidget(this);
+    
     // //取消网络请求
     // HttpManager.cancelHttp(getWidgetName());
+    hideInputKeyboard(_context);
+    _eventBusSubscription?.cancel();
+    _context = null
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('didChangeAppLifecycleState');
-    // TODO: implement didChangeAppLifecycleState
     //此处可以拓展 是不是从前台回到后台
     if (state == AppLifecycleState.resumed) {
       //on resume
@@ -159,6 +167,20 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   void onResume() {
     String classname = getClassName();
     print('${classname}onResume');
+  }
+
+  void _regEventBus() {
+    _eventBusSubscription = eventBus.on().listen((event) {
+      if (!_onPause) {
+        if (event is LoadingPopupEvent) {
+          if (event.isShow) {
+            showLoading(msg: event.msg, canCancel: event.canCancel);
+          } else {
+            hideLoading();
+          }
+        }
+      }
+    });
   }
 }
 

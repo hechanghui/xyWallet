@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:xy_wallet/common/helper/popup_helper.dart';
 import 'package:xy_wallet/tool/message_dialog.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -581,6 +582,21 @@ abstract class BaseFuntion {
         gravity: gravity,
         backColor: backColor,
         textColor: textColor);
+  }
+
+  HideCallback _popupHideCallback;
+  void showLoading({String msg, bool canCancel = true}) {
+    hideLoading();
+    if (_stateBaseFunction != null && _stateBaseFunction.mounted) {
+      _popupHideCallback = showLoadingPopup(
+          context: _contextBaseFunction,
+          messageTxt: msg,
+          backButtonClose: canCancel);
+    }
+  }
+
+  void hideLoading() async {
+    await _popupHideCallback?.call();
   }
 
   ///返回 状态管理组件

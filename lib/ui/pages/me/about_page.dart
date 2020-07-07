@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/popup_helper.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/me/vm/about_vm.dart';
+
+import 'package:xy_wallet/common/extension/string.ex.dart';
 
 class AboutPage extends BaseWidget {
   @override
@@ -24,13 +27,7 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
         Text(model.packageInfo.appName),
         InkWell(
           onTap: () {
-            //           VoidCallback showWeuiToast({
-            // @required BuildContext context,
-            // Widget message,
-            // stopEvent = true,
-            // bool backButtonClose,
-            // Alignment alignment
-            // })
+          "".showLoading();
           },
           child: Text(model.packageInfo.version),
         )
