@@ -121,7 +121,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
     //把改页面 从 页面列表中 去除
     NavigatorManger().removeWidget(this);
-    
+
     // //取消网络请求
     // HttpManager.cancelHttp(getWidgetName());
     hideInputKeyboard(_context);
