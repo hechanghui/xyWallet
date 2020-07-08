@@ -136,8 +136,8 @@ class Pages extends BaseWidgetState<Charge> {
                 title: S.of(context).Save,
                 onPressed: () async{
                     RenderRepaintBoundary boundary =
-        widgetKey.currentContext.findRenderObject();
-    ui.Image image = await boundary.toImage();
+                widgetKey.currentContext.findRenderObject();
+                 ui.Image image = await boundary.toImage();
                 var result = await saveImage(image);
                   showToast(result);
                 },
