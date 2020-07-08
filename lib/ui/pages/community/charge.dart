@@ -1,12 +1,14 @@
+import 'package:flutter/rendering.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/tool/ImageTool.dart';
 import 'package:xy_wallet/ui/widgets/comBtType2.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
+import 'dart:ui' as ui;
 
 enum ChargeType {
   Local, //冷钱包
@@ -38,6 +40,9 @@ class Pages extends BaseWidgetState<Charge> {
     var address = 'asdwqdhisuahdgiuqwgocbgq9dsadwqdw';
     var tips = '';
     var headTitle = '';
+    var qr = QrImage(padding: EdgeInsets.all(3),data: address,version: QrVersions.auto,size: 110.0,backgroundColor: Colors.white);
+    GlobalKey widgetKey = GlobalKey();
+
     if(widget.chargeType == ChargeType.Local){
       tips = S.of(context).ChargeTip1;
       headTitle = S.of(context).ChargeAddressLocal;
@@ -129,7 +134,13 @@ class Pages extends BaseWidgetState<Charge> {
               child: ComBtType2(
                 // padding: EdgeInsets.only(right:100,left: 100,bottom: 24),
                 title: S.of(context).Save,
-                onPressed: () {},
+                onPressed: () async{
+                    RenderRepaintBoundary boundary =
+                widgetKey.currentContext.findRenderObject();
+                 ui.Image image = await boundary.toImage();
+                var result = await saveImage(image);
+                  showToast(result);
+                },
               ),
             ),
 
@@ -150,12 +161,15 @@ class Pages extends BaseWidgetState<Charge> {
             Container(
                 alignment: Alignment.topCenter,
                 padding: EdgeInsets.only(top: 60),
+                child:RepaintBoundary(
+                  key: widgetKey,
                 child: Stack(children: <Widget>[
                   Container(
                       alignment: Alignment.center,
                       width: 130,
                       height: 130,
                       child: Stack(children: <Widget>[
+                        
                         Image.asset(
                           ImageHelper.wrapAssets('qrcodeBG.png'),
                           fit: BoxFit.fill,
@@ -164,16 +178,10 @@ class Pages extends BaseWidgetState<Charge> {
                           alignment: Alignment.center,
                           width: 130,
                           height: 130,
-                          child: QrImage(
-                            padding: EdgeInsets.all(3),
-                            data: address,
-                            version: QrVersions.auto,
-                            size: 110.0,
-                            backgroundColor: Colors.white,
-                          ),
+                          child: qr
                         )
                       ])),
-                ])),
+                ]))),
 
             // Container(
             //   alignment: Alignment.topCenter,

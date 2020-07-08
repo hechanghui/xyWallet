@@ -167,6 +167,8 @@
     "NoPWDInputTip":"请输入密码",
     "NoComfirmPWDInputTip":"请再次输入密码",
     "PWDDiffentInputTip":"两次密码输入不一致",
-    "mnemonicWrong":"助记词错误"
+    "mnemonicWrong":"助记词错误",
     
+    "mnemonicInputTip":"请输入助记词"
+
 }

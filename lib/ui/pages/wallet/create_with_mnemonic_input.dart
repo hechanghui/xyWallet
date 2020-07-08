@@ -108,6 +108,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                     bottom: ThemeDimens.pageBottomMargin),
                 child: CommonButton(
                     child: Text(S.of(context).createWallet),
+
                     onPressed: () async {
                       if (_mnemonic.length != 0) {
                         return;
@@ -126,6 +127,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                         return;
                       }
 
+
                       "".showLoading();
                       
                       await createWalletMnemonic(
@@ -134,8 +136,8 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                           widget.viewModel.mnemonicSetPwdController.text);
                        "".hideLoading();
 
-                      // Navigator.pushNamedAndRemoveUntil(
-                      //     context, RouteName.tab, (Route route) => false);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, RouteName.tab, (Route route) => false);
                     }))
           ],
         );

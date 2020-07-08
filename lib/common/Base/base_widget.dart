@@ -170,10 +170,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   void _regEventBus() {
     _eventBusSubscription = eventBus.on().listen((event) {
-      print('listen::: ${widget} -> ${!_onPause}');
       if (!_onPause) {
         if (event is LoadingPopupEvent) {
-          print("showLoading::::${event.isShow}");
           if (event.isShow) {
             showLoading(msg: event.msg, canCancel: event.canCancel);
           } else {

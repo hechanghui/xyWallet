@@ -8,6 +8,8 @@ import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
+typedef HideCallback =  Function();
+
 class DialogHelper {
   static showCommonDialog({
     BuildContext context,
@@ -16,10 +18,8 @@ class DialogHelper {
     TextStyle contentTextStyle,
     Widget contentWidget,
     Alignment alignment = Alignment.topLeft,
-    List<Tuple3<String, GestureTapCallback, TextStyle>> actions,
-    bool autoDisimiss = true,
+    List<Tuple3<String, HideCallback, TextStyle>> actions,
     Widget action,
-    GestureTapCallback onPressed,
   }) {
     if (action == null) {
       if (context != null && actions == null) {
@@ -35,7 +35,7 @@ class DialogHelper {
       }
       if (actions?.firstWhere((e) => e.item3 == null, orElse: () => null) !=
           null) {
-        var actionsTmp = List<Tuple3<String, GestureTapCallback, TextStyle>>();
+        var actionsTmp = List<Tuple3<String, HideCallback, TextStyle>>();
         actions.forEach((element) {
           var textStyle = element.item3;
           if (textStyle == null) {
@@ -70,11 +70,12 @@ class DialogHelper {
                 e.item1,
                 style: e.item3,
               ),
-              onPressed: () {
-                if (context != null) {
-                  Navigator.of(context).pop(actions.indexOf(e));
+              onPressed: () async {
+                if ((await e.item2?.call())!=false) {
+                  if (context != null) {
+                    Navigator.of(context).pop(actions.indexOf(e));
+                  }
                 }
-                e.item2?.call();
               },
               materialTapTargetSize: MaterialTapTargetSize.padded,
             ))

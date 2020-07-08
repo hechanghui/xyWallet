@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mine" : MessageLookupByLibrary.simpleMessage("我的"),
     "mnemonic" : MessageLookupByLibrary.simpleMessage("助记词"),
     "mnemonicInfo" : MessageLookupByLibrary.simpleMessage("创建账户后会出现12个英文单词，这12个英文单词就是助记词。助记词由一个字符串通过算法在2048个单词中提出的12个单词。助记词算法可以派生出私钥，所以助记词是私钥的另一种表现习惯是。用助记词是为了帮助用户记忆复杂的私钥。任何人拿到了你的助记词，就可以拿走您的数字资产，因此必须保管好您的助记词。"),
+    "mnemonicInputTip" : MessageLookupByLibrary.simpleMessage("请输入助记词"),
     "mnemonicWrong" : MessageLookupByLibrary.simpleMessage("助记词错误"),
     "newPWd" : MessageLookupByLibrary.simpleMessage("新密码"),
     "newPWdInput" : MessageLookupByLibrary.simpleMessage("请输入新密码"),

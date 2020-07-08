@@ -6,6 +6,7 @@ import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/service/httpService/http_server.dart';
 import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/community/charge.dart';
 import 'package:xy_wallet/ui/pages/community/coinList.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
@@ -34,6 +35,7 @@ class Page extends BaseWidgetState<TabWallet> {
 
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
+    SpUtils.getObj("wallet", (v) => print(v['name']));
     return <Widget>[
       IconButton(
           icon: Image.asset(ImageHelper.wrapAssets('icon_QR.png')),

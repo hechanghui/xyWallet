@@ -1,16 +1,10 @@
-import 'dart:isolate';
-import 'dart:typed_data';
-
 // import 'package:bitcoin_flutter/bitcoin_flutter.dart';
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:bip32/bip32.dart' as bip32;
 import 'package:flutter/cupertino.dart';
-import 'package:web3dart/web3dart.dart';
 import 'package:xy_wallet/common/worker/worker.dart';
 import 'package:xy_wallet/model/walletModel.dart';
-import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
-import 'BTCWallet.dart';
 import 'package:hex/hex.dart';
 import 'EthWallet.dart';
 // ignore: implementation_imports
@@ -24,7 +18,6 @@ generateMnemonic() {
 //助记词创建
 createWalletMnemonic(
     String randomMnemonic, String name, String password) async {
-
   final createTask = WalletCreateTask(randomMnemonic, name, password);
   final worker = Worker(poolSize: 1);
   final result = await worker.handle(createTask);
@@ -35,7 +28,6 @@ createWalletMnemonic(
 
   return result;
 }
-
 
 class WalletCreateTask implements Task<Future<WalletModel>> {
   final String randomMnemonic;

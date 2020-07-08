@@ -12,7 +12,7 @@ import 'package:xy_wallet/ui/pages/wallet/restore_by_keystore.dart';
 import 'package:xy_wallet/ui/pages/wallet/restore_by_privateKey.dart';
 import 'package:xy_wallet/ui/pages/wallet/vm/restore_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
-
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 import 'restore_by_mnemonic.dart';
 
 class RestoreContainerPage extends BaseWidget {
@@ -82,8 +82,57 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
                   bottom: ThemeDimens.pageBottomMargin),
               child: CommonButton(
                 child: Text(S.of(context).walletCreate),
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, RouteName.tab),
+                onPressed: () async {
+
+                  switch (_tabController.index) {
+                    case 0:
+                  if (viewModel.mnemonicController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).mnemonicInputTip);
+                    return;
+                  } else if (viewModel.mnemonicAccountController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoNameInputTip);
+                    return;
+                  } else if (viewModel.mnemonicSetPwdController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoPWDInputTip);
+                    return;
+                  } else if (viewModel.mnemonicConfirmPwdController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoComfirmPWDInputTip);
+                    return;
+                  } else if (viewModel.mnemonicConfirmPwdController.text != viewModel.mnemonicSetPwdController.text) {
+                    showToast(S.of(context).PWDDiffentInputTip);
+                    return;
+                  }
+
+                  if(!validateMnemonic(viewModel.mnemonicController.text)){
+                    showToast(S.of(context).mnemonicWrong);
+                    return;
+                  }
+                        showLoading();
+                        await createWalletMnemonic(
+                          viewModel.mnemonicController.text,
+                          viewModel.mnemonicAccountController.text,
+                          viewModel.mnemonicSetPwdController.text);
+                        hideLoading();
+
+                          Navigator.pushReplacementNamed(context, RouteName.tab);
+                      break;
+
+                   case 1:
+                    break;
+
+
+                    default:
+ 
+                  }
+
+
+                print(_tabController.index);
+
+
+
+                  // Navigator.pushReplacementNamed(context, RouteName.tab);
+                }
+                    
               ))
         ],
       ),
