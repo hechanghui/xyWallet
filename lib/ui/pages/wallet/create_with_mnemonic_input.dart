@@ -126,20 +126,13 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                         return;
                       }
 
-                      SpUtils.put("hehe", ["dddddddddd","dddddd"]);
-                      SpUtils.getObj("hehe", (v) => print(v));
-
                       "".showLoading();
-                      print("0000----------000000");
-                      // view
-                      //  showToast("ddddddddd");
+                      
                       await createWalletMnemonic(
                           _mnemonicInput,
                           widget.viewModel.mnemonicAccountController.text,
                           widget.viewModel.mnemonicSetPwdController.text);
                        "".hideLoading();
-
-                      print("1111111----------1111111");
 
                       // Navigator.pushNamedAndRemoveUntil(
                       //     context, RouteName.tab, (Route route) => false);

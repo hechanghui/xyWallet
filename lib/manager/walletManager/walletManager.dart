@@ -33,6 +33,12 @@ createWalletMnemonic(
   final answer = ReceivePort();
   sendPort.send([randomMnemonic, name, password, answer.sendPort]);
   var result = await answer.first;
+  final saveData = result.toJson();
+  debugPrint("wallet:${saveData}");
+  SpUtils.putObject('wallet', saveData);
+  // SpUtils.getObj("wallet")
+  // eventBus.fire(MnemonicCreate(randomMnemonic));
+  SpUtils.getObj("wallet", (v) => debugPrint("wallet::get:${v}"));
   answer.close();
   receivePort.close();
   isolate.kill();
@@ -68,12 +74,6 @@ threadTask(SendPort sendPort) async {
   model.publicKey = HEX.encode(child.publicKey);
   model.name = name;
   model.mnemonic = randomMnemonic;
-  final saveData = model.toJson();
-  debugPrint("wallet:${saveData}");
-  SpUtils.putObject('wallet', saveData);
-  // SpUtils.getObj("wallet")
-  // eventBus.fire(MnemonicCreate(randomMnemonic));
-  SpUtils.getObj("wallet", (v) => debugPrint("wallet:${v}"));
   print("createWalletMnemonic:44");
   callBacl.send(model);
 }
