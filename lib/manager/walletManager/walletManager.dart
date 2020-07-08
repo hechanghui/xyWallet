@@ -15,6 +15,11 @@ generateMnemonic() {
   return bip39.generateMnemonic();
 }
 
+//校验助记词
+bool validateMnemonic(String mnemonic) {
+  return bip39.validateMnemonic(mnemonic);
+}
+
 //助记词创建
 createWalletMnemonic(
     String randomMnemonic, String name, String password) async {
