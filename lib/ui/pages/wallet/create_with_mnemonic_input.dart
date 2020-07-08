@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/dialog_helper.dart';
+import 'package:xy_wallet/common/helper/popup_helper.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
+import 'package:xy_wallet/ui/pages/tabbar/tab_wallet.dart';
 import 'package:xy_wallet/ui/pages/wallet/vm/create_vm.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
@@ -32,7 +36,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
     super.initState();
 
     _mnemonic = widget.viewModel.mnemonicController.text.split(' ');
-    _mnemonic.shuffle();
+    // _mnemonic.shuffle();
   }
 
   @override
@@ -104,8 +108,8 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                     bottom: ThemeDimens.pageBottomMargin),
                 child: CommonButton(
                     child: Text(S.of(context).createWallet),
-                    onPressed: () async{
-                      
+
+                    onPressed: () async {
                       if (_mnemonic.length != 0) {
                         return;
                       }
@@ -119,22 +123,19 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                           _mnemonic = widget.viewModel.mnemonicController.text
                               .split(' ');
                           _mnemonic.shuffle();
-                          
                         });
                         return;
                       }
 
 
-
+                      "".showLoading();
                       
-                      // showLoading();
-                      // showDialog(context: null);
-                      print("0000----------000000");
-                      createWalletMnemonic(_mnemonicInput, widget.viewModel.mnemonicAccountController.text, widget.viewModel.mnemonicSetPwdController.text);
-                      //  wallet111.address.hideLoading();
-                       print("1111111----------1111111");
-                    // hideLoading();
-                    
+                      await createWalletMnemonic(
+                          _mnemonicInput,
+                          widget.viewModel.mnemonicAccountController.text,
+                          widget.viewModel.mnemonicSetPwdController.text);
+                       "".hideLoading();
+
                       // Navigator.pushNamedAndRemoveUntil(
                       //     context, RouteName.tab, (Route route) => false);
                     }))

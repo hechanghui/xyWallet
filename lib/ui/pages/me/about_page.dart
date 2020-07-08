@@ -26,12 +26,29 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
       children: <Widget>[
         Text(model.packageInfo.appName),
         InkWell(
-          onTap: () {
-          "".showLoading();
+          onTap: () async {
+            "".showLoading();
+            print("---------------1");
+           var d = await test();
+            print("---------------2 $d");
+            "".hideLoading();
           },
           child: Text(model.packageInfo.version),
         )
       ],
     );
+  }
+
+  Future<String> test() {
+    print("1111111");
+    var ddd = Future(() async {
+      print("22222222");
+      return await Future.delayed(Duration(seconds: 3), () {
+        print("33333333");
+        return "hehehehe";
+      });
+    });
+    print("4444444");
+    return ddd;
   }
 }

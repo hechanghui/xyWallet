@@ -32,68 +32,70 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: [
-        SingleChildScrollView(
-          //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
-          scrollDirection: Axis.vertical,
-          //true 滑动到底部
-          reverse: false,
-          padding: EdgeInsets.only(
-            top: ThemeDimens.pageVerticalMargin * 2,
-          ),
-          ////滑动到底部回弹效果
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: <Widget>[
-              Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(top: 3, end: 3),
-                      child: Image.asset(
-                        ImageHelper.wrapAssets('icon_tip.png'),
-                        width: 15,
-                        // fit: BoxFit.contain,
+        Expanded(
+          child: SingleChildScrollView(
+            //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
+            scrollDirection: Axis.vertical,
+            //true 滑动到底部
+            reverse: false,
+            padding: EdgeInsets.only(
+              top: ThemeDimens.pageVerticalMargin * 2,
+            ),
+            ////滑动到底部回弹效果
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: ThemeDimens.pageLRMargin),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(top: 3, end: 3),
+                        child: Image.asset(
+                          ImageHelper.wrapAssets('icon_tip.png'),
+                          width: 15,
+                          // fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        S.of(context).walletCreateAccountTip,
-                        style: ThemeStyles.getSubtitle1lLight(context),
+                      Expanded(
+                        child: Text(
+                          S.of(context).walletCreateAccountTip,
+                          style: ThemeStyles.getSubtitle1lLight(context),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              CommonInput(
-                title: S.of(context).accountName,
-                placeholder: S.of(context).hintInputAccountName,
-                onChanged: (text) {
-                  acountName = text;
-                },
-                controller: viewModel.mnemonicAccountController,
-              ),
-              CommonInput(
-                title: S.of(context).setPwd,
-                placeholder: S.of(context).hintInputPwd,
-                onChanged: (text) {
-                  passWord = text;
-                },
-                controller: viewModel.mnemonicSetPwdController,
-              ),
-              CommonInput(
-                title: S.of(context).confirmPwd,
-                placeholder: S.of(context).hintInputPwd,
-                onChanged: (text) {
-                  comfirmPW = text;
-                },
-                controller: viewModel.mnemonicConfirmPwdController,
-              ),
-            ],
+                CommonInput(
+                  title: S.of(context).accountName,
+                  placeholder: S.of(context).hintInputAccountName,
+                  onChanged: (text) {
+                    acountName = text;
+                  },
+                  controller: viewModel.mnemonicAccountController,
+                ),
+                CommonInput(
+                  title: S.of(context).setPwd,
+                  placeholder: S.of(context).hintInputPwd,
+                  onChanged: (text) {
+                    passWord = text;
+                  },
+                  controller: viewModel.mnemonicSetPwdController,
+                ),
+                CommonInput(
+                  title: S.of(context).confirmPwd,
+                  placeholder: S.of(context).hintInputPwd,
+                  onChanged: (text) {
+                    comfirmPW = text;
+                  },
+                  controller: viewModel.mnemonicConfirmPwdController,
+                ),
+              ],
+            ),
           ),
         ),
         Padding(
