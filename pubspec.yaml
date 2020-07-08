@@ -50,6 +50,8 @@ dependencies:
   bitcoin_flutter: ^2.0.1
   web3dart: ^1.2.3
   # bitcoin_bip44: ^0.1.2 
+  image_gallery_saver: '^1.5.0' #保存图片到本地
+
 
   pull_to_refresh: ^1.6.0 #下拉刷新、上拉加载更多
   flutter_swiper: ^1.1.6 #滑动、banner类似
