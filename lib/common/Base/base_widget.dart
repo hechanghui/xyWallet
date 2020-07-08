@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:xy_wallet/common/helper/popup_helper.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
@@ -112,12 +110,13 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   @override
   void dispose() {
     String classname = getClassName();
+    _onResumed = false;
+    _onPause = true;
+
     print('${classname} 销毁');
 
     onDestory();
     WidgetsBinding.instance.removeObserver(this);
-    _onResumed = false;
-    _onPause = false;
 
     //把改页面 从 页面列表中 去除
     NavigatorManger().removeWidget(this);
@@ -171,10 +170,10 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   void _regEventBus() {
     _eventBusSubscription = eventBus.on().listen((event) {
-      
-      print('listen');
+      print('listen::: ${widget} -> ${!_onPause}');
       if (!_onPause) {
         if (event is LoadingPopupEvent) {
+          print("showLoading::::${event.isShow}");
           if (event.isShow) {
             showLoading(msg: event.msg, canCancel: event.canCancel);
           } else {
