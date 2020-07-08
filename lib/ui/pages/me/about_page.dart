@@ -1,7 +1,10 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/popup_helper.dart';
+import 'package:xy_wallet/common/worker/worker.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/me/vm/about_vm.dart';
 
@@ -17,6 +20,9 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
   String titleLabel(BuildContext context) => S.current.AboutUs;
 
   @override
+  bool get enmptEnableReload => false;
+
+  @override
   onCreateViewModel() => AboutViewModel();
 
   @override
@@ -29,26 +35,13 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
           onTap: () async {
             "".showLoading();
             print("---------------1");
-           var d = await test();
-            print("---------------2 $d");
+            // var d = await test(handler , ["hehehe", "wocao"]);
+            print("---------------2 ");
             "".hideLoading();
           },
           child: Text(model.packageInfo.version),
         )
       ],
     );
-  }
-
-  Future<String> test() {
-    print("1111111");
-    var ddd = Future(() async {
-      print("22222222");
-      return await Future.delayed(Duration(seconds: 3), () {
-        print("33333333");
-        return "hehehehe";
-      });
-    });
-    print("4444444");
-    return ddd;
   }
 }

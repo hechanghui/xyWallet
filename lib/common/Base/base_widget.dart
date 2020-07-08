@@ -187,6 +187,9 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
 abstract class BaseLoadDataWidgetState<T extends BaseWidget,
     VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
+  @protected
+  final bool enmptEnableReload = true;
+
   VM onCreateViewModel();
 
   @override
@@ -200,9 +203,11 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
             return ViewStateBusyWidget();
           case ViewState.empty:
             return ViewStateEmptyWidget(
-              onPressed: () {
-                model.loadData();
-              },
+              onPressed: enmptEnableReload
+                  ? () {
+                      model.loadData();
+                    }
+                  : null,
             );
           case ViewState.error:
             return ViewStateErrorWidget(

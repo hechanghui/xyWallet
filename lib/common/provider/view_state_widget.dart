@@ -37,7 +37,7 @@ class ViewStateWidget extends StatelessWidget {
       this.title,
       this.message,
       this.buttonText,
-      @required this.onPressed,
+      this.onPressed,
       this.buttonTextData})
       : super(key: key);
 
@@ -73,11 +73,13 @@ class ViewStateWidget extends StatelessWidget {
           ),
         ),
         Center(
-          child: ViewStateButton(
-            child: buttonText,
-            textData: buttonTextData,
-            onPressed: onPressed,
-          ),
+          child: onPressed == null
+              ? null
+              : ViewStateButton(
+                  child: buttonText,
+                  textData: buttonTextData,
+                  onPressed: onPressed,
+                ),
         ),
       ],
     );
@@ -155,11 +157,7 @@ class ViewStateEmptyWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const ViewStateEmptyWidget(
-      {Key key,
-      this.image,
-      this.message,
-      this.buttonText,
-      @required this.onPressed})
+      {Key key, this.image, this.message, this.buttonText, this.onPressed})
       : super(key: key);
 
   @override
