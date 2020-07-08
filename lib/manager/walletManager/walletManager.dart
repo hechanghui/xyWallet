@@ -23,13 +23,10 @@ generateMnemonic() {
 //助记词创建
 createWalletMnemonic(
     String randomMnemonic, String name, String password) async {
-  print("createWalletMnemonic:11");
   ReceivePort receivePort = ReceivePort();
   var isolate = await Isolate.spawn(threadTask, receivePort.sendPort);
-  print("22222222-2");
   // 获取新isolate的监听port
   var sendPort = await receivePort.first as SendPort;
-  print("22222222-3");
   final answer = ReceivePort();
   sendPort.send([randomMnemonic, name, password, answer.sendPort]);
   var result = await answer.first;
@@ -38,7 +35,7 @@ createWalletMnemonic(
   SpUtils.putObject('wallet', saveData);
   // SpUtils.getObj("wallet")
   // eventBus.fire(MnemonicCreate(randomMnemonic));
-  SpUtils.getObj("wallet", (v) => debugPrint("wallet::get:${v}"));
+  // SpUtils.getObj("wallet", (v) => debugPrint("wallet::get:${v}"));
   answer.close();
   receivePort.close();
   isolate.kill();
@@ -68,12 +65,9 @@ threadTask(SendPort sendPort) async {
 
   debugPrint("privateKey:${HEX.encode(child.privateKey)}");
   debugPrint("publicKey:${HEX.encode(child.publicKey)}");
-  print("createWalletMnemonic:22");
   var model = await createETH(HEX.encode(child.privateKey), password);
-  print("createWalletMnemonic:33");
   model.publicKey = HEX.encode(child.publicKey);
   model.name = name;
   model.mnemonic = randomMnemonic;
-  print("createWalletMnemonic:44");
   callBacl.send(model);
 }
