@@ -1452,6 +1452,16 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入助记词`
+  String get mnemonicInputTip {
+    return Intl.message(
+      '请输入助记词',
+      name: 'mnemonicInputTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

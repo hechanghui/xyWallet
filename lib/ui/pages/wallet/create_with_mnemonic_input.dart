@@ -136,8 +136,8 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                           widget.viewModel.mnemonicSetPwdController.text);
                        "".hideLoading();
 
-                      // Navigator.pushNamedAndRemoveUntil(
-                      //     context, RouteName.tab, (Route route) => false);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, RouteName.tab, (Route route) => false);
                     }))
           ],
         );

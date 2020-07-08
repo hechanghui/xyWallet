@@ -55,7 +55,7 @@ bool validateMnemonic(String mnemonic) {
 
   // return model;
 createWalletMnemonic(
-    String randomMnemonic, String name, String password) async {
+  String randomMnemonic, String name, String password) async {
   ReceivePort receivePort = ReceivePort();
   var isolate = await Isolate.spawn(threadTask, receivePort.sendPort);
   // 获取新isolate的监听port
@@ -66,9 +66,7 @@ createWalletMnemonic(
   final saveData = result.toJson();
   debugPrint("wallet:${saveData}");
   SpUtils.putObject('wallet', saveData);
-  // SpUtils.getObj("wallet")
-  // eventBus.fire(MnemonicCreate(randomMnemonic));
-  // SpUtils.getObj("wallet", (v) => debugPrint("wallet::get:${v}"));
+
   answer.close();
   receivePort.close();
   isolate.kill();
@@ -95,13 +93,11 @@ threadTask(SendPort sendPort) async {
   // print(HEX.encode(btc.privateKey));
 
   bip32.BIP32 child = node.derivePath("m/44'/60'/0'/0/0");
-
-  debugPrint("privateKey:${HEX.encode(child.privateKey)}");
-  debugPrint("publicKey:${HEX.encode(child.publicKey)}");
   var model = await createETH(HEX.encode(child.privateKey), password);
   model.publicKey = HEX.encode(child.publicKey);
   model.name = name;
   model.mnemonic = randomMnemonic;
+  
   callBacl.send(model);
 }
     
