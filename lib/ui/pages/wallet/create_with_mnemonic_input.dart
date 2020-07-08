@@ -105,6 +105,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                 child: CommonButton(
                     child: Text(S.of(context).createWallet),
                     onPressed: () async{
+                      
                       if (_mnemonic.length != 0) {
                         return;
                       }
@@ -124,13 +125,15 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                       }
 
 
-                      "".showLoading();
-                    
-                     print("0000----------000000");
-                       var wallet111 = await createWalletMnemonic(_mnemonicInput, widget.viewModel.mnemonicAccountController.text, widget.viewModel.mnemonicSetPwdController.text);
-                      //  "".hideLoading();
-                   print("1111111----------1111111");
-                    //  "".hideLoading();
+
+                      
+                      // showLoading();
+                      // showDialog(context: null);
+                      print("0000----------000000");
+                      createWalletMnemonic(_mnemonicInput, widget.viewModel.mnemonicAccountController.text, widget.viewModel.mnemonicSetPwdController.text);
+                      //  wallet111.address.hideLoading();
+                       print("1111111----------1111111");
+                    // hideLoading();
                     
                       // Navigator.pushNamedAndRemoveUntil(
                       //     context, RouteName.tab, (Route route) => false);

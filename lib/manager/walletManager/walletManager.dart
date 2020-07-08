@@ -14,8 +14,13 @@ import 'EthWallet.dart';
 
 // import 'package:hex/hex.dart';
 
+//生成助记词
 generateMnemonic() {
   return bip39.generateMnemonic();
+}
+//校验助记词
+bool validateMnemonic(String mnemonic) {
+  return bip39.validateMnemonic(mnemonic);
 }
 
 //助记词创建
@@ -33,7 +38,7 @@ Future<WalletModel> createWalletMnemonic(
 
     print(HEX.encode(child.privateKey));
     print(HEX.encode(child.publicKey));
-print("2222");
+    print("2222");
     var model = await createETH(HEX.encode(child.privateKey), password);
     model.publicKey = HEX.encode(child.publicKey);
     model.name = name;
