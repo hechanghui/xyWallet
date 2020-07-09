@@ -6,10 +6,20 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
          <uses-permission android:name="android.permission.INTERNET"/>
+
+         <!-- Permissions options for the `storage` group -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Permissions options for the `camera` group -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="@string/appName"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        >
+        <!-- android:requestLegacyExternalStorage="true" -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -16,7 +16,7 @@ class TransactionRecordPage extends BaseWidget {
 class _PageState extends BaseWidgetState<TransactionRecordPage> {
   @override
   String titleLabel(BuildContext context) => S.current.transferRecord;
-  @override
+    @override
   bool get wantKeepAlive => true;
 
   TransactionRecordViewModel _viewModel;
