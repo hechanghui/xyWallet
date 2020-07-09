@@ -53,7 +53,9 @@ abstract class BasePageMixin {
   }
 
   hideInputKeyboard(BuildContext context) {
-    FocusScope.of(context).requestFocus(FocusNode());
+    if (FocusScope.of(context).focusedChild != null) {
+      FocusScope.of(context).requestFocus(FocusNode());
+    }
   }
 
   @protected

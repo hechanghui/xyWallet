@@ -5,11 +5,7 @@ import 'package:xy_wallet/common/base/view_model/theme_model.dart';
 // import 'package:xy_wallet/view_model/user_model.dart';
 import 'package:provider/single_child_widget.dart';
 
-List<SingleChildWidget> providers = [
-  ...independentServices,
-  ...dependentServices,
-  ...uiConsumableProviders
-];
+List<SingleChildWidget> providers = [...independentServices, ...dependentServices, ...uiConsumableProviders];
 
 /// 独立的model
 List<SingleChildWidget> independentServices = [

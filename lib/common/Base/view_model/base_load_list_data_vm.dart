@@ -11,4 +11,5 @@ abstract class BaseLoadListDataViewModel extends BaseLoadDataViewModel {
   int pageNum = 0;
 
   
+  
 }
