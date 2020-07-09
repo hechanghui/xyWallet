@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 
-class RestoreViewModel extends ViewStateModel {
+class RestoreViewModel extends BaseViewModel {
   final mnemonicController = TextEditingController();
   final mnemonicAccountController = TextEditingController();
   final mnemonicSetPwdController = TextEditingController();

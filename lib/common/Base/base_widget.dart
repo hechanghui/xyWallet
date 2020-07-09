@@ -6,7 +6,7 @@ import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
 import 'package:xy_wallet/model/event/message_event.dart';
-import 'package:xy_wallet/view_model/base_load_data_vm.dart';
+import 'package:xy_wallet/common/base/view_model/base_load_data_vm.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
@@ -28,7 +28,13 @@ abstract class BaseWidget extends StatefulWidget {
 }
 
 abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
-    with WidgetsBindingObserver, BaseFuntion, BasePageMixin {
+    with
+        WidgetsBindingObserver,
+        BaseFuntion,
+        BasePageMixin,
+        AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => false;
   //平台信息
 //  bool isAndroid = Platform.isAndroid;
 
@@ -52,6 +58,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     if (!_onResumed) {
       //说明是 初次加载
       if (NavigatorManger().isTopPage(this)) {}
@@ -195,6 +202,25 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
     return _viewModel;
   }
 
+  Widget buildEmptyWidget(BuildContext context) {
+    return ViewStateEmptyWidget(
+      onPressed: enmptEnableReload
+          ? () {
+              viewModel.loadData();
+            }
+          : null,
+    );
+  }
+
+  Widget buildErrorWidget(BuildContext context) {
+    return ViewStateErrorWidget(
+      error: viewModel.viewStateError,
+      onPressed: () {
+        viewModel.loadData();
+      },
+    );
+  }
+
   @override
   Widget buildBody(BuildContext context) {
     if (viewModel.viewState != ViewState.idle &&
@@ -209,20 +235,9 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
             model.loadData();
             return ViewStateBusyWidget();
           case ViewState.empty:
-            return ViewStateEmptyWidget(
-              onPressed: enmptEnableReload
-                  ? () {
-                      model.loadData();
-                    }
-                  : null,
-            );
+            return buildEmptyWidget(context);
           case ViewState.error:
-            return ViewStateErrorWidget(
-              error: model.viewStateError,
-              onPressed: () {
-                model.loadData();
-              },
-            );
+            return buildErrorWidget(context);
           default:
             return buildBodyWidget(context);
         }

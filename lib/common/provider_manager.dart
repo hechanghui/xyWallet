@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
 // import 'package:xy_wallet/view_model/favourite_model.dart';
-import 'package:xy_wallet/view_model/locale_model.dart';
-import 'package:xy_wallet/view_model/theme_model.dart';
+import 'package:xy_wallet/common/base/view_model/locale_model.dart';
+import 'package:xy_wallet/common/base/view_model/theme_model.dart';
 // import 'package:xy_wallet/view_model/user_model.dart';
 import 'package:provider/single_child_widget.dart';
 

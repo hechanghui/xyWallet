@@ -13,19 +13,17 @@ class TransactionRecordPage extends BaseWidget {
   _PageState getState() => _PageState();
 }
 
-class _PageState extends BaseWidgetState<TransactionRecordPage>
-    with SingleTickerProviderStateMixin {
+class _PageState extends BaseWidgetState<TransactionRecordPage> {
   @override
   String titleLabel(BuildContext context) => S.current.transferRecord;
+  @override
+  bool get wantKeepAlive => true;
 
   TransactionRecordViewModel _viewModel;
-
-  TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: 3);
     _viewModel = TransactionRecordViewModel();
   }
 
@@ -38,25 +36,27 @@ class _PageState extends BaseWidgetState<TransactionRecordPage>
       TransactionListPage(TransactionType.TRANSFER, _viewModel),
       TransactionListPage(TransactionType.RECEIPT, _viewModel),
     ]);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        TabBar(
-            labelColor: Theme.of(context).textTheme.subtitle1.color,
-            unselectedLabelColor: ThemeStyles.getSubtitle1lLight(context).color,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
-            controller: _tabController,
-            tabs: tabLabels.map((e) => Tab(text: e)).toList()),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            physics: ScrollPhysics(),
-            children: subPages,
+    return DefaultTabController(
+      length: tabLabels.length,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          TabBar(
+              labelColor: Theme.of(context).textTheme.subtitle1.color,
+              unselectedLabelColor:
+                  ThemeStyles.getSubtitle1lLight(context).color,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
+              tabs: tabLabels.map((e) => Tab(text: e)).toList()),
+          Expanded(
+            child: TabBarView(
+              physics: ScrollPhysics(),
+              children: subPages,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -79,7 +79,11 @@ class _PageState extends State<TransactionListPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
+    final datas = widget.type == TransactionType.RECEIPT
+        ? widget.viewModel.itemsReceipt
+        : widget.type == TransactionType.TRANSFER
+            ? widget.viewModel.itemsTransfer
+            : widget.viewModel.itemsAll;
     return NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) {
         return <Widget>[
@@ -117,6 +121,7 @@ class _PageState extends State<TransactionListPage>
         onRefresh: () async {
           print("下拉刷新ing");
           Timer.periodic(Duration(seconds: 3), (_) {
+            datas.insert(0, TransactionItemBean());
             _refreshController.refreshCompleted();
           });
         },
@@ -126,7 +131,7 @@ class _PageState extends State<TransactionListPage>
             _refreshController.loadComplete();
           });
         },
-        child: buildItems(),
+        child: buildItems(datas),
       ).padding(EdgeInsets.only(top: ThemeDimens.pageVerticalMargin * 2)),
     ).padding(EdgeInsets.only(
       left: ThemeDimens.pageLRMargin,
@@ -140,8 +145,7 @@ class _PageState extends State<TransactionListPage>
     // showToast("搜索::${widget.viewModel.keywordController.text}");
   }
 
-  buildItems() {
-    var datas = widget.type== TransactionType.RECEIPT?widget.viewModel.itemsReceipt:widget.type==TransactionType.TRANSFER?widget.viewModel.itemsTransfer:widget.viewModel.itemsAll;
+  buildItems(List datas) {
     return ListView.builder(
       itemBuilder: (context, index) {
         var item = datas[index];

@@ -1,7 +1,7 @@
 import 'view_state_model.dart';
 
 /// 基于
-abstract class ViewStateListModel<T> extends ViewStateModel {
+abstract class ViewStateListModel<T> extends BaseViewModel {
   /// 页面数据
   List<T> list = [];
 

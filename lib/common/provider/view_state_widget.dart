@@ -242,3 +242,18 @@ class ViewStateButton extends StatelessWidget {
     );
   }
 }
+
+// class ViewStateLayou extends StatefulWidget {
+
+//   @override
+//   _ViewStateLayoutState createState() => _ViewStateLayoutState();
+// }
+
+// class _ViewStateLayoutState extends State<ViewStateLayou> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+
+//     );
+//   }
+// }

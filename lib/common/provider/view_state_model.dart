@@ -9,7 +9,7 @@ import 'view_state.dart';
 
 export 'view_state.dart';
 
-class ViewStateModel with ChangeNotifier {
+class BaseViewModel with ChangeNotifier {
   /// 防止页面销毁后,异步任务才完成,导致报错
   bool _disposed = false;
 
@@ -20,7 +20,7 @@ class ViewStateModel with ChangeNotifier {
   ///
   /// 子类可以在构造函数指定需要的页面状态
   /// FooModel():super(viewState:ViewState.busy);
-  ViewStateModel({ViewState viewState})
+  BaseViewModel({ViewState viewState})
       : _viewState = viewState ?? ViewState.idle {
     debugPrint('ViewStateModel---constructor--->$runtimeType');
   }

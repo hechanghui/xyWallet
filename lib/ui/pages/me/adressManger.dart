@@ -18,7 +18,7 @@ import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/pages/wallet/restore_by_mnemonic.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
-import 'package:xy_wallet/view_model/base_load_data_vm.dart';
+import 'package:xy_wallet/common/base/view_model/base_load_data_vm.dart';
 
 class AdressManger extends BaseWidget {
   @override

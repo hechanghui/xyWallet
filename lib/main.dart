@@ -11,8 +11,8 @@ import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'common/storage_manager.dart';
 import 'common/provider_manager.dart';
 import 'generated/l10n.dart';
-import 'view_model/locale_model.dart';
-import 'view_model/theme_model.dart';
+import 'common/base/view_model/locale_model.dart';
+import 'common/base/view_model/theme_model.dart';
 
 void main() async {
   Provider.debugCheckInvalidValueType = null;
