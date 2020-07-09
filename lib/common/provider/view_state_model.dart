@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -30,14 +29,15 @@ class BaseViewModel with ChangeNotifier {
 
   int _lastStateChangeTime;
   set viewState(ViewState viewState) {
+    final now = DateTime.now().microsecondsSinceEpoch;
     if (_viewState == viewState) {
       notifyListeners();
+      _lastStateChangeTime = now;
       return;
     }
-    final now = DateTime.now().microsecondsSinceEpoch;
     final delay = now - (_lastStateChangeTime ?? now);
-    if (delay < 200) {
-      Future.delayed(Duration(milliseconds: 200 - delay), () {
+    if (delay < 300) {
+      Future.delayed(Duration(milliseconds: 300 - delay), () {
         _viewState_IMPL(viewState);
       });
     } else {

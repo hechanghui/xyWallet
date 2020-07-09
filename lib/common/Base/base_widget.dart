@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
@@ -202,10 +203,21 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
     return _viewModel;
   }
 
+  // @override
+  // void initState() { 
+  //   super.initState();
+  //   SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+  //     if (viewModel.viewState == ViewState.busy) {
+  //         viewModel.loadData();
+  //       }
+  //    });
+  // }
+
   Widget buildEmptyWidget(BuildContext context) {
     return ViewStateEmptyWidget(
       onPressed: enmptEnableReload
           ? () {
+              viewModel.setBusy();
               viewModel.loadData();
             }
           : null,
@@ -216,6 +228,7 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
     return ViewStateErrorWidget(
       error: viewModel.viewStateError,
       onPressed: () {
+        viewModel.setBusy();
         viewModel.loadData();
       },
     );
@@ -223,13 +236,10 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
 
   @override
   Widget buildBody(BuildContext context) {
-    if (viewModel.viewState != ViewState.idle &&
-        viewModel.viewState != ViewState.busy) {
-      viewModel.setBusy();
-    }
     return ProviderWidget<VM>(
       model: viewModel,
       builder: (context, model, child) {
+        
         switch (model.viewState) {
           case ViewState.busy:
             model.loadData();
