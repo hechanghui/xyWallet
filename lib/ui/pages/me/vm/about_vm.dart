@@ -8,11 +8,13 @@ class AboutViewModel extends BaseLoadDataViewModel {
 
   @override
   loadData() async {
-    setBusy();
-    Timer(Duration(seconds: 3), () async {
-      packageInfo = await PackageInfo.fromPlatform();
-      // setIdle();
-      setEmpty();
-    });
+    // setBusy();
+    packageInfo = await PackageInfo.fromPlatform();
+    setIdle();
+    // Timer(Duration(seconds: 3), () async {
+    //   packageInfo = await PackageInfo.fromPlatform();
+    //   // setIdle();
+    //   setEmpty();
+    // });
   }
 }

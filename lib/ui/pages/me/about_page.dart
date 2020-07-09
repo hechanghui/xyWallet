@@ -27,10 +27,10 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    var model = Provider.of<AboutViewModel>(context);
+    // var model = Provider.of<AboutViewModel>(context);
     return Column(
       children: <Widget>[
-        Text(model.packageInfo.appName),
+        Text(viewModel.packageInfo.appName),
         InkWell(
           onTap: () async {
             "".showLoading();
@@ -39,7 +39,7 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
             print("---------------2 ");
             "".hideLoading();
           },
-          child: Text(model.packageInfo.version),
+          child: Text(viewModel.packageInfo.version),
         )
       ],
     );

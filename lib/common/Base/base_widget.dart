@@ -44,10 +44,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     NavigatorManger().addWidget(this);
     WidgetsBinding.instance.addObserver(this);
     onCreate();
-    if (mounted) {}
 
     super.initState();
-    print('initState1');
 
     _regEventBus();
   }
@@ -67,7 +65,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   void didChangeDependencies() {
     super.didChangeDependencies();
     String classname = getClassName();
-    print('${classname} 加载完成');
+    print('${classname} didChangeDependencies');
     _context = context;
   }
 
@@ -77,6 +75,11 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
     // hideInputKeyboard(context);
     String classname = getClassName();
     print('${classname} didUpdateWidget');
+  }
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return buildBodyWithStatus(context);
   }
 
   @override
@@ -103,11 +106,6 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   }
 
   @override
-  Widget buildBody(BuildContext context) {
-    return buildBodyWithStatus(context);
-  }
-
-  @override
   void dispose() {
     String classname = getClassName();
     _onResumed = false;
@@ -123,7 +121,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
 
     // //取消网络请求
     // HttpManager.cancelHttp(getWidgetName());
-    hideInputKeyboard(_context);
+
     _eventBusSubscription?.cancel();
     _context = null;
     super.dispose();
@@ -153,19 +151,19 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   @override
   void onCreate() {
     String classname = getClassName();
-    print('${classname}创建');
+    print('${classname} 创建');
   }
 
   @override
   void onPause() {
     String classname = getClassName();
-    print('${classname}onPause');
+    print('${classname} onPause');
   }
 
   @override
   void onResume() {
     String classname = getClassName();
-    print('${classname}onResume');
+    print('${classname} onResume');
   }
 
   void _regEventBus() {
@@ -231,15 +229,4 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
       },
     );
   }
-
-  // @override
-  // void didChangeDependencies() {
-
-  //   if(_viewModel.viewState != ViewState.idle && _viewModel.viewState !=ViewState.busy)
-  //   {
-  //     _viewModel.setBusy();
-  //     _viewModel.loadData();
-  //   }
-  //   super.didChangeDependencies();
-  // }
 }

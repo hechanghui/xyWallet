@@ -70,13 +70,13 @@ class Pages extends BaseWidgetState<AddAdress> {
                 }
 
                 var model = AddressModel(name: name,address: address,note: note);
-                List<Map> datas = SpUtils.getObjectList('address');
-                datas = datas??[];
+                // List<Map> datas = SpUtils.getObjectList('address');
+                // datas = datas??[];
                 
-                datas.add(model.toJson());
-                SpUtils.putObjectList('address', datas);
+                // datas.add(model.toJson());
+                // SpUtils.putObjectList('address', datas);
        
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(model.toJson());
                 // datas.add(value)
 
                 // SpUtils.putObjectList(key, list)

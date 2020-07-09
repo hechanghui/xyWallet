@@ -31,25 +31,27 @@ class Pages
     extends BaseLoadDataWidgetState<AdressManger, AdressMangerViewModel> {
   @override
   String titleLabel(BuildContext context) => S.of(context).AddressManagerTitle;
+  @override
+  bool get enmptEnableReload => false;
 
   @override
-  @override
   onCreateViewModel() => AdressMangerViewModel();
+
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
       IconButton(
           icon: Icon(Icons.add),
-          onPressed: () {
-            Navigator.of(context)
+          onPressed: () async {
+            final result = await Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => AddAdress()));
+            viewModel.addItem(result);
           }),
     ];
   }
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    var viewModel = Provider.of<AdressMangerViewModel>(context);
     // print(datas);
     return Container(
       child: ListView.builder(
@@ -143,15 +145,11 @@ class Pages
                           showToast(S.of(context).AddressTitleInput);
                           return false;
                         }
-
-                        // var model = AddressModel(
-                        //     name: name,
-                        //     address: addressModel.address,
-                        //     note: note);
-                        // datas.removeAt(index);
-                        // datas.insert(index, model.toJson());
-                        // SpUtils.putObjectList('address', datas);
-                        // setState(() {});
+                        final model = AddressModel(
+                            name: name,
+                            address: addressModel.address,
+                            note: note);
+                        viewModel.updateItem(index, model.toJson());
                       }, null),
                     ]);
               },
@@ -169,11 +167,6 @@ class Pages
                     actions: [
                       Tuple3(S.of(context).cannel, null, null),
                       Tuple3(S.of(context).comfirm, () {
-                        // setState(() {
-                        //   datas.removeAt(index);
-                        //   print(datas);
-                        //   SpUtils.putObjectList('address', datas);
-                        // });
                         viewModel.removeItem(index);
                       }, null),
                     ]);
@@ -186,23 +179,26 @@ class Pages
 
 class AdressMangerViewModel extends BaseLoadDataViewModel {
   // PackageInfo packageInfo;
-  List datas = List();
+  List<Map> datas = List();
   @override
-  loadData() async {
+  loadData() {
     datas.addAll(SpUtils.getObjectList('address'));
     _handlerState();
-      // setBusy();
-    // Timer(Duration(seconds: 3), () async {
-    //   packageInfo = await PackageInfo.fromPlatform();
-    //   // setIdle();
-    //   setEmpty();
-    // });
   }
 
   removeItem(int index) {
-    // datas.clear();
+    datas.removeAt(index);
     _handlerState();
-    
+  }
+
+  addItem(Map item) {
+    datas.add(item);
+    _handlerState();
+  }
+
+  updateItem(int index, Map item) {
+    datas[index] = item;
+    notifyListeners();
   }
 
   _handlerState() {
@@ -211,7 +207,7 @@ class AdressMangerViewModel extends BaseLoadDataViewModel {
     } else {
       setIdle();
     }
-    notifyListeners();
+    // notifyListeners();
   }
 
   @override
