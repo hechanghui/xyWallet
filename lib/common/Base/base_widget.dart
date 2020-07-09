@@ -27,12 +27,7 @@ abstract class BaseWidget extends StatefulWidget {
   // }
 }
 
-abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
-    with
-        WidgetsBindingObserver,
-        BaseFuntion,
-        BasePageMixin,
-        AutomaticKeepAliveClientMixin {
+abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with WidgetsBindingObserver, BaseFuntion, BasePageMixin, AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => false;
   //平台信息
@@ -188,8 +183,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T>
   }
 }
 
-abstract class BaseLoadDataWidgetState<T extends BaseWidget,
-    VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
+abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
   @protected
   final bool enmptEnableReload = true;
 
@@ -223,8 +217,7 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
 
   @override
   Widget buildBody(BuildContext context) {
-    if (viewModel.viewState != ViewState.idle &&
-        viewModel.viewState != ViewState.busy) {
+    if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
       viewModel.setBusy();
     }
     return ProviderWidget<VM>(
