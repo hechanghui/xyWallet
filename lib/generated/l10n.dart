@@ -964,10 +964,10 @@ class S {
   }
 
   /// `地址薄`
-  String get Address {
+  String get Addresses {
     return Intl.message(
       '地址薄',
-      name: 'Address',
+      name: 'Addresses',
       desc: '',
       args: [],
     );
@@ -1508,6 +1508,156 @@ class S {
     return Intl.message(
       '将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。',
       name: 'libWalletTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `总奖励`
+  String get rewardTotal {
+    return Intl.message(
+      '总奖励',
+      name: 'rewardTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `邀请奖励`
+  String get inviteTitle {
+    return Intl.message(
+      '邀请奖励',
+      name: 'inviteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `地址`
+  String get address {
+    return Intl.message(
+      '地址',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `时间`
+  String get time {
+    return Intl.message(
+      '时间',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `类型`
+  String get type {
+    return Intl.message(
+      '类型',
+      name: 'type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `个人总算力`
+  String get personPower {
+    return Intl.message(
+      '个人总算力',
+      name: 'personPower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `今日挖矿奖励（X）`
+  String get PowerrewardToday {
+    return Intl.message(
+      '今日挖矿奖励（X）',
+      name: 'PowerrewardToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `个人算力占比`
+  String get PowerPpercentage {
+    return Intl.message(
+      '个人算力占比',
+      name: 'PowerPpercentage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `查看更多数据 >`
+  String get moreData {
+    return Intl.message(
+      '查看更多数据 >',
+      name: 'moreData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `个人动力值`
+  String get personPow {
+    return Intl.message(
+      '个人动力值',
+      name: 'personPow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `个人动力占比`
+  String get Powpercentage {
+    return Intl.message(
+      '个人动力占比',
+      name: 'Powpercentage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `基础动力`
+  String get PowBase {
+    return Intl.message(
+      '基础动力',
+      name: 'PowBase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `邀请动力`
+  String get PowInvite {
+    return Intl.message(
+      '邀请动力',
+      name: 'PowInvite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `今日空投奖励（X）`
+  String get PowrewardToday {
+    return Intl.message(
+      '今日空投奖励（X）',
+      name: 'PowrewardToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `激活动力`
+  String get PowActivate {
+    return Intl.message(
+      '激活动力',
+      name: 'PowActivate',
       desc: '',
       args: [],
     );

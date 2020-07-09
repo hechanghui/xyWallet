@@ -234,8 +234,7 @@ class RectSliderTrackShape extends SliderTrackShape with BaseSliderTrackShape {
     assert(parentBox.size.height >= trackHeight);
 
     final double trackLeft = offset.dx + thumbWidth / 2;
-    final double trackTop =
-        offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width - thumbWidth;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }

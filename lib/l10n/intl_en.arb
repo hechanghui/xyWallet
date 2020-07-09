@@ -104,7 +104,7 @@
     "tabComSubTitle8":"万物互联，处处皆价值  ",
     "tabComSubTitle9":"万物互联，处处皆价值  ",
 
-    "Address":"地址薄",
+    "Addresses":"地址薄",
     "AccountManager":"账户管理",
     "Setting":"设置",
     "ShareApp":"分享应用",
@@ -174,5 +174,20 @@
     "libWalletFeeTitle":"牵引手续费(HT/OKB/ZB/MX/AQ/BIKI)0.01",
     "libWalletFee":"0.01",
     "libWalletAsset":"平台币资产价值≥100USDT",
-    "libWalletTip":"将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。"
+    "libWalletTip":"将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。",
+    "rewardTotal":"总奖励",
+    "inviteTitle":"邀请奖励",
+    "address":"地址",
+    "time":"时间",
+    "type":"类型",
+    "personPower":"个人总算力",
+    "PowerrewardToday":"今日挖矿奖励（X）",
+    "PowerPpercentage":"个人算力占比",
+    "moreData":"查看更多数据 >",
+    "personPow":"个人动力值",
+    "Powpercentage":"个人动力占比",
+    "PowBase":"基础动力",
+    "PowInvite":"邀请动力",
+    "PowrewardToday":"今日空投奖励（X）",
+    "PowActivate":"激活动力"
 }

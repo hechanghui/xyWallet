@@ -69,7 +69,7 @@ class Pages extends BaseWidgetState<TabMe> {
                 .push(MaterialPageRoute(builder: (context) => AdressManger()));
           },
           child: TabMeCell(
-            title: (S.of(context).Address),
+            title: (S.of(context).Addresses),
             imageName: 'me_address.png',
           ),
         ),
