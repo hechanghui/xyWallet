@@ -189,11 +189,22 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
   final bool enmptEnableReload = true;
 
   VM onCreateViewModel();
+  VM _viewModel;
+  get viewModel {
+    if (_viewModel == null) {
+      _viewModel = onCreateViewModel();
+    }
+    return _viewModel;
+  }
 
   @override
   Widget buildBody(BuildContext context) {
+    if (viewModel.viewState != ViewState.idle &&
+        viewModel.viewState != ViewState.busy) {
+      viewModel.setBusy();
+    }
     return ProviderWidget<VM>(
-      model: onCreateViewModel(),
+      model: viewModel,
       builder: (context, model, child) {
         switch (model.viewState) {
           case ViewState.busy:
@@ -220,4 +231,15 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget,
       },
     );
   }
+
+  // @override
+  // void didChangeDependencies() {
+
+  //   if(_viewModel.viewState != ViewState.idle && _viewModel.viewState !=ViewState.busy)
+  //   {
+  //     _viewModel.setBusy();
+  //     _viewModel.loadData();
+  //   }
+  //   super.didChangeDependencies();
+  // }
 }

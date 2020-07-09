@@ -1462,6 +1462,56 @@ class S {
       args: [],
     );
   }
+
+  /// `第三方钱包牵引`
+  String get libWallet {
+    return Intl.message(
+      '第三方钱包牵引',
+      name: 'libWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `牵引手续费(HT/OKB/ZB/MX/AQ/BIKI)0.01`
+  String get libWalletFeeTitle {
+    return Intl.message(
+      '牵引手续费(HT/OKB/ZB/MX/AQ/BIKI)0.01',
+      name: 'libWalletFeeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `0.01`
+  String get libWalletFee {
+    return Intl.message(
+      '0.01',
+      name: 'libWalletFee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `平台币资产价值≥100USDT`
+  String get libWalletAsset {
+    return Intl.message(
+      '平台币资产价值≥100USDT',
+      name: 'libWalletAsset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。`
+  String get libWalletTip {
+    return Intl.message(
+      '将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。',
+      name: 'libWalletTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

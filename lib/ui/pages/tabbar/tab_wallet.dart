@@ -9,6 +9,7 @@ import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/community/charge.dart';
 import 'package:xy_wallet/ui/pages/community/coinList.dart';
+import 'package:xy_wallet/ui/pages/home/PowByAttraction.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_button.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_cell.dart';
@@ -203,7 +204,9 @@ class Page extends BaseWidgetState<TabWallet> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    print('引力');
+                                          Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PowByAttraction()));
+            
                   },
                   child: TabWalletCell(
                     title: (S.of(context).PowByAttraction),
@@ -215,7 +218,7 @@ class Page extends BaseWidgetState<TabWallet> {
                     print('动力');
                   },
                   child: TabWalletCell(
-                    title: (S.of(context).PowByAttraction),
+                    title: (S.of(context).PowByPower),
                     imageName: 'tabWalletCell2.png',
                   ),
                 ),

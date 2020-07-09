@@ -169,6 +169,10 @@
     "PWDDiffentInputTip":"两次密码输入不一致",
     "mnemonicWrong":"助记词错误",
     
-    "mnemonicInputTip":"请输入助记词"
-
+    "mnemonicInputTip":"请输入助记词",
+    "libWallet":"第三方钱包牵引",
+    "libWalletFeeTitle":"牵引手续费(HT/OKB/ZB/MX/AQ/BIKI)0.01",
+    "libWalletFee":"0.01",
+    "libWalletAsset":"平台币资产价值≥100USDT",
+    "libWalletTip":"将持有HT、OKB、ZB、MX、AQ、BIKI的第三方钱包与X钱包进行牵引，牵引后并保持锁仓（无转出行为），即可参与引力挖矿。最小锁仓数值为钱包内平台币资产价值≥100USDT的个HT、OKB、ZB、MX、AQ、BIKI，签约手续费0.01，一周续签一次，D+2发放挖矿收益。"
 }

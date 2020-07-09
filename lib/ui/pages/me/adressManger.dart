@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
+import 'package:package_info/package_info.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
@@ -14,6 +18,7 @@ import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/pages/wallet/restore_by_mnemonic.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
+import 'package:xy_wallet/view_model/base_load_data_vm.dart';
 
 class AdressManger extends BaseWidget {
   @override
@@ -22,9 +27,14 @@ class AdressManger extends BaseWidget {
   }
 }
 
-class Pages extends BaseWidgetState<AdressManger> {
+class Pages
+    extends BaseLoadDataWidgetState<AdressManger, AdressMangerViewModel> {
   @override
   String titleLabel(BuildContext context) => S.of(context).AddressManagerTitle;
+
+  @override
+  @override
+  onCreateViewModel() => AdressMangerViewModel();
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
@@ -39,14 +49,14 @@ class Pages extends BaseWidgetState<AdressManger> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    var datas = SpUtils.getObjectList('address');
+    var viewModel = Provider.of<AdressMangerViewModel>(context);
     // print(datas);
     return Container(
       child: ListView.builder(
-          itemCount: datas == null ? 0 : datas.length,
+          itemCount: viewModel.datas.length,
           //  itemExtent: 50.0, //强制高度为50.0
           itemBuilder: (BuildContext context, int index) {
-            var addressModel = AddressModel.fromJson(datas[index]);
+            var addressModel = AddressModel.fromJson(viewModel.datas[index]);
             print(addressModel);
             return Container(
                 child: AddressCell(
@@ -88,8 +98,8 @@ class Pages extends BaseWidgetState<AdressManger> {
                 );
               },
               onPressedChange: () {
-                var name =  addressModel.name;
-                var note =  addressModel.note;
+                var name = addressModel.name;
+                var note = addressModel.note;
 
                 var wight = Column(
                   children: <Widget>[
@@ -99,7 +109,6 @@ class Pages extends BaseWidgetState<AdressManger> {
                         child: Text(
                           S.of(context).AddressTitle,
                         )),
-  
                     CommonInputMinor(
                       placeholder: S.of(context).AddressTitleInput,
                       controller:
@@ -108,7 +117,6 @@ class Pages extends BaseWidgetState<AdressManger> {
                         name = text;
                       },
                     ),
-
                     Container(
                         padding: EdgeInsets.only(top: 15, left: 15),
                         alignment: Alignment.topLeft,
@@ -130,27 +138,26 @@ class Pages extends BaseWidgetState<AdressManger> {
                     context: context,
                     contentWidget: wight,
                     actions: [
-                      Tuple3(S.of(context).comfirm,(){
-
+                      Tuple3(S.of(context).comfirm, () {
                         if (name == null || name.isEmpty) {
                           showToast(S.of(context).AddressTitleInput);
                           return false;
                         }
 
-                        var model = AddressModel(
-                            name: name,
-                            address: addressModel.address,
-                            note: note);
-                        datas.removeAt(index);
-                        datas.insert(index, model.toJson());
-                        SpUtils.putObjectList('address', datas);
-                        setState(() {});
+                        // var model = AddressModel(
+                        //     name: name,
+                        //     address: addressModel.address,
+                        //     note: note);
+                        // datas.removeAt(index);
+                        // datas.insert(index, model.toJson());
+                        // SpUtils.putObjectList('address', datas);
+                        // setState(() {});
                       }, null),
                     ]);
               },
               onPressedCopy: () {
-                Clipboard.setData(
-                    ClipboardData(text: datas[index]['address'] ?? ""));
+                Clipboard.setData(ClipboardData(
+                    text: viewModel.datas[index]['address'] ?? ""));
                 showToast(S.of(context).CopySuccess);
               },
               onPressedDel: () {
@@ -162,17 +169,54 @@ class Pages extends BaseWidgetState<AdressManger> {
                     actions: [
                       Tuple3(S.of(context).cannel, null, null),
                       Tuple3(S.of(context).comfirm, () {
-                        setState(() {
-                          datas.removeAt(index);
-                          print(datas);
-                          SpUtils.putObjectList('address', datas);
-                        });
-                      
+                        // setState(() {
+                        //   datas.removeAt(index);
+                        //   print(datas);
+                        //   SpUtils.putObjectList('address', datas);
+                        // });
+                        viewModel.removeItem(index);
                       }, null),
                     ]);
               },
             ));
           }),
     );
+  }
+}
+
+class AdressMangerViewModel extends BaseLoadDataViewModel {
+  // PackageInfo packageInfo;
+  List datas = List();
+  @override
+  loadData() async {
+    datas.addAll(SpUtils.getObjectList('address'));
+    _handlerState();
+      // setBusy();
+    // Timer(Duration(seconds: 3), () async {
+    //   packageInfo = await PackageInfo.fromPlatform();
+    //   // setIdle();
+    //   setEmpty();
+    // });
+  }
+
+  removeItem(int index) {
+    // datas.clear();
+    _handlerState();
+    
+  }
+
+  _handlerState() {
+    if (datas?.isNotEmpty == false) {
+      setEmpty();
+    } else {
+      setIdle();
+    }
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    SpUtils.putObjectList('address', datas);
+    super.dispose();
   }
 }
