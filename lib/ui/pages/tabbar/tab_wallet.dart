@@ -14,7 +14,7 @@ import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_button.dart';
 import 'package:xy_wallet/ui/widgets/tabWallet_cell.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
-
+import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 class TabWallet extends BaseWidget {
   @override
   BaseWidgetState getState() => Page();
@@ -162,8 +162,7 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => CreateXcode()));
+                      Navigator.pushNamed(context, RouteName.CREATEXCODE);
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX1),
@@ -172,8 +171,7 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => CreateXcode()));
+                      Navigator.pushNamed(context, RouteName.CREATEXCODE);
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX2),
@@ -188,7 +186,8 @@ class Page extends BaseWidgetState<TabWallet> {
             height: 100,
             child: InkWell(
               onTap: () {
-                print('banner');
+                Navigator.pushNamed(context, RouteName.INVITEINFO);
+
               },
               child: Image.asset(
                 ImageHelper.wrapAssets('banner.png'),
@@ -204,9 +203,7 @@ class Page extends BaseWidgetState<TabWallet> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                                          Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => PowByAttraction()));
-            
+                    Navigator.pushNamed(context, RouteName.POWBYATTRACTION);           
                   },
                   child: TabWalletCell(
                     title: (S.of(context).PowByAttraction),
@@ -215,6 +212,7 @@ class Page extends BaseWidgetState<TabWallet> {
                 ),
                 InkWell(
                   onTap: () {
+                    Navigator.pushNamed(context, RouteName.POWBYPOWER); 
                     print('动力');
                   },
                   child: TabWalletCell(
@@ -224,7 +222,7 @@ class Page extends BaseWidgetState<TabWallet> {
                 ),
                 InkWell(
                   onTap: () {
-                    print('动力');
+                    Navigator.pushNamed(context, RouteName.POWBYSPLIT);   
                   },
                   child: TabWalletCell(
                     title: (S.of(context).PowBySplit),
@@ -236,7 +234,7 @@ class Page extends BaseWidgetState<TabWallet> {
           )
         ],
       ),
-      //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
+     
     );
   }
 }

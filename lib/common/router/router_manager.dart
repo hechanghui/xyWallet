@@ -4,6 +4,11 @@ import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
+import 'package:xy_wallet/ui/pages/home/PowByAttraction.dart';
+import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
+import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
+import 'package:xy_wallet/ui/pages/home/createXCode.dart';
+import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
@@ -31,6 +36,11 @@ class RouteName {
   static const String TRANSACTION_DETAILS = "wallet/transactionDetails";
   static const String COMMUNITY_ASSETMANAGER = 'community/assetManager';
   static const String ABOUT = 'me/about';
+  static const String CREATEXCODE = 'wallet/createXcode';
+  static const String INVITEINFO = 'wallet/InviteInfo';
+  static const String POWBYATTRACTION = 'wallet/PowByAttraction';
+  static const String POWBYSPLIT = 'wallet/PowBySplit';
+  static const String POWBYPOWER = 'wallet/PowByPower';
 }
 
 class Router {
@@ -64,6 +74,22 @@ class Router {
 
       case RouteName.WALLET_RESTORE:
         return CupertinoPageRoute(builder: (_) => AssetManger());
+
+      case RouteName.CREATEXCODE:
+        return CupertinoPageRoute(builder: (_) => CreateXcode());
+
+      case RouteName.INVITEINFO:
+        return CupertinoPageRoute(builder: (_) => InviteInfo());
+
+      case RouteName.POWBYATTRACTION:
+        return CupertinoPageRoute(builder: (_) => PowByAttraction());
+
+      case RouteName.POWBYSPLIT:
+        return CupertinoPageRoute(builder: (_) => PowBySplit());
+
+      case RouteName.POWBYPOWER:
+        return CupertinoPageRoute(builder: (_) => PowByPower());
+        
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
