@@ -10,9 +10,6 @@ Future<WalletModel> createETH(String privateKey, String passWord) {
   Wallet wallet = Wallet.createNew(credentials, passWord, random);
 
   String keystore = wallet.toJson();
-  // var address =
-  // print(keystore);
-  // print(address.toString());
 
   return Future<WalletModel>(() async {
     var walletModel = WalletModel();

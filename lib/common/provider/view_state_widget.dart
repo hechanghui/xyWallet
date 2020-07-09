@@ -44,7 +44,7 @@ class ViewStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var titleStyle =
-        Theme.of(context).textTheme.subhead.copyWith(color: Colors.grey);
+        Theme.of(context).textTheme.headline4.copyWith(color: Colors.grey);
     var messageStyle = titleStyle.copyWith(
         color: titleStyle.color.withOpacity(0.7), fontSize: 14);
     return Column(

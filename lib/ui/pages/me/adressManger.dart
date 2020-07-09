@@ -23,6 +23,7 @@ import 'package:xy_wallet/common/base/view_model/base_load_data_vm.dart';
 class AdressManger extends BaseWidget {
   @override
   getState() {
+    
     return new Pages();
   }
 }
@@ -45,7 +46,9 @@ class Pages
           onPressed: () async {
             final result = await Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => AddAdress()));
-            viewModel.addItem(result);
+            if (result != null) {
+              viewModel.addItem(result);
+            }
           }),
     ];
   }
