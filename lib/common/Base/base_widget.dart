@@ -3,6 +3,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:xy_wallet/common/base/view_model/base_load_list_data_vm.dart';
+import 'package:xy_wallet/common/base/widgets/view_loading_shimmer_list.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
@@ -198,7 +201,7 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
   }
 
   // @override
-  // void initState() { 
+  // void initState() {
   //   super.initState();
   //   SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
   //     if (viewModel.viewState == ViewState.busy) {
@@ -206,6 +209,10 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
   //       }
   //    });
   // }
+
+  Widget buildLoadingWidget(BuildContext context) {
+    return ViewStateBusyWidget();
+  }
 
   Widget buildEmptyWidget(BuildContext context) {
     return ViewStateEmptyWidget(
@@ -230,22 +237,57 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
 
   @override
   Widget buildBody(BuildContext context) {
-    // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
-    //   viewModel.setBusy();
-    // }
     return ProviderWidget<VM>(
       model: viewModel,
+      onModelReady: (model) {
+        // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
+        //   viewModel.setBusy();
+        // }
+      },
       builder: (context, model, child) {
         switch (model.viewState) {
           case ViewState.busy:
             model.loadData();
-            return ViewStateBusyWidget();
+            return buildLoadingWidget(context);
           case ViewState.empty:
             return buildEmptyWidget(context);
           case ViewState.error:
             return buildErrorWidget(context);
           default:
             return buildBodyWidget(context);
+        }
+      },
+    );
+  }
+}
+
+abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends BaseLoadListDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
+  @override
+  Widget buildBody(BuildContext context) {
+    return ProviderWidget<VM>(
+      model: viewModel,
+      onModelReady: (model) {
+        // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
+        //   viewModel.setBusy();
+        // }
+      },
+      builder: (context, model, child) {
+        switch (model.viewState) {
+          case ViewState.busy:
+            model.refresh();
+            return buildLoadingWidget(context);
+          case ViewState.empty:
+            return buildEmptyWidget(context);
+          case ViewState.error:
+            return buildErrorWidget(context);
+          default:
+            return SmartRefresher(
+              controller: model.refreshController,
+              enablePullUp: true,
+              onRefresh: model.refresh,
+              onLoading: model.loadMore,
+              child: buildBodyWidget(context),
+            );
         }
       },
     );

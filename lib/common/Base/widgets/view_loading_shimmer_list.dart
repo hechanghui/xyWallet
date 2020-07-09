@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class LoadingViewList extends StatelessWidget {
+class LoadingViewShimmerList extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final int length;
   final IndexedWidgetBuilder builder;
 
-  LoadingViewList(
+  LoadingViewShimmerList(
       {this.length: 6, //一般屏幕长度够用
       this.padding = const EdgeInsets.all(7),
       @required this.builder});

@@ -29,13 +29,11 @@ class TransactionListPage extends StatefulWidget {
   _PageState createState() => _PageState();
 }
 
-class _PageState extends State<TransactionListPage>
-    with AutomaticKeepAliveClientMixin {
+class _PageState extends State<TransactionListPage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
-  RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+  RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   @override
   void initState() {
@@ -79,11 +77,7 @@ class _PageState extends State<TransactionListPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final datas = widget.type == TransactionType.RECEIPT
-        ? widget.viewModel.itemsReceipt
-        : widget.type == TransactionType.TRANSFER
-            ? widget.viewModel.itemsTransfer
-            : widget.viewModel.itemsAll;
+    final datas = widget.type == TransactionType.RECEIPT ? widget.viewModel.itemsReceipt : widget.type == TransactionType.TRANSFER ? widget.viewModel.itemsTransfer : widget.viewModel.itemsAll;
     return NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) {
         return <Widget>[
@@ -100,11 +94,9 @@ class _PageState extends State<TransactionListPage>
               placeholder: S.current.addrOrTxId,
               onSubmitted: (e) {
                 search();
-                widget.viewModel.keywordController.value =
-                    TextEditingValue(text: e);
+                widget.viewModel.keywordController.value = TextEditingValue(text: e);
               },
-              right: Image.asset(ImageHelper.wrapAssets('icon_search.png'),
-                      width: 22, color: ThemeColors.primaryFgColor
+              right: Image.asset(ImageHelper.wrapAssets('icon_search.png'), width: 22, color: ThemeColors.primaryFgColor
                       // fit: BoxFit.contain,
                       )
                   .click(onTap: () {
@@ -145,7 +137,7 @@ class _PageState extends State<TransactionListPage>
     // showToast("搜索::${widget.viewModel.keywordController.text}");
   }
 
-  buildItems(List datas) {
+  Widget buildItems(List datas) {
     return ListView.builder(
       itemBuilder: (context, index) {
         var item = datas[index];
