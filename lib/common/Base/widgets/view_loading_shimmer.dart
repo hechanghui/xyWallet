@@ -12,7 +12,7 @@ class LoadingViewShimmer extends StatelessWidget {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Shimmer.fromColors(
-        baseColor: ThemeColors.accentColor,
+        baseColor: ThemeColors.accentDartFgColor,
         highlightColor: ThemeColors.labelLightColor,
         child: child,
       ),

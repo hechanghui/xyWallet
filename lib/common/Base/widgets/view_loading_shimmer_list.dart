@@ -18,7 +18,7 @@ class LoadingViewShimmerList extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       child: Shimmer.fromColors(
           period: Duration(milliseconds: 1200),
-          baseColor: ThemeColors.accentColor,
+          baseColor: ThemeColors.accentDartFgColor,
           highlightColor: ThemeColors.labelLightColor,
           child: Padding(
               padding: padding,
