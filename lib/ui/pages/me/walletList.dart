@@ -4,6 +4,8 @@ import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/service/bus.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/walletListCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
@@ -20,18 +22,22 @@ class WalletList extends BaseWidget {
 class Pages extends BaseWidgetState<WalletList> {
   @override
   String titleLabel(BuildContext context) => S.of(context).WalletListTitle;
+  var list = SpUtils.getObjectList('walletList');
 
-  final List datas = [
-    {'name': 'hello', 'address': '0xdasdasd', 'note': 'dasdasdqdsa'},
-    {'name': 'hello1', 'address': '0xdasd321asd', 'note': 'dasdsa'},
-    {'name': 'hello2', 'address': '0xdasddasdasd', 'note': 'dsa'},
-    {'name': 'hello4', 'address': '0xdasddasdasd', 'note': 'dsa'},
-    {'name': 'hello5', 'address': '0xdasddasdasd', 'note': 'dsa'},
-    {'name': 'hello6', 'address': '0xdasddasdasd', 'note': 'dsa'},
-    {'name': 'hello7', 'address': '0xdasddasdasd', 'note': 'dsa'},
-  ];
 
+  @override
+  void initState() {
+    super.initState();
+    eventBus.on<WalletChange>().listen((event) {
+      setState(() {
+        list = SpUtils.getObjectList('walletList');
+      });
+    });
+  }
+  
+  
   Widget buildBodyWidget(BuildContext context) {
+    print('buildBodyWidget');
     return Container(
       child: Stack(
         children: <Widget>[
@@ -49,16 +55,15 @@ class Pages extends BaseWidgetState<WalletList> {
           Container(
               padding: EdgeInsets.only(right: 0, top: 45, left: 0, bottom: 180),
               child: ListView.builder(
-                  itemCount: 7,
+                  itemCount: list.length,
                   itemBuilder: (BuildContext context, int index) {
-                    //  var dic = datas[index],
+                   var map = list[index];
                     return Container(
                         child: WalletListCell(
-                      title: datas[index]['name'],
-                      address: datas[index]['address'],
-                      note: datas[index]['note'],
+                      title: map['name']??"",
+                      address: map['address']??"",
                       onPressedSet: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletManager()));
+                        Navigator.pushNamed(context, RouteName.WalletManger,arguments: index);
                       },
                     ));
                   })),

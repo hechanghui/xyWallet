@@ -4,6 +4,7 @@ import 'package:bip32/bip32.dart' as bip32;
 import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/common/worker/worker.dart';
 import 'package:xy_wallet/model/walletModel.dart';
+import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:hex/hex.dart';
 import 'EthWallet.dart';
@@ -67,11 +68,12 @@ saveWallet(WalletModel model){
   print('保存');
   final saveData = model.toJson();
   debugPrint("wallet:${saveData}");
-  SpUtils.putObject(model.address, saveData);
+  String key = model.address;
+  SpUtils.putObject(key, saveData);
   var walletList = SpUtils.getObjectList(walletListKey) ?? [];
   walletList.add({"address":model.address, 'name':model.name});
   SpUtils.putObjectList(walletListKey, walletList);
-
+  eventBus.fire(WalletChange());
 }
 
 class WalletCreateTask implements Task<Future<WalletModel>> {

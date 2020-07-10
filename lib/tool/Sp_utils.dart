@@ -34,7 +34,7 @@ class SpUtils {
   /// put object.
   static Future<bool> putObject(String key, Object value) {
     if (_sp == null) return null;
-    return _sp.setString("object_$key", value == null ? "" : json.encode(value));
+    return _sp.setString(key, value == null ? "" : json.encode(value));
   }
 
   static T getObj<T>(String key, T f(Map v), {T defValue}) {
