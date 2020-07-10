@@ -189,5 +189,10 @@
     "PowBase":"基础动力",
     "PowInvite":"邀请动力",
     "PowrewardToday":"今日空投奖励（X）",
-    "PowActivate":"激活动力"
+    "PowActivate":"激活动力",
+    "PrivateKeyInput":"请输入私钥",
+    "PrivateKeyWrong":"私钥错误",
+    "KeystoreWrong":"创建失败，Keystore文件或密码错误"
+
+
 }

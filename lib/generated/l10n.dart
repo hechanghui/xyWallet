@@ -1662,6 +1662,36 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入私钥`
+  String get PrivateKeyInput {
+    return Intl.message(
+      '请输入私钥',
+      name: 'PrivateKeyInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `私钥错误`
+  String get PrivateKeyWrong {
+    return Intl.message(
+      '私钥错误',
+      name: 'PrivateKeyWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `创建失败，Keystore文件或密码错误`
+  String get KeystoreWrong {
+    return Intl.message(
+      '创建失败，Keystore文件或密码错误',
+      name: 'KeystoreWrong',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

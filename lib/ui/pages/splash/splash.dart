@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -150,5 +151,14 @@ class AnimatedTextLogo extends AnimatedWidget {
 }
 
 void nextPage(context) {
-  Navigator.of(context).pushReplacementNamed(RouteName.WALLET_CREATE_RESTORE);
+
+  
+  var list = SpUtils.getObjectList('walletList');
+  if(list == null || list.length == 0){
+    Navigator.of(context).pushReplacementNamed(RouteName.WALLET_CREATE_RESTORE);
+  }else{
+    Navigator.of(context).pushReplacementNamed(RouteName.tab);
+  }
+  
+  
 }

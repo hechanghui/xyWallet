@@ -1,6 +1,10 @@
 // import 'package:bitcoin_flutter/bitcoin_flutter.dart';
 // import 'package:web3dart/credentials.dart';
-
+enum ErrerType {
+  MnemonicErrer,
+  KeyStoreErrer,
+  PrivateKeyErrer,
+}
 class WalletModel {
   String name;
 
@@ -18,7 +22,9 @@ class WalletModel {
 
   String password;
 
-  WalletModel({this.name, this.address, this.keystore, this.icon, this.mnemonic,this.publicKey,this.privateKey,this.password});
+  ErrerType errer;
+
+  WalletModel({this.name, this.address, this.keystore, this.icon, this.mnemonic,this.publicKey,this.privateKey,this.password,this.errer});
 
   WalletModel.fromJson(Map<String, dynamic> json)
       : name = json['name'],

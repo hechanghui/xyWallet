@@ -7,6 +7,7 @@ import 'package:xy_wallet/common/provider/view_state.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/model/walletModel.dart';
 
 import 'package:xy_wallet/ui/pages/wallet/restore_by_keystore.dart';
 import 'package:xy_wallet/ui/pages/wallet/restore_by_privateKey.dart';
@@ -40,6 +41,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
       S.of(context).keystore,
       S.of(context).privateKey
     ]);
+    hideLoading();
     final viewModel = RestoreViewModel();
     var subPages = List.of([
       RestoreByMnemonic(viewModel),
@@ -83,7 +85,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
               child: CommonButton(
                 child: Text(S.of(context).walletCreate),
                 onPressed: () async {
-
+                  WalletModel wallet;
                   switch (_tabController.index) {
                     case 0:
                   if (viewModel.mnemonicController.text?.isNotEmpty==false) {
@@ -108,7 +110,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
                     return;
                   }
                         showLoading();
-                        await createWalletMnemonic(
+                        wallet =  await createWalletMnemonic(
                           viewModel.mnemonicController.text,
                           viewModel.mnemonicAccountController.text,
                           viewModel.mnemonicSetPwdController.text);
@@ -118,19 +120,68 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
                       break;
 
                    case 1:
+                     if (viewModel.keystoreController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).mnemonicInputTip);
+                    return;
+                  } else if (viewModel.keystoreAccountController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoNameInputTip);
+                    return;
+                  } else if (viewModel.keystorePwdController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoPWDInputTip);
+                    return;
+                  } 
+                        showLoading();
+                        wallet = await createWalletKeyStore(
+                          viewModel.keystoreController.text,
+                          viewModel.keystoreAccountController.text,
+                          viewModel.keystorePwdController.text);
+                        hideLoading();
                     break;
-
+                        case 2:
+                    if (viewModel.privateKeyController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).PrivateKeyInput);
+                    return;
+                  } else if (viewModel.privateKeyAccountController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoNameInputTip);
+                    return;
+                  } else if (viewModel.privateKeySetPwdController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoPWDInputTip);
+                    return;
+                  } else if (viewModel.privateKeyConfirmPwdController.text?.isNotEmpty==false) {
+                    showToast(S.of(context).NoComfirmPWDInputTip);
+                    return;
+                  } else if (viewModel.privateKeySetPwdController.text != viewModel.privateKeyConfirmPwdController.text) {
+                    showToast(S.of(context).PWDDiffentInputTip);
+                    return;
+                  }
+                      showLoading();
+                      wallet = await createWalletPrivateKey(
+                          viewModel.privateKeyController.text,
+                          viewModel.privateKeyAccountController.text,
+                          viewModel.privateKeySetPwdController.text);
+                      hideLoading();
+                    break;
 
                     default:
  
                   }
 
 
-                print(_tabController.index);
+                  switch (wallet.errer) {
+                    case ErrerType.KeyStoreErrer:
+                      showToast(S.of(context).KeystoreWrong);
+                      return;
+                      break;
+                  case ErrerType.PrivateKeyErrer:
+                      showToast(S.of(context).PrivateKeyWrong);
+                      return;
+                      break;
+                    default:
+                  }
 
 
 
-                  // Navigator.pushReplacementNamed(context, RouteName.tab);
+                  Navigator.pushReplacementNamed(context, RouteName.tab);
                 }
                     
               ))

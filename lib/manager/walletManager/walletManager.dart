@@ -10,7 +10,7 @@ import 'EthWallet.dart';
 // ignore: implementation_imports
 
 // import 'package:hex/hex.dart';
-
+const String walletListKey = 'walletList';
 enum CreateType {
   Mnemonic,
   KeyStore,
@@ -27,17 +27,51 @@ bool validateMnemonic(String mnemonic) {
 }
 
 //助记词创建
-createWalletMnemonic(
-  String randomMnemonic, String name, String password) async {
+createWalletMnemonic(String randomMnemonic, String name, String password) async {
   final createTask = WalletCreateTask(randomMnemonic, name, password,CreateType.Mnemonic);
   final worker = Worker(poolSize: 1);
-  final result = await worker.handle(createTask);
+  final WalletModel result = await worker.handle(createTask);
+  if(result.errer == null){
+    saveWallet(result);
+  }
+  
+  return result;
+}
 
-  final saveData = result.toJson();
-  debugPrint("wallet:${saveData}");
-  SpUtils.putObject('wallet', saveData);
+//私钥创建
+createWalletPrivateKey(String privateKey, String name, String password) async {
+  final createTask = WalletCreateTask(privateKey, name, password,CreateType.PrivateKey);
+  final worker = Worker(poolSize: 1);
+  final WalletModel result = await worker.handle(createTask);
+  if(result.errer == null){
+    saveWallet(result);
+  }
+  return result;
+}
+
+//KeyStore创建
+createWalletKeyStore(String keyStore, String name, String password) async {
+  final createTask = WalletCreateTask(keyStore, name, password,CreateType.KeyStore);
+  final worker = Worker(poolSize: 1);
+ 
+  final WalletModel result = await worker.handle(createTask);
+  print(result.errer);
+  if(result.errer == null){
+    saveWallet(result);
+  }
 
   return result;
+}
+
+saveWallet(WalletModel model){
+  print('保存');
+  final saveData = model.toJson();
+  debugPrint("wallet:${saveData}");
+  SpUtils.putObject(model.address, saveData);
+  var walletList = SpUtils.getObjectList(walletListKey) ?? [];
+  walletList.add({"address":model.address, 'name':model.name});
+  SpUtils.putObjectList(walletListKey, walletList);
+
 }
 
 class WalletCreateTask implements Task<Future<WalletModel>> {
@@ -62,7 +96,14 @@ class WalletCreateTask implements Task<Future<WalletModel>> {
         return model;
         break;
       case CreateType.KeyStore:
-        createWithKeyStore();
+
+        WalletModel model = await createWithKeyStore();
+        return model;
+        break;
+
+      case CreateType.PrivateKey:
+        WalletModel model = await createWithPrivateKey();
+        return model;
         break;
       default:
       
@@ -82,37 +123,30 @@ class WalletCreateTask implements Task<Future<WalletModel>> {
     debugPrint("privateKey:${HEX.encode(child.privateKey)}");
     debugPrint("publicKey:${HEX.encode(child.publicKey)}");
     final model = await createETH(HEX.encode(child.privateKey), password);
-    model.publicKey = HEX.encode(child.publicKey);
+    // model.publicKey = HEX.encode(child.publicKey);
     model.name = name;
     model.mnemonic = createData;
     return model;   
   }
 
 
-    createWithKeyStore()async {
-    var seed = bip39.mnemonicToSeed(createData);
-    // createBTCWallet(seed);
-    bip32.BIP32 node = bip32.BIP32.fromSeed(seed);
-    // bip32.BIP32 btc = node.derivePath("m/44'/60'/0'/0/0");
-    // print(HEX.encode(btc.privateKey));
-
-    bip32.BIP32 child = node.derivePath("m/44'/60'/0'/0/0");
-
-    debugPrint("privateKey:${HEX.encode(child.privateKey)}");
-    debugPrint("publicKey:${HEX.encode(child.publicKey)}");
-    final model = await createETH(HEX.encode(child.privateKey), password);
-    model.publicKey = HEX.encode(child.publicKey);
+  createWithKeyStore()async {
+    
+    final model = await createETHFormKeyStore(createData, password);
+    // model.publicKey = HEX.encode(child.publicKey);
     model.name = name;
-    model.mnemonic = createData;
+    // debugPrint("privateKey${model.name}");
+    // model.mnemonic = createData;
     return model;   
   }
 
   createWithPrivateKey()async {
 
     final model = await createETH(createData, password);
-    model.publicKey = createData;
+    // model.publicKey = createData;
     model.name = name;
-    model.mnemonic = createData;
+    // model.mnemonic = createData;
     return model;   
   }
+
 }
