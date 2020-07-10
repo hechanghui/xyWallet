@@ -36,7 +36,9 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
     super.initState();
 
     _mnemonic = widget.viewModel.mnemonicController.text.split(' ');
-    // _mnemonic.shuffle();
+    if (!isInDebugMode) {
+      _mnemonic.shuffle();
+    }
   }
 
   @override
@@ -102,42 +104,31 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(
-                    left: ThemeDimens.pageLRMargin,
-                    right: ThemeDimens.pageLRMargin,
-                    bottom: ThemeDimens.pageBottomMargin),
+                padding: EdgeInsets.only(left: ThemeDimens.pageLRMargin, right: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageBottomMargin),
                 child: CommonButton(
                     child: Text(S.of(context).createWallet),
-
                     onPressed: () async {
                       if (_mnemonic.length != 0) {
                         return;
                       }
-                      if (_mnemonicInput !=
-                          widget.viewModel.mnemonicController.text) {
+                      if (_mnemonicInput != widget.viewModel.mnemonicController.text) {
                         showToast(S.of(context).mnemonicWrong);
                         print(_mnemonicInput);
                         print(widget.viewModel.mnemonicController.text);
                         setState(() {
                           _mnemonicInput = '';
-                          _mnemonic = widget.viewModel.mnemonicController.text
-                              .split(' ');
+                          _mnemonic = widget.viewModel.mnemonicController.text.split(' ');
                           _mnemonic.shuffle();
                         });
                         return;
                       }
 
-
                       "".showLoading();
-                      
-                      await createWalletMnemonic(
-                          _mnemonicInput,
-                          widget.viewModel.mnemonicAccountController.text,
-                          widget.viewModel.mnemonicSetPwdController.text);
-                       "".hideLoading();
 
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, RouteName.tab, (Route route) => false);
+                      await createWalletMnemonic(_mnemonicInput, widget.viewModel.mnemonicAccountController.text, widget.viewModel.mnemonicSetPwdController.text);
+                      "".hideLoading();
+
+                      Navigator.pushNamedAndRemoveUntil(context, RouteName.tab, (Route route) => false);
                     }))
           ],
         );
@@ -157,8 +148,7 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                       if (_mnemonicInput == null || _mnemonicInput.isEmpty) {
                         _mnemonicInput = _mnemonic[index];
                       } else {
-                        _mnemonicInput =
-                            _mnemonicInput + ' ' + _mnemonic[index];
+                        _mnemonicInput = _mnemonicInput + ' ' + _mnemonic[index];
                       }
 
                       _mnemonic.removeAt(index);
@@ -167,11 +157,14 @@ class _PageState extends BaseWidgetState<CreateWithMnemonicInputPage> {
                   child: Text(
                     _mnemonic[index],
                     maxLines: 1,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
-                        .copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.headline1.copyWith(fontWeight: FontWeight.bold),
                   ),
                 )));
+  }
+
+  bool get isInDebugMode {
+    bool inDebugMode = false;
+    assert(inDebugMode = true); //如果debug模式下会触发赋值
+    return inDebugMode;
   }
 }

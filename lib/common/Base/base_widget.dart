@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:xy_wallet/common/base/view_model/base_load_list_data_vm.dart';
+import 'package:xy_wallet/common/base/view_model/base_load_refresh_data_vm.dart';
 import 'package:xy_wallet/common/base/widgets/view_loading_shimmer_list.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
@@ -187,6 +188,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   }
 }
 
+//加载数据state
 abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
   @protected
   final bool enmptEnableReload = true;
@@ -261,6 +263,39 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
   }
 }
 
+//加载数据state 带下拉刷新
+abstract class BaseLoadRefreshDataWidgetState<T extends BaseWidget, VM extends BaseLoadRefreshDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
+  @override
+  Widget buildBody(BuildContext context) {
+    return ProviderWidget<VM>(
+      model: viewModel,
+      onModelReady: (model) {
+        // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
+        //   viewModel.setBusy();
+        // }
+      },
+      builder: (context, model, child) {
+        switch (model.viewState) {
+          case ViewState.busy:
+            model.refresh();
+            return buildLoadingWidget(context);
+          case ViewState.empty:
+            return buildEmptyWidget(context);
+          case ViewState.error:
+            return buildErrorWidget(context);
+          default:
+            return SmartRefresher(
+              controller: model.refreshController,
+              onRefresh: model.refresh,
+              child: buildBodyWidget(context),
+            );
+        }
+      },
+    );
+  }
+}
+
+//加载List数据state 带下拉刷新 上拉加载更多
 abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends BaseLoadListDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
   @override
   Widget buildBody(BuildContext context) {

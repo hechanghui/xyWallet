@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:xy_wallet/common/themes.dart';
 
 class LoadingViewShimmerList extends StatelessWidget {
   final EdgeInsetsGeometry padding;
@@ -13,20 +14,16 @@ class LoadingViewShimmerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    bool isDark = theme.brightness == Brightness.dark;
-
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
       child: Shimmer.fromColors(
           period: Duration(milliseconds: 1200),
-          baseColor: isDark ? Colors.grey[700] : Colors.grey[350],
-          highlightColor: isDark ? Colors.grey[500] : Colors.grey[200],
+          baseColor: ThemeColors.accentDartFgColor,
+          highlightColor: ThemeColors.labelLightColor,
           child: Padding(
               padding: padding,
               child: Column(
-                children:
-                    List.generate(length, (index) => builder(context, index)),
+                children: List.generate(length, (index) => builder(context, index)),
               ))),
     );
   }
