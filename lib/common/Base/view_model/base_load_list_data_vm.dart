@@ -4,7 +4,7 @@ import 'package:xy_wallet/common/provider/view_state_model.dart';
 
 abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
   /// 页面数据
-  List<T> list = [];
+  List<T> datas = [];
 
   /// 分页第一页页码
   static const int pageNumFirst = 0;
@@ -18,7 +18,6 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
   final _refreshController = RefreshController(initialRefresh: false);
   RefreshController get refreshController => _refreshController;
 
-  onCompleted(List<T> data) {}
    @override
   // 加载数据
   Future<List<T>> loadData({int pageNum});
@@ -28,10 +27,9 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
     try {
       pageNum = pageNumFirst;
       var data = await loadData(pageNum: pageNumFirst);
-      list.clear();
+      datas.clear();
       if (data?.isNotEmpty == true) {
-        list.addAll(data);
-        onCompleted(data);
+        datas.addAll(data);
       }
       refreshController.refreshCompleted();
       // 小于分页的数量,禁止上拉加载更多
@@ -41,12 +39,12 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
         //防止上次上拉加载更多失败,需要重置状态
         refreshController.loadComplete();
       }
-      list.isEmpty ? setEmpty() : setIdle();
+      datas.isEmpty ? setEmpty() : setIdle();
 
       return data;
     } catch (e, s) {
       refreshController.refreshFailed();
-      if (list.isEmpty) {
+      if (datas.isEmpty) {
         setError(e, s);
       }
       return null;
@@ -61,8 +59,7 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
         pageNum--;
         refreshController.loadNoData();
       } else {
-        onCompleted(data);
-        list.addAll(data);
+        datas.addAll(data);
         if (data.length < pageSize) {
           refreshController.loadNoData();
         } else {
