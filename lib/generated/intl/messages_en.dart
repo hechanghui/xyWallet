@@ -143,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "receipt" : MessageLookupByLibrary.simpleMessage("收款"),
     "refreshTwoLevel" : MessageLookupByLibrary.simpleMessage("欢迎光临,我的空中楼阁"),
     "retry" : MessageLookupByLibrary.simpleMessage("重试"),
+    "rewardRecord" : MessageLookupByLibrary.simpleMessage("奖励记录"),
     "rewardTotal" : MessageLookupByLibrary.simpleMessage("总奖励"),
     "setPwd" : MessageLookupByLibrary.simpleMessage("设置密码"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),

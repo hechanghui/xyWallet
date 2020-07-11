@@ -9,6 +9,7 @@ import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
 import 'package:xy_wallet/ui/pages/home/PowByAttraction.dart';
 import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
+import 'package:xy_wallet/ui/pages/home/PowBySplitInfo.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
@@ -49,6 +50,7 @@ class RouteName {
   static const String ChangePWD = 'wallet/ChangePWD';
   static const String CoinDetails = 'community/ChangePWD';
   static const String WithDraw = 'community/withDraw';
+  static const String PowBySplitInfo = 'wallet/PowBySplitInfo';
 }
 
 class Router {
@@ -109,6 +111,9 @@ class Router {
 
      case RouteName.WithDraw:
         return CupertinoPageRoute(builder: (_) => WithDrawPage());
+
+      case RouteName.PowBySplitInfo:
+        return CupertinoPageRoute(builder: (_) => PowBySplitInfo());
 
       default:
         return CupertinoPageRoute(

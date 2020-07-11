@@ -201,6 +201,7 @@
     "WithDrawRecord":"提币记录",
     "TransRecord":"交易记录",
     "PWDWrong":"密码错误",
-    "Succsee":"成功"
+    "Succsee":"成功",
+    "rewardRecord":"奖励记录"
 
 }
