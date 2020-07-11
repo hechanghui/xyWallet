@@ -23,17 +23,15 @@ import 'package:xy_wallet/common/base/view_model/base_load_data_vm.dart';
 class AdressManger extends BaseWidget {
   @override
   getState() {
-    
     return new Pages();
   }
 }
 
-class Pages
-    extends BaseLoadDataWidgetState<AdressManger, AdressMangerViewModel> {
+class Pages extends BaseLoadDataWidgetState<AdressManger, AdressMangerViewModel> {
   @override
   String titleLabel(BuildContext context) => S.of(context).AddressManagerTitle;
   @override
-  bool get enmptEnableReload => false;
+  bool get emptyEnableReload => false;
 
   @override
   onCreateViewModel() => AdressMangerViewModel();
@@ -44,8 +42,7 @@ class Pages
       IconButton(
           icon: Icon(Icons.add),
           onPressed: () async {
-            final result = await Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AddAdress()));
+            final result = await Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddAdress()));
             if (result != null) {
               viewModel.addItem(result);
             }
@@ -116,8 +113,7 @@ class Pages
                         )),
                     CommonInputMinor(
                       placeholder: S.of(context).AddressTitleInput,
-                      controller:
-                          TextEditingController(text: addressModel.name),
+                      controller: TextEditingController(text: addressModel.name),
                       onChanged: (text) {
                         name = text;
                       },
@@ -130,8 +126,7 @@ class Pages
                         )),
                     CommonInputMinor(
                       placeholder: S.of(context).AddressNoteInput,
-                      controller:
-                          TextEditingController(text: addressModel.note),
+                      controller: TextEditingController(text: addressModel.note),
                       onChanged: (text) {
                         note = text;
                       },
@@ -139,40 +134,28 @@ class Pages
                   ],
                 );
 
-                DialogHelper.showCommonDialog(
-                    context: context,
-                    contentWidget: wight,
-                    actions: [
-                      Tuple3(S.of(context).comfirm, () {
-                        if (name == null || name.isEmpty) {
-                          showToast(S.of(context).AddressTitleInput);
-                          return false;
-                        }
-                        final model = AddressModel(
-                            name: name,
-                            address: addressModel.address,
-                            note: note);
-                        viewModel.updateItem(index, model.toJson());
-                      }, null),
-                    ]);
+                DialogHelper.showCommonDialog(context: context, contentWidget: wight, actions: [
+                  Tuple3(S.of(context).comfirm, () {
+                    if (name == null || name.isEmpty) {
+                      showToast(S.of(context).AddressTitleInput);
+                      return false;
+                    }
+                    final model = AddressModel(name: name, address: addressModel.address, note: note);
+                    viewModel.updateItem(index, model.toJson());
+                  }, null),
+                ]);
               },
               onPressedCopy: () {
-                Clipboard.setData(ClipboardData(
-                    text: viewModel.datas[index]['address'] ?? ""));
+                Clipboard.setData(ClipboardData(text: viewModel.datas[index]['address'] ?? ""));
                 showToast(S.of(context).CopySuccess);
               },
               onPressedDel: () {
-                DialogHelper.showCommonDialog(
-                    context: context,
-                    content: '确认删除该地址',
-                    contentTextStyle: Theme.of(context).textTheme.headline4,
-                    alignment: Alignment.center,
-                    actions: [
-                      Tuple3(S.of(context).cannel, null, null),
-                      Tuple3(S.of(context).comfirm, () {
-                        viewModel.removeItem(index);
-                      }, null),
-                    ]);
+                DialogHelper.showCommonDialog(context: context, content: '确认删除该地址', contentTextStyle: Theme.of(context).textTheme.headline4, alignment: Alignment.center, actions: [
+                  Tuple3(S.of(context).cannel, null, null),
+                  Tuple3(S.of(context).comfirm, () {
+                    viewModel.removeItem(index);
+                  }, null),
+                ]);
               },
             ));
           }),

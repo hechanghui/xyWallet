@@ -21,35 +21,28 @@ class RestoreContainerPage extends BaseWidget {
   BaseWidgetState getState() => RestoreContainerState();
 }
 
-class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
-    with SingleTickerProviderStateMixin {
+class RestoreContainerState extends BaseWidgetState<RestoreContainerPage> with SingleTickerProviderStateMixin {
   @override
   String titleLabel(BuildContext context) => S.of(context).walletRestore;
 
   TabController _tabController;
+  List<String> _tabLabels;
+  List<Widget> _subPages;
+  RestoreViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
     _tabController = new TabController(vsync: this, length: 3);
+    _viewModel = RestoreViewModel();
+    _tabLabels = [S.of(context).mnemonic, S.of(context).keystore, S.of(context).privateKey];
+    _subPages = [RestoreByMnemonic(_viewModel), RestoreByKeyStore(_viewModel), RestoreByPriveKey(_viewModel)];
   }
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    var tabLabels = List.of([
-      S.of(context).mnemonic,
-      S.of(context).keystore,
-      S.of(context).privateKey
-    ]);
-    hideLoading();
-    final viewModel = RestoreViewModel();
-    var subPages = List.of([
-      RestoreByMnemonic(viewModel),
-      RestoreByKeyStore(viewModel),
-      RestoreByPriveKey(viewModel)
-    ]);
     return ProviderWidget<RestoreViewModel>(
-      model: viewModel,
+      model: _viewModel,
       builder: (conntext, model, child) {
         return Form(
           onWillPop: () async {
@@ -64,127 +57,108 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
         children: [
           TabBar(
               labelColor: Theme.of(context).textTheme.subtitle1.color,
-              unselectedLabelColor:
-                  ThemeStyles.getSubtitle1lLight(context).color,
+              unselectedLabelColor: ThemeStyles.getSubtitle1lLight(context).color,
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorPadding: EdgeInsets.symmetric(horizontal: 16),
               controller: _tabController,
-              tabs: tabLabels.map((e) => Tab(text: e)).toList()),
+              tabs: _tabLabels.map((e) => Tab(text: e)).toList()),
           Expanded(
             child: TabBarView(
               controller: _tabController,
               physics: ScrollPhysics(),
-              children: subPages,
+              children: _subPages,
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(
-                  left: ThemeDimens.pageLRMargin,
-                  right: ThemeDimens.pageLRMargin,
-                  bottom: ThemeDimens.pageBottomMargin),
+              padding: EdgeInsets.only(left: ThemeDimens.pageLRMargin, right: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageBottomMargin),
               child: CommonButton(
-                child: Text(S.of(context).walletCreate),
-                onPressed: () async {
-                  WalletModel wallet;
-                  switch (_tabController.index) {
-                    case 0:
-                  if (viewModel.mnemonicController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).mnemonicInputTip);
-                    return;
-                  } else if (viewModel.mnemonicAccountController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoNameInputTip);
-                    return;
-                  } else if (viewModel.mnemonicSetPwdController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoPWDInputTip);
-                    return;
-                  } else if (viewModel.mnemonicConfirmPwdController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoComfirmPWDInputTip);
-                    return;
-                  } else if (viewModel.mnemonicConfirmPwdController.text != viewModel.mnemonicSetPwdController.text) {
-                    showToast(S.of(context).PWDDiffentInputTip);
-                    return;
-                  }
+                  child: Text(S.of(context).walletCreate),
+                  onPressed: () async {
+                    WalletModel wallet;
+                    switch (_tabController.index) {
+                      case 0:
+                        if (_viewModel.mnemonicController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).mnemonicInputTip);
+                          return;
+                        } else if (_viewModel.mnemonicAccountController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoNameInputTip);
+                          return;
+                        } else if (_viewModel.mnemonicSetPwdController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoPWDInputTip);
+                          return;
+                        } else if (_viewModel.mnemonicConfirmPwdController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoComfirmPWDInputTip);
+                          return;
+                        } else if (_viewModel.mnemonicConfirmPwdController.text != _viewModel.mnemonicSetPwdController.text) {
+                          showToast(S.of(context).PWDDiffentInputTip);
+                          return;
+                        }
 
-                  if(!validateMnemonic(viewModel.mnemonicController.text)){
-                    showToast(S.of(context).mnemonicWrong);
-                    return;
-                  }
+                        if (!validateMnemonic(_viewModel.mnemonicController.text)) {
+                          showToast(S.of(context).mnemonicWrong);
+                          return;
+                        }
                         showLoading();
-                        wallet =  await createWalletMnemonic(
-                          viewModel.mnemonicController.text,
-                          viewModel.mnemonicAccountController.text,
-                          viewModel.mnemonicSetPwdController.text);
+                        wallet = await createWalletMnemonic(_viewModel.mnemonicController.text, _viewModel.mnemonicAccountController.text, _viewModel.mnemonicSetPwdController.text);
                         hideLoading();
 
-                          Navigator.pushReplacementNamed(context, RouteName.tab);
-                      break;
+                        Navigator.pushReplacementNamed(context, RouteName.tab);
+                        break;
 
-                   case 1:
-                     if (viewModel.keystoreController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).mnemonicInputTip);
-                    return;
-                  } else if (viewModel.keystoreAccountController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoNameInputTip);
-                    return;
-                  } else if (viewModel.keystorePwdController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoPWDInputTip);
-                    return;
-                  } 
+                      case 1:
+                        if (_viewModel.keystoreController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).mnemonicInputTip);
+                          return;
+                        } else if (_viewModel.keystoreAccountController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoNameInputTip);
+                          return;
+                        } else if (_viewModel.keystorePwdController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoPWDInputTip);
+                          return;
+                        }
                         showLoading();
-                        wallet = await createWalletKeyStore(
-                          viewModel.keystoreController.text,
-                          viewModel.keystoreAccountController.text,
-                          viewModel.keystorePwdController.text);
+                        wallet = await createWalletKeyStore(_viewModel.keystoreController.text, _viewModel.keystoreAccountController.text, _viewModel.keystorePwdController.text);
                         hideLoading();
-                    break;
-                        case 2:
-                    if (viewModel.privateKeyController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).PrivateKeyInput);
-                    return;
-                  } else if (viewModel.privateKeyAccountController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoNameInputTip);
-                    return;
-                  } else if (viewModel.privateKeySetPwdController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoPWDInputTip);
-                    return;
-                  } else if (viewModel.privateKeyConfirmPwdController.text?.isNotEmpty==false) {
-                    showToast(S.of(context).NoComfirmPWDInputTip);
-                    return;
-                  } else if (viewModel.privateKeySetPwdController.text != viewModel.privateKeyConfirmPwdController.text) {
-                    showToast(S.of(context).PWDDiffentInputTip);
-                    return;
-                  }
-                      showLoading();
-                      wallet = await createWalletPrivateKey(
-                          viewModel.privateKeyController.text,
-                          viewModel.privateKeyAccountController.text,
-                          viewModel.privateKeySetPwdController.text);
-                      hideLoading();
-                    break;
+                        break;
+                      case 2:
+                        if (_viewModel.privateKeyController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).PrivateKeyInput);
+                          return;
+                        } else if (_viewModel.privateKeyAccountController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoNameInputTip);
+                          return;
+                        } else if (_viewModel.privateKeySetPwdController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoPWDInputTip);
+                          return;
+                        } else if (_viewModel.privateKeyConfirmPwdController.text?.isNotEmpty == false) {
+                          showToast(S.of(context).NoComfirmPWDInputTip);
+                          return;
+                        } else if (_viewModel.privateKeySetPwdController.text != _viewModel.privateKeyConfirmPwdController.text) {
+                          showToast(S.of(context).PWDDiffentInputTip);
+                          return;
+                        }
+                        showLoading();
+                        wallet = await createWalletPrivateKey(_viewModel.privateKeyController.text, _viewModel.privateKeyAccountController.text, _viewModel.privateKeySetPwdController.text);
+                        hideLoading();
+                        break;
 
-                    default:
- 
-                  }
+                      default:
+                    }
 
+                    switch (wallet.errer) {
+                      case ErrerType.KeyStoreErrer:
+                        showToast(S.of(context).KeystoreWrong);
+                        return;
+                        break;
+                      case ErrerType.PrivateKeyErrer:
+                        showToast(S.of(context).PrivateKeyWrong);
+                        return;
+                        break;
+                      default:
+                    }
 
-                  switch (wallet.errer) {
-                    case ErrerType.KeyStoreErrer:
-                      showToast(S.of(context).KeystoreWrong);
-                      return;
-                      break;
-                  case ErrerType.PrivateKeyErrer:
-                      showToast(S.of(context).PrivateKeyWrong);
-                      return;
-                      break;
-                    default:
-                  }
-
-
-
-                  Navigator.pushReplacementNamed(context, RouteName.tab);
-                }
-                    
-              ))
+                    Navigator.pushReplacementNamed(context, RouteName.tab);
+                  }))
         ],
       ),
     );

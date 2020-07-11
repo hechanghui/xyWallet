@@ -18,7 +18,25 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
   final _refreshController = RefreshController(initialRefresh: false);
   RefreshController get refreshController => _refreshController;
 
-   @override
+  bool _enableRefresh = true;
+  bool get enableRefresh => _enableRefresh;
+  set enableRefresh(bool enableRefresh) {
+    if (_enableRefresh != enableRefresh) {
+      this._enableRefresh = enableRefresh;
+      notifyListeners();
+    }
+  }
+
+  bool _enableLoadMore = true;
+  bool get enableLoadMore => _enableLoadMore;
+  set enableLoadMore(bool enableLoadMore) {
+    if (_enableLoadMore != enableLoadMore) {
+      this._enableLoadMore = enableLoadMore;
+      notifyListeners();
+    }
+  }
+
+  @override
   // 加载数据
   Future<List<T>> loadData({int pageNum});
 

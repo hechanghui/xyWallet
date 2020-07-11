@@ -20,7 +20,7 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
   String titleLabel(BuildContext context) => S.current.AboutUs;
 
   @override
-  bool get enmptEnableReload => false;
+  bool get emptyEnableReload => false;
 
   @override
   onCreateViewModel() => AboutViewModel();
