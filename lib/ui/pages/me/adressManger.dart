@@ -52,7 +52,7 @@ class Pages extends BaseLoadDataWidgetState<AdressManger, AdressMangerViewModel>
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    // print(datas);
+
     return Container(
       child: ListView.builder(
           itemCount: viewModel.datas.length,

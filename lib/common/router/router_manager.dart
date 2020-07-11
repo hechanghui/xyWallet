@@ -10,6 +10,8 @@ import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
+import 'package:xy_wallet/ui/pages/me/changePWD.dart';
+import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
@@ -41,6 +43,8 @@ class RouteName {
   static const String POWBYATTRACTION = 'wallet/PowByAttraction';
   static const String POWBYSPLIT = 'wallet/PowBySplit';
   static const String POWBYPOWER = 'wallet/PowByPower';
+  static const String WalletManger = 'wallet/WalletManger';
+  static const String ChangePWD = 'wallet/ChangePWD';
 }
 
 class Router {
@@ -89,7 +93,13 @@ class Router {
 
       case RouteName.POWBYPOWER:
         return CupertinoPageRoute(builder: (_) => PowByPower());
-        
+
+      case RouteName.WalletManger:
+        return CupertinoPageRoute(builder: (_) => WalletManager(settings.arguments));
+
+      case RouteName.ChangePWD:
+        return CupertinoPageRoute(builder: (_) => ChangePWD(settings.arguments));
+
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

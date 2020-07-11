@@ -159,6 +159,4 @@ void nextPage(context) {
   }else{
     Navigator.of(context).pushReplacementNamed(RouteName.tab);
   }
-  
-  
 }

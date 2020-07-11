@@ -192,7 +192,10 @@
     "PowActivate":"激活动力",
     "PrivateKeyInput":"请输入私钥",
     "PrivateKeyWrong":"私钥错误",
-    "KeystoreWrong":"创建失败，Keystore文件或密码错误"
+    "KeystoreWrong":"创建失败，Keystore文件或密码错误",
+    "delAccount":"删除账户",
+    "tip":"温馨提示",
+    "IsdelAccount":"确认删除该地址？"
 
 
 }

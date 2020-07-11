@@ -1692,6 +1692,36 @@ class S {
       args: [],
     );
   }
+
+  /// `删除账户`
+  String get delAccount {
+    return Intl.message(
+      '删除账户',
+      name: 'delAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `温馨提示`
+  String get tip {
+    return Intl.message(
+      '温馨提示',
+      name: 'tip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认删除该地址？`
+  String get IsdelAccount {
+    return Intl.message(
+      '确认删除该地址？',
+      name: 'IsdelAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -28,3 +28,7 @@ class MnemonicCreate{
   MnemonicCreate(this.mnemonic);
 }
 
+class WalletChange{
+  WalletChange();
+}
+

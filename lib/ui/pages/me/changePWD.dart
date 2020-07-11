@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
@@ -10,6 +11,11 @@ import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
 class ChangePWD extends BaseWidget {
+
+  final int index;
+  ChangePWD(this.index);
+  List list = SpUtils.getObjectList('walletList');
+
   @override
   getState() {
     return new Pages();
@@ -58,6 +64,9 @@ class Pages extends BaseWidgetState<ChangePWD> {
                       child: Text(S.of(context).ChangePWD),
                       onPressed: () {
                         
+
+
+
                       },
                 ),
                 ),

@@ -30,7 +30,7 @@ class _PageState extends BaseLoadDataWidgetState<AboutPage, AboutViewModel> {
     // var model = Provider.of<AboutViewModel>(context);
     return Column(
       children: <Widget>[
-        Text(viewModel.packageInfo.appName),
+        // Text(viewModel.packageInfo.appName),
         InkWell(
           onTap: () async {
             "".showLoading();

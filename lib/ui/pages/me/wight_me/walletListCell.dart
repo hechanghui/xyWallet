@@ -5,14 +5,14 @@ import 'package:xy_wallet/common/helper/resource_helper.dart';
 class WalletListCell extends StatelessWidget {
   final String address;
   final String title;
-  final String note;
+  final bool used;
   final GestureTapCallback onPressedSet;
 
   WalletListCell({
     Key key,
     this.address,
     this.title,
-    this.note,
+    this.used,
     this.onPressedSet,
 
   }) : super(key: key);
