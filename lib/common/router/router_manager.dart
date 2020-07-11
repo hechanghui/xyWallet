@@ -7,6 +7,7 @@ import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
 import 'package:xy_wallet/ui/pages/home/PowByAttraction.dart';
+import 'package:xy_wallet/ui/pages/home/PowByAttractionTraction.dart';
 import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplitInfo.dart';
@@ -18,6 +19,7 @@ import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
+import 'package:xy_wallet/ui/pages/wallet/test.dart';
 
 import 'page_route_anim.dart';
 
@@ -31,10 +33,8 @@ class RouteName {
   static const String tab = '/';
   static const String WALLET_CREATE_RESTORE = 'wallet/createOrRestore';
   static const String WALLET_CREATE = 'wallet/create';
-  static const String WALLET_CREATE_WITH_MNEMONIC_GENERATE =
-      'wallet/createWithMnemonicGenerate';
-  static const String WALLET_CREATE_WITH_MNEMONIC_INPUT =
-      'wallet/createWithMnemonicInput';
+  static const String WALLET_CREATE_WITH_MNEMONIC_GENERATE = 'wallet/createWithMnemonicGenerate';
+  static const String WALLET_CREATE_WITH_MNEMONIC_INPUT = 'wallet/createWithMnemonicInput';
   static const String WALLET_RESTORE = 'wallet/restore';
   static const String TRANSFER = 'wallet/transfer';
   static const String TRANSACTION_RECOR = 'wallet/transactionRecor';
@@ -44,6 +44,8 @@ class RouteName {
   static const String CREATEXCODE = 'wallet/createXcode';
   static const String INVITEINFO = 'wallet/InviteInfo';
   static const String POWBYATTRACTION = 'wallet/PowByAttraction';
+  static const String POWBYATTRACTION_TRACTION = 'home/PowByAttractionTraction';
+
   static const String POWBYSPLIT = 'wallet/PowBySplit';
   static const String POWBYPOWER = 'wallet/PowByPower';
   static const String WalletManger = 'wallet/WalletManger';
@@ -67,18 +69,15 @@ class Router {
       case RouteName.WALLET_CREATE:
         return CupertinoPageRoute(builder: (_) => CreateWithAccountPage());
       case RouteName.WALLET_CREATE_WITH_MNEMONIC_GENERATE:
-        return CupertinoPageRoute(
-            builder: (_) => CreateWithMnemonicGeneratePage(settings.arguments));
+        return CupertinoPageRoute(builder: (_) => CreateWithMnemonicGeneratePage(settings.arguments));
       case RouteName.WALLET_CREATE_WITH_MNEMONIC_INPUT:
-        return CupertinoPageRoute(
-            builder: (_) => CreateWithMnemonicInputPage(settings.arguments));
+        return CupertinoPageRoute(builder: (_) => CreateWithMnemonicInputPage(settings.arguments));
       case RouteName.TRANSFER:
         return CupertinoPageRoute(builder: (_) => TransferPage());
       case RouteName.TRANSACTION_RECOR:
         return CupertinoPageRoute(builder: (_) => TransactionRecordPage());
       case RouteName.TRANSACTION_DETAILS:
-        return CupertinoPageRoute(
-            builder: (_) => TransactionDetailsPage(settings.arguments));
+        return CupertinoPageRoute(builder: (_) => TransactionDetailsPage(settings.arguments));
       case RouteName.ABOUT:
         return CupertinoPageRoute(builder: (_) => AboutPage());
 
@@ -93,6 +92,9 @@ class Router {
 
       case RouteName.POWBYATTRACTION:
         return CupertinoPageRoute(builder: (_) => PowByAttraction());
+
+      case RouteName.POWBYATTRACTION_TRACTION:
+        return CupertinoPageRoute(builder: (_) => PowByAttractionTractionPage());
 
       case RouteName.POWBYSPLIT:
         return CupertinoPageRoute(builder: (_) => PowBySplit());
@@ -143,8 +145,7 @@ class PopRoute extends PopupRoute {
   String get barrierLabel => null;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     return child;
   }
 

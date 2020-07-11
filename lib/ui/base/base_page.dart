@@ -53,8 +53,10 @@ abstract class BasePageMixin {
   }
 
   hideInputKeyboard(BuildContext context) {
-    if (FocusScope.of(context).focusedChild != null) {
+    // if (FocusScope.of(context).focusedChild != null) //判断获取焦点child时灵时不灵
+    if (MediaQuery.of(context).viewInsets.bottom > 0) {
       FocusScope.of(context).requestFocus(FocusNode());
+      debugPrint("收起键盘。。。");
     }
   }
 
