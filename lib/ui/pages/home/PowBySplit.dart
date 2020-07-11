@@ -79,11 +79,17 @@ class Page extends BaseWidgetState<PowBySplit> {
           Container(
           alignment: Alignment.topRight,
           
-          child: Text(
+          child: Container(
+            padding:EdgeInsets.only( top: 155, right: 30),
+            child: Text(
             S.of(context).moreData,
             textAlign: TextAlign.right,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 13),
-          ).padding(EdgeInsets.only( top: 155, right: 30)),
+           ).click(onTap:(){
+             Navigator.pushNamed(context, RouteName.PowBySplitInfo);
+           })
+          )
+          
         )
 
        
@@ -158,7 +164,7 @@ class Page extends BaseWidgetState<PowBySplit> {
             color: ThemeColors.labelLightColor,
           ),
         ),
-        Text("持币算力").padding(EdgeInsets.only(top: 211, left: 30)),
+        Text("双轨道算力").padding(EdgeInsets.only(top: 211, left: 30)),
                 Container(
           alignment: Alignment.topRight,
           padding:EdgeInsets.only(top: 211,right: 30),
@@ -172,7 +178,7 @@ class Page extends BaseWidgetState<PowBySplit> {
           ),
         ),
 
-        Text("持币算力").padding(EdgeInsets.only(top: 247, left: 30)),
+        Text("邀请算力").padding(EdgeInsets.only(top: 247, left: 30)),
         Container(
           alignment: Alignment.topRight,
           padding:EdgeInsets.only(top: 247,right: 30),
@@ -189,7 +195,7 @@ class Page extends BaseWidgetState<PowBySplit> {
             color: ThemeColors.labelLightColor,
           ),
         ),
-        Text("持币算力").padding(EdgeInsets.only(top: 282, left: 30)),
+        Text("币龄算力").padding(EdgeInsets.only(top: 282, left: 30)),
         Container(
           alignment: Alignment.topRight,
           padding:EdgeInsets.only(top: 282,right: 30),

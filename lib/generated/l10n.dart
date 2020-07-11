@@ -1772,6 +1772,16 @@ class S {
       args: [],
     );
   }
+
+  /// `奖励记录`
+  String get rewardRecord {
+    return Intl.message(
+      '奖励记录',
+      name: 'rewardRecord',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
