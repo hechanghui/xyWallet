@@ -101,6 +101,7 @@ class _ContainerPageState extends BaseWidgetState<TabsPage> {
         Tuple2<String, String>(S.current.community, "icon_community.png"),
         Tuple2<String, String>(S.current.mine, "icon_mine.png"),
       ];
+
       this.itemList = itemNames
           .map((item) => BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
