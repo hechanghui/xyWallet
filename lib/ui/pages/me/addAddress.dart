@@ -22,9 +22,9 @@ class Pages extends BaseWidgetState<AddAdress> {
   @override
   String titleLabel(BuildContext context) => S.of(context).AddressManagerTitle;
 
-  var name = '';
-  var address = '';
-  var note = '';
+  var name = TextEditingController();
+  var address = TextEditingController();
+  var note = TextEditingController();
 
   Widget buildBodyWidget(BuildContext context) {
     return Container(
@@ -35,23 +35,17 @@ class Pages extends BaseWidgetState<AddAdress> {
           CommonInput(
             title: S.of(context).AddressTitle,
             placeholder: S.of(context).AddressTitleInput,
-            onChanged: (text) {
-              name = text;
-            },
+            controller: name
           ),
           CommonInput(
             title: S.of(context).AddAddress,
             placeholder: S.of(context).AddAddressInput,
-            onChanged: (text) {
-              address = text;
-            },
+            controller: address
           ),
           CommonInput(
               title: S.of(context).AddressNote,
               placeholder: S.of(context).AddressNoteInput,
-              onChanged: (text) {
-                note = text;
-              }),
+              controller: note),
           Padding(
             padding: EdgeInsets.only(
               top: 40,
@@ -61,15 +55,15 @@ class Pages extends BaseWidgetState<AddAdress> {
             child: CommonButton(
               child: Text(S.of(context).walletRestore),
               onPressed: () {
-                if (name == null || name.isEmpty) {
+                if (name.text == null || name.text.isEmpty) {
                   showToast(S.of(context).AddressTitleInput);
                   return;
-                } else if (address == null || address.isEmpty) {
+                } else if (address.text == null || address.text.isEmpty) {
                   showToast(S.of(context).AddAddressInput);
                   return;
                 }
 
-                var model = AddressModel(name: name,address: address,note: note);
+                var model = AddressModel(name: name.text,address: address.text,note: note.text);
                 // List<Map> datas = SpUtils.getObjectList('address');
                 // datas = datas??[];
                 

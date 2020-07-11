@@ -28,9 +28,9 @@ class Pages extends BaseWidgetState<ChangePWD> {
   @override
   String titleLabel(BuildContext context) => S.of(context).ChangePWD;
 
-  var oldPWD;
-  var newPWD;
-  var confirmPWD;
+  var oldPWD = TextEditingController();
+  var newPWD = TextEditingController();
+  var confirmPWD = TextEditingController();
   WalletModel model;
 
 
@@ -44,17 +44,18 @@ class Pages extends BaseWidgetState<ChangePWD> {
           CommonInput(
             title: S.of(context).oldPWd,
             placeholder: S.of(context).oldPWdInput,
-            onChanged: (text) {oldPWD = text;},
+            controller: oldPWD,
           ),
           CommonInput(
             title: S.of(context).newPWd,
             placeholder: S.of(context).newPWdInput,
-            onChanged: (text) {newPWD = text;},
+            controller: newPWD,
           ),
           CommonInput(
             title: S.of(context).comfirmPWd,
             placeholder: S.of(context).comfirmPWdInput,
-            onChanged: (text) {confirmPWD = text;}
+            controller: confirmPWD,
+           
           ),
 
           
@@ -69,16 +70,16 @@ class Pages extends BaseWidgetState<ChangePWD> {
                       child: Text(S.of(context).ChangePWD),
                       onPressed: () async{
 
-                  if (oldPWD?.isNotEmpty==false) {
+                  if (oldPWD.text?.isNotEmpty==false) {
                     showToast(S.of(context).oldPWdInput);
                     return;
-                  } else if (newPWD?.isNotEmpty==false) {
+                  } else if (newPWD.text?.isNotEmpty==false) {
                     showToast(S.of(context).newPWdInput);
                     return;
-                  } else if (confirmPWD?.isNotEmpty==false) {
+                  } else if (confirmPWD.text?.isNotEmpty==false) {
                     showToast(S.of(context).comfirmPWdInput);
                     return;
-                  } else if (confirmPWD != newPWD) {
+                  } else if (confirmPWD.text != newPWD.text) {
                     showToast(S.of(context).PWDDiffentInputTip);
                     return;
                   }
@@ -98,10 +99,10 @@ class Pages extends BaseWidgetState<ChangePWD> {
                           ethWallet = await createWalletPrivateKey(
                           model.privateKey,
                           model.name,
-                          newPWD,
+                          newPWD.text,
                           change: true);
                       hideLoading();
-                      model.password = newPWD;
+                      model.password = newPWD.text;
                       model.keystore = ethWallet.keystore;
                       SpUtils.putObject(wallet['address'], model.toJson());
                       showToast(S.of(context).Succsee);
@@ -123,7 +124,7 @@ class Pages extends BaseWidgetState<ChangePWD> {
     model.password = '1231';
 
     
-    return checkPWDForKetstore(model.keystore, oldPWD);
+    return checkPWDForKetstore(model.keystore, oldPWD.text);
   }
 
 

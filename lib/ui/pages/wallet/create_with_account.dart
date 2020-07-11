@@ -25,9 +25,9 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
   @override
   Widget buildBodyWidget(BuildContext context) {
     final viewModel = CreateViewModel();
-    var acountName = "";
-    var passWord = "";
-    var comfirmPW = "";
+    var acountName = TextEditingController();
+    var passWord = TextEditingController();
+    var comfirmPW = TextEditingController();
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
@@ -73,25 +73,18 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
                 CommonInput(
                   title: S.of(context).accountName,
                   placeholder: S.of(context).hintInputAccountName,
-                  onChanged: (text) {
-                    acountName = text;
-                  },
+ 
                   controller: viewModel.mnemonicAccountController,
                 ),
                 CommonInput(
                   title: S.of(context).setPwd,
                   placeholder: S.of(context).hintInputPwd,
-                  onChanged: (text) {
-                    passWord = text;
-                  },
                   controller: viewModel.mnemonicSetPwdController,
                 ),
                 CommonInput(
                   title: S.of(context).confirmPwd,
                   placeholder: S.of(context).hintInputPwd,
-                  onChanged: (text) {
-                    comfirmPW = text;
-                  },
+     
                   controller: viewModel.mnemonicConfirmPwdController,
                 ),
               ],
@@ -106,16 +99,16 @@ class _PageState extends BaseWidgetState<CreateWithAccountPage> {
             child: CommonButton(
                 child: Text(S.of(context).startCreate),
                 onPressed: () async {
-                  if (acountName == null || acountName.isEmpty) {
+                  if (viewModel.mnemonicAccountController.text == null || viewModel.mnemonicAccountController.text.isEmpty) {
                     showToast(S.of(context).NoNameInputTip);
                     return;
-                  } else if (passWord == null || passWord.isEmpty) {
+                  } else if (viewModel.mnemonicSetPwdController.text == null || viewModel.mnemonicSetPwdController.text.isEmpty) {
                     showToast(S.of(context).NoPWDInputTip);
                     return;
-                  } else if (comfirmPW == null || comfirmPW.isEmpty) {
+                  } else if (viewModel.mnemonicConfirmPwdController.text == null || viewModel.mnemonicConfirmPwdController.text.isEmpty) {
                     showToast(S.of(context).NoComfirmPWDInputTip);
                     return;
-                  } else if (passWord != comfirmPW) {
+                  } else if (viewModel.mnemonicSetPwdController.text != viewModel.mnemonicConfirmPwdController.text) {
                     showToast(S.of(context).PWDDiffentInputTip);
                     return;
                   }

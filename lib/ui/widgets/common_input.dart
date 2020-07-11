@@ -11,7 +11,7 @@ class CommonInput extends StatefulWidget{
   final TextEditingController controller;
   final TextInputAction textInputAction;
   final FocusNode focusNode;
-  final ValueChanged<String> onChanged;
+  // final ValueChanged<String> onChanged;
   final TextInputType keyboardType;
 
   CommonInput({
@@ -23,7 +23,7 @@ class CommonInput extends StatefulWidget{
     this.controller,
     this.textInputAction,
     this.focusNode,
-    this.onChanged
+    // this.onChanged
 
   }) : super(key: key);
 
@@ -66,7 +66,9 @@ class CommonInputState extends State<CommonInput> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 47, 50, 0),
                 child: TextField(
-                  onChanged: widget.onChanged,
+                  onChanged: (text){
+                    widget.controller.text = text;
+                  },
                   
                   controller: widget.controller,
                   keyboardType: widget.keyboardType,
