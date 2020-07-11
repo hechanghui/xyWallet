@@ -19,7 +19,28 @@ class _State extends BaseWidgetState<PowByAttractionTractionPage> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
-    return charts.LineChart(_createSampleData(), animate: true, defaultRenderer: new charts.LineRendererConfig(includePoints: true));
+    //  final ticks=charts.StaticOrdinalTickProviderSpec([
+    //     charts.TickSpec(
+    //         '2018',
+    //         label: '2018年',
+    //         style: new charts.TextStyleSpec(//可对x轴设置颜色等
+    //             color: new charts.Color(r: 0x4C, g: 0xAF, b: 0x50)))
+    //     ),
+    //     charts.TickSpec(
+    //         '2019',
+    //         label: '2019年',
+    //         style: new charts.TextStyleSpec(//可对x轴设置颜色等
+    //             color: new charts.Color(r: 0x4C, g: 0xAF, b: 0x50)))
+    //     ),
+    // ]);
+    return charts.LineChart(
+      _createSampleData(),
+      animate: true,
+      defaultRenderer: new charts.LineRendererConfig(includePoints: true),
+      // domainAxis: new charts.OrdinalAxisSpec(
+      //   tickProviderSpec: ticks,
+      // ),
+    );
   }
 
   /// Create one series with sample hard coded data.
@@ -34,9 +55,11 @@ class _State extends BaseWidgetState<PowByAttractionTractionPage> {
     return [
       new charts.Series<LinearSales, int>(
         id: 'Sales',
-        // displayName: "222222",
-        areaColorFn: (_, __) => ThemeColors.accentColor,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, __) => charts.Color(
+          r: ThemeColors.accentColor.red,
+          g: ThemeColors.accentColor.green,
+          b: ThemeColors.accentColor.blue,
+        ),
         domainFn: (LinearSales sales, _) => sales.year,
         measureFn: (LinearSales sales, _) => sales.sales,
         data: data,
