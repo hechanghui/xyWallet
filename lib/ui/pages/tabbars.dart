@@ -86,15 +86,9 @@ class _ContainerPageState extends BaseWidgetState<TabsPage> {
       // iconSize: 26, //图标大小
       currentIndex: _selectIndex,
       selectedItemColor: ThemeColors.accentColor,
-      selectedLabelStyle: Theme.of(context)
-          .textTheme
-          .headline5
-          .copyWith(color: ThemeColors.accentColor),
+      selectedLabelStyle: Theme.of(context).textTheme.headline5.copyWith(color: ThemeColors.accentColor),
       unselectedItemColor: ThemeColors.labelLightColor,
-      unselectedLabelStyle: Theme.of(context)
-          .textTheme
-          .headline5
-          .copyWith(color: ThemeColors.labelLightColor),
+      unselectedLabelStyle: Theme.of(context).textTheme.headline5.copyWith(color: ThemeColors.labelLightColor),
 
       type: BottomNavigationBarType.fixed,
     );
@@ -116,8 +110,7 @@ class _ContainerPageState extends BaseWidgetState<TabsPage> {
                   width: 32.0,
                   height: 32.0,
                 ),
-                activeIcon: Image.asset(ImageHelper.wrapAssets(item.item2),
-                    color: ThemeColors.accentColor, width: 35.0, height: 35.0),
+                activeIcon: Image.asset(ImageHelper.wrapAssets(item.item2), color: ThemeColors.accentColor, width: 35.0, height: 35.0),
                 title: Text(item.item1),
               ))
           .toList();
