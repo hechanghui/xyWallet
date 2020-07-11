@@ -75,7 +75,7 @@ class Pages extends BaseWidgetState<WalletManager> {
           title: (S.of(context).ChangePWD),
           imageName: 'icon_changePWD.png',
         ).click(onTap: () {
-          Navigator.pushNamed(context, RouteName.WalletManger,arguments: widget.index);
+          Navigator.pushNamed(context, RouteName.ChangePWD,arguments: widget.index);
           // Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangePWD()));
         }),
         Padding(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
+import 'package:xy_wallet/ui/pages/community/CoinDetails.dart';
+import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
@@ -45,6 +47,8 @@ class RouteName {
   static const String POWBYPOWER = 'wallet/PowByPower';
   static const String WalletManger = 'wallet/WalletManger';
   static const String ChangePWD = 'wallet/ChangePWD';
+  static const String CoinDetails = 'community/ChangePWD';
+  static const String WithDraw = 'community/withDraw';
 }
 
 class Router {
@@ -99,6 +103,12 @@ class Router {
 
       case RouteName.ChangePWD:
         return CupertinoPageRoute(builder: (_) => ChangePWD(settings.arguments));
+
+      case RouteName.CoinDetails:
+        return CupertinoPageRoute(builder: (_) => CoinDetails());
+
+     case RouteName.WithDraw:
+        return CupertinoPageRoute(builder: (_) => WithDrawPage());
 
       default:
         return CupertinoPageRoute(

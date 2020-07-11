@@ -1,10 +1,11 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/ui/pages/community/charge.dart';
-import 'package:xy_wallet/ui/pages/community/widget/AssetManagerHeadBt.dart';
 import 'package:xy_wallet/ui/pages/community/widget/coinListCell.dart';
+
 
 enum CoinType {
   Charge,
@@ -33,7 +34,7 @@ class Pages extends BaseWidgetState<CoinList> {
       itemCount: 3,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-            child: TabComCell(
+            child: CoinListCell(
           title: 'ERC20-USDT',
           imageName: 'usdt.png',
           onPressed: () {
@@ -51,6 +52,11 @@ class Pages extends BaseWidgetState<CoinList> {
               case CoinType.ChooseCoin : 
                             Navigator.of(context).pop();
                     eventBus.fire(CoinChangeEvent('ETH'));
+                    
+                break;
+              
+              case CoinType.WithDraw :
+                Navigator.pushNamed(context, RouteName.WithDraw);   
                     
                 break;
                 

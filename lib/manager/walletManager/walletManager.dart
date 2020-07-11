@@ -40,15 +40,19 @@ createWalletMnemonic(String randomMnemonic, String name, String password) async 
 }
 
 //私钥创建
-createWalletPrivateKey(String privateKey, String name, String password) async {
+createWalletPrivateKey(String privateKey, String name, String password,{bool change}) async {
   final createTask = WalletCreateTask(privateKey, name, password,CreateType.PrivateKey);
   final worker = Worker(poolSize: 1);
   final WalletModel result = await worker.handle(createTask);
   if(result.errer == null){
+    if(change == true){
+      return result;
+    }
     saveWallet(result);
   }
   return result;
 }
+
 
 //KeyStore创建
 createWalletKeyStore(String keyStore, String name, String password) async {
@@ -75,6 +79,10 @@ saveWallet(WalletModel model){
   SpUtils.putObjectList(walletListKey, walletList);
   eventBus.fire(WalletChange());
 }
+
+  checkPWDForKetstore (String keystore, String password ) {
+    return ethCheckPWDForKetstore(keystore,password); 
+  }
 
 class WalletCreateTask implements Task<Future<WalletModel>> {
   final String createData;

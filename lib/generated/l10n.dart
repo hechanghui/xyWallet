@@ -1722,6 +1722,56 @@ class S {
       args: [],
     );
   }
+
+  /// `充币记录`
+  String get ChargeRecord {
+    return Intl.message(
+      '充币记录',
+      name: 'ChargeRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提币记录`
+  String get WithDrawRecord {
+    return Intl.message(
+      '提币记录',
+      name: 'WithDrawRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `交易记录`
+  String get TransRecord {
+    return Intl.message(
+      '交易记录',
+      name: 'TransRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `密码错误`
+  String get PWDWrong {
+    return Intl.message(
+      '密码错误',
+      name: 'PWDWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `成功`
+  String get Succsee {
+    return Intl.message(
+      '成功',
+      name: 'Succsee',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -138,7 +138,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage>
                         hideLoading();
                     break;
                         case 2:
-                    if (viewModel.privateKeyController.text?.isNotEmpty==false) {
+                  if (viewModel.privateKeyController.text?.isNotEmpty==false) {
                     showToast(S.of(context).PrivateKeyInput);
                     return;
                   } else if (viewModel.privateKeyAccountController.text?.isNotEmpty==false) {
