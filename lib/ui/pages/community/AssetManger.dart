@@ -1,5 +1,6 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/widget/AssetManagerCell.dart';
 import 'package:xy_wallet/ui/pages/community/widget/AssetManagerHeadBt.dart';
@@ -77,14 +78,14 @@ class Pages extends BaseWidgetState<AssetManger> {
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                      child: AssetManageCell(
+                    child: AssetManageCell(
                     coin: datas[index]['name'],
                     address: datas[index]['address'],
                     nums: datas[index]['num'],
                     price: datas[index]['price'],
                     imageName: 'usdt.png',
                     onPressed: () {
-                      print('11111');
+                      Navigator.pushNamed(context, RouteName.CoinDetails);      
                     },
                   ));
                 })),

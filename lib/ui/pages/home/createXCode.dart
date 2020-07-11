@@ -19,7 +19,7 @@ class Pages extends BaseWidgetState<CreateXcode> {
   @override
   String titleLabel(BuildContext context) => S.of(context).CreateXcode;
 
-  var xcode;
+  var xcode = TextEditingController();
 
   Widget buildBodyWidget(BuildContext context) {
     return Container(
@@ -30,7 +30,7 @@ class Pages extends BaseWidgetState<CreateXcode> {
           CommonInput(
             title: S.of(context).CreateXcodeInput,
             placeholder: S.of(context).CreateXcodeInput,
-            onChanged: (text) {xcode = text;},
+            controller: xcode,
           ).padding(EdgeInsets.only(top:20)),
 
           Text('需要支付：5 XCode').padding(EdgeInsets.only(left:30,top:20)),

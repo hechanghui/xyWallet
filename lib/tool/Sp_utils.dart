@@ -44,7 +44,7 @@ class SpUtils {
 
   static Map getObject(String key) {
     if (_sp == null) return null;
-    String _data = _sp.getString("object_$key");
+    String _data = _sp.getString(key);
     return (_data == null || _data.isEmpty) ? null : json.decode(_data);
   }
 

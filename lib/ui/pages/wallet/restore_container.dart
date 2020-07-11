@@ -141,7 +141,6 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage> with S
                         wallet = await createWalletPrivateKey(_viewModel.privateKeyController.text, _viewModel.privateKeyAccountController.text, _viewModel.privateKeySetPwdController.text);
                         hideLoading();
                         break;
-
                       default:
                     }
 

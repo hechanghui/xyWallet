@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 
-class TabComCell extends StatelessWidget {
+class CoinListCell extends StatelessWidget {
   final String imageName;
   final String title;
   final String subTitle;
   final GestureTapCallback onPressed;
   
-  TabComCell({Key key, this.imageName, this.title, this.subTitle,this.onPressed})
+  CoinListCell({Key key, this.imageName, this.title, this.subTitle,this.onPressed})
       : super(key: key);
 
   Widget build(BuildContext context) {

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:http/http.dart';
 import 'package:web3dart/crypto.dart';
 import 'dart:math';
@@ -33,6 +36,9 @@ Future<WalletModel> createETH(String privateKey, String passWord) {
     return walletModel;
   });
 }
+
+
+
 
 Future<WalletModel> createETHFormKeyStore(String keyStore, String passWord) async{
   // Random random = new Random.secure();
@@ -83,3 +89,19 @@ transaction(String privateKey, String toAddress, EtherAmount amount) async {
   final client = Web3Client('http:xxxxxxxxxxxx', Client());
   final signature = await client.signTransaction(credentials, transaction);
 }
+
+ ethCheckPWDForKetstore (String keystore, String password ){
+  Wallet wallet ;
+  
+  try {
+    wallet = Wallet.fromJson(keystore, password);
+  } catch (e) {
+    print('错误');
+    return false;
+  }
+  print('正确');
+  return wallet;
+ }
+
+
+

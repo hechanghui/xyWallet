@@ -1,15 +1,17 @@
+import 'package:web3dart/credentials.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/model/walletModel.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
-
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 class ChangePWD extends BaseWidget {
 
   final int index;
@@ -26,11 +28,14 @@ class Pages extends BaseWidgetState<ChangePWD> {
   @override
   String titleLabel(BuildContext context) => S.of(context).ChangePWD;
 
-  var oldPWD;
-  var newPWD;
-  var confirmPWD;
+  var oldPWD = TextEditingController();
+  var newPWD = TextEditingController();
+  var confirmPWD = TextEditingController();
+  WalletModel model;
+
 
   Widget buildBodyWidget(BuildContext context) {
+    
     return Container(
       child: ListView(
         // shrinkWrap: true,
@@ -39,17 +44,18 @@ class Pages extends BaseWidgetState<ChangePWD> {
           CommonInput(
             title: S.of(context).oldPWd,
             placeholder: S.of(context).oldPWdInput,
-            onChanged: (text) {oldPWD = text;},
+            controller: oldPWD,
           ),
           CommonInput(
             title: S.of(context).newPWd,
-            placeholder: S.of(context).newPWd,
-            onChanged: (text) {newPWD = text;},
+            placeholder: S.of(context).newPWdInput,
+            controller: newPWD,
           ),
           CommonInput(
             title: S.of(context).comfirmPWd,
             placeholder: S.of(context).comfirmPWdInput,
-            onChanged: (text) {confirmPWD = text;}
+            controller: confirmPWD,
+           
           ),
 
           
@@ -62,11 +68,45 @@ class Pages extends BaseWidgetState<ChangePWD> {
           
                       child: CommonButton(
                       child: Text(S.of(context).ChangePWD),
-                      onPressed: () {
-                        
+                      onPressed: () async{
 
+                  if (oldPWD.text?.isNotEmpty==false) {
+                    showToast(S.of(context).oldPWdInput);
+                    return;
+                  } else if (newPWD.text?.isNotEmpty==false) {
+                    showToast(S.of(context).newPWdInput);
+                    return;
+                  } else if (confirmPWD.text?.isNotEmpty==false) {
+                    showToast(S.of(context).comfirmPWdInput);
+                    return;
+                  } else if (confirmPWD.text != newPWD.text) {
+                    showToast(S.of(context).PWDDiffentInputTip);
+                    return;
+                  }
 
+                    Map wallet = widget.list[widget.index];
+                    Map wallets = SpUtils.getObject(wallet['address']);
+                    WalletModel model = WalletModel.fromJson(wallets);
+                    WalletModel ethWallet; 
+                      var result = checkPWDWithKetstore();
+                        if(result == false){
+                          showToast(S.of(context).PWDWrong);
+                          return;
+                        }
 
+    
+                      showLoading();
+                          ethWallet = await createWalletPrivateKey(
+                          model.privateKey,
+                          model.name,
+                          newPWD.text,
+                          change: true);
+                      hideLoading();
+                      model.password = newPWD.text;
+                      model.keystore = ethWallet.keystore;
+                      SpUtils.putObject(wallet['address'], model.toJson());
+                      showToast(S.of(context).Succsee);
+                      Navigator.of(context).pop();
                       },
                 ),
                 ),
@@ -74,4 +114,19 @@ class Pages extends BaseWidgetState<ChangePWD> {
       ),
     );
   }
+
+  checkPWDWithKetstore(){
+    
+    Map wallet = widget.list[widget.index];
+    Map wallets = SpUtils.getObject(wallet['address']);
+    WalletModel model = WalletModel.fromJson(wallets);
+    print(wallets);
+    model.password = '1231';
+
+    
+    return checkPWDForKetstore(model.keystore, oldPWD.text);
+  }
+
+
+
 }
