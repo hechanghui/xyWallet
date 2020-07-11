@@ -3,7 +3,6 @@ import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/dialog_helper.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
-import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
@@ -54,17 +53,11 @@ class _PageState extends BaseWidgetState<TransferPage> {
                     iconImg,
                     Text(
                       "USDT",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
                     ).padding(EdgeInsets.only(left: 6, right: 8)),
                     Text(
                       "可用余额",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(color: ThemeColors.labelLightColor),
+                      style: Theme.of(context).textTheme.headline4.copyWith(color: ThemeColors.labelLightColor),
                     )
                   ],
                 ),
@@ -86,8 +79,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
                 Divider(height: ThemeDimens.pageLRMargin),
                 CommonInputMinor(
                   placeholder: S.current.AddAddressInput,
-                  right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'),
-                          width: 22, color: ThemeColors.primaryFgColor
+                  right: Image.asset(ImageHelper.wrapAssets('icon_QR.png'), width: 22, color: ThemeColors.primaryFgColor
                           // fit: BoxFit.contain,
                           )
                       .click(onTap: () {
@@ -99,13 +91,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
                   S.current.addrSend,
                   style: ThemeStyles.getSubtitle2lLight(context),
                 ),
-                Text("0xdac17f958d2ee523a2206206994597c1")
-                    .padding(EdgeInsets.only(top: 4, bottom: 18))
-                    .border(Border(
-                        bottom: BorderSide(
-                            color: ThemeColors.labelLightColor,
-                            width: 1,
-                            style: BorderStyle.solid))),
+                Text("0xdac17f958d2ee523a2206206994597c1").padding(EdgeInsets.only(top: 4, bottom: 18)).border(Border(bottom: BorderSide(color: ThemeColors.labelLightColor, width: 1, style: BorderStyle.solid))),
                 Divider(height: ThemeDimens.pageLRMargin * 1.5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,11 +100,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
                       S.current.fee,
                       style: ThemeStyles.getSubtitle2lLight(context),
                     ),
-                    Text("${_valueFee}",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4
-                            .copyWith(fontWeight: FontWeight.bold)),
+                    Text("${_valueFee}", style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold)),
                   ],
                 ),
                 CommonSlider(
@@ -142,10 +124,7 @@ class _PageState extends BaseWidgetState<TransferPage> {
           ),
         ),
         Padding(
-            padding: EdgeInsets.only(
-                left: ThemeDimens.pageLRMargin,
-                right: ThemeDimens.pageLRMargin,
-                bottom: ThemeDimens.pageBottomMargin),
+            padding: EdgeInsets.only(left: ThemeDimens.pageLRMargin, right: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageBottomMargin),
             child: CommonButton(
               child: Text(S.of(context).transferConfirm),
               onPressed: () => showPwdDialog(),

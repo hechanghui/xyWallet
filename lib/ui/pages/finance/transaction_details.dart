@@ -27,6 +27,22 @@ class _PageState extends BaseLoadRefreshDataWidgetState<TransactionDetailsPage, 
   @override
   TransactionRecordDetailsViewModel onCreateViewModel() => TransactionRecordDetailsViewModel();
 
+  List<String> _subTitleLabels;
+
+  @override
+  void initState() {
+    super.initState();
+    _subTitleLabels = [
+      S.current.confirmDate,
+      S.current.txId,
+      S.current.includedInBlock,
+      S.current.confirmations,
+      S.current.fees,
+      S.current.addrFrom,
+      S.current.addrTo,
+    ];
+  }
+
   @override
   Widget buildLoadingWidget(BuildContext context) {
     return LoadingViewShimmer(child: TransactionDetailsShimmer());
@@ -74,18 +90,8 @@ class _PageState extends BaseLoadRefreshDataWidgetState<TransactionDetailsPage, 
   }
 
   buildLabelAndContent() {
-    var labels = [
-      S.current.confirmDate,
-      S.current.txId,
-      S.current.includedInBlock,
-      S.current.confirmations,
-      S.current.fees,
-      S.current.addrFrom,
-      S.current.addrTo,
-    ];
-
     var widgets = List<Widget>();
-    for (var label in labels) {
+    for (var label in _subTitleLabels) {
       widgets.add(Flex(direction: Axis.horizontal, mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
         Expanded(
             flex: 2,

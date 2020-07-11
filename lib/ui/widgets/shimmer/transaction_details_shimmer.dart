@@ -18,30 +18,26 @@ class TransactionDetailsShimmer extends StatelessWidget {
                   width: 66,
                   decoration: buidDecoration(true),
                 ),
-
                 Container(
                   margin: EdgeInsets.symmetric(vertical: ThemeDimens.pageVerticalMargin * 3),
                   height: 22,
                   width: 60,
                   decoration: buidDecoration(),
                 ),
-
                 Container(
                   height: 22,
                   width: 90,
                   decoration: buidDecoration(),
                 ),
-
                 Column(
                   children: buildLabelAndContent(),
                 ).padding(EdgeInsets.only(top: ThemeDimens.pageVerticalMargin * 4, bottom: ThemeDimens.pageVerticalMargin)),
-
               ],
             ),
             SizedBox(
                 height: height,
                 child: Align(
-                  alignment: Alignment(0,0.65),
+                  alignment: Alignment(0, 0.68),
                   child: Container(
                     height: 46,
                     decoration: buidDecoration(),

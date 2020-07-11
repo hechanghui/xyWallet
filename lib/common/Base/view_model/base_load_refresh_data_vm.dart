@@ -8,6 +8,15 @@ abstract class BaseLoadRefreshDataViewModel<T> extends BaseLoadDataViewModel {
   final _refreshController = RefreshController(initialRefresh: false);
   RefreshController get refreshController => _refreshController;
 
+  bool _enableRefresh = true;
+  bool get enableRefresh => _enableRefresh;
+  set enableRefresh(bool enableRefresh) {
+    if (_enableRefresh != enableRefresh) {
+      this._enableRefresh = enableRefresh;
+      notifyListeners();
+    }
+  }
+
   @override
   // 加载数据
   Future<T> loadData();

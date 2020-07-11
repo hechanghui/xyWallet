@@ -24,8 +24,7 @@ class TransactionItem extends StatelessWidget {
       child: InkWell(
           onTap: onTap ??
               () {
-                Navigator.of(context)
-                    .pushNamed(RouteName.TRANSACTION_DETAILS, arguments: data);
+                Navigator.of(context).pushNamed(RouteName.TRANSACTION_DETAILS, arguments: data);
               },
           child: Container(
             padding: EdgeInsets.fromLTRB(24, 16, 20, 16),
@@ -48,13 +47,10 @@ class TransactionItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text("232323232",
-                            style:
-                                Theme.of(context).textTheme.headline4.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    )),
-                        Text("sdsds",
-                                style: ThemeStyles.getSubtitle1lLight(context))
-                            .padding(EdgeInsets.only(top: 5)),
+                            style: Theme.of(context).textTheme.headline4.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                )),
+                        Text("sdsds", style: ThemeStyles.getSubtitle1lLight(context)).padding(EdgeInsets.only(top: 5)),
                       ],
                     )),
                 Expanded(
@@ -64,9 +60,7 @@ class TransactionItem extends StatelessWidget {
                       child: Text("${data.out ? "-" : "+"}84.9",
                           style: Theme.of(context).textTheme.headline4.copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: data.out
-                                    ? ThemeColors.red
-                                    : ThemeColors.green,
+                                color: data.out ? ThemeColors.red : ThemeColors.green,
                               )),
                     )),
               ],

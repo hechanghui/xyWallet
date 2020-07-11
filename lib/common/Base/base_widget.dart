@@ -191,11 +191,17 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
 //加载数据state
 abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoadDataViewModel> extends BaseWidgetState<T> {
   @protected
-  final bool enmptEnableReload = true;
+  final bool emptyEnableReload = true;
+  @protected
+  final bool errorEnableReload = true;
+  @protected
+  final VoidCallback onPressedEmpty = null;
+  @protected
+  VoidCallback onPressedError;
 
   VM onCreateViewModel();
   VM _viewModel;
-  get viewModel {
+  VM get viewModel {
     if (_viewModel == null) {
       _viewModel = onCreateViewModel();
     }
@@ -218,11 +224,12 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
 
   Widget buildEmptyWidget(BuildContext context) {
     return ViewStateEmptyWidget(
-      onPressed: enmptEnableReload
-          ? () {
-              viewModel.setBusy();
-              viewModel.loadData();
-            }
+      onPressed: emptyEnableReload
+          ? onPressedEmpty ??
+              () {
+                viewModel.setBusy();
+                viewModel.loadData();
+              }
           : null,
     );
   }
@@ -230,10 +237,13 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
   Widget buildErrorWidget(BuildContext context) {
     return ViewStateErrorWidget(
       error: viewModel.viewStateError,
-      onPressed: () {
-        viewModel.setBusy();
-        viewModel.loadData();
-      },
+      onPressed: errorEnableReload
+          ? onPressedError ??
+              () {
+                viewModel.setBusy();
+                viewModel.loadData();
+              }
+          : null,
     );
   }
 
@@ -266,37 +276,24 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
 //加载数据state 带下拉刷新
 abstract class BaseLoadRefreshDataWidgetState<T extends BaseWidget, VM extends BaseLoadRefreshDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
   @override
-  Widget buildBody(BuildContext context) {
-    return ProviderWidget<VM>(
-      model: viewModel,
-      onModelReady: (model) {
-        // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
-        //   viewModel.setBusy();
-        // }
-      },
-      builder: (context, model, child) {
-        switch (model.viewState) {
-          case ViewState.busy:
-            model.refresh();
-            return buildLoadingWidget(context);
-          case ViewState.empty:
-            return buildEmptyWidget(context);
-          case ViewState.error:
-            return buildErrorWidget(context);
-          default:
-            return SmartRefresher(
-              controller: model.refreshController,
-              onRefresh: model.refresh,
-              child: buildBodyWidget(context),
-            );
-        }
-      },
+  VoidCallback get onPressedEmpty => _handlerEmptyAndError;
+  @override
+  VoidCallback get onPressedError => _handlerEmptyAndError;
+
+  _handlerEmptyAndError() {
+    viewModel.setBusy();
+    viewModel.refresh();
+  }
+
+  Widget buildRefreshWidget(BuildContext context) {
+    return SmartRefresher(
+      controller: viewModel.refreshController,
+      onRefresh: viewModel.refresh,
+      enablePullDown: viewModel.enableRefresh,
+      child: buildBodyWidget(context),
     );
   }
-}
 
-//加载List数据state 带下拉刷新 上拉加载更多
-abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends BaseLoadListDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
   @override
   Widget buildBody(BuildContext context) {
     return ProviderWidget<VM>(
@@ -316,13 +313,56 @@ abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends Base
           case ViewState.error:
             return buildErrorWidget(context);
           default:
-            return SmartRefresher(
-              controller: model.refreshController,
-              enablePullUp: true,
-              onRefresh: model.refresh,
-              onLoading: model.loadMore,
-              child: buildBodyWidget(context),
-            );
+            return buildRefreshWidget(context);
+        }
+      },
+    );
+  }
+}
+
+//加载List数据state 带下拉刷新 上拉加载更多
+abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends BaseLoadListDataViewModel> extends BaseLoadDataWidgetState<T, VM> {
+  @override
+  VoidCallback get onPressedEmpty => _handlerEmptyAndError;
+  @override
+  VoidCallback get onPressedError => _handlerEmptyAndError;
+
+  _handlerEmptyAndError() {
+    viewModel.setBusy();
+    viewModel.refresh();
+  }
+
+  Widget buildRefreshWidget(BuildContext context) {
+    return SmartRefresher(
+      controller: viewModel.refreshController,
+      enablePullUp: viewModel.enableLoadMore,
+      enablePullDown: viewModel.enableRefresh,
+      onRefresh: viewModel.refresh,
+      onLoading: viewModel.loadMore,
+      child: buildBodyWidget(context),
+    );
+  }
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return ProviderWidget<VM>(
+      model: viewModel,
+      onModelReady: (model) {
+        // if (viewModel.viewState != ViewState.idle && viewModel.viewState != ViewState.busy) {
+        //   viewModel.setBusy();
+        // }
+      },
+      builder: (context, model, child) {
+        switch (model.viewState) {
+          case ViewState.busy:
+            model.refresh();
+            return buildLoadingWidget(context);
+          case ViewState.empty:
+            return buildEmptyWidget(context);
+          case ViewState.error:
+            return buildErrorWidget(context);
+          default:
+            return buildRefreshWidget(context);
         }
       },
     );
