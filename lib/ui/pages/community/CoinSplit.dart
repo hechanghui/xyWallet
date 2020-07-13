@@ -61,7 +61,7 @@ class Page extends BaseWidgetState<CoinSplit> {
         child: Text(S.of(context).CoinSplitNow),
         onPressed: () {
 
-          Navigator.of(context).pushNamed(RouteName.POWBYATTRACTION_TRACTION);
+          Navigator.of(context).pushNamed(RouteName.CoinSplitRecord);
         },
       ).padding(EdgeInsets.only(top: 30, left: 15, right: 15)),
 
@@ -72,7 +72,7 @@ class Page extends BaseWidgetState<CoinSplit> {
               S.of(context).CoinSplitRecordButton,
               style:TextStyle(color: Color(0xff03F7591),fontSize: 13)
             ).click(onTap:(){
-
+              Navigator.of(context).pushNamed(RouteName.CoinSplitRecord);
             })
 
             ),
