@@ -28,7 +28,7 @@ class CommonInputMinor extends StatefulWidget {
     this.onSubmitted,
     this.onEditingComplete,
     this.maxLength,
-    this.maxLines,
+    this.maxLines = 1,
     this.minLines: 1,
     this.enabled,
     this.right,
@@ -68,15 +68,10 @@ class CommonInputState extends State<CommonInputMinor> {
                 textInputAction: widget.textInputAction,
                 onSubmitted: widget.onSubmitted,
                 onEditingComplete: widget.onEditingComplete,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                     hintText: widget.placeholder,
-                    hintStyle: Theme.of(context).textTheme.headline4.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: ThemeColors.labelLightColor),
+                    hintStyle: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: ThemeColors.labelLightColor),
                     border: InputBorder.none,
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(

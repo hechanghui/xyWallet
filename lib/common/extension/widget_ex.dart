@@ -47,19 +47,17 @@ extension WidgetEx on Widget {
     );
   }
 
-  Container backImage({String image}) {
+  Container backImage({String image, EdgeInsetsGeometry padding}) {
     return Container(
+      padding: padding,
       decoration: BoxDecoration(
-        image: DecorationImage(
+          image: DecorationImage(
         image: AssetImage(
-          ImageHelper.wrapAssets(image??'input_large_bg.png'),
+          ImageHelper.wrapAssets(image ?? 'input_large_bg.png'),
         ),
         fit: BoxFit.fill,
       )),
-      child:this,
+      child: this,
     );
   }
-
-
-
 }

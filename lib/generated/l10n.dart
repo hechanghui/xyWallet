@@ -1723,6 +1723,26 @@ class S {
     );
   }
 
+  /// `锁仓平台币`
+  String get lockUpPlatformToken {
+    return Intl.message(
+      '锁仓平台币',
+      name: 'lockUpPlatformToken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `待激活`
+  String get stateWaitActivate {
+    return Intl.message(
+      '待激活',
+      name: 'stateWaitActivate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `充币记录`
   String get ChargeRecord {
     return Intl.message(

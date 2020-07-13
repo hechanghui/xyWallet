@@ -197,6 +197,9 @@
     "tip":"温馨提示",
     "IsdelAccount":"确认删除该地址？",
 
+    "lockUpPlatformToken":"锁仓平台币",
+    "stateWaitActivate":"待激活",
+
     "ChargeRecord":"充币记录",
     "WithDrawRecord":"提币记录",
     "TransRecord":"交易记录",
