@@ -1802,6 +1802,46 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入金额`
+  String get InputMoney {
+    return Intl.message(
+      '请输入金额',
+      name: 'InputMoney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `粒子分裂规则：每阶段USDT兑换完毕之后将以下一层的兑换比例兑换X，此过程不可逆转，在粒子分裂的体系内X将获得持续上升的兑换价值，分裂所得X将于5.0H后分配到账，分裂所得以最终结果为准。`
+  String get coinSplitRule {
+    return Intl.message(
+      '粒子分裂规则：每阶段USDT兑换完毕之后将以下一层的兑换比例兑换X，此过程不可逆转，在粒子分裂的体系内X将获得持续上升的兑换价值，分裂所得X将于5.0H后分配到账，分裂所得以最终结果为准。',
+      name: 'coinSplitRule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `可用余额(USDT)`
+  String get canUse {
+    return Intl.message(
+      '可用余额(USDT)',
+      name: 'canUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `需要支付总额`
+  String get willPay {
+    return Intl.message(
+      '需要支付总额',
+      name: 'willPay',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

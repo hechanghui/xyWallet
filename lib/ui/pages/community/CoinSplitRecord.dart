@@ -73,7 +73,6 @@ class Pages extends BaseWidgetState<CoinSplitRecord> {
               context,
             ))
       ]),
-
     );
   }
 

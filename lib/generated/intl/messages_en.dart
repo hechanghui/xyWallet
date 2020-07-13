@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "DelAccount" : MessageLookupByLibrary.simpleMessage("删除账户"),
     "ExportKeyStore" : MessageLookupByLibrary.simpleMessage("导出keystore"),
     "ExportPrivateKey" : MessageLookupByLibrary.simpleMessage("导出私钥"),
+    "InputMoney" : MessageLookupByLibrary.simpleMessage("请输入金额"),
     "IsdelAccount" : MessageLookupByLibrary.simpleMessage("确认删除该地址？"),
     "KeystoreWrong" : MessageLookupByLibrary.simpleMessage("创建失败，Keystore文件或密码错误"),
     "Manager" : MessageLookupByLibrary.simpleMessage("管理"),
@@ -94,9 +95,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName" : MessageLookupByLibrary.simpleMessage("X钱包"),
     "assetManagerTitle" : MessageLookupByLibrary.simpleMessage("跨链资产管理"),
     "autoBySystem" : MessageLookupByLibrary.simpleMessage("跟随系统"),
+    "canUse" : MessageLookupByLibrary.simpleMessage("可用余额(USDT)"),
     "cannel" : MessageLookupByLibrary.simpleMessage("取消"),
     "codeX1" : MessageLookupByLibrary.simpleMessage("X-1码"),
     "codeX2" : MessageLookupByLibrary.simpleMessage("X-2码"),
+    "coinSplitRule" : MessageLookupByLibrary.simpleMessage("粒子分裂规则：每阶段USDT兑换完毕之后将以下一层的兑换比例兑换X，此过程不可逆转，在粒子分裂的体系内X将获得持续上升的兑换价值，分裂所得X将于5.0H后分配到账，分裂所得以最终结果为准。"),
     "comfirm" : MessageLookupByLibrary.simpleMessage("确认"),
     "comfirmPWd" : MessageLookupByLibrary.simpleMessage("确认新密码"),
     "comfirmPWdInput" : MessageLookupByLibrary.simpleMessage("请再次输入确认"),
@@ -196,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "whatIsKeystore" : MessageLookupByLibrary.simpleMessage("什么是Keystore"),
     "whatIsMnemonic" : MessageLookupByLibrary.simpleMessage("什么是助记词"),
     "whatIsPrivateKey" : MessageLookupByLibrary.simpleMessage("什么是私钥"),
+    "willPay" : MessageLookupByLibrary.simpleMessage("需要支付总额"),
     "yourWalletMnemonic" : MessageLookupByLibrary.simpleMessage("你的钱包助记词"),
     "yourWalletMnemonicTip" : MessageLookupByLibrary.simpleMessage("助记词用于恢复你的钱包，丢失他们你将永远失去钱包。")
   };

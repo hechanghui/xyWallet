@@ -61,7 +61,7 @@ class Page extends BaseWidgetState<CoinSplit> {
         child: Text(S.of(context).CoinSplitNow),
         onPressed: () {
 
-          Navigator.of(context).pushNamed(RouteName.CoinSplitRecord);
+          Navigator.of(context).pushNamed(RouteName.CoinSplitBuy);
         },
       ).padding(EdgeInsets.only(top: 30, left: 15, right: 15)),
 
