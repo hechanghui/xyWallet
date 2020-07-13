@@ -207,6 +207,10 @@
     "Succsee":"成功",
     "rewardRecord":"奖励记录",
     "CoinSplitNow":"立即分裂",
-    "CoinSplitRecordButton":"兑换记录 >"
+    "CoinSplitRecordButton":"兑换记录 >",
+    "InputMoney":"请输入金额",
+    "coinSplitRule":"粒子分裂规则：每阶段USDT兑换完毕之后将以下一层的兑换比例兑换X，此过程不可逆转，在粒子分裂的体系内X将获得持续上升的兑换价值，分裂所得X将于5.0H后分配到账，分裂所得以最终结果为准。",
 
+    "canUse":"可用余额(USDT)",
+    "willPay":"需要支付总额"
 }

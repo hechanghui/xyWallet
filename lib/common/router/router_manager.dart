@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/community/CoinDetails.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplit.dart';
+import 'package:xy_wallet/ui/pages/community/CoinSplitBuy.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRecord.dart';
 import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
@@ -57,6 +58,7 @@ class RouteName {
   static const String PowBySplitInfo = 'wallet/PowBySplitInfo';
   static const String CoinSplit = 'community/CoinSplit';
   static const String CoinSplitRecord = 'community/CoinSplitRecord';
+  static const String CoinSplitBuy = 'community/CoinSplitBuy';
 
   
 }
@@ -124,8 +126,11 @@ class Router {
         return CupertinoPageRoute(builder: (_) => PowBySplitInfo());
       case RouteName.CoinSplit:
         return CupertinoPageRoute(builder: (_) => CoinSplit());
-              case RouteName.CoinSplitRecord:
+      case RouteName.CoinSplitRecord:
         return CupertinoPageRoute(builder: (_) => CoinSplitRecord());
+      case RouteName.CoinSplitBuy:
+        return CupertinoPageRoute(builder: (_) => CoinSplitBuy());
+
 
       default:
         return CupertinoPageRoute(
