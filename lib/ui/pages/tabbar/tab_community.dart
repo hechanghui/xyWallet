@@ -1,5 +1,6 @@
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/widgets/tabComCell.dart';
@@ -33,7 +34,7 @@ class Pages extends BaseWidgetState<TabCommunity> {
           ),
           InkWell(
             onTap: () {
-              print(S.of(context).tabComTitle2);
+              Navigator.pushNamed(context, RouteName.CoinSplit);
             },
             child: TabComCell(
               title: (S.of(context).tabComTitle2),

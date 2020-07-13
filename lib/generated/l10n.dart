@@ -1782,6 +1782,26 @@ class S {
       args: [],
     );
   }
+
+  /// `立即分裂`
+  String get CoinSplitNow {
+    return Intl.message(
+      '立即分裂',
+      name: 'CoinSplitNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `兑换记录 >`
+  String get CoinSplitRecordButton {
+    return Intl.message(
+      '兑换记录 >',
+      name: 'CoinSplitRecordButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
