@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:xy_wallet/common/helper/resource_helper.dart';
 
 /// widget扩展方法
 extension WidgetEx on Widget {
@@ -45,4 +46,20 @@ extension WidgetEx on Widget {
       child: this,
     );
   }
+
+  Container backImage({String image}) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage(
+          ImageHelper.wrapAssets(image??'input_large_bg.png'),
+        ),
+        fit: BoxFit.fill,
+      )),
+      child:this,
+    );
+  }
+
+
+
 }
