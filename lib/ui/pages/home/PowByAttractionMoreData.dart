@@ -40,9 +40,7 @@ class _State extends BaseLoadListDataWidgetState<PowByAttractionMoreDataPage, Po
           style: Theme.of(context).textTheme.headline3,
         )
       ],
-    )
-        .padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin, vertical: ThemeDimens.contentVerticalMargin))
-        .bgColor(color: ThemeColors.accentDartColor);
+    ).padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin, vertical: ThemeDimens.contentVerticalMargin)).bg(color: ThemeColors.accentDartColor);
   }
 
   @override

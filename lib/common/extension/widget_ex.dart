@@ -47,7 +47,7 @@ extension WidgetEx on Widget {
     );
   }
 
-  DecoratedBox bgColor({
+  DecoratedBox bg({
     Color color,
     DecorationImage image,
     BoxBorder border,
