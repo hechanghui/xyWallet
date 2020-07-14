@@ -27,12 +27,10 @@ class ThemeModel with ChangeNotifier {
 
   ThemeModel() {
     /// 用户选择的明暗模式
-    _userDarkMode =
-        StorageManager.sharedPreferences.getBool(kThemeUserDarkMode) ?? false;
+    _userDarkMode = StorageManager.sharedPreferences.getBool(kThemeUserDarkMode) ?? false;
 
     /// 获取主题色
-    _themeColor = Colors.primaries[
-        StorageManager.sharedPreferences.getInt(kThemeColorIndex) ?? 5];
+    _themeColor = Colors.primaries[StorageManager.sharedPreferences.getInt(kThemeColorIndex) ?? 5];
 
     /// 获取字体
     _fontIndex = StorageManager.sharedPreferences.getInt(kFontIndex) ?? 0;
@@ -107,27 +105,17 @@ class ThemeModel with ChangeNotifier {
       cursorColor: accentColor,
 
       textTheme: themeData.textTheme.copyWith(
-          headline1: themeData.textTheme.headline1.copyWith(
-              fontSize: 22, color: accentColor, fontWeight: FontWeight.bold),
-          headline2: themeData.textTheme.headline2
-              .copyWith(fontSize: 20, color: accentColor),
-          headline3: themeData.textTheme.headline3
-              .copyWith(fontSize: 18, color: accentColor),
-          headline4: themeData.textTheme.headline4
-              .copyWith(fontSize: ThemeDimens.headline4, color: accentColor),
-          headline5: themeData.textTheme.headline5
-              .copyWith(fontSize: 10, color: accentColor),
-          headline6: themeData.textTheme.headline6
-              .copyWith(fontSize: 8, color: accentColor),
+          headline1: themeData.textTheme.headline1.copyWith(fontSize: 22, color: accentColor, fontWeight: FontWeight.bold),
+          headline2: themeData.textTheme.headline2.copyWith(fontSize: 20, color: accentColor),
+          headline3: themeData.textTheme.headline3.copyWith(fontSize: 18, color: accentColor),
+          headline4: themeData.textTheme.headline4.copyWith(fontSize: ThemeDimens.headline4, color: accentColor),
+          headline5: themeData.textTheme.headline5.copyWith(fontSize: 10, color: accentColor),
+          headline6: themeData.textTheme.headline6.copyWith(fontSize: 8, color: accentColor),
 
           /// 解决中文hint不居中的问题 https://github.com/flutter/flutter/issues/40248
-          subtitle1: themeData.textTheme.subtitle1.copyWith(
-              fontSize: 14,
-              textBaseline: TextBaseline.alphabetic,
-              color: accentColor),
-          subtitle2: themeData.textTheme.subtitle2
-              .copyWith(fontSize: 12, color: accentColor),
-          bodyText1: themeData.textTheme.bodyText1.copyWith(color: accentColor),
+          subtitle1: themeData.textTheme.subtitle1.copyWith(fontSize: 14, textBaseline: TextBaseline.alphabetic, color: accentColor),
+          subtitle2: themeData.textTheme.subtitle2.copyWith(fontSize: 12, color: accentColor),
+          bodyText1: themeData.textTheme.bodyText1.copyWith(fontSize: 16, color: accentColor),
           bodyText2: themeData.textTheme.bodyText2.copyWith(color: accentColor),
           caption: themeData.textTheme.caption.copyWith(color: accentColor),
           overline: themeData.textTheme.overline.copyWith(color: accentColor),
@@ -147,8 +135,7 @@ class ThemeModel with ChangeNotifier {
         backgroundColor: themeData.chipTheme.backgroundColor.withOpacity(0.1),
       ),
 
-      buttonTheme: themeData.buttonTheme
-          .copyWith(height: 44, textTheme: ButtonTextTheme.accent),
+      buttonTheme: themeData.buttonTheme.copyWith(height: 44, textTheme: ButtonTextTheme.accent),
 //          textTheme: CupertinoTextThemeData(brightness: Brightness.light)
       inputDecorationTheme: ThemeHelper.inputDecorationTheme(themeData),
     );
@@ -158,11 +145,8 @@ class ThemeModel with ChangeNotifier {
   /// 数据持久化到shared preferences
   saveTheme2Storage(bool userDarkMode, MaterialColor themeColor) async {
     var index = Colors.primaries.indexOf(themeColor);
-    await Future.wait([
-      StorageManager.sharedPreferences
-          .setBool(kThemeUserDarkMode, userDarkMode),
-      StorageManager.sharedPreferences.setInt(kThemeColorIndex, index)
-    ]);
+    await Future.wait(
+        [StorageManager.sharedPreferences.setBool(kThemeUserDarkMode, userDarkMode), StorageManager.sharedPreferences.setInt(kThemeColorIndex, index)]);
   }
 
   /// 根据索引获取字体名称,这里牵涉到国际化

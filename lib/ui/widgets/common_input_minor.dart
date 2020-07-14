@@ -4,6 +4,7 @@ import 'package:xy_wallet/common/themes.dart';
 
 class CommonInputMinor extends StatefulWidget {
   final String placeholder;
+  final TextStyle placeholderStyle;
   final TextEditingController controller;
   final TextInputAction textInputAction;
   final FocusNode focusNode;
@@ -20,6 +21,7 @@ class CommonInputMinor extends StatefulWidget {
   CommonInputMinor({
     Key key,
     this.placeholder,
+    this.placeholderStyle,
     this.keyboardType,
     this.controller,
     this.textInputAction,
@@ -28,8 +30,8 @@ class CommonInputMinor extends StatefulWidget {
     this.onSubmitted,
     this.onEditingComplete,
     this.maxLength,
-    this.maxLines,
-    this.minLines: 1,
+    this.maxLines = 1,
+    this.minLines,
     this.enabled,
     this.right,
   }) : super(key: key);
@@ -68,15 +70,11 @@ class CommonInputState extends State<CommonInputMinor> {
                 textInputAction: widget.textInputAction,
                 onSubmitted: widget.onSubmitted,
                 onEditingComplete: widget.onEditingComplete,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                     hintText: widget.placeholder,
-                    hintStyle: Theme.of(context).textTheme.headline4.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: ThemeColors.labelLightColor),
+                    hintStyle: widget.placeholderStyle ??
+                        Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: ThemeColors.labelLightColor),
                     border: InputBorder.none,
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(

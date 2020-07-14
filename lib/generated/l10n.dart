@@ -1723,6 +1723,76 @@ class S {
     );
   }
 
+  /// `今日牵引奖励`
+  String get todayTractionReward {
+    return Intl.message(
+      '今日牵引奖励',
+      name: 'todayTractionReward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `查看更多数据 >`
+  String get seeMoreData {
+    return Intl.message(
+      '查看更多数据 >',
+      name: 'seeMoreData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `我的牵引占比`
+  String get myTractionRatio {
+    return Intl.message(
+      '我的牵引占比',
+      name: 'myTractionRatio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `牵引时间`
+  String get tractionDate {
+    return Intl.message(
+      '牵引时间',
+      name: 'tractionDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `牵引奖励`
+  String get tractionReward {
+    return Intl.message(
+      '牵引奖励',
+      name: 'tractionReward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `锁仓平台币`
+  String get lockUpPlatformToken {
+    return Intl.message(
+      '锁仓平台币',
+      name: 'lockUpPlatformToken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `待激活`
+  String get stateWaitActivate {
+    return Intl.message(
+      '待激活',
+      name: 'stateWaitActivate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `充币记录`
   String get ChargeRecord {
     return Intl.message(

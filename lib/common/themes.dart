@@ -26,6 +26,8 @@ class ThemeDimens {
   static const double pageLRMargin = 15;
   //页面竖直方向间距
   static const double pageVerticalMargin = 6;
+  //内容竖向间距
+  static const double contentVerticalMargin = 10;
   //底部操作区距离底部边距
   static const double pageBottomMargin = 35;
 //文本 大字号
@@ -35,17 +37,15 @@ class ThemeDimens {
 }
 
 class ThemeStyles {
+  static TextStyle getLarge(BuildContext context) {
+    return Theme.of(context).textTheme.headline1.copyWith(fontSize: 38, fontWeight: FontWeight.bold);
+  }
+
   static TextStyle getSubtitle1lLight(BuildContext context) {
-    return Theme.of(context)
-        .textTheme
-        .subtitle1
-        .copyWith(color: ThemeColors.labelLightColor);
+    return Theme.of(context).textTheme.subtitle1.copyWith(color: ThemeColors.labelLightColor);
   }
 
   static TextStyle getSubtitle2lLight(BuildContext context) {
-    return Theme.of(context)
-        .textTheme
-        .subtitle2
-        .copyWith(color: ThemeColors.accentDartFgColor);
+    return Theme.of(context).textTheme.subtitle2.copyWith(color: ThemeColors.accentDartFgColor);
   }
 }

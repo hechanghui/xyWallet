@@ -6,7 +6,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:xy_wallet/common/base/view_model/base_load_list_data_vm.dart';
 import 'package:xy_wallet/common/base/view_model/base_load_refresh_data_vm.dart';
-import 'package:xy_wallet/common/base/widgets/view_loading_shimmer_list.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
@@ -285,12 +284,22 @@ abstract class BaseLoadRefreshDataWidgetState<T extends BaseWidget, VM extends B
     viewModel.refresh();
   }
 
+  Widget buildRefreshWithOutHeader(BuildContext context) => null;
+  Widget buildRefreshWithOutFooter(BuildContext context) => null;
+
   Widget buildRefreshWidget(BuildContext context) {
-    return SmartRefresher(
-      controller: viewModel.refreshController,
-      onRefresh: viewModel.refresh,
-      enablePullDown: viewModel.enableRefresh,
-      child: buildBodyWidget(context),
+    return Column(
+      children: <Widget>[
+        buildRefreshWithOutHeader(context) ?? SizedBox.shrink(),
+        Expanded(
+            child: SmartRefresher(
+          controller: viewModel.refreshController,
+          onRefresh: viewModel.refresh,
+          enablePullDown: viewModel.enableRefresh,
+          child: buildBodyWidget(context),
+        )),
+        buildRefreshWithOutFooter(context) ?? SizedBox.shrink(),
+      ],
     );
   }
 
@@ -332,14 +341,24 @@ abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends Base
     viewModel.refresh();
   }
 
+  Widget buildRefreshWithOutHeader(BuildContext context) => null;
+  Widget buildRefreshWithOutFooter(BuildContext context) => null;
+
   Widget buildRefreshWidget(BuildContext context) {
-    return SmartRefresher(
-      controller: viewModel.refreshController,
-      enablePullUp: viewModel.enableLoadMore,
-      enablePullDown: viewModel.enableRefresh,
-      onRefresh: viewModel.refresh,
-      onLoading: viewModel.loadMore,
-      child: buildBodyWidget(context),
+    return Column(
+      children: <Widget>[
+        buildRefreshWithOutHeader(context) ?? SizedBox.shrink(),
+        Expanded(
+            child: SmartRefresher(
+          controller: viewModel.refreshController,
+          enablePullUp: viewModel.enableLoadMore,
+          enablePullDown: viewModel.enableRefresh,
+          onRefresh: viewModel.refresh,
+          onLoading: viewModel.loadMore,
+          child: buildBodyWidget(context),
+        )),
+        buildRefreshWithOutFooter(context) ?? SizedBox.shrink(),
+      ],
     );
   }
 

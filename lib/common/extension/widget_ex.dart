@@ -47,19 +47,42 @@ extension WidgetEx on Widget {
     );
   }
 
-  Container backImage({String image}) {
-    return Container(
+  DecoratedBox bgColor({
+    Color color,
+    DecorationImage image,
+    BoxBorder border,
+    BorderRadiusGeometry borderRadius,
+    List<BoxShadow> boxShadow,
+    Gradient gradient,
+    BlendMode backgroundBlendMode,
+    BoxShape shape = BoxShape.rectangle,
+  }) {
+    return DecoratedBox(
       decoration: BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage(
-          ImageHelper.wrapAssets(image??'input_large_bg.png'),
-        ),
-        fit: BoxFit.fill,
-      )),
-      child:this,
+        color: color,
+        image: image,
+        border: border,
+        borderRadius: borderRadius,
+        boxShadow: boxShadow,
+        gradient: gradient,
+        backgroundBlendMode: backgroundBlendMode,
+        shape: shape,
+      ),
+      child: this,
     );
   }
 
-
-
+  Container backImage({String image, EdgeInsetsGeometry padding}) {
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage(
+          ImageHelper.wrapAssets(image ?? 'input_large_bg.png'),
+        ),
+        fit: BoxFit.fill,
+      )),
+      child: this,
+    );
+  }
 }

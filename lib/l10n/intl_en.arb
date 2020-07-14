@@ -196,6 +196,14 @@
     "delAccount":"删除账户",
     "tip":"温馨提示",
     "IsdelAccount":"确认删除该地址？",
+    "todayTractionReward":"今日牵引奖励",
+    "seeMoreData":"查看更多数据 >",
+    "myTractionRatio":"我的牵引占比",
+    "tractionDate":"牵引时间",
+    "tractionReward":"牵引奖励",
+
+    "lockUpPlatformToken":"锁仓平台币",
+    "stateWaitActivate":"待激活",
 
     "ChargeRecord":"充币记录",
     "WithDrawRecord":"提币记录",

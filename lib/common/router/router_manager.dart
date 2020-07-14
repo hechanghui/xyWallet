@@ -11,6 +11,7 @@ import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
 import 'package:xy_wallet/ui/pages/finance/transfer_page.dart';
 import 'package:xy_wallet/ui/pages/home/PowByAttraction.dart';
+import 'package:xy_wallet/ui/pages/home/PowByAttractionMoreData.dart';
 import 'package:xy_wallet/ui/pages/home/PowByAttractionTraction.dart';
 import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
@@ -49,6 +50,7 @@ class RouteName {
   static const String INVITEINFO = 'wallet/InviteInfo';
   static const String POWBYATTRACTION = 'wallet/PowByAttraction';
   static const String POWBYATTRACTION_TRACTION = 'home/PowByAttractionTraction';
+  static const String POWBYATTRACTION_MOREDATA = 'home/PowByAttractionMoreData';
 
   static const String POWBYSPLIT = 'wallet/PowBySplit';
   static const String POWBYPOWER = 'wallet/PowByPower';
@@ -60,8 +62,9 @@ class RouteName {
   static const String CoinSplit = 'community/CoinSplit';
   static const String CoinSplitRecord = 'community/CoinSplitRecord';
   static const String CoinSplitBuy = 'community/CoinSplitBuy';
+
   static const String CoinSplitRank = 'community/CoinSplitRank';
-  
+
 }
 
 class Router {
@@ -105,6 +108,9 @@ class Router {
       case RouteName.POWBYATTRACTION_TRACTION:
         return CupertinoPageRoute(builder: (_) => PowByAttractionTractionPage());
 
+      case RouteName.POWBYATTRACTION_MOREDATA:
+        return CupertinoPageRoute(builder: (_) => PowByAttractionMoreDataPage());
+
       case RouteName.POWBYSPLIT:
         return CupertinoPageRoute(builder: (_) => PowBySplit());
 
@@ -120,7 +126,7 @@ class Router {
       case RouteName.CoinDetails:
         return CupertinoPageRoute(builder: (_) => CoinDetails());
 
-     case RouteName.WithDraw:
+      case RouteName.WithDraw:
         return CupertinoPageRoute(builder: (_) => WithDrawPage());
 
       case RouteName.PowBySplitInfo:
@@ -133,6 +139,7 @@ class Router {
         return CupertinoPageRoute(builder: (_) => CoinSplitBuy());
       case RouteName.CoinSplitRank:
         return CupertinoPageRoute(builder: (_) => CoinSplitRank());
+
 
       default:
         return CupertinoPageRoute(
