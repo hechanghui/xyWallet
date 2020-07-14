@@ -4,6 +4,7 @@ import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/community/CoinDetails.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplit.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitBuy.dart';
+import 'package:xy_wallet/ui/pages/community/CoinSplitRank.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRecord.dart';
 import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
@@ -59,7 +60,7 @@ class RouteName {
   static const String CoinSplit = 'community/CoinSplit';
   static const String CoinSplitRecord = 'community/CoinSplitRecord';
   static const String CoinSplitBuy = 'community/CoinSplitBuy';
-
+  static const String CoinSplitRank = 'community/CoinSplitRank';
   
 }
 
@@ -130,7 +131,8 @@ class Router {
         return CupertinoPageRoute(builder: (_) => CoinSplitRecord());
       case RouteName.CoinSplitBuy:
         return CupertinoPageRoute(builder: (_) => CoinSplitBuy());
-
+      case RouteName.CoinSplitRank:
+        return CupertinoPageRoute(builder: (_) => CoinSplitRank());
 
       default:
         return CupertinoPageRoute(

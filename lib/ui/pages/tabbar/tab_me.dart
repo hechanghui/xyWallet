@@ -1,3 +1,4 @@
+import 'package:share/share.dart';
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
@@ -7,6 +8,7 @@ import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/AssetManger.dart';
 import 'package:xy_wallet/ui/pages/me/adressManger.dart';
 import 'package:xy_wallet/ui/pages/me/walletList.dart';
+import 'package:xy_wallet/ui/pages/me/wight_me/shareWidgetShow.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 
 class TabMe extends BaseWidget {
@@ -97,6 +99,11 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
+            // Share.share('123123',
+            //     subject: '213123',
+            //     sharePositionOrigin:null);
+
+            ShareWidgetShow.show(context,'312312');
             print(S.of(context).ShareApp);
           },
           child: TabMeCell(

@@ -20,6 +20,27 @@ class Page extends BaseWidgetState<CoinSplit> {
   String titleLabel(BuildContext context) => S.of(context).tabComTitle2;
 
   @override
+  List<Widget> buildAppBarAction(BuildContext context) {
+    return <Widget>[
+      Container(
+        padding: EdgeInsets.only(right:15),
+        alignment: Alignment.center,
+        child: Text('TOP10',
+            style: Theme.of(context).textTheme.headline4.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                )),
+      ).click(onTap: () {
+        Navigator.of(context).pushNamed(RouteName.CoinSplitRank);
+        
+        
+      }),
+    ];
+  }
+
+
+
+  @override
   Widget buildBodyWidget(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
