@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:xy_wallet/common/base/view_model/base_load_list_data_vm.dart';
 import 'package:xy_wallet/common/base/view_model/base_load_refresh_data_vm.dart';
 
 class PowByAttractionTractionViewModel extends BaseLoadRefreshDataViewModel<PowByAttractionTractionBean> {
@@ -16,6 +19,21 @@ class PowByAttractionTractionViewModel extends BaseLoadRefreshDataViewModel<PowB
       ];
       data.address = "0x31dwsdkjop8wernfdlikfguyesirngiuyhrt343434345345456456";
       return data;
+    });
+  }
+}
+
+class PowByAttractionMoreDataViewModel extends BaseLoadListDataViewModel<LinearReward> {
+  @override
+  Future<List<LinearReward>> loadData({int pageNum}) {
+    return Future.delayed(Duration(seconds: 1), () {
+      final now = DateTime.now();
+      final rewardRandom = Random();
+      List<LinearReward> datas = [];
+      for (var i = 0; i < pageSize; i++) {
+        datas.add(LinearReward(now.subtract(Duration(days: pageNum * pageSize + i)), rewardRandom.nextInt(10)));
+      }
+      return datas;
     });
   }
 }

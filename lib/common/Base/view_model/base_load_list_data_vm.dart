@@ -10,7 +10,7 @@ abstract class BaseLoadListDataViewModel<T> extends BaseLoadDataViewModel {
   static const int pageNumFirst = 0;
 
   /// 分页条目数量
-  static const int pageSize = 20;
+  final int pageSize = 20;
 
   /// 分页页码
   int pageNum = 0;

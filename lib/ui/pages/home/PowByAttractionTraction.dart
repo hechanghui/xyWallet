@@ -3,6 +3,7 @@ import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
@@ -98,7 +99,8 @@ class _State extends BaseLoadRefreshDataWidgetState<PowByAttractionTractionPage,
           ).padding(EdgeInsets.only(top: ThemeDimens.pageVerticalMargin * 5, bottom: ThemeDimens.pageVerticalMargin * 3)),
           CommonInputMinor(
             enabled: false,
-            controller: TextEditingController(text: viewModel.data.address),
+            placeholder: viewModel.data.address,
+            placeholderStyle: Theme.of(context).textTheme.headline4,
             right: Text(
               S.current.Copy,
               style: Theme.of(context).textTheme.bodyText1.copyWith(color: ThemeColors.primaryFgColor),
@@ -119,13 +121,15 @@ class _State extends BaseLoadRefreshDataWidgetState<PowByAttractionTractionPage,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    S.current.stateWaitActivate,
+                    S.current.todayTractionReward,
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   Text(
-                    S.current.stateWaitActivate,
+                    S.current.seeMoreData,
                     style: ThemeStyles.getSubtitle2lLight(context),
-                  ),
+                  ).click(onTap: () {
+                    Navigator.of(context).pushNamed(RouteName.POWBYATTRACTION_MOREDATA);
+                  }),
                 ],
               ).padding(EdgeInsets.only(
                   top: ThemeDimens.pageVerticalMargin * 1.4, left: ThemeDimens.pageVerticalMargin * 1.8, right: ThemeDimens.pageVerticalMargin * 1.8)),
@@ -174,7 +178,7 @@ class _State extends BaseLoadRefreshDataWidgetState<PowByAttractionTractionPage,
                         style: ThemeStyles.getLarge(context),
                       ),
                       Text(
-                        S.current.stateWaitActivate,
+                        S.current.myTractionRatio,
                         style: Theme.of(context).textTheme.subtitle2,
                       ).padding(EdgeInsets.symmetric(vertical: ThemeDimens.pageVerticalMargin)),
                     ],
@@ -202,7 +206,7 @@ class _State extends BaseLoadRefreshDataWidgetState<PowByAttractionTractionPage,
   static List<charts.Series<LinearSales, String>> _createSampleData() {
     final data = [
       new LinearSales("总价值", 100),
-      new LinearSales("我的", 5),
+      new LinearSales("我的", 0.5),
     ];
 
     return [
@@ -219,7 +223,7 @@ class _State extends BaseLoadRefreshDataWidgetState<PowByAttractionTractionPage,
 /// Sample linear data type.
 class LinearSales {
   final String year;
-  final int sales;
+  final double sales;
 
   LinearSales(this.year, this.sales);
 }

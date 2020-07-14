@@ -26,6 +26,8 @@ class ThemeDimens {
   static const double pageLRMargin = 15;
   //页面竖直方向间距
   static const double pageVerticalMargin = 6;
+  //内容竖向间距
+  static const double contentVerticalMargin = 10;
   //底部操作区距离底部边距
   static const double pageBottomMargin = 35;
 //文本 大字号

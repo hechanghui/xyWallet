@@ -34,7 +34,7 @@ class TransactionRecordListViewModel extends BaseLoadListDataViewModel {
   Future<List> loadData({int pageNum}) {
     return Future.delayed(Duration(seconds: 2), () {
       final list = [];
-      final sourceNum = pageNum == BaseLoadListDataViewModel.pageNumFirst ? BaseLoadListDataViewModel.pageSize : 4;
+      final sourceNum = pageNum == BaseLoadListDataViewModel.pageNumFirst ? pageSize : 4;
       for (var i = 0; i < sourceNum; i++) {
         switch (type) {
           case TransactionType.RECEIPT:
