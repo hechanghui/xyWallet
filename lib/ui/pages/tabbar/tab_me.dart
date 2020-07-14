@@ -1,4 +1,4 @@
-import 'package:share/share.dart';
+
 import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
@@ -99,11 +99,9 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            // Share.share('123123',
-            //     subject: '213123',
-            //     sharePositionOrigin:null);
+     
 
-            ShareWidgetShow.show(context,'312312');
+            ShareWidgetShow.show(context,'0x66220b20c8582509c41072e347a9872215fafb8c');
             print(S.of(context).ShareApp);
           },
           child: TabMeCell(
