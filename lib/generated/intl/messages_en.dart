@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "WalletListTitle" : MessageLookupByLibrary.simpleMessage("账户管理"),
     "WithDraw" : MessageLookupByLibrary.simpleMessage("提币"),
     "WithDrawRecord" : MessageLookupByLibrary.simpleMessage("提币记录"),
+    "XCodeTip" : MessageLookupByLibrary.simpleMessage("如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。"),
     "accountName" : MessageLookupByLibrary.simpleMessage("账户名称"),
     "actionCancel" : MessageLookupByLibrary.simpleMessage("取消"),
     "actionConfirm" : MessageLookupByLibrary.simpleMessage("确认"),

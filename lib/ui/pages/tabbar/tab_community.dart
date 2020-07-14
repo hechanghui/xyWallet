@@ -43,6 +43,7 @@ class Pages extends BaseWidgetState<TabCommunity> {
           ),
           InkWell(
             onTap: () {
+              Navigator.pushNamed(context, RouteName.KOLCommunity);
               print(S.of(context).tabComTitle3);
             },
             child: TabComCell(

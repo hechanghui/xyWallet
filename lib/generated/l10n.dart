@@ -1912,6 +1912,16 @@ class S {
       args: [],
     );
   }
+
+  /// `如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。`
+  String get XCodeTip {
+    return Intl.message(
+      '如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。',
+      name: 'XCodeTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

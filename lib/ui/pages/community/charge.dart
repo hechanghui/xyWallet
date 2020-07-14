@@ -13,7 +13,7 @@ import 'dart:ui' as ui;
 enum ChargeType {
   Local, //冷钱包
   Community, //跨链钱包
-  
+  XCode, //Xcode地址
 }
 
 class Charge extends BaseWidget {
@@ -30,16 +30,18 @@ class Charge extends BaseWidget {
 
 class Pages extends BaseWidgetState<Charge> {
 
-  
+  var address = '0xasdwqdhisuahdgiuqwgocbgq9dsadwqdw';
+  var tips = '';    
+  var headTitle = '';
+  var titles = '';
+
   @override
-  String titleLabel(BuildContext context) => widget.chargeType==ChargeType.Local?S.of(context).Charge1:S.of(context).Charge;
+  String titleLabel(BuildContext context) => widget.chargeType==ChargeType.Local?S.of(context).Charge1:widget.chargeType==ChargeType.Community?S.of(context).Charge:'XCode码';
   
   @override
   Widget buildBodyWidget(BuildContext context) {
 
-    var address = 'asdwqdhisuahdgiuqwgocbgq9dsadwqdw';
-    var tips = '';
-    var headTitle = '';
+
     var qr = QrImage(padding: EdgeInsets.all(3),data: address,version: QrVersions.auto,size: 110.0,backgroundColor: Colors.white);
     GlobalKey widgetKey = GlobalKey();
 
@@ -48,8 +50,10 @@ class Pages extends BaseWidgetState<Charge> {
       headTitle = S.of(context).ChargeAddressLocal;
     }else if(widget.chargeType == ChargeType.Community){
       tips = S.of(context).ChargeTip;
-      
       headTitle = S.of(context).ChargeAddress;
+    }else if(widget.chargeType == ChargeType.XCode){
+      tips = S.of(context).XCodeTip;
+      headTitle = 'XCode码';
     }
 
     
@@ -57,8 +61,11 @@ class Pages extends BaseWidgetState<Charge> {
     return Container(
       child: ListView(children: <Widget>[
         Container(
+          height: 64,
             padding: EdgeInsetsDirectional.only(top: 2),
-            child: Stack(
+            child: Offstage(
+              offstage: widget.chargeType == ChargeType.XCode,
+              child: Stack(
               children: <Widget>[
                 Container(
                   height: 64,
@@ -84,7 +91,7 @@ class Pages extends BaseWidgetState<Charge> {
                   ),
                 ),
               ],
-            )),
+            ))),
         Container(
           alignment: Alignment.topCenter,
           height: 380,
