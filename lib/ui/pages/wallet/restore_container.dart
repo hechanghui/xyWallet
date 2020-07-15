@@ -35,7 +35,7 @@ class RestoreContainerState extends BaseWidgetState<RestoreContainerPage> with S
     super.initState();
     _tabController = new TabController(vsync: this, length: 3);
     _viewModel = RestoreViewModel();
-    _tabLabels = [S.of(context).mnemonic, S.of(context).keystore, S.of(context).privateKey];
+    _tabLabels = [S.current.mnemonic, S.current.keystore, S.current.privateKey];
     _subPages = [RestoreByMnemonic(_viewModel), RestoreByKeyStore(_viewModel), RestoreByPriveKey(_viewModel)];
   }
 
