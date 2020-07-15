@@ -78,7 +78,7 @@ class Page extends BaseWidgetState<TabWallet> {
   @override
   Widget buildBodyWidget(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
+
     return Container(
       child: ListView(
         children: <Widget>[
@@ -171,7 +171,10 @@ class Page extends BaseWidgetState<TabWallet> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, RouteName.CREATEXCODE);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Charge(
+                                chargeType: ChargeType.XCode,
+                              )));
                     },
                     child: TabWalletBt(
                       title: (S.of(context).codeX2),
