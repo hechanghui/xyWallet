@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
+import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRank.dart';
@@ -66,41 +67,63 @@ class _State extends BaseLoadRefreshDataWidgetState<SeasonRecordPage, SeasonReco
               S.current.splitTop10,
               maxLines: 1,
             ),
+            // AsperctRaioImage.asset(),
             Padding(
-                padding: EdgeInsets.symmetric(vertical: ThemeDimens.pageVerticalMargin),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Flex(
-                      direction: Axis.horizontal,
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: Text(
-                            S.current.rank,
-                          ),
+              padding: EdgeInsets.symmetric(vertical: ThemeDimens.pageVerticalMargin),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Flex(
+                    direction: Axis.horizontal,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          S.current.rank,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "USDT${S.current.bonus}",
-                          ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          "USDT${S.current.bonus}",
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            S.current.newInvitedPower,
-                            textAlign: TextAlign.right,
-                          ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          S.current.newInvitedPower,
+                          textAlign: TextAlign.right,
                         ),
-                      ],
-                    )
-                        .padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin, vertical: ThemeDimens.pageVerticalMargin))
-                        .bg(color: ThemeColors.accentDartColor.withAlpha(100))
-                        .padding(EdgeInsets.all(5)),
-                    _generateRankList(),
-                  ],
-                ).backImage()),
+                      ),
+                    ],
+                  )
+                      .padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin, vertical: ThemeDimens.pageVerticalMargin))
+                      .bg(color: ThemeColors.accentDartColor.withAlpha(100))
+                      .padding(EdgeInsets.all(5)),
+                  _generateRankList(),
+                ],
+              ).backImage(),
+              // .bg(
+              //   // border: Border.fromBorderSide(BorderSide(color: ThemeColors.accentColor, width: 1, style: BorderStyle.solid)),
+              //   // boxShadow: [
+              //   //   const BoxShadow(
+              //   //     color: ThemeColors.labelLightColor,
+              //   //     blurRadius: 0.0,
+              //   //     spreadRadius: 0,
+              //   //   ),
+              //   //   const BoxShadow(
+              //   //     color: ThemeColors.buttonColor,
+              //   //     offset: const Offset(0.0, 0.0),
+              //   //     spreadRadius: -5.0,
+              //   //     blurRadius: 12.0,
+              //   //   ),
+              //   // ],
+              //   image: DecorationImage(
+              //     centerSlice: Rect.fromLTRB(15.0, 15.0, 20.0, 20.0),
+              //     image: AssetImage(ImageHelper.wrapAssets('container_bg.png')),
+              //   ),
+              // ),
+            ),
           ],
         ).padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin)),
       ],

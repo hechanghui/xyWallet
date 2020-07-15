@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/base/widgets/ssperct_raio_image.dart';
 
 /// widget扩展方法
 extension WidgetEx on Widget {
@@ -72,14 +73,42 @@ extension WidgetEx on Widget {
     );
   }
 
-  Container backImage({String image, EdgeInsetsGeometry padding}) {
+  Widget backImage({String image, EdgeInsetsGeometry padding}) {
+    // return AsperctRaioImage.asset(
+    //   ImageHelper.wrapAssets(image ?? 'container_bg.png'),
+    //   builder: (context, snapshot, url) {
+    //     print('width=${snapshot.data.width}');
+    //     print('heiht=${snapshot.data.height}');
+    //     return Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: <Widget>[
+    //         Text(
+    //           '本地资源加载',
+    //           style: TextStyle(fontSize: 25.0, color: Colors.black),
+    //         ),
+    //         Text(
+    //           '大小--${snapshot.data.width.toDouble()}x${snapshot.data.height.toDouble()}',
+    //           style: TextStyle(fontSize: 17.0),
+    //         ),
+    //         Container(
+    //           width: snapshot.data.width.toDouble() / 5,
+    //           height: snapshot.data.height.toDouble() / 5,
+    //           decoration: BoxDecoration(
+    //             image: DecorationImage(image: AssetImage(url), fit: BoxFit.cover),
+    //           ),
+    //         )
+    //       ],
+    //     );
+    //   },
+    // );
+
     return Container(
       padding: padding,
       decoration: BoxDecoration(
           image: DecorationImage(
-        // centerSlice: image == null ? Rect.fromLTWH(20, 10, 40, 40) : null,
+        centerSlice: image == null ? Rect.fromLTRB(15.0, 15.0, 20.0, 20.0) : null,
         image: AssetImage(
-          ImageHelper.wrapAssets(image ?? 'input_large_bg.png'),
+          ImageHelper.wrapAssets(image ?? 'container_bg.png'),
         ),
         fit: BoxFit.fill,
       )),
