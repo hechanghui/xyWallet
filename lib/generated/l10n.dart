@@ -1863,6 +1863,76 @@ class S {
     );
   }
 
+  /// `已经分裂阶段`
+  String get splitStep {
+    return Intl.message(
+      '已经分裂阶段',
+      name: 'splitStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `分裂TOP10`
+  String get splitTop10 {
+    return Intl.message(
+      '分裂TOP10',
+      name: 'splitTop10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `排名`
+  String get rank {
+    return Intl.message(
+      '排名',
+      name: 'rank',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `奖金`
+  String get bonus {
+    return Intl.message(
+      '奖金',
+      name: 'bonus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `奖金池累积`
+  String get bonusPoolTotal {
+    return Intl.message(
+      '奖金池累积',
+      name: 'bonusPoolTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `新增邀请算力`
+  String get newInvitedPower {
+    return Intl.message(
+      '新增邀请算力',
+      name: 'newInvitedPower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `数据每小时更新一次`
+  String get refreshDataPerHour {
+    return Intl.message(
+      '数据每小时更新一次',
+      name: 'refreshDataPerHour',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `兑换记录 >`
   String get CoinSplitRecordButton {
     return Intl.message(
