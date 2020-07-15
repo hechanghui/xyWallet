@@ -229,6 +229,25 @@
 
     "canUse":"可用余额(USDT)",
     "willPay":"需要支付总额",
-    "XCodeTip":"如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。"
+    "XCodeTip":"如需充值USDT/ETH等跨链资产，请至“生态”>“跨链资产管理”中进行充提操作。",
+    "vote":"投票",
+    "applyKOL":"申请KOL社区",
+
+    "KOLName":"社区名称",
+    "KOLNameInput":"请输入社区名称",
+    "KOLMaster":"社区长",
+    "KOLMasterInput":"请输入社区长",
+    "KOLWechat":"微信号",
+    "KOLWechatInput":"请输入微信号",
+    "KOLInfo":"社区介绍",
+    "KOLInfoInput":"请输入社区介绍",
+    "KOLTip":"你正在进行KOL社区投票，每位用户只有一次投票权， 需要质押1个X代币，票一经透出，不可撤回。",
+    "editor":"编辑",
+    "editorInfo":"编辑介绍",
+    "applyDel":"申请解散",
+    "submit":"提交",
+    "applyDelReason":"解散理由",
+    "KOLDelTip":"社区申请解散提交后，不可撤回，并且在当期排名活动之后才能生效，申请解散的社区不能接受用户投票。"
+    
 
 }

@@ -2,11 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
 import 'package:xy_wallet/common/extension/widget_ex.dart';
+import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
+
+import 'KOLCommunityInfo.dart';
 
 class KOLCommunity extends BaseWidget {
   _PageState getState() => _PageState();
@@ -48,7 +52,7 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
 
       Container(
         alignment: Alignment.topCenter,
-        padding:EdgeInsets.only(top:140,left: 15,right: 15),
+        padding:EdgeInsets.only(top:130,left: 15,right: 15),
       child: Container(
         
         
@@ -75,20 +79,38 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
       ),
 
       Container(
-        padding: EdgeInsets.fromLTRB(0, 230, 0, 40),
+        padding: EdgeInsets.fromLTRB(0, 210, 0, 80),
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: 4,
           itemBuilder: (context, index) {
-            return createCell('usdt.png','X大联盟','X大联盟lknfaklnfa',context);
+            return createCell('usdt.png','X大联盟','X大联盟lknfaklnfa',context,(){
+              //详情
+              Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo,arguments: KOLCommunityInfoType.Other);
+            },
+            (){
+              //投票
+              Navigator.of(context).pushNamed(RouteName.KOLVote);
+            });
           },
         ),
       ),
+        Container(
+          alignment: Alignment.bottomCenter,
+          padding:EdgeInsets.only(bottom:20,right: 15,left: 15),
+          child:CommonButton(
+              child: Text(S.of(context).applyKOL),
+              onPressed: () {
+                // Navigator.of(context).pushNamed(RouteName.KOLApply); //申请
+                Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo,arguments: KOLCommunityInfoType.Own); //自己的社区
+              },
+            ),
+        )
     ]);
   }
 }
 
 
-Widget createCell(String icon,String title,String subTitle,BuildContext context){
+Widget createCell(String icon,String title,String subTitle,BuildContext context,GestureTapCallback infoTap,GestureTapCallback applyTap,){
   return Container(
     height: 70,
     margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
@@ -122,10 +144,23 @@ Widget createCell(String icon,String title,String subTitle,BuildContext context)
           ),
         ),
 
+        Container(
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20),
+          child:Container(
+            alignment: Alignment.center,
+            width: 70,
+            height: 32,
+          child: Text(
+            S.of(context).vote,
+            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14,),
+          ),
+          ).backImage(image:'voteBg.png').click(onTap:applyTap)
+        ),
 
 
     ]
-    ).backImage(),
+    ).backImage().click(onTap:infoTap),
     
   );
 }

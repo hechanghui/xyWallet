@@ -2012,6 +2012,176 @@ class S {
       args: [],
     );
   }
+
+  /// `投票`
+  String get vote {
+    return Intl.message(
+      '投票',
+      name: 'vote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `申请KOL社区`
+  String get applyKOL {
+    return Intl.message(
+      '申请KOL社区',
+      name: 'applyKOL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区名称`
+  String get KOLName {
+    return Intl.message(
+      '社区名称',
+      name: 'KOLName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入社区名称`
+  String get KOLNameInput {
+    return Intl.message(
+      '请输入社区名称',
+      name: 'KOLNameInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区长`
+  String get KOLMaster {
+    return Intl.message(
+      '社区长',
+      name: 'KOLMaster',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入社区长`
+  String get KOLMasterInput {
+    return Intl.message(
+      '请输入社区长',
+      name: 'KOLMasterInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `微信号`
+  String get KOLWechat {
+    return Intl.message(
+      '微信号',
+      name: 'KOLWechat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入微信号`
+  String get KOLWechatInput {
+    return Intl.message(
+      '请输入微信号',
+      name: 'KOLWechatInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区介绍`
+  String get KOLInfo {
+    return Intl.message(
+      '社区介绍',
+      name: 'KOLInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入社区介绍`
+  String get KOLInfoInput {
+    return Intl.message(
+      '请输入社区介绍',
+      name: 'KOLInfoInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `你正在进行KOL社区投票，每位用户只有一次投票权， 需要质押1个X代币，票一经透出，不可撤回。`
+  String get KOLTip {
+    return Intl.message(
+      '你正在进行KOL社区投票，每位用户只有一次投票权， 需要质押1个X代币，票一经透出，不可撤回。',
+      name: 'KOLTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `编辑`
+  String get editor {
+    return Intl.message(
+      '编辑',
+      name: 'editor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `编辑介绍`
+  String get editorInfo {
+    return Intl.message(
+      '编辑介绍',
+      name: 'editorInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `申请解散`
+  String get applyDel {
+    return Intl.message(
+      '申请解散',
+      name: 'applyDel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提交`
+  String get submit {
+    return Intl.message(
+      '提交',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `解散理由`
+  String get applyDelReason {
+    return Intl.message(
+      '解散理由',
+      name: 'applyDelReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区申请解散提交后，不可撤回，并且在当期排名活动之后才能生效，申请解散的社区不能接受用户投票。`
+  String get KOLDelTip {
+    return Intl.message(
+      '社区申请解散提交后，不可撤回，并且在当期排名活动之后才能生效，申请解散的社区不能接受用户投票。',
+      name: 'KOLDelTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

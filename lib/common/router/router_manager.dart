@@ -6,7 +6,11 @@ import 'package:xy_wallet/ui/pages/community/CoinSplit.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitBuy.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRank.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRecord.dart';
+import 'package:xy_wallet/ui/pages/community/KOLApply.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunity.dart';
+import 'package:xy_wallet/ui/pages/community/KOLCommunityInfo.dart';
+import 'package:xy_wallet/ui/pages/community/KOLEditor.dart';
+import 'package:xy_wallet/ui/pages/community/KOLVote.dart';
 import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_record.dart';
@@ -69,6 +73,12 @@ class RouteName {
 
   static const String CoinSplitRank = 'community/CoinSplitRank';
   static const String KOLCommunity = 'community/KOLCommunity';
+
+  static const String KOLCommunityInfo = 'community/KOLCommunityInfo';
+  static const String KOLVote = 'community/KOLVote';
+  static const String KOLApply = 'community/KOLApply';
+
+  static const String KOLEditor = 'community/KOLEditor';
 }
 
 class Router {
@@ -96,9 +106,6 @@ class Router {
         return CupertinoPageRoute(builder: (_) => TransactionDetailsPage(settings.arguments));
       case RouteName.ABOUT:
         return CupertinoPageRoute(builder: (_) => AboutPage());
-
-      case RouteName.WALLET_RESTORE:
-        return CupertinoPageRoute(builder: (_) => AssetManger());
 
       case RouteName.CREATEXCODE:
         return CupertinoPageRoute(builder: (_) => CreateXcode());
@@ -151,6 +158,16 @@ class Router {
 
       case RouteName.KOLCommunity:
         return CupertinoPageRoute(builder: (_) => KOLCommunity());
+
+      case RouteName.KOLCommunityInfo:
+        return CupertinoPageRoute(builder: (_) => KOLCommunityInfo(settings.arguments));
+
+      case RouteName.KOLVote:
+        return CupertinoPageRoute(builder: (_) => KOLVote());
+      case RouteName.KOLApply:
+        return CupertinoPageRoute(builder: (_) => KOLApply());
+      case RouteName.KOLEditor:
+        return CupertinoPageRoute(builder: (_) => KOLEditor(settings.arguments));
 
       default:
         return CupertinoPageRoute(
