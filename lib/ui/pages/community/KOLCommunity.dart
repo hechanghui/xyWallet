@@ -10,6 +10,8 @@ import 'package:xy_wallet/common/extension/widget_ex.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
 
+import 'KOLCommunityInfo.dart';
+
 class KOLCommunity extends BaseWidget {
   _PageState getState() => _PageState();
 }
@@ -83,7 +85,7 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
           itemBuilder: (context, index) {
             return createCell('usdt.png','X大联盟','X大联盟lknfaklnfa',context,(){
               //详情
-              Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo);
+              Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo,arguments: KOLCommunityInfoType.Other);
             },
             (){
               //投票
@@ -98,7 +100,8 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
           child:CommonButton(
               child: Text(S.of(context).applyKOL),
               onPressed: () {
-                Navigator.of(context).pushNamed(RouteName.KOLApply);
+                // Navigator.of(context).pushNamed(RouteName.KOLApply); //申请
+                Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo,arguments: KOLCommunityInfoType.Own); //自己的社区
               },
             ),
         )

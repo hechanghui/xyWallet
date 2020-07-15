@@ -9,6 +9,7 @@ import 'package:xy_wallet/ui/pages/community/CoinSplitRecord.dart';
 import 'package:xy_wallet/ui/pages/community/KOLApply.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunity.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunityInfo.dart';
+import 'package:xy_wallet/ui/pages/community/KOLEditor.dart';
 import 'package:xy_wallet/ui/pages/community/KOLVote.dart';
 import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
@@ -72,6 +73,8 @@ class RouteName {
   static const String KOLCommunityInfo = 'community/KOLCommunityInfo';
   static const String KOLVote = 'community/KOLVote';
   static const String KOLApply = 'community/KOLApply';
+
+  static const String KOLEditor = 'community/KOLEditor';
   
 }
 
@@ -150,12 +153,14 @@ class Router {
         return CupertinoPageRoute(builder: (_) => KOLCommunity());
 
       case RouteName.KOLCommunityInfo:
-        return CupertinoPageRoute(builder: (_) => KOLCommunityInfo());
+        return CupertinoPageRoute(builder: (_) => KOLCommunityInfo(settings.arguments));
 
       case RouteName.KOLVote:
         return CupertinoPageRoute(builder: (_) => KOLVote());
       case RouteName.KOLApply:
         return CupertinoPageRoute(builder: (_) => KOLApply());
+              case RouteName.KOLEditor:
+        return CupertinoPageRoute(builder: (_) => KOLEditor(settings.arguments));
 
       default:
         return CupertinoPageRoute(

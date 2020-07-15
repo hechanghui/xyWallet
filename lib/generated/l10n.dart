@@ -2102,6 +2102,66 @@ class S {
       args: [],
     );
   }
+
+  /// `编辑`
+  String get editor {
+    return Intl.message(
+      '编辑',
+      name: 'editor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `编辑介绍`
+  String get editorInfo {
+    return Intl.message(
+      '编辑介绍',
+      name: 'editorInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `申请解散`
+  String get applyDel {
+    return Intl.message(
+      '申请解散',
+      name: 'applyDel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提交`
+  String get submit {
+    return Intl.message(
+      '提交',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `解散理由`
+  String get applyDelReason {
+    return Intl.message(
+      '解散理由',
+      name: 'applyDelReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区申请解散提交后，不可撤回，并且在当期排名活动之后才能生效，申请解散的社区不能接受用户投票。`
+  String get KOLDelTip {
+    return Intl.message(
+      '社区申请解散提交后，不可撤回，并且在当期排名活动之后才能生效，申请解散的社区不能接受用户投票。',
+      name: 'KOLDelTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

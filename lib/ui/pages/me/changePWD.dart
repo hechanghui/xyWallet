@@ -9,9 +9,8 @@ import 'package:xy_wallet/tool/Sp_utils.dart';
 import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
-import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
-import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/manager/walletManager/walletManager.dart';
+
 class ChangePWD extends BaseWidget {
 
   final int index;
