@@ -13,18 +13,19 @@ class CoinSplitRank extends BaseWidget {
 }
 
 class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankViewModel> {
-  String titleLabel(BuildContext context) => S.of(context).tabComTitle2 + 'top10';
+  String titleLabel(BuildContext context) => S.of(context).tabComTitle2 + 'TOP10';
   @override
   onCreateViewModel() => CoinSplitRankViewModel();
 
   @override
   Widget buildBodyWidget(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-        child: ListView(
+    return SingleChildScrollView(
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Text(
-          '已经分裂阶段12',
+          '${S.current.splitStep}12',
           textAlign: TextAlign.end,
           maxLines: 1,
         ).padding(EdgeInsets.only(right: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageVerticalMargin)),
@@ -53,7 +54,7 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
                 alignment: Alignment.center,
                 padding: EdgeInsets.only(top: 50),
                 child: Text(
-                  '奖金池累积（USDT）',
+                  '${S.current.bonusPoolTotal}（USDT）',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
@@ -64,12 +65,13 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
           ),
         ),
         Text(
-          '分裂TOP10',
+          S.current.splitTop10,
           maxLines: 1,
         ).padding(EdgeInsets.only(left: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageVerticalMargin * 1.2)),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Flex(
                 direction: Axis.horizontal,
@@ -77,19 +79,19 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
                   Expanded(
                     flex: 2,
                     child: Text(
-                      "排名",
+                      S.current.rank,
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: Text(
-                      "USDT奖金",
+                      "USDT${S.current.bonus}",
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: Text(
-                      "新增邀请算力",
+                      S.current.newInvitedPower,
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -98,14 +100,15 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
                   .padding(EdgeInsets.symmetric(horizontal: ThemeDimens.pageLRMargin, vertical: ThemeDimens.pageVerticalMargin))
                   .bg(color: ThemeColors.accentDartColor.withAlpha(100))
                   .padding(EdgeInsets.all(5)),
-              Column(
-                children: _generateRankList(),
-              ),
+              // Column(
+              //   children: _generateRankList(),
+              // ),
+              _generateRankList(),
             ],
           ).backImage(),
         ),
         Text(
-          '数据每小时更新一次',
+          S.current.refreshDataPerHour,
           maxLines: 1,
           textAlign: TextAlign.center,
           style: ThemeStyles.getSubtitle1lLight(context),
@@ -114,15 +117,26 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
     ));
   }
 
-  List<Widget> _generateRankList() {
-    List<Widget> widgets = [];
-    final dataWidgets = viewModel.data.datas?.map((e) => ItemCoinSplitRank())?.toList();
-    if (dataWidgets?.isNotEmpty == true) {
-      widgets.addAll(dataWidgets);
-    } else {
-      widgets.add(buildEmptyWidget(context));
-    }
-    return widgets;
+  Widget _generateRankList() {
+    // List<Widget> widgets = [];
+    // final dataWidgets = viewModel.data.datas?.map((e) => ItemCoinSplitRank())?.toList();
+    // if (dataWidgets?.isNotEmpty == true) {
+    //   widgets.addAll(dataWidgets);
+    // } else {
+    //   widgets.add(buildEmptyWidget(context));
+    // }
+    // return widgets;
+    return (viewModel.data.datas?.length ?? 0) > 0
+        ? ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              var item = viewModel.data.datas[index];
+              return ItemCoinSplitRank();
+            },
+            itemCount: viewModel.data.datas.length,
+          )
+        : buildEmptyWidget(context);
   }
 }
 
@@ -162,7 +176,7 @@ class ItemCoinSplitRank extends StatelessWidget {
       children: [
         Row(children: [
           Text(
-            "地址: ",
+            "${S.current.address}: ",
           ),
           Text(
             "地址个锤子🔨",
