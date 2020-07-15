@@ -37,7 +37,6 @@ abstract class BasePageMixin {
     return title(context) ??
         Text(
           titleLabel(context),
-          style: new TextStyle(color: Colors.white),
         );
   }
 

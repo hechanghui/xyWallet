@@ -158,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry" : MessageLookupByLibrary.simpleMessage("重试"),
     "rewardRecord" : MessageLookupByLibrary.simpleMessage("奖励记录"),
     "rewardTotal" : MessageLookupByLibrary.simpleMessage("总奖励"),
+    "seasonRecordLucky" : MessageLookupByLibrary.simpleMessage("LUCKY生态奖励"),
+    "seasonRecordTop" : MessageLookupByLibrary.simpleMessage("裂变TOP10"),
     "seeMoreData" : MessageLookupByLibrary.simpleMessage("查看更多数据 >"),
     "setPwd" : MessageLookupByLibrary.simpleMessage("设置密码"),
     "splashSkip" : MessageLookupByLibrary.simpleMessage("跳过"),

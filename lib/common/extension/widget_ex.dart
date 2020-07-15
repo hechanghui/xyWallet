@@ -77,6 +77,7 @@ extension WidgetEx on Widget {
       padding: padding,
       decoration: BoxDecoration(
           image: DecorationImage(
+        // centerSlice: image == null ? Rect.fromLTWH(20, 10, 40, 40) : null,
         image: AssetImage(
           ImageHelper.wrapAssets(image ?? 'input_large_bg.png'),
         ),

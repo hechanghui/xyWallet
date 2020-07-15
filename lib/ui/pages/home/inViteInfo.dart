@@ -28,8 +28,7 @@ class Page extends BaseWidgetState<InviteInfo> {
                   fontWeight: FontWeight.bold,
                 )),
       ).click(onTap: () {
-
-        
+        Navigator.of(context).pushNamed(RouteName.INVITE_SEASON_TOP);
       }),
       Container(
         margin: EdgeInsets.only(right: 15),
@@ -40,8 +39,7 @@ class Page extends BaseWidgetState<InviteInfo> {
                   fontWeight: FontWeight.bold,
                 )),
       ).click(onTap: () {
-
-
+        Navigator.of(context).pushNamed(RouteName.INVITE_SEASON_LUCKY);
       }),
     ];
   }
@@ -71,10 +69,7 @@ class Page extends BaseWidgetState<InviteInfo> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
-                style: new TextStyle(
-                    color: Color(0xFF00FFAA),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40),
+                style: new TextStyle(color: Color(0xFF00FFAA), fontWeight: FontWeight.bold, fontSize: 40),
               ),
             ),
             Container(
@@ -109,5 +104,3 @@ class Page extends BaseWidgetState<InviteInfo> {
         );
   }
 }
-
-
