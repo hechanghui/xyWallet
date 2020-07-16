@@ -2342,6 +2342,46 @@ class S {
       args: [],
     );
   }
+
+  /// `投票记录`
+  String get voteRecord {
+    return Intl.message(
+      '投票记录',
+      name: 'voteRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `投票时间`
+  String get voteDate {
+    return Intl.message(
+      '投票时间',
+      name: 'voteDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `投票地址`
+  String get voteAddress {
+    return Intl.message(
+      '投票地址',
+      name: 'voteAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `票数`
+  String get voteNum {
+    return Intl.message(
+      '票数',
+      name: 'voteNum',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
