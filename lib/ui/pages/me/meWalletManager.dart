@@ -20,6 +20,8 @@ import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
 import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 
+import 'exportWalletInfo.dart';
+
 
 class WalletManager extends BaseWidget {
   final int index;
@@ -41,6 +43,7 @@ class Pages extends BaseWidgetState<WalletManager> {
   @override
   Widget buildBodyWidget(BuildContext context) {
     var walletMap = widget.list[widget.index];
+    
     return Container(
       child: ListView(
       // shrinkWrap: true,
@@ -67,7 +70,13 @@ class Pages extends BaseWidgetState<WalletManager> {
         TabMeCell(
           title: (S.of(context).ExportKeyStore),
           imageName: 'icon_keyStore.png',
-        ).click(onTap: () {}).padding(EdgeInsets.only(top: 15)),
+        ).click(onTap: () {
+          Map wallet = widget.list[widget.index];
+          Map wallets = SpUtils.getObject(wallet['address']);
+          WalletModel model = WalletModel.fromJson(wallets);
+          Navigator.pushNamed(context, RouteName.ExportWalletInfo,arguments:[ExportType.KeyStore,model]);
+
+        }).padding(EdgeInsets.only(top: 15)),
         TabMeCell(
           title: (S.of(context).ExportPrivateKey),
           imageName: 'icon_PrivateKey.png',
@@ -174,7 +183,7 @@ class Pages extends BaseWidgetState<WalletManager> {
         actions: [
           Tuple3(S.current.cannel, null, null),
           Tuple3(S.current.comfirm, () {
-                                Map wallet = widget.list[widget.index];
+                    Map wallet = widget.list[widget.index];
                     Map wallets = SpUtils.getObject(wallet['address']);
                     WalletModel model = WalletModel.fromJson(wallets);
                       var result = checkPWDForKetstore(model.keystore, controller.text);

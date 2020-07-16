@@ -30,6 +30,7 @@ import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 import 'package:xy_wallet/ui/pages/home/invite/SeasonRecordPage.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/me/changePWD.dart';
+import 'package:xy_wallet/ui/pages/me/exportWalletInfo.dart';
 import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
@@ -85,8 +86,12 @@ class RouteName {
 
   static const String KOLEditor = 'community/KOLEditor';
   static const String KOLVoteRecord = 'community/KOLVoteRecord';
+
+  static const String ExportWalletInfo = 'wallet/exportWalletInfo';
+
   static const String DropRecord = 'home/DropRecord';
   static const String Power_Invite = 'home/PowerInvite';
+
 }
 
 class Router {
@@ -118,8 +123,8 @@ class Router {
       case RouteName.CREATEXCODE:
         return CupertinoPageRoute(builder: (_) => CreateXcode());
 
-      case RouteName.INVITEINFO:
-        return CupertinoPageRoute(builder: (_) => InviteInfo());
+      case RouteName.ExportWalletInfo:
+        return CupertinoPageRoute(builder: (_) => ExportWalletInfo(settings.arguments));
 
       case RouteName.INVITE_SEASON_TOP:
         return CupertinoPageRoute(builder: (_) => SeasonRecordPage(SeasonRecordType.TOP));
@@ -184,6 +189,10 @@ class Router {
         return CupertinoPageRoute(builder: (_) => DropRecord());
       case RouteName.Power_Invite:
         return CupertinoPageRoute(builder: (_) => PowerInviteRecordPage());
+
+      case RouteName.DropRecord:
+        return CupertinoPageRoute(builder: (_) => DropRecord());
+
 
       default:
         return CupertinoPageRoute(

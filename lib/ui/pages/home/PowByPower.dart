@@ -3,11 +3,7 @@ import 'package:xy_wallet/common/Base/base_widget.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
-import 'package:xy_wallet/service/bus.dart';
-import 'package:xy_wallet/service/httpService/http_server.dart';
-import 'package:xy_wallet/service/httpService/result_data.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
-import 'package:xy_wallet/ui/pages/home/widget/inViteInfoCell.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
 
