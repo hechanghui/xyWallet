@@ -11,6 +11,7 @@ import 'package:xy_wallet/ui/pages/community/KOLCommunity.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunityInfo.dart';
 import 'package:xy_wallet/ui/pages/community/KOLEditor.dart';
 import 'package:xy_wallet/ui/pages/community/KOLVote.dart';
+import 'package:xy_wallet/ui/pages/community/KOLTopPage.dart';
 import 'package:xy_wallet/ui/pages/community/KOLVoteRecord.dart';
 import 'package:xy_wallet/ui/pages/community/withDraw.dart';
 import 'package:xy_wallet/ui/pages/finance/transaction_details.dart';
@@ -22,6 +23,7 @@ import 'package:xy_wallet/ui/pages/home/PowByAttractionTraction.dart';
 import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplitInfo.dart';
+import 'package:xy_wallet/ui/pages/home/PowerInviteRecord.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/pages/home/dropRecord.dart';
 import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
@@ -80,12 +82,16 @@ class RouteName {
   static const String KOLCommunityInfo = 'community/KOLCommunityInfo';
   static const String KOLVote = 'community/KOLVote';
   static const String KOLApply = 'community/KOLApply';
+  static const String KOLTOP = 'community/KOLTOP';
 
   static const String KOLEditor = 'community/KOLEditor';
   static const String KOLVoteRecord = 'community/KOLVoteRecord';
-  static const String DropRecord = 'community/DropRecord';
 
   static const String ExportWalletInfo = 'wallet/exportWalletInfo';
+
+  static const String DropRecord = 'home/DropRecord';
+  static const String Power_Invite = 'home/PowerInvite';
+
 }
 
 class Router {
@@ -173,12 +179,16 @@ class Router {
         return CupertinoPageRoute(builder: (_) => KOLVote());
       case RouteName.KOLApply:
         return CupertinoPageRoute(builder: (_) => KOLApply());
+      case RouteName.KOLTOP:
+        return CupertinoPageRoute(builder: (_) => KOLTopPage());
       case RouteName.KOLEditor:
         return CupertinoPageRoute(builder: (_) => KOLEditor(settings.arguments));
       case RouteName.KOLVoteRecord:
         return CupertinoPageRoute(builder: (_) => KOLVoteRecord());
       case RouteName.DropRecord:
         return CupertinoPageRoute(builder: (_) => DropRecord());
+      case RouteName.Power_Invite:
+        return CupertinoPageRoute(builder: (_) => PowerInviteRecordPage());
 
       case RouteName.DropRecord:
         return CupertinoPageRoute(builder: (_) => DropRecord());

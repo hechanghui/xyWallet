@@ -21,6 +21,10 @@
     "community":"生态",
     "mine":"我的",
 
+    "hours":"小时",
+    "mins":"分",
+    "seconds":"秒",
+
     "confirmDate":"确认时间",
     "txId":"交易号",
     "includedInBlock":"交易区块",
@@ -77,6 +81,17 @@
 
     "seasonRecordTop":"裂变TOP10",
     "seasonRecordLucky":"LUCKY生态奖励",
+    "seasonBonusTotal":"本赛季奖金",
+    "seasonBonus":"赛季奖励",
+    "season":"赛季",
+    "seasonUntilEnd":"距离本赛季结束剩",
+    "seasonUntilStart":"距离本赛季开始剩",
+    "seasonEnded":"本赛季已结束",
+    "ordinal":"序号",
+    "seasonTop10":"赛季TOP10",
+    "seasonLucky30":"上赛季LUCKY30",
+
+    "titleKOLTop":"10大KOL选举",
 
     "addrOrTxId":"地址/交易号",
 
@@ -106,6 +121,9 @@
     "tabComSubTitle7":"以AI之名，探索未来世界的科技魔力",
     "tabComSubTitle8":"万物互联，处处皆价值  ",
     "tabComSubTitle9":"万物互联，处处皆价值  ",
+
+    "labelCommunity":"社区",
+    "votes":"票数",
 
     "Addresses":"地址薄",
     "AccountManager":"账户管理",
@@ -220,6 +238,7 @@
     "splitTop10":"分裂TOP10",
     "rank":"排名",
     "bonus":"奖金",
+    "reward":"奖励",
     "bonusPoolTotal":"奖金池累积",
     "newInvitedPower":"新增邀请算力",
     "refreshDataPerHour":"数据每小时更新一次",

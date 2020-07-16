@@ -96,7 +96,7 @@ class Page extends BaseWidgetState<PowByPower> {
             textAlign: TextAlign.right,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 13),
           ).click(onTap:(){
-            
+            Navigator.of(context).pushNamed(RouteName.Power_Invite);
           }).padding(EdgeInsets.only( top: 200, right: 30)),
         )
 

@@ -223,6 +223,36 @@ class S {
     );
   }
 
+  /// `小时`
+  String get hours {
+    return Intl.message(
+      '小时',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `分`
+  String get mins {
+    return Intl.message(
+      '分',
+      name: 'mins',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `秒`
+  String get seconds {
+    return Intl.message(
+      '秒',
+      name: 'seconds',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `确认时间`
   String get confirmDate {
     return Intl.message(
@@ -733,6 +763,106 @@ class S {
     );
   }
 
+  /// `本赛季奖金`
+  String get seasonBonusTotal {
+    return Intl.message(
+      '本赛季奖金',
+      name: 'seasonBonusTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `赛季奖励`
+  String get seasonBonus {
+    return Intl.message(
+      '赛季奖励',
+      name: 'seasonBonus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `赛季`
+  String get season {
+    return Intl.message(
+      '赛季',
+      name: 'season',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `距离本赛季结束剩`
+  String get seasonUntilEnd {
+    return Intl.message(
+      '距离本赛季结束剩',
+      name: 'seasonUntilEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `距离本赛季开始剩`
+  String get seasonUntilStart {
+    return Intl.message(
+      '距离本赛季开始剩',
+      name: 'seasonUntilStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `本赛季已结束`
+  String get seasonEnded {
+    return Intl.message(
+      '本赛季已结束',
+      name: 'seasonEnded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `序号`
+  String get ordinal {
+    return Intl.message(
+      '序号',
+      name: 'ordinal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `赛季TOP10`
+  String get seasonTop10 {
+    return Intl.message(
+      '赛季TOP10',
+      name: 'seasonTop10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `上赛季LUCKY30`
+  String get seasonLucky30 {
+    return Intl.message(
+      '上赛季LUCKY30',
+      name: 'seasonLucky30',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10大KOL选举`
+  String get titleKOLTop {
+    return Intl.message(
+      '10大KOL选举',
+      name: 'titleKOLTop',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `地址/交易号`
   String get addrOrTxId {
     return Intl.message(
@@ -978,6 +1108,26 @@ class S {
     return Intl.message(
       '万物互联，处处皆价值  ',
       name: 'tabComSubTitle9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `社区`
+  String get labelCommunity {
+    return Intl.message(
+      '社区',
+      name: 'labelCommunity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `票数`
+  String get votes {
+    return Intl.message(
+      '票数',
+      name: 'votes',
       desc: '',
       args: [],
     );
@@ -1918,6 +2068,16 @@ class S {
     return Intl.message(
       '奖金',
       name: 'bonus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `奖励`
+  String get reward {
+    return Intl.message(
+      '奖励',
+      name: 'reward',
       desc: '',
       args: [],
     );
