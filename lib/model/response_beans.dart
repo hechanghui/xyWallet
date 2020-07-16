@@ -12,3 +12,9 @@ class TransactionDetailsItemBean {
 class SeasonRecorBean {
   List<String> datas;
 }
+
+class PowerInviteRecordBean {
+  String addr;
+  bool kyc;
+  String inviteDate;
+}
