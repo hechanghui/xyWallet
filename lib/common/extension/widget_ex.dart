@@ -25,6 +25,15 @@ extension WidgetEx on Widget {
     );
   }
 
+  Expanded expand({
+    int flex = 1,
+  }) {
+    return Expanded(
+      flex: flex,
+      child: this,
+    );
+  }
+
   Center center() {
     return Center(child: this);
   }
