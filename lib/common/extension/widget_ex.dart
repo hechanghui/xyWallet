@@ -112,6 +112,7 @@ extension WidgetEx on Widget {
         ),
         fit: BoxFit.fill,
       )),
+      constraints: BoxConstraints(minWidth: 48, minHeight: 44),
       child: this,
     );
   }
