@@ -15,8 +15,8 @@ import 'package:xy_wallet/common/extension/widget_ex.dart';
 
 enum ExportType {
   KeyStore,
-  WithDraw,
-  ChooseCoin,
+  PrivateKey,
+  
 }
 
 class ExportWalletInfo extends BaseWidget {
@@ -32,13 +32,16 @@ class ExportWalletInfo extends BaseWidget {
 class Pages extends BaseWidgetState<ExportWalletInfo> {
   @override
   String titleLabel(BuildContext context) => S.of(context).Manager;
-
+  String headTitle = '';
+  String content = '';
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
     ExportType type = widget.wallet.first;
     WalletModel model = widget.wallet.last;
     switch (type) {
       case ExportType.KeyStore:
+      headTitle = 'Keystore';
+      content = model.keystore;
         return <Widget>[
           IconButton(
               icon: Image.asset(ImageHelper.wrapAssets('icon_share.png')),
@@ -56,11 +59,16 @@ class Pages extends BaseWidgetState<ExportWalletInfo> {
               }),
         ];
         break;
+        case ExportType.PrivateKey:
+              headTitle = S.current.privateKey;
+              content = model.privateKey;
+        break;
+
       default:
     }
   }
 
-  var content = '';
+  
 
   Widget buildBodyWidget(BuildContext context) {
     WalletModel model = widget.wallet.last;
@@ -76,9 +84,9 @@ class Pages extends BaseWidgetState<ExportWalletInfo> {
                 height: 40,
                 margin: EdgeInsets.only(top: 3, left: 4, right: 4),
                 color: Color(0xFF082E41),
-                child: Text('KeyStore').padding(EdgeInsets.only(left: 14)),
+                child: Text(headTitle).padding(EdgeInsets.only(left: 14)),
               ),
-              Text(model.keystore).padding(
+              Text(content).padding(
                   EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15)),
             ]).backImage(),
             CommonButton(

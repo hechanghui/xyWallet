@@ -186,11 +186,18 @@ class Pages extends BaseWidgetState<WalletManager> {
                     Map wallet = widget.list[widget.index];
                     Map wallets = SpUtils.getObject(wallet['address']);
                     WalletModel model = WalletModel.fromJson(wallets);
-                      var result = checkPWDForKetstore(model.keystore, controller.text);
-                        if(result == false){
-                          showToast(S.of(context).PWDWrong);
-                          return false;
-                        }
+                    var result = checkPWDForKetstore(model.keystore, controller.text);
+                    
+                    if(result == false){
+                      showToast(S.of(context).PWDWrong);
+                      return false;
+                    }else{
+                      Navigator.of(context).pop();
+                      Navigator.pushNamed(context, RouteName.ExportWalletInfo,arguments:[ExportType.PrivateKey,model]);
+                    }
+
+                    return false;
+                   
           }, null)
         ]);
   }

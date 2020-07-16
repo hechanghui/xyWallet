@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/dialog_helper.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
@@ -81,7 +82,7 @@ class _RestoreByMnemonicState extends BaseWidgetState<KOLApply> {
                   showToast(S.of(context).KOLInfoInput);
                   return;
                 }
-
+                Navigator.of(context).pushNamed(RouteName.KOLApplySuccess);
           
               }).padding(EdgeInsets.only(top:60,left:15,right:15)),
             ],

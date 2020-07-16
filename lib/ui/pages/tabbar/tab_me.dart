@@ -90,7 +90,7 @@ class Pages extends BaseWidgetState<TabMe> {
         ),
         InkWell(
           onTap: () {
-            print(S.of(context).Setting);
+            Navigator.pushNamed(context, RouteName.Setting);
           },
           child: TabMeCell(
             title: (S.of(context).Setting),
