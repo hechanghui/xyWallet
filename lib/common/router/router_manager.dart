@@ -23,6 +23,7 @@ import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplitInfo.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
 import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
+import 'package:xy_wallet/ui/pages/home/invite/SeasonRecordPage.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/me/changePWD.dart';
 import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
@@ -53,6 +54,8 @@ class RouteName {
   static const String ABOUT = 'me/about';
   static const String CREATEXCODE = 'wallet/createXcode';
   static const String INVITEINFO = 'wallet/InviteInfo';
+  static const String INVITE_SEASON_TOP = "invite/seasonTop";
+  static const String INVITE_SEASON_LUCKY = "invite/seasonLucky";
   static const String POWBYATTRACTION = 'wallet/PowByAttraction';
   static const String POWBYATTRACTION_TRACTION = 'home/PowByAttractionTraction';
   static const String POWBYATTRACTION_MOREDATA = 'home/PowByAttractionMoreData';
@@ -70,12 +73,12 @@ class RouteName {
 
   static const String CoinSplitRank = 'community/CoinSplitRank';
   static const String KOLCommunity = 'community/KOLCommunity';
+
   static const String KOLCommunityInfo = 'community/KOLCommunityInfo';
   static const String KOLVote = 'community/KOLVote';
   static const String KOLApply = 'community/KOLApply';
 
   static const String KOLEditor = 'community/KOLEditor';
-  
 }
 
 class Router {
@@ -104,12 +107,16 @@ class Router {
       case RouteName.ABOUT:
         return CupertinoPageRoute(builder: (_) => AboutPage());
 
-
       case RouteName.CREATEXCODE:
         return CupertinoPageRoute(builder: (_) => CreateXcode());
 
       case RouteName.INVITEINFO:
         return CupertinoPageRoute(builder: (_) => InviteInfo());
+
+      case RouteName.INVITE_SEASON_TOP:
+        return CupertinoPageRoute(builder: (_) => SeasonRecordPage(SeasonRecordType.TOP));
+      case RouteName.INVITE_SEASON_LUCKY:
+        return CupertinoPageRoute(builder: (_) => SeasonRecordPage(SeasonRecordType.LUCKY));
 
       case RouteName.POWBYATTRACTION:
         return CupertinoPageRoute(builder: (_) => PowByAttraction());
@@ -159,7 +166,7 @@ class Router {
         return CupertinoPageRoute(builder: (_) => KOLVote());
       case RouteName.KOLApply:
         return CupertinoPageRoute(builder: (_) => KOLApply());
-              case RouteName.KOLEditor:
+      case RouteName.KOLEditor:
         return CupertinoPageRoute(builder: (_) => KOLEditor(settings.arguments));
 
       default:

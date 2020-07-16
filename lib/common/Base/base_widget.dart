@@ -221,7 +221,7 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
     return ViewStateBusyWidget();
   }
 
-  Widget buildEmptyWidget(BuildContext context) {
+  Widget buildEmptyWidget(BuildContext context, [bool emptyEnableReload = true]) {
     return ViewStateEmptyWidget(
       onPressed: emptyEnableReload
           ? onPressedEmpty ??
@@ -233,7 +233,7 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
     );
   }
 
-  Widget buildErrorWidget(BuildContext context) {
+  Widget buildErrorWidget(BuildContext context, [bool errorEnableReload = true]) {
     return ViewStateErrorWidget(
       error: viewModel.viewStateError,
       onPressed: errorEnableReload
@@ -261,9 +261,9 @@ abstract class BaseLoadDataWidgetState<T extends BaseWidget, VM extends BaseLoad
             model.loadData();
             return buildLoadingWidget(context);
           case ViewState.empty:
-            return buildEmptyWidget(context);
+            return buildEmptyWidget(context, emptyEnableReload);
           case ViewState.error:
-            return buildErrorWidget(context);
+            return buildErrorWidget(context, errorEnableReload);
           default:
             return buildBodyWidget(context);
         }
@@ -318,9 +318,9 @@ abstract class BaseLoadRefreshDataWidgetState<T extends BaseWidget, VM extends B
             model.refresh();
             return buildLoadingWidget(context);
           case ViewState.empty:
-            return buildEmptyWidget(context);
+            return buildEmptyWidget(context, emptyEnableReload);
           case ViewState.error:
-            return buildErrorWidget(context);
+            return buildErrorWidget(context, errorEnableReload);
           default:
             return buildRefreshWidget(context);
         }
@@ -377,9 +377,9 @@ abstract class BaseLoadListDataWidgetState<T extends BaseWidget, VM extends Base
             model.refresh();
             return buildLoadingWidget(context);
           case ViewState.empty:
-            return buildEmptyWidget(context);
+            return buildEmptyWidget(context, emptyEnableReload);
           case ViewState.error:
-            return buildErrorWidget(context);
+            return buildErrorWidget(context, errorEnableReload);
           default:
             return buildRefreshWidget(context);
         }

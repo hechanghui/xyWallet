@@ -88,6 +88,8 @@ class ThemeModel with ChangeNotifier {
       accentColor: accentColor,
       fontFamily: fontValueList[fontIndex],
       buttonColor: ThemeColors.buttonColor,
+      iconTheme: IconThemeData(color: accentColor),
+      primaryIconTheme: IconThemeData(color: accentColor),
     );
 
     themeData = themeData.copyWith(
@@ -98,7 +100,9 @@ class ThemeModel with ChangeNotifier {
         brightness: brightness,
       ),
 
-      appBarTheme: themeData.appBarTheme.copyWith(elevation: 0),
+      appBarTheme: themeData.appBarTheme.copyWith(
+        elevation: 0,
+      ),
       splashColor: themeColor.withAlpha(50),
       hintColor: themeData.hintColor.withAlpha(90),
       errorColor: Colors.red,
@@ -124,6 +128,11 @@ class ThemeModel with ChangeNotifier {
             color: colorBodyText,
             fontWeight: FontWeight.bold,
           )),
+
+      primaryTextTheme: themeData.primaryTextTheme.copyWith(
+        //appbar title
+        headline6: themeData.textTheme.headline6.copyWith(fontSize: 17, color: accentColor),
+      ),
 
       textSelectionColor: accentColor.withAlpha(60),
       textSelectionHandleColor: accentColor.withAlpha(60),

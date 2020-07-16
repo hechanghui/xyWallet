@@ -136,7 +136,7 @@ class Page extends BaseLoadRefreshDataWidgetState<CoinSplitRank, CoinSplitRankVi
             },
             itemCount: viewModel.data.datas.length,
           )
-        : buildEmptyWidget(context);
+        : buildEmptyWidget(context, false);
   }
 }
 

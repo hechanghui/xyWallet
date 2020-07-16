@@ -713,6 +713,26 @@ class S {
     );
   }
 
+  /// `裂变TOP10`
+  String get seasonRecordTop {
+    return Intl.message(
+      '裂变TOP10',
+      name: 'seasonRecordTop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LUCKY生态奖励`
+  String get seasonRecordLucky {
+    return Intl.message(
+      'LUCKY生态奖励',
+      name: 'seasonRecordLucky',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `地址/交易号`
   String get addrOrTxId {
     return Intl.message(
