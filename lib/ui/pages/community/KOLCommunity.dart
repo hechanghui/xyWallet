@@ -40,7 +40,7 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
             IconButton(
           icon: Image.asset(ImageHelper.wrapAssets('KOLHeadIcon.png')),
           onPressed: () {
-            
+            Navigator.of(context).pushNamed(RouteName.KOLVoteRecord);
             // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
           }),
     ];
@@ -122,7 +122,7 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
 
 Widget createCell(String icon,String title,String subTitle,BuildContext context,GestureTapCallback infoTap,GestureTapCallback applyTap,){
   return Container(
-    height: 70,
+    height: 60,
     margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
     child: Stack(children:<Widget>[
       Container(
@@ -131,14 +131,14 @@ Widget createCell(String icon,String title,String subTitle,BuildContext context,
           child: Image.asset(
             ImageHelper.wrapAssets(icon),
             fit: BoxFit.fill,
-            width: 38,
-            height: 38,
+            width: 28,
+            height: 28,
           ),
         ),
 
        Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 70, top: 15),
+          padding: EdgeInsets.only(left: 60, top: 10),
           child: Text(
             title,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14),
@@ -147,7 +147,7 @@ Widget createCell(String icon,String title,String subTitle,BuildContext context,
 
          Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 70, top: 35),
+          padding: EdgeInsets.only(left: 60, top: 30),
           child: Text(
             subTitle,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14,color: ThemeColors.labelLightColor),
@@ -156,11 +156,11 @@ Widget createCell(String icon,String title,String subTitle,BuildContext context,
 
         Container(
           alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20),
+          padding: EdgeInsets.only(right: 20,top: 14,bottom:14),
           child:Container(
             alignment: Alignment.center,
             width: 70,
-            height: 32,
+            
           child: Text(
             S.of(context).vote,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14,),
