@@ -11,11 +11,13 @@ import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 
-class ChangePWD extends BaseWidget {
+Enum (),
 
-  final int index;
-  ChangePWD(this.index);
-  List list = SpUtils.getObjectList('walletList');
+class ExportWalletInfo extends BaseWidget {
+
+  final List wallet;
+  ExportWalletInfo(this.wallet);
+
 
   @override
   getState() {
@@ -23,7 +25,7 @@ class ChangePWD extends BaseWidget {
   }
 }
 
-class Pages extends BaseWidgetState<ChangePWD> {
+class Pages extends BaseWidgetState<ExportWalletInfo> {
   @override
   String titleLabel(BuildContext context) => S.of(context).ChangePWD;
 

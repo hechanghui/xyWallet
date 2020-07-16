@@ -7,6 +7,7 @@ import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
+import 'package:xy_wallet/model/walletModel.dart';
 import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
 
@@ -17,8 +18,8 @@ import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input_minor.dart';
 import 'package:xy_wallet/ui/widgets/tabMeCell.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 
-import 'changePWD.dart';
 
 class WalletManager extends BaseWidget {
   final int index;
@@ -70,7 +71,9 @@ class Pages extends BaseWidgetState<WalletManager> {
         TabMeCell(
           title: (S.of(context).ExportPrivateKey),
           imageName: 'icon_PrivateKey.png',
-        ).click(onTap: () {}),
+        ).click(onTap: () {
+          showPwdDialog();
+        }),
         TabMeCell(
           title: (S.of(context).ChangePWD),
           imageName: 'icon_changePWD.png',
@@ -158,6 +161,30 @@ class Pages extends BaseWidgetState<WalletManager> {
                     ]);
   }
 
+    showPwdDialog() {
+     var controller = TextEditingController();
+    DialogHelper.showCommonDialog(
+        context: context,
+        alignment: Alignment.center,
+        title: S.current.inputPwd,
+        contentWidget: CommonInputMinor(
+          placeholder: S.current.hintPleaseInput,
+          controller: controller,
+        ),
+        actions: [
+          Tuple3(S.current.cannel, null, null),
+          Tuple3(S.current.comfirm, () {
+                                Map wallet = widget.list[widget.index];
+                    Map wallets = SpUtils.getObject(wallet['address']);
+                    WalletModel model = WalletModel.fromJson(wallets);
+                      var result = checkPWDForKetstore(model.keystore, controller.text);
+                        if(result == false){
+                          showToast(S.of(context).PWDWrong);
+                          return false;
+                        }
+          }, null)
+        ]);
+  }
 
-
+   
 }

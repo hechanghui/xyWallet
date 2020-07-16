@@ -271,7 +271,10 @@
     "voteRecord":"投票记录",
     "voteDate":"投票时间",
     "voteAddress":"投票地址",
-    "voteNum":"票数"
+    "voteNum":"票数",
+    "dropRecord":"空投记录",
+    "dropDate":"空投时间",
+    "dropNum":"空投数量"
 
     
 

@@ -27,6 +27,7 @@ import 'package:xy_wallet/ui/pages/home/PowByPower.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplit.dart';
 import 'package:xy_wallet/ui/pages/home/PowBySplitInfo.dart';
 import 'package:xy_wallet/ui/pages/home/createXCode.dart';
+import 'package:xy_wallet/ui/pages/home/dropRecord.dart';
 import 'package:xy_wallet/ui/pages/home/inViteInfo.dart';
 import 'package:xy_wallet/ui/pages/home/invite/SeasonRecordPage.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
@@ -86,6 +87,7 @@ class RouteName {
 
   static const String KOLEditor = 'community/KOLEditor';
   static const String KOLVoteRecord = 'community/KOLVoteRecord';
+  static const String DropRecord = 'community/DropRecord';
 }
 
 class Router {
@@ -179,6 +181,8 @@ class Router {
         return CupertinoPageRoute(builder: (_) => KOLEditor(settings.arguments));
       case RouteName.KOLVoteRecord:
         return CupertinoPageRoute(builder: (_) => KOLVoteRecord());
+      case RouteName.DropRecord:
+        return CupertinoPageRoute(builder: (_) => DropRecord());
 
       default:
         return CupertinoPageRoute(

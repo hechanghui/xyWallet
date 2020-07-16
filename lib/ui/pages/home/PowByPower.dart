@@ -99,7 +99,9 @@ class Page extends BaseWidgetState<PowByPower> {
             S.of(context).moreData,
             textAlign: TextAlign.right,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 13),
-          ).padding(EdgeInsets.only( top: 200, right: 30)),
+          ).click(onTap:(){
+            
+          }).padding(EdgeInsets.only( top: 200, right: 30)),
         )
 
       ])),
@@ -139,7 +141,9 @@ class Page extends BaseWidgetState<PowByPower> {
             S.of(context).moreData,
             textAlign: TextAlign.right,
             style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 13),
-          ).padding(EdgeInsets.only( top: 135, right: 30)),
+          ).click(onTap:(){
+            Navigator.of(context).pushNamed(RouteName.DropRecord);
+          }).padding(EdgeInsets.only( top: 135, right: 30)),
         ),
 
 
@@ -149,8 +153,8 @@ class Page extends BaseWidgetState<PowByPower> {
               child: Text(S.of(context).PowActivate),
               onPressed: () {
   
-       
-                Navigator.of(context).pop();
+                //KYC
+                // Navigator.of(context).pop();
               },
       ).padding(EdgeInsets.only(top: 80, left: 15, right: 15))
     ]);
