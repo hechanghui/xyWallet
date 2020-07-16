@@ -2222,6 +2222,36 @@ class S {
       args: [],
     );
   }
+
+  /// `空投记录`
+  String get dropRecord {
+    return Intl.message(
+      '空投记录',
+      name: 'dropRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `空投时间`
+  String get dropDate {
+    return Intl.message(
+      '空投时间',
+      name: 'dropDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `空投数量`
+  String get dropNum {
+    return Intl.message(
+      '空投数量',
+      name: 'dropNum',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
