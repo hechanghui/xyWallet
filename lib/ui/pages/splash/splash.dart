@@ -20,12 +20,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    _logoController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
+    _logoController = AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
 
-    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        curve: Interval(0.0, 0.5, curve: Curves.ease),
-        parent: _logoController));
+    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(curve: Interval(0.0, 0.5, curve: Curves.ease), parent: _logoController));
 
     // _animation.addStatusListener((status) {
     //   if (status == AnimationStatus.completed) {
@@ -37,10 +34,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     // _logoController.reverse();
     _logoController.forward();
 
-    _countdownController = AnimationController(
-        vsync: this,
-        duration: Duration(
-            milliseconds: _logoController.duration.inMilliseconds + 500));
+    _countdownController = AnimationController(vsync: this, duration: Duration(milliseconds: _logoController.duration.inMilliseconds + 500));
     _countdownController.forward();
     super.initState();
   }
@@ -58,11 +52,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
       body: WillPopScope(
         onWillPop: () => Future.value(false),
         child: Stack(fit: StackFit.expand, children: <Widget>[
-          Image.asset(ImageHelper.wrapAssets('splash_bg.png'),
-              colorBlendMode: BlendMode
-                  .srcOver, //colorBlendMode方式在android等机器上有些延迟,导致有些闪屏,故采用两套图片的方式
-              color: Colors.black.withOpacity(
-                  Theme.of(context).brightness == Brightness.light ? 0 : 0.65),
+          Image.asset(ImageHelper.wrapAssets('splash_bg.webp'),
+              colorBlendMode: BlendMode.srcOver, //colorBlendMode方式在android等机器上有些延迟,导致有些闪屏,故采用两套图片的方式
+              color: Colors.black.withOpacity(Theme.of(context).brightness == Brightness.light ? 0 : 0.65),
               fit: BoxFit.fill),
           Align(
             alignment: Alignment(0.0, 0.6),
@@ -91,8 +83,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
                   // ),
                   child: AnimatedCountdown(
                     context: context,
-                    animation: StepTween(begin: 4, end: 0)
-                        .animate(_countdownController),
+                    animation: StepTween(begin: 4, end: 0).animate(_countdownController),
                   ),
                 ),
               ),
@@ -107,8 +98,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 class AnimatedCountdown extends AnimatedWidget {
   final Animation<int> animation;
 
-  AnimatedCountdown({key, this.animation, context})
-      : super(key: key, listenable: animation) {
+  AnimatedCountdown({key, this.animation, context}) : super(key: key, listenable: animation) {
     this.animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         nextPage(context);
@@ -142,8 +132,7 @@ class AnimatedTextLogo extends AnimatedWidget {
       opacity: animation.value,
       child: Text(
         "Plan x\r\nPosters",
-        style:
-            Theme.of(context).textTheme.headline2,
+        style: Theme.of(context).textTheme.headline2,
         textAlign: TextAlign.center,
       ),
     );
@@ -151,12 +140,10 @@ class AnimatedTextLogo extends AnimatedWidget {
 }
 
 void nextPage(context) {
-
-  
   var list = SpUtils.getObjectList('walletList');
-  if(list == null || list.length == 0){
+  if (list == null || list.length == 0) {
     Navigator.of(context).pushReplacementNamed(RouteName.WALLET_CREATE_RESTORE);
-  }else{
+  } else {
     Navigator.of(context).pushReplacementNamed(RouteName.tab);
   }
 }
