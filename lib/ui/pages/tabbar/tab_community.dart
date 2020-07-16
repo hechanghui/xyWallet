@@ -25,7 +25,7 @@ class Pages extends BaseWidgetState<TabCommunity> {
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManger()));
-
+              
             },
             child: TabComCell(
               title: (S.of(context).tabComTitle1),

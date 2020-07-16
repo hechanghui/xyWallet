@@ -36,7 +36,7 @@ class Page extends BaseWidgetState<TabWallet> {
 
   @override
   List<Widget> buildAppBarAction(BuildContext context) {
-    SpUtils.getObj("wallet", (v) => print(v['name']));
+    
     return <Widget>[
       IconButton(
           icon: Image.asset(ImageHelper.wrapAssets('icon_QR.png')),

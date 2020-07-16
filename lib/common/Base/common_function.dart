@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:xy_wallet/common/helper/popup_helper.dart';
+import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/tool/message_dialog.dart';
 import 'package:xy_wallet/manager/progressManager/toast.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -574,8 +575,8 @@ abstract class BaseFuntion {
   ///弹吐司
   void showToast(String content,
       {Toast length = Toast.LENGTH_SHORT,
-      ToastGravity gravity = ToastGravity.BOTTOM,
-      Color backColor = Colors.black54,
+      ToastGravity gravity = ToastGravity.CENTER,
+      Color backColor = ThemeColors.accentDartColor,
       Color textColor = Colors.white}) {
     ToastUtils.showToast(content,
         length: length,
