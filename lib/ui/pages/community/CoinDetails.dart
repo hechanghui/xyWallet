@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
-import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/pages/community/widget/CoinDetailsPage.dart';
-import 'package:xy_wallet/ui/pages/finance/transaction_list.dart';
 import 'package:xy_wallet/ui/pages/finance/vm/transaction_record_vm.dart';
 import 'package:xy_wallet/common/extension/widget_ex.dart';
 
