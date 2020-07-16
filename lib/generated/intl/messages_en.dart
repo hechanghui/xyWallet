@@ -241,14 +241,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewStateMessageNetworkError" : MessageLookupByLibrary.simpleMessage("网络连接异常,请检查网络或稍后重试"),
     "viewStateMessageUnAuth" : MessageLookupByLibrary.simpleMessage("未登录"),
     "vote" : MessageLookupByLibrary.simpleMessage("投票"),
-<<<<<<< HEAD
-    "votes" : MessageLookupByLibrary.simpleMessage("票数"),
-=======
     "voteAddress" : MessageLookupByLibrary.simpleMessage("投票地址"),
     "voteDate" : MessageLookupByLibrary.simpleMessage("投票时间"),
     "voteNum" : MessageLookupByLibrary.simpleMessage("票数"),
     "voteRecord" : MessageLookupByLibrary.simpleMessage("投票记录"),
->>>>>>> af47b444e92b951db07341431a92b61836842919
+    "votes" : MessageLookupByLibrary.simpleMessage("票数"),
     "wallet" : MessageLookupByLibrary.simpleMessage("钱包"),
     "walletConfirmMnemonic" : MessageLookupByLibrary.simpleMessage("确认你的钱包助记词"),
     "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),

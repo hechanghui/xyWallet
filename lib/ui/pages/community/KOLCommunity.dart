@@ -38,11 +38,7 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
       IconButton(
           icon: Image.asset(ImageHelper.wrapAssets('KOLHeadIcon.png')),
           onPressed: () {
-<<<<<<< HEAD
-=======
             Navigator.of(context).pushNamed(RouteName.KOLVoteRecord);
->>>>>>> af47b444e92b951db07341431a92b61836842919
-            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
           }),
     ];
   }
@@ -126,19 +122,18 @@ Widget createCell(
     margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
     child: Stack(children: <Widget>[
       Container(
-<<<<<<< HEAD
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 20),
         child: Image.asset(
           ImageHelper.wrapAssets(icon),
           fit: BoxFit.fill,
-          width: 38,
-          height: 38,
+          width: 28,
+          height: 28,
         ),
       ),
       Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 70, top: 15),
+        padding: EdgeInsets.only(left: 60, top: 10),
         child: Text(
           title,
           style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14),
@@ -146,48 +141,18 @@ Widget createCell(
       ),
       Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 70, top: 35),
+        padding: EdgeInsets.only(left: 60, top: 30),
         child: Text(
           subTitle,
           style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14, color: ThemeColors.labelLightColor),
-=======
-          alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 20),
-          child: Image.asset(
-            ImageHelper.wrapAssets(icon),
-            fit: BoxFit.fill,
-            width: 28,
-            height: 28,
-          ),
-        ),
-
-       Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 60, top: 10),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14),
-          ),
-        ),
-
-         Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 60, top: 30),
-          child: Text(
-            subTitle,
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14,color: ThemeColors.labelLightColor),
-          ),
->>>>>>> af47b444e92b951db07341431a92b61836842919
         ),
       ),
       Container(
           alignment: Alignment.centerRight,
-<<<<<<< HEAD
-          padding: EdgeInsets.only(right: 20),
+          padding: EdgeInsets.only(right: 20, top: 14, bottom: 14),
           child: Container(
             alignment: Alignment.center,
             width: 70,
-            height: 32,
             child: Text(
               S.of(context).vote,
               style: Theme.of(context).textTheme.headline4.copyWith(
@@ -196,23 +161,5 @@ Widget createCell(
             ),
           ).backImage(image: 'voteBg.png').click(onTap: applyTap)),
     ]).backImage().click(onTap: infoTap),
-=======
-          padding: EdgeInsets.only(right: 20,top: 14,bottom:14),
-          child:Container(
-            alignment: Alignment.center,
-            width: 70,
-            
-          child: Text(
-            S.of(context).vote,
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 14,),
-          ),
-          ).backImage(image:'voteBg.png').click(onTap:applyTap)
-        ),
-
-
-    ]
-    ).backImage().click(onTap:infoTap),
-    
->>>>>>> af47b444e92b951db07341431a92b61836842919
   );
 }
