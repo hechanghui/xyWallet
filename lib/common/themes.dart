@@ -45,6 +45,10 @@ class ThemeStyles {
     return Theme.of(context).textTheme.subtitle1.copyWith(color: ThemeColors.labelLightColor);
   }
 
+    static TextStyle getHeadline4lLight(BuildContext context) {
+    return Theme.of(context).textTheme.headline4.copyWith(color: ThemeColors.labelLightColor);
+  }
+
   static TextStyle getSubtitle2lLight(BuildContext context) {
     return Theme.of(context).textTheme.subtitle2.copyWith(color: ThemeColors.accentDartFgColor);
   }

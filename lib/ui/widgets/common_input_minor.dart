@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 
@@ -49,12 +50,14 @@ class CommonInputState extends State<CommonInputMinor> {
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(horizontal: 19.5, vertical: 6),
       decoration: BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage(
-          ImageHelper.wrapAssets('input_minor_bg.png'),
+        image: DecorationImage(
+          image: AssetImage(
+            ImageHelper.wrapAssets('input_minor_bg.png'),
+          ),
+          fit: BoxFit.fill,
         ),
-        fit: BoxFit.fill,
-      )),
+      ),
+      constraints: BoxConstraints(minHeight: 42),
       child: Row(
         children: <Widget>[
           Expanded(

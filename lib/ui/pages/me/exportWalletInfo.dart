@@ -11,7 +11,7 @@ import 'package:xy_wallet/ui/widgets/common_button.dart';
 import 'package:xy_wallet/ui/widgets/common_input.dart';
 import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 
-Enum (),
+// Enum (),
 
 class ExportWalletInfo extends BaseWidget {
 
