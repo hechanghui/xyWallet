@@ -25,14 +25,24 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
   List<Widget> buildAppBarAction(BuildContext context) {
     return <Widget>[
       Container(
-        padding: EdgeInsets.only(right: 15),
+        padding: EdgeInsets.only(right: 1),
         alignment: Alignment.center,
         child: Text('TOP10',
             style: Theme.of(context).textTheme.headline4.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 )),
-      ).click(onTap: () {}),
+      ).click(onTap: () {
+        
+
+      }),
+
+            IconButton(
+          icon: Image.asset(ImageHelper.wrapAssets('KOLHeadIcon.png')),
+          onPressed: () {
+            
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdressManger()));
+          }),
     ];
   }
 
