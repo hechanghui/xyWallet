@@ -108,7 +108,7 @@ extension WidgetEx on Widget {
           image: DecorationImage(
         centerSlice: image == null ? Rect.fromLTRB(15.0, 15.0, 20.0, 20.0) : null,
         image: AssetImage(
-          ImageHelper.wrapAssets(image ?? 'container_bg.png'),
+          ImageHelper.wrapAssets(image ?? 'container_bg.webp'),
         ),
         fit: BoxFit.fill,
       )),
