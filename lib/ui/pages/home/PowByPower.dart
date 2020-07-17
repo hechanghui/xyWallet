@@ -150,7 +150,7 @@ class Page extends BaseWidgetState<PowByPower> {
               onPressed: () {
   
                 //KYC
-                // Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(RouteName.KYCStep1);
               },
       ).padding(EdgeInsets.only(top: 80, left: 15, right: 15))
     ]);
