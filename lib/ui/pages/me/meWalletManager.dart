@@ -27,7 +27,7 @@ class WalletManager extends BaseWidget {
   final int index;
   WalletManager(this.index);
   List list = SpUtils.getObjectList('walletList');
-
+  
   @override
   getState() {
     return new Pages();
@@ -41,9 +41,12 @@ class Pages extends BaseWidgetState<WalletManager> {
   }
 
   @override
+
+
+  @override
   Widget buildBodyWidget(BuildContext context) {
     var walletMap = widget.list[widget.index];
-    
+     
     return Container(
       child: ListView(
       // shrinkWrap: true,
@@ -99,7 +102,15 @@ class Pages extends BaseWidgetState<WalletManager> {
             child: CommonButton(
               child: Text(S.of(context).delAccount),
               onPressed: () {
-                showDelDialog();
+                String use = walletUse.address;
+                String wallet = walletMap['address'];
+                // print(walletMap['address']);
+                if(use != wallet){
+                  showDelDialog();
+                }else{
+                  showUsingDialog();
+                }
+                
               },
             )
         )
@@ -147,6 +158,23 @@ class Pages extends BaseWidgetState<WalletManager> {
                     ]);
   }
 
+  showUsingDialog(){
+                    DialogHelper.showCommonDialog(
+                    context: context,
+                    title: S.of(context).tip,
+                    content:S.of(context).walletDisDel,
+                    alignment:Alignment.center,
+                    contentTextStyle:Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold, fontSize: 17),
+                    actions: [
+                     
+                     Tuple3(S.of(context).comfirm, () {
+                        
+                        
+                      }, null),
+                    ]);
+  }
+
+
   showDelDialog(){
                     DialogHelper.showCommonDialog(
                     context: context,
@@ -156,7 +184,7 @@ class Pages extends BaseWidgetState<WalletManager> {
                     contentTextStyle:Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold, fontSize: 17),
                     actions: [
                       Tuple3(S.of(context).cannel, () {
-                        print(SpUtils.getKeys());
+                        
                       }, null),
                      Tuple3(S.of(context).comfirm, () {
                         

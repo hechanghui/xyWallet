@@ -252,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "walletConfirmMnemonic" : MessageLookupByLibrary.simpleMessage("确认你的钱包助记词"),
     "walletCreate" : MessageLookupByLibrary.simpleMessage("创建新账户"),
     "walletCreateAccountTip" : MessageLookupByLibrary.simpleMessage("密码将作为该账户的登录密码和交易密码，为了你的账户安全，我们建议你设置一个高强度的密码。"),
+    "walletDisDel" : MessageLookupByLibrary.simpleMessage("无法删除当前登陆账户"),
     "walletMnemonicInputTip" : MessageLookupByLibrary.simpleMessage("请按顺序点击助记词，验证您备份得助记词是否正确"),
     "walletMnemonicTip" : MessageLookupByLibrary.simpleMessage("强烈建议你将助记词抄写在纸上并保存在安全地方，任何人得到助记词都可以拿走你的数字资产"),
     "walletRestore" : MessageLookupByLibrary.simpleMessage("导入账户"),

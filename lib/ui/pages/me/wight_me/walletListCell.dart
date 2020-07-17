@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
-
+import 'package:xy_wallet/common/extension/widget_ex.dart';
 
 class WalletListCell extends StatelessWidget {
   final String address;
   final String title;
   final bool used;
   final GestureTapCallback onPressedSet;
-
+  final GestureTapCallback onPressed;
   WalletListCell({
     Key key,
     this.address,
     this.title,
     this.used,
     this.onPressedSet,
-
+    this.onPressed,
   }) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -44,12 +44,34 @@ class WalletListCell extends StatelessWidget {
               height: 21,
             ),
           ),
-        ),
+        ).click(onTap: onPressed),
        
+       Offstage(
+         offstage: !used,
+        child: Container(
+          alignment: Alignment.topRight,
+          padding: EdgeInsets.only(right: 60, top: 23),
+          
+          child:Container(
+            decoration: new BoxDecoration(
+            //背景
+            // color: Colors.white,
+            //设置四周圆角 角度
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+            //设置四周边框
+            border: new Border.all(width: 1, color: Color(0xFF00FFAA)),
+          ),
+            // color: Color(0xFF00FFAA),
+            child:Text(' 当前账户 ',style: TextStyle(color: Color(0xFF00FFAA),fontSize: 12),),
+
+          ),
+        ),
+       ),
+
         Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 38, top: 24),
-          width: 150,
+          padding: EdgeInsets.only(left: 40, top: 24),
+          width: 200,
           child: Text(
             title,
             maxLines: 1,
@@ -60,9 +82,10 @@ class WalletListCell extends StatelessWidget {
                 .copyWith(fontWeight: FontWeight.bold, fontSize: 17),
           ),
         ),
+
         Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 38, top: 48, right: 40),
+          padding: EdgeInsets.only(left: 38, top: 55, right: 40),
           child: Text(
             address,
             maxLines: 1,

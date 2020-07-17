@@ -42,6 +42,7 @@ class Pages extends BaseWidgetState<AssetManger> {
 
   @override
   Widget buildBodyWidget(BuildContext context) {
+    
     var assetManagerHeadBt = AssetManagerHeadBt(
       title: S.of(context).Charge,
       imageName: 'AssetCharge.png',
