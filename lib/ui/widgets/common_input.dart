@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
 import 'package:xy_wallet/common/themes.dart';
 
-
-class CommonInput extends StatefulWidget{
-
+class CommonInput extends StatefulWidget {
   final String placeholder;
   final String title;
   final bool autofocus;
@@ -13,6 +11,9 @@ class CommonInput extends StatefulWidget{
   final FocusNode focusNode;
   // final ValueChanged<String> onChanged;
   final TextInputType keyboardType;
+  final bool enabled;
+  final Widget right;
+  final TextStyle style;
 
   CommonInput({
     Key key,
@@ -23,39 +24,36 @@ class CommonInput extends StatefulWidget{
     this.controller,
     this.textInputAction,
     this.focusNode,
+    this.enabled,
+    this.right,
+    this.style,
     // this.onChanged
-
   }) : super(key: key);
 
   @override
   CommonInputState createState() => CommonInputState();
-
 }
 
-
 class CommonInputState extends State<CommonInput> {
-
   @override
   Widget build(BuildContext context) {
     // double width = MediaQuery.of(context).size.width;
     // double height = MediaQuery.of(context).size.height;
 
+    return Container(
+      alignment: Alignment.center,
+      // height: 106,
+      // width: width,
+      margin: EdgeInsets.all(3.0),
 
-      return Container(
-        alignment: Alignment.center,
-        // height: 106,
-        // width: width,
-        margin: EdgeInsets.all(3.0),
-      
-        child: Padding(
+      child: Padding(
           padding: const EdgeInsets.all(0.0),
-          child:Stack(
+          child: Stack(
             children: <Widget>[
               Image.asset(
-              ImageHelper.wrapAssets('inputbg.png'),
-              fit: BoxFit.fill,
+                ImageHelper.wrapAssets('inputbg.png'),
+                fit: BoxFit.fill,
               ),
-
               Padding(
                 padding: const EdgeInsets.fromLTRB(25, 10, 25, 70),
                 child: Text(
@@ -65,43 +63,40 @@ class CommonInputState extends State<CommonInput> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 47, 50, 0),
-                child: TextField(
-                  onChanged: (text){
-                    widget.controller.text = text;
-                  },
-                  
-                  controller: widget.controller,
-                  keyboardType: widget.keyboardType,
-                  style: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    hintText: widget.placeholder,
-                    hintStyle: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold,color: ThemeColors.labelLightColor),
-                    border: InputBorder.none,
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromARGB(0, 0, 0, 0),),  
-                    )
-                  )
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                          onChanged: (text) {
+                            widget.controller.text = text;
+                          },
+                          enabled: widget.enabled,
+                          controller: widget.controller,
+                          keyboardType: widget.keyboardType,
+                          style: widget.style?? Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
+                          decoration: InputDecoration(
+                              hintText: widget.placeholder,
+                              hintStyle: Theme.of(context).textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: ThemeColors.labelLightColor),
+                              border: InputBorder.none,
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(0, 0, 0, 0),
+                                ),
+                              ))),
+                    ),
+                    widget.right ?? SizedBox.shrink(),
+                  ],
                 ),
-              
               ),
-
-
             ],
-          ) 
-          
-
-          
-          
-        ),
-        // color: Colors.blue,
-      );
+          )),
+      // color: Colors.blue,
+    );
   }
 }
 
 // 文本框border
 InputBorder TextFieldDecorationBorder() {
-  return new OutlineInputBorder(
-      borderSide: new BorderSide(color: Color(0xffd2d2d2), width: 0.6),
-      borderRadius: new BorderRadius.circular(6.0)
-  );
+  return new OutlineInputBorder(borderSide: new BorderSide(color: Color(0xffd2d2d2), width: 0.6), borderRadius: new BorderRadius.circular(6.0));
 }

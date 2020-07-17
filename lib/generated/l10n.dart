@@ -1963,6 +1963,26 @@ class S {
     );
   }
 
+  /// `身份认证`
+  String get titleKYC {
+    return Intl.message(
+      '身份认证',
+      name: 'titleKYC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `第一步：填写信息`
+  String get subtitleKYC1 {
+    return Intl.message(
+      '第一步：填写信息',
+      name: 'subtitleKYC1',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `充币记录`
   String get ChargeRecord {
     return Intl.message(

@@ -13,9 +13,17 @@ extension WidgetEx on Widget {
   InkWell click({
     Alignment alignment = Alignment.center,
     GestureTapCallback onTap,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
   }) {
     return InkWell(
       onTap: onTap,
+      focusColor: focusColor,
+      hoverColor: hoverColor,
+      highlightColor: highlightColor,
+      splashColor: splashColor,
       child: Align(
         alignment: alignment,
         widthFactor: 1.2,
