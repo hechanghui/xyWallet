@@ -168,7 +168,8 @@ class AdressMangerViewModel extends BaseLoadDataViewModel {
   List<Map> datas = List();
   @override
   loadData() {
-    datas.addAll(SpUtils.getObjectList('address'));
+
+    datas.addAll(SpUtils.getObjectList('address')??[]);
     _handlerState();
   }
 
