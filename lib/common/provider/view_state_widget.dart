@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 
@@ -9,6 +10,7 @@ import 'view_state.dart';
 
 /// 加载中
 class ViewStateBusyWidget extends StatelessWidget {
+  const ViewStateBusyWidget({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -31,22 +33,12 @@ class ViewStateWidget extends StatelessWidget {
   final String buttonTextData;
   final VoidCallback onPressed;
 
-  ViewStateWidget(
-      {Key key,
-      this.image,
-      this.title,
-      this.message,
-      this.buttonText,
-      this.onPressed,
-      this.buttonTextData})
-      : super(key: key);
+  ViewStateWidget({Key key, this.image, this.title, this.message, this.buttonText, this.onPressed, this.buttonTextData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var titleStyle =
-        Theme.of(context).textTheme.headline4.copyWith(color: Colors.grey);
-    var messageStyle = titleStyle.copyWith(
-        color: titleStyle.color.withOpacity(0.7), fontSize: 14);
+    var titleStyle = Theme.of(context).textTheme.headline4.copyWith(color: Colors.grey);
+    var messageStyle = titleStyle.copyWith(color: titleStyle.color.withOpacity(0.7), fontSize: 14);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,15 +109,13 @@ class ViewStateErrorWidget extends StatelessWidget {
       case ViewStateErrorType.networkTimeOutError:
         defaultImage = Transform.translate(
           offset: Offset(-50, 0),
-          child: const Icon(IconFonts.pageNetworkError,
-              size: 100, color: Colors.grey),
+          child: const Icon(IconFonts.pageNetworkError, size: 100, color: Colors.grey),
         );
         defaultTitle = S.of(context).viewStateMessageNetworkError;
         // errorMessage = ''; // 网络异常移除message提示
         break;
       case ViewStateErrorType.defaultError:
-        defaultImage =
-            const Icon(IconFonts.pageError, size: 100, color: Colors.grey);
+        defaultImage = const Icon(IconFonts.pageError, size: 100, color: Colors.grey);
         defaultTitle = S.of(context).viewStateMessageError;
         break;
 
@@ -156,16 +146,13 @@ class ViewStateEmptyWidget extends StatelessWidget {
   final Widget buttonText;
   final VoidCallback onPressed;
 
-  const ViewStateEmptyWidget(
-      {Key key, this.image, this.message, this.buttonText, this.onPressed})
-      : super(key: key);
+  const ViewStateEmptyWidget({Key key, this.image, this.message, this.buttonText, this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewStateWidget(
       onPressed: this.onPressed,
-      image: image ??
-          const Icon(IconFonts.pageEmpty, size: 100, color: Colors.grey),
+      image: image ?? const Icon(IconFonts.pageEmpty, size: 100, color: Colors.grey),
       title: message ?? S.of(context).viewStateMessageEmpty,
       buttonText: buttonText,
       buttonTextData: S.of(context).viewStateButtonRefresh,
@@ -180,13 +167,7 @@ class ViewStateUnAuthWidget extends StatelessWidget {
   final Widget buttonText;
   final VoidCallback onPressed;
 
-  const ViewStateUnAuthWidget(
-      {Key key,
-      this.image,
-      this.message,
-      this.buttonText,
-      @required this.onPressed})
-      : super(key: key);
+  const ViewStateUnAuthWidget({Key key, this.image, this.message, this.buttonText, @required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -224,8 +205,7 @@ class ViewStateButton extends StatelessWidget {
   final Widget child;
   final String textData;
 
-  const ViewStateButton({@required this.onPressed, this.child, this.textData})
-      : assert(child == null || textData == null);
+  const ViewStateButton({@required this.onPressed, this.child, this.textData}) : assert(child == null || textData == null);
 
   @override
   Widget build(BuildContext context) {
@@ -243,17 +223,36 @@ class ViewStateButton extends StatelessWidget {
   }
 }
 
-// class ViewStateLayou extends StatefulWidget {
+class ViewStateLayou<T extends BaseViewModel> extends StatefulWidget {
+  final ViewState viewState;
+  final Widget empty;
+  final Widget error;
+  final Widget loading;
+  final Widget child;
+  @override
+  _ViewStateLayoutState createState() => _ViewStateLayoutState();
+  const ViewStateLayou({
+    Key key,
+    @required this.child,
+    @required this.viewState,
+    this.empty: const ViewStateEmptyWidget(),
+    this.error,
+    this.loading: const ViewStateBusyWidget(),
+  }) : super(key: key);
+}
 
-//   @override
-//   _ViewStateLayoutState createState() => _ViewStateLayoutState();
-// }
-
-// class _ViewStateLayoutState extends State<ViewStateLayou> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-
-//     );
-//   }
-// }
+class _ViewStateLayoutState extends State<ViewStateLayou> {
+  @override
+  Widget build(BuildContext context) {
+    switch (widget.viewState) {
+      case ViewState.busy:
+        return widget.loading;
+      case ViewState.empty:
+        return widget.empty;
+      case ViewState.error:
+        return widget.error ?? widget.empty;
+      default:
+        return widget.child;
+    }
+  }
+}

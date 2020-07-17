@@ -75,10 +75,13 @@ abstract class BasePageMixin {
           // 触摸收起键盘
           hideInputKeyboard(context);
         },
-        child: buildBody(context),
+        child: SafeArea(
+          child: buildBody(context),
+        ),
       ),
       bottomNavigationBar: buildBottomNavigationBar(context),
     );
+
     return hasBackground
         ? Container(
             decoration: const BoxDecoration(

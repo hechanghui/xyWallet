@@ -23,15 +23,18 @@ class ProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
   _ProviderWidgetState<T> createState() => _ProviderWidgetState<T>();
 }
 
-class _ProviderWidgetState<T extends ChangeNotifier>
-    extends State<ProviderWidget<T>> {
+class _ProviderWidgetState<T extends ChangeNotifier> extends State<ProviderWidget<T>> {
   T model;
 
   @override
   void initState() {
+    _initModel();
+    super.initState();
+  }
+
+  _initModel() {
     model = widget.model;
     widget.onModelReady?.call(model);
-    super.initState();
   }
 
   @override
@@ -42,6 +45,9 @@ class _ProviderWidgetState<T extends ChangeNotifier>
 
   @override
   Widget build(BuildContext context) {
+    if (model != widget.model) {
+      _initModel();
+    }
     return ChangeNotifierProvider<T>.value(
       value: model,
       child: Consumer<T>(
@@ -52,10 +58,8 @@ class _ProviderWidgetState<T extends ChangeNotifier>
   }
 }
 
-class ProviderWidget2<A extends ChangeNotifier, B extends ChangeNotifier>
-    extends StatefulWidget {
-  final Widget Function(BuildContext context, A model1, B model2, Widget child)
-      builder;
+class ProviderWidget2<A extends ChangeNotifier, B extends ChangeNotifier> extends StatefulWidget {
+  final Widget Function(BuildContext context, A model1, B model2, Widget child) builder;
   final A model1;
   final B model2;
   final Widget child;
@@ -75,8 +79,7 @@ class ProviderWidget2<A extends ChangeNotifier, B extends ChangeNotifier>
   _ProviderWidgetState2<A, B> createState() => _ProviderWidgetState2<A, B>();
 }
 
-class _ProviderWidgetState2<A extends ChangeNotifier, B extends ChangeNotifier>
-    extends State<ProviderWidget2<A, B>> {
+class _ProviderWidgetState2<A extends ChangeNotifier, B extends ChangeNotifier> extends State<ProviderWidget2<A, B>> {
   A model1;
   B model2;
 
@@ -96,7 +99,7 @@ class _ProviderWidgetState2<A extends ChangeNotifier, B extends ChangeNotifier>
     }
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
