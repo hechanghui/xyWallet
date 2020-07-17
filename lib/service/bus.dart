@@ -7,7 +7,7 @@
 //Dart中实现单例模式的标准做法就是使用static变量+工厂构造函数的方式，这样就可以保证new EventBus()始终返回都是同一个实例，读者应该理解并掌握这种方法。
 
 import 'package:event_bus/event_bus.dart';
-/// 创建EventBus
+
 EventBus eventBus = EventBus();
 
 
@@ -32,3 +32,6 @@ class WalletChange{
   WalletChange();
 }
 
+class WalletUsingChange{
+  WalletUsingChange();
+}

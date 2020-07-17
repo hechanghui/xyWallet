@@ -2412,6 +2412,16 @@ class S {
       args: [],
     );
   }
+
+  /// `无法删除当前登陆账户`
+  String get walletDisDel {
+    return Intl.message(
+      '无法删除当前登陆账户',
+      name: 'walletDisDel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

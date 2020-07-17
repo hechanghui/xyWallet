@@ -6,11 +6,9 @@ import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/service/bus.dart';
 import 'package:xy_wallet/tool/Sp_utils.dart';
-import 'package:xy_wallet/ui/pages/me/wight_me/adressCell.dart';
+
 import 'package:xy_wallet/ui/pages/me/wight_me/walletListCell.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
-
-import 'meWalletManager.dart';
 
 class WalletList extends BaseWidget {
   @override
@@ -62,9 +60,19 @@ class Pages extends BaseWidgetState<WalletList> {
                         child: WalletListCell(
                       title: map['name']??"",
                       address: map['address']??"",
+                      used: map['address'] == walletUse.address,
                       onPressedSet: () {
                         Navigator.pushNamed(context, RouteName.WalletManger,arguments: index);
                       },
+                      onPressed: () {
+                        Map wallet = list[index];
+                        Map wallets = SpUtils.getObject(wallet['address']);
+                        SpUtils.putObject('WalletUsing', wallets);
+                        eventBus.fire(WalletUsingChange());
+                        setState(() {
+                          
+                        });
+                      }
                     ));
                   })),
           Container(

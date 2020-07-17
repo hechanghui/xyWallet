@@ -3,11 +3,11 @@ import 'package:xy_wallet/model/event/message_event.dart';
 extension StringEx on String {
   showLoading({bool canCancel: true}) {
     print('showLoading');
-    eventBus
+    eventBusLoad
         .fire(LoadingPopupEvent(isShow: true, canCancel: canCancel, msg: this));
   }
 
   hideLoading() {
-    eventBus.fire(LoadingPopupEvent(isShow: false));
+    eventBusLoad.fire(LoadingPopupEvent(isShow: false));
   }
 }

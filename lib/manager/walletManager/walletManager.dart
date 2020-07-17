@@ -70,19 +70,51 @@ createWalletKeyStore(String keyStore, String name, String password) async {
 
 saveWallet(WalletModel model){
   print('保存');
+  var walletUsing = SpUtils.getObject('WalletUsing');
   final saveData = model.toJson();
   debugPrint("wallet:${saveData}");
   String key = model.address;
   SpUtils.putObject(key, saveData);
+  walletUsing == null ? SpUtils.putObject('WalletUsing', saveData) : null;
   var walletList = SpUtils.getObjectList(walletListKey) ?? [];
   walletList.add({"address":model.address, 'name':model.name});
   SpUtils.putObjectList(walletListKey, walletList);
   eventBus.fire(WalletChange());
 }
 
-  checkPWDForKetstore (String keystore, String password ) {
-    return ethCheckPWDForKetstore(keystore,password); 
+checkPWDForKetstore (String keystore, String password ) {
+  return ethCheckPWDForKetstore(keystore,password); 
+}
+
+
+
+
+class WalletUsing {
+  // 工厂模式
+  factory WalletUsing() =>_getInstance();
+  static WalletUsing get instance => _getInstance();
+  static WalletUsing _instance;
+  static WalletModel wallet;
+  WalletUsing._internal() {
+    wallet = WalletModel.fromJson(SpUtils.getObject('WalletUsing'));
   }
+  static WalletUsing _getInstance() {
+    if (_instance == null) {
+      _instance = new WalletUsing._internal();
+    }
+    return _instance;
+  }
+  
+  WalletModel walletUsing () {
+    return wallet;
+  }
+  WalletModel reloadDate () {
+    wallet = WalletModel.fromJson(SpUtils.getObject('WalletUsing'));
+    return wallet;
+  }
+}
+
+
 
 class WalletCreateTask implements Task<Future<WalletModel>> {
   final String createData;
@@ -98,8 +130,6 @@ class WalletCreateTask implements Task<Future<WalletModel>> {
 
   @override
   Future<WalletModel> execute() async {
-
-
     switch (type) {
       case CreateType.Mnemonic:
         WalletModel model = await createWithMnemonic();

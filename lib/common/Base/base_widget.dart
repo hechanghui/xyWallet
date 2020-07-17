@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -9,8 +10,11 @@ import 'package:xy_wallet/common/base/view_model/base_load_refresh_data_vm.dart'
 import 'package:xy_wallet/common/provider/provider_widget.dart';
 import 'package:xy_wallet/common/provider/view_state_model.dart';
 import 'package:xy_wallet/common/provider/view_state_widget.dart';
+import 'package:xy_wallet/manager/walletManager/walletManager.dart';
 import 'package:xy_wallet/model/event/message_event.dart';
 import 'package:xy_wallet/common/base/view_model/base_load_data_vm.dart';
+import 'package:xy_wallet/model/walletModel.dart';
+import 'package:xy_wallet/service/bus.dart';
 import 'common_function.dart';
 
 import 'NavigatorManger.dart';
@@ -36,6 +40,15 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   bool get wantKeepAlive => false;
   //平台信息
 //  bool isAndroid = Platform.isAndroid;
+//当前钱包
+  WalletModel walletUse;
+  // final WalletModel was = ;
+  WalletModel walletUsing(){
+    WalletUsing manager = WalletUsing();
+    print(manager.walletUsing().address);
+    walletUse = manager.walletUsing();
+    return manager.walletUsing();
+  }
 
   bool _onResumed = false; //页面展示标记
   bool _onPause = false; //页面暂停标记
@@ -46,6 +59,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   @override
   void initState() {
     initBaseCommon(this);
+    walletUsing();
     NavigatorManger().addWidget(this);
     WidgetsBinding.instance.addObserver(this);
     onCreate();
@@ -173,7 +187,8 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   }
 
   void _regEventBus() {
-    _eventBusSubscription = eventBus.on().listen((event) {
+    _eventBusSubscription = eventBusLoad.on().listen((event) {
+      
       if (!_onPause) {
         if (event is LoadingPopupEvent) {
           if (event.isShow) {
@@ -184,7 +199,15 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
         }
       }
     });
+ 
+    eventBus.on<WalletUsingChange>().listen((event) {
+      WalletUsing manager = WalletUsing();
+      print(manager.walletUsing().address);
+      walletUse = manager.reloadDate();
+     
+    });
   }
+  
 }
 
 //加载数据state
