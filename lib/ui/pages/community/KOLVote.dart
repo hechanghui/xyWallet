@@ -3,6 +3,7 @@ import 'package:tuple/tuple.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/dialog_helper.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/widgets/common_button.dart';
@@ -168,6 +169,7 @@ class _PageState extends BaseWidgetState<KOLVote> {
           Tuple3(S.current.cannel, null, null),
           Tuple3(S.current.comfirm, () {
             Navigator.of(context).pop();
+            
           }, null)
         ]);
   }

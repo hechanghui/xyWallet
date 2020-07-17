@@ -7,6 +7,7 @@ import 'package:xy_wallet/ui/pages/community/CoinSplitBuy.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRank.dart';
 import 'package:xy_wallet/ui/pages/community/CoinSplitRecord.dart';
 import 'package:xy_wallet/ui/pages/community/KOLApply.dart';
+import 'package:xy_wallet/ui/pages/community/KOLApplySuccess.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunity.dart';
 import 'package:xy_wallet/ui/pages/community/KOLCommunityInfo.dart';
 import 'package:xy_wallet/ui/pages/community/KOLEditor.dart';
@@ -32,6 +33,7 @@ import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/me/changePWD.dart';
 import 'package:xy_wallet/ui/pages/me/exportWalletInfo.dart';
 import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
+import 'package:xy_wallet/ui/pages/me/setting.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_generate.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_mnemonic_input.dart';
@@ -91,6 +93,9 @@ class RouteName {
 
   static const String DropRecord = 'home/DropRecord';
   static const String Power_Invite = 'home/PowerInvite';
+
+    static const String Setting = 'me/Setting';
+    static const String KOLApplySuccess = 'community/KOLApplySuccess';
 
 }
 
@@ -192,7 +197,13 @@ class Router {
 
       case RouteName.DropRecord:
         return CupertinoPageRoute(builder: (_) => DropRecord());
+      case RouteName.INVITEINFO:
+        return CupertinoPageRoute(builder: (_) => InviteInfo());
 
+      case RouteName.Setting:
+        return CupertinoPageRoute(builder: (_) => Setting());
+      case RouteName.KOLApplySuccess:
+        return CupertinoPageRoute(builder: (_) => KOLApplySuccess());
 
       default:
         return CupertinoPageRoute(

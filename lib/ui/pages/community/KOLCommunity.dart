@@ -100,8 +100,8 @@ class _PageState extends BaseWidgetState<KOLCommunity> {
         child: CommonButton(
           child: Text(S.of(context).applyKOL),
           onPressed: () {
-            // Navigator.of(context).pushNamed(RouteName.KOLApply); //申请
-            Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo, arguments: KOLCommunityInfoType.Own); //自己的社区
+            Navigator.of(context).pushNamed(RouteName.KOLApply); //申请
+            // Navigator.of(context).pushNamed(RouteName.KOLCommunityInfo, arguments: KOLCommunityInfoType.Own); //自己的社区
           },
         ),
       )
