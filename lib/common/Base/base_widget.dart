@@ -45,7 +45,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   // final WalletModel was = ;
   WalletModel walletUsing(){
     WalletUsing manager = WalletUsing();
-    print(manager.walletUsing().address);
+    // print(manager.walletUsing().address);
     walletUse = manager.walletUsing();
     return manager.walletUsing();
   }
@@ -202,9 +202,7 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
  
     eventBus.on<WalletUsingChange>().listen((event) {
       WalletUsing manager = WalletUsing();
-      print(manager.walletUsing().address);
       walletUse = manager.reloadDate();
-     
     });
   }
   
