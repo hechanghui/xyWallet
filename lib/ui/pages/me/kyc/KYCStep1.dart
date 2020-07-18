@@ -67,7 +67,7 @@ class _State extends BaseWidgetState<KYCStep1Page> {
                     controller: TextEditingController(text: "swssssssssssssssssssssssssssssssssssssswwwwwwwwwwwwwwwwwwwwwwwwww33333333333333333"),
                     enabled: false,
                     right: Icon(Icons.keyboard_arrow_down),
-                    // style:  Theme.of(context).textTheme.headline4.copyWith(,fontWeight: FontWeight.bold),
+                    style:  Theme.of(context).textTheme.headline4.copyWith(color:ThemeColors.primaryFgColor,fontWeight: FontWeight.bold),
                   ).click(
                       focusColor: Colors.transparent,
                       highlightColor: Colors.transparent,
