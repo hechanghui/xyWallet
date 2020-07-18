@@ -21,13 +21,11 @@ class CreateWithAccountPage extends BaseWidget {
 class _PageState extends BaseWidgetState<CreateWithAccountPage> {
   @override
   String titleLabel(BuildContext context) => S.of(context).walletCreate;
-
+  final viewModel = CreateViewModel();
+  
   @override
   Widget buildBodyWidget(BuildContext context) {
-    final viewModel = CreateViewModel();
-    var acountName = TextEditingController();
-    var passWord = TextEditingController();
-    var comfirmPW = TextEditingController();
+  
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
