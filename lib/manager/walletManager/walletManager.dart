@@ -75,7 +75,11 @@ saveWallet(WalletModel model){
   debugPrint("wallet:${saveData}");
   String key = model.address;
   SpUtils.putObject(key, saveData);
-  walletUsing == null ? SpUtils.putObject('WalletUsing', saveData) : null;
+  if(walletUsing == null){
+    SpUtils.putObject('WalletUsing', saveData);
+    eventBus.fire(WalletUsingChange());
+  }
+  eventBus.fire(WalletUsingChange());
   var walletList = SpUtils.getObjectList(walletListKey) ?? [];
   walletList.add({"address":model.address, 'name':model.name});
   SpUtils.putObjectList(walletListKey, walletList);
@@ -96,7 +100,8 @@ class WalletUsing {
   static WalletUsing _instance;
   static WalletModel wallet;
   WalletUsing._internal() {
-    wallet = WalletModel.fromJson(SpUtils.getObject('WalletUsing'));
+    Map walletMap = SpUtils.getObject('WalletUsing');
+    wallet = walletMap == null ? WalletModel() : WalletModel.fromJson(walletMap);
   }
   static WalletUsing _getInstance() {
     if (_instance == null) {
@@ -106,7 +111,7 @@ class WalletUsing {
   }
   
   WalletModel walletUsing () {
-    return wallet;
+    return wallet??WalletModel();
   }
   WalletModel reloadDate () {
     wallet = WalletModel.fromJson(SpUtils.getObject('WalletUsing'));
