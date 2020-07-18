@@ -32,7 +32,9 @@ import 'package:xy_wallet/ui/pages/home/invite/SeasonRecordPage.dart';
 import 'package:xy_wallet/ui/pages/me/about_page.dart';
 import 'package:xy_wallet/ui/pages/me/changePWD.dart';
 import 'package:xy_wallet/ui/pages/me/exportWalletInfo.dart';
+import 'package:xy_wallet/ui/pages/me/kyc/CountryList.dart';
 import 'package:xy_wallet/ui/pages/me/kyc/KYCStep1.dart';
+import 'package:xy_wallet/ui/pages/me/kyc/KYCStep2.dart';
 import 'package:xy_wallet/ui/pages/me/meWalletManager.dart';
 import 'package:xy_wallet/ui/pages/me/setting.dart';
 import 'package:xy_wallet/ui/pages/wallet/create_with_account.dart';
@@ -97,6 +99,8 @@ class RouteName {
 
   static const String Setting = 'me/Setting';
   static const String KYCStep1 = 'me/KYCStep1';
+  static const String KYCStep2 = 'me/KYCStep2';
+  static const String CountryListPage = "me/CountryListPage";
   static const String KOLApplySuccess = 'community/KOLApplySuccess';
 }
 
@@ -205,6 +209,11 @@ class Router {
         return CupertinoPageRoute(builder: (_) => Setting());
       case RouteName.KYCStep1:
         return CupertinoPageRoute(builder: (_) => KYCStep1Page());
+             case RouteName.KYCStep2:
+        return CupertinoPageRoute(builder: (_) => KYCStep2Page());
+      case RouteName.CountryListPage:
+        return CupertinoPageRoute(builder: (_) => CountryListPage());
+
       case RouteName.KOLApplySuccess:
         return CupertinoPageRoute(builder: (_) => KOLApplySuccess());
 

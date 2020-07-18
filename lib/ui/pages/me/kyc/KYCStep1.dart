@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/provider/provider_widget.dart';
+import 'package:xy_wallet/common/router/router_manager.dart';
 import 'package:xy_wallet/common/themes.dart';
 import 'package:xy_wallet/generated/l10n.dart';
 import 'package:xy_wallet/ui/base/base_page.dart';
@@ -80,6 +81,7 @@ class _State extends BaseWidgetState<KYCStep1Page> {
                       splashColor: Colors.transparent,
                       onTap: () {
                         print("国家/地区");
+                        Navigator.of(context).pushNamed(RouteName.CountryListPage);
                       }),
                   CommonInput(
                     title: "证件类型",
@@ -159,8 +161,16 @@ class _State extends BaseWidgetState<KYCStep1Page> {
                 ],
               ),
             ).expand(),
-            CommonButton(child: Text(S.of(context).createWallet), onPressed: () async {}).padding(EdgeInsets.only(
-                left: ThemeDimens.pageLRMargin, right: ThemeDimens.pageLRMargin, bottom: ThemeDimens.pageBottomMargin, top: ThemeDimens.pageVerticalMargin)),
+            CommonButton(
+                    child: Text(S.of(context).createWallet),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(RouteName.KYCStep2);
+                    })
+                .padding(EdgeInsets.only(
+                    left: ThemeDimens.pageLRMargin,
+                    right: ThemeDimens.pageLRMargin,
+                    bottom: ThemeDimens.pageBottomMargin,
+                    top: ThemeDimens.pageVerticalMargin)),
           ],
         );
       },

@@ -201,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stateWaitActivate" : MessageLookupByLibrary.simpleMessage("待激活"),
     "submit" : MessageLookupByLibrary.simpleMessage("提交"),
     "subtitleKYC1" : MessageLookupByLibrary.simpleMessage("第一步：填写信息"),
+    "subtitleKYC2" : MessageLookupByLibrary.simpleMessage("第二步：上传证件照片"),
     "tabComSubTitle1" : MessageLookupByLibrary.simpleMessage("基于智能合约得跨链资产管理"),
     "tabComSubTitle2" : MessageLookupByLibrary.simpleMessage("投票参与社区自治"),
     "tabComSubTitle3" : MessageLookupByLibrary.simpleMessage("基于智能合约得币币兑换交易所"),

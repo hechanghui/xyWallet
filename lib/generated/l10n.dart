@@ -1983,6 +1983,16 @@ class S {
     );
   }
 
+  /// `第二步：上传证件照片`
+  String get subtitleKYC2 {
+    return Intl.message(
+      '第二步：上传证件照片',
+      name: 'subtitleKYC2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `充币记录`
   String get ChargeRecord {
     return Intl.message(
