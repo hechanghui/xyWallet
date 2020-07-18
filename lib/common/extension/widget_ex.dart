@@ -12,6 +12,8 @@ extension WidgetEx on Widget {
 
   InkWell click({
     Alignment alignment = Alignment.center,
+    double heightFactor:1.2,
+    double widthFactor:1.2,
     GestureTapCallback onTap,
     Color focusColor,
     Color hoverColor,
@@ -26,8 +28,8 @@ extension WidgetEx on Widget {
       splashColor: splashColor,
       child: Align(
         alignment: alignment,
-        widthFactor: 1.2,
-        heightFactor: 1.2,
+        widthFactor: widthFactor,
+        heightFactor: heightFactor,
         child: this,
       ),
     );

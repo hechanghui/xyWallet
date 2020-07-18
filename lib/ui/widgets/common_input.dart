@@ -68,9 +68,9 @@ class CommonInputState extends State<CommonInput> {
                   children: <Widget>[
                     Expanded(
                       child: TextField(
-                          onChanged: (text) {
-                            widget.controller.text = text;
-                          },
+                          // onChanged: (text) {
+                          //   widget.controller.text = text;
+                          // },
                           enabled: widget.enabled,
                           controller: widget.controller,
                           keyboardType: widget.keyboardType,
