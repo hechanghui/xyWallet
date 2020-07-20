@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:xy_wallet/common/base/base_widget.dart';
 import 'package:xy_wallet/common/helper/resource_helper.dart';
@@ -58,28 +59,43 @@ class _State extends BaseWidgetState<KYCStep2Page> {
                   Divider(height: ThemeDimens.pageVerticalMargin * 1.5),
                   Text("1、上传身份证人像面"),
                   Container(
-                    alignment: Alignment.center,
                     height: 170,
-                    child: Image.asset(
-                      ImageHelper.wrapAssets("img_add.png"),
+                    child: CachedNetworkImage(
+                      imageUrl: ImageHelper.wrapUrl("url"),
+                      placeholder: (context, url) => Center(
+                        child: Image.asset(
+                          ImageHelper.wrapAssets("img_add.png"),
+                          height: 57,
+                        ),
+                      ),
                     ),
                   ).backImage(),
                   Divider(height: ThemeDimens.pageVerticalMargin * 1.2),
                   Text("2、上传身份证国徽面"),
                   Container(
-                    alignment: Alignment.center,
                     height: 170,
-                    child: Image.asset(
-                      ImageHelper.wrapAssets("img_add.png"),
+                    child: CachedNetworkImage(
+                      imageUrl: ImageHelper.wrapUrl("url"),
+                      placeholder: (context, url) => Center(
+                        child: Image.asset(
+                          ImageHelper.wrapAssets("img_add.png"),
+                          height: 57,
+                        ),
+                      ),
                     ),
                   ).backImage(),
                   Divider(height: ThemeDimens.pageVerticalMargin * 1.2),
                   Text("3、上传手持证件照片"),
                   Container(
-                    alignment: Alignment.center,
                     height: 170,
-                    child: Image.asset(
-                      ImageHelper.wrapAssets("img_add.png"),
+                    child: CachedNetworkImage(
+                      imageUrl: ImageHelper.wrapUrl("url"),
+                      placeholder: (context, url) => Center(
+                        child: Image.asset(
+                          ImageHelper.wrapAssets("img_add.png"),
+                          height: 57,
+                        ),
+                      ),
                     ),
                   ).backImage(),
                 ],
